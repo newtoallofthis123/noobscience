@@ -1,0 +1,111 @@
+---
+export interface Props {
+    title: string;
+    img?: string;
+    description?: string;
+}
+const {title, img, description} = Astro.props
+import "../base.css"
+import "bootstrap-icons/font/bootstrap-icons.css";
+---
+
+<html lang="en">
+    <title>
+        {
+            title || "NoobScience | Student and Open Source Enthusiast."
+        }
+    </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="robots" content="index, follow, archive" />
+    <link rel="sitemap" href="/sitemap-index.xml">
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#ffd845" />
+    <meta name="title" content="NoobScience" />
+    <meta
+        name="description"
+        content={description || "Hi! I am Ishan. I am a Student and Open Source Enthusiast. This is my personal portfolio website. I Like to Code Stuff. Check out my work!"}
+    />
+    <meta name="title" content={title || "NoobScience"} />
+    <meta
+        name="keywords"
+        content="noobscience, noob science, NoobScience, newtoallofthis123, technology, website"
+    />
+    <meta name="author" content="NoobScience" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://noobscience.rocks" />
+    <meta property="twitter:title" content="NoobScience" />
+    <meta
+        property="twitter:description"
+        content={description || "Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!"}
+    />
+    <meta
+        property="twitter:image"
+        content={ "https://noobscience.rocks"+ img || "https://noobscience.rocks/assets/banner.png"}
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://noobscience.rocks/" />
+    <meta property="og:title" content={title || "NoobScience"} />
+    <meta
+        property="og:description"
+        content={description || "Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!"}
+    />
+    <meta
+        property="og:image"
+        content={"https://noobscience.rocks" + img || "https://noobscience.rocks/assets/banner.png"}
+    />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="canonical" href="https://noobscience.rocks" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/favicon.ico" color="#0f0f28" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin="anonymous"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@200;400;700&family=Josefin+Sans:wght@300;400;700&family=Libre+Baskerville:wght@100;400;700&family=Archivo+Black&family=Scheherazade+New:wght@400;700&display=swap"
+        rel="stylesheet"
+    />
+    <!-- Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
+     crossorigin="anonymous"></script>
+    <body>
+        <slot />
+    </body>
+    <style is:global>
+        html{
+            scroll-behavior: smooth;
+        }
+        body{
+            font-family: "Josefin Sans", sans-serif;
+        }
+    </style>
+    <script is:raw>
+        const toast = (text) => {
+            Toastify({
+                text: text,
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                style: {
+                    background: "linear-gradient(to right, #00b09b, #96c93d)",
+                },
+                stopOnFocus: true,
+                onClick: function () {
+                    window.location.href = "/w/" + frontmatter.emoji;
+                },
+            }).showToast();
+        }
+    </script>
+</html>

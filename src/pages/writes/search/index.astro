@@ -1,0 +1,14 @@
+---
+import Blog from '../../../layouts/blog.astro'
+import Search from '../../../components/search/search'
+---
+
+<Blog title='Search Ishan Writes'>
+  <h1 class='text-4xl text-center font-bold py-5'>
+    Search Ishan Writes
+  </h1>
+  <p class="text-center">
+    Simple search for my blog posts. Search Titles, Tags, and Categories. 
+  </p>
+  <Search client:load />
+</Blog>

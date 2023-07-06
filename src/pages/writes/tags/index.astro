@@ -1,0 +1,31 @@
+---
+import Blog from '../../../layouts/blog.astro';
+let posts: any = await Astro.glob('../*/*.mdx');
+const tags:any[] = []
+posts = posts.map((post: any) => {
+    const { tags: postTags } = post.frontmatter
+    if (postTags) {
+        postTags.forEach((tag: never) => {
+            if (!tags.includes(tag)) {
+                tags.push(tag)
+            }
+        })
+    }
+    return post
+})
+---
+
+<Blog title="Ishan Writes | Archive">
+    <h1 class="font-bold p-4 text-4xl">
+        Tags ({tags.length})
+    </h1>
+    <div>
+        <div class="flex flex-wrap  p-2">
+            {
+                tags.map((tag:any) => (
+                    <a href={"/blog/tags/" + tag} class="p-2 m-2 bg-gray-200 rounded-md">{tag}</a>
+                ))
+            }
+        </div>
+    </div>
+</Blog>

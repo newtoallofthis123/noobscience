@@ -1,0 +1,46 @@
+---
+import Blog from '../../../layouts/blog.astro';
+const {id} = Astro.params;
+let posts: any = await Astro.glob('../*/*.mdx');
+posts = posts.filter((post: any) => {
+    return !post.frontmatter.draft;
+});
+posts = posts.sort((a: any, b: any) => {
+    return (
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+    );
+});
+posts = posts.filter((post: any) => {
+    return post.frontmatter.tags.includes(id);
+});
+---
+
+<Blog title="Ishan Writes | Archive">
+    <h2 class="font-bold p-4 text-2xl">
+        Tag "{id}" ({posts.length})
+    </h2>
+    <div class="">
+        {
+            posts.map((post: any) => {
+                return (
+                    <div class="flex flex-col justify-center items-center md:justify-normal md:items-start md:flex-row p-4 border-gray-400 border-b-2">
+                        <div class="p-4">
+                            <p class="text-2xl text-center md:text-justify font-bold">
+                                {post.frontmatter.emoji}{' '}
+                                <a href={post.url}>
+                                {post.frontmatter.title}
+                            </a></p>
+                            <p class="text-gray-500 w-full md:w-3/5 py-2">
+                                {post.frontmatter.description}
+                            </p>
+                            <p class="text-gray-500 text-sm">
+                                {new Date(post.frontmatter.date).toDateString()}
+                            </p>    
+                        </div>
+                    </div>
+                );
+            })
+        }
+    </div>
+</Blog>

@@ -1,0 +1,8 @@
+---
+const posts = await Astro.glob("../../blog/*/*.mdx")
+return new Response(JSON.stringify(posts), {
+    headers: {
+        "content-type": "application/json",
+    },
+})
+---

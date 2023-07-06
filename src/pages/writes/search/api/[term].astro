@@ -1,0 +1,59 @@
+---
+const posts = await Astro.glob('../../*/*.mdx')
+let {term} = Astro.params
+term = term?.toLowerCase()
+term = term?.split(' ').join('')
+
+let recommend_posts = []
+
+// First Level Check the tags
+for (const post of posts) {
+    if (post.frontmatter.tags.includes(term)) {
+        recommend_posts.push(post)
+    }
+}
+
+// Second Level Check the title
+for (const post of posts) {
+    if (post.frontmatter.title?.toLowerCase()?.split(' ').join('').includes(term)) {
+        recommend_posts.push(post)
+    }
+}
+
+// Third Level Check the description
+for (const post of posts) {
+    if (post.frontmatter.description?.toLowerCase()?.split(' ').join('').includes(term)) {
+        recommend_posts.push(post)
+    }
+}
+
+// Check the Category
+for (const post of posts) {
+    if (post.frontmatter.category?.toLowerCase() == term?.toLowerCase()) {
+        recommend_posts.push(post)
+    }
+}
+
+// Fourth level tags
+
+for (const post of posts) {
+    for (const tag of post.frontmatter.tags) {
+        if (tag.toLowerCase().includes(term)) {
+            recommend_posts.push(post)
+        }
+    }
+}
+
+// Remove Drafts
+recommend_posts = recommend_posts.filter(post => !post.frontmatter.draft)
+
+// Remove the duplicates
+recommend_posts = [...new Set(recommend_posts)]
+
+return new Response(JSON.stringify(recommend_posts), {
+    headers: {
+        'content-type': 'application/json;charset=UTF-8',
+    },
+}
+)
+---

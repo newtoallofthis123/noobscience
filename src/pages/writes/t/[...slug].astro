@@ -1,0 +1,11 @@
+---
+const posts = await Astro.glob("../../blog/*/*.mdx")
+const { slug } = Astro.params
+console.log(slug)
+const post = posts.find((post) => post.url === "/" + slug)
+return new Response(JSON.stringify(post), {
+    headers: {
+        "content-type": "application/json",
+    },
+})
+---

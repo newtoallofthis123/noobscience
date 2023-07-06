@@ -1,0 +1,109 @@
+---
+import Base from "../../layouts/base.astro";
+import HomeNav from "../../components/navigation/home_nav";
+
+const posts = await Astro.glob("../w/*/*.mdx")
+---
+
+<Base title="Ishan Writes">
+    <div>
+        <HomeNav client:load />
+        <div class="p-4">
+            <div class="flex md:flex-row flex-col justify-center">
+                <div class="md:w-4/6">
+                    <h1 class="text-6xl font-bold pb-5 font-serif leading-snug">
+                        Welcome, to my place on the <span class="text-green-400">Internet</span>
+                    </h1>
+                    <p id="p-heading">
+                        Where I am the boss! Okay, just kidding, but you are still at the
+                        mercy of my whims. (Check your URL bar, you are at my domain)
+                    </p>
+                    <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
+                    <span class="block w-40 h-1 mb-5 bg-red-600"></span>
+                </div>
+                <div class="md:w-2/6">
+                </div>
+            </div>
+            <div class="flex md:flex-row flex-col justify-center">
+                <div class="md:w-3/6 px-5">
+                    <h1 class="text-5xl leading-relaxed py-5 font-heading">
+                        My Evergreen Posts
+                    </h1>
+                    <p>
+                        You know how some stuff are just so good that they never get old?
+                        Well, I have some of those too. I call them my evergreen posts.
+                        They are long, detailed and are meant to be read slowly.
+                        So, grab a cup of coffee and enjoy! 
+                    </p>
+                    <p>
+                        PS: I put a lot of effort into these posts, so if you like them,
+                        please share them with your friends and family.
+                    </p>
+                    <div>
+                        <img class="w-4/6" src="/assets/images/coffee.webp" alt="">
+                    </div>
+                </div>
+                <div class="md:w-3/6 p-4">
+                    {
+                        posts.filter((post) => {
+                            return post.frontmatter.type === "long"
+                        }).slice(0, 4).map((post) => {
+                            return (
+                                <div onclick={
+                                            "location.href = '" + post.url + "'"
+                                        } class="p-4 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                                    <h1 class="text-3xl leading-relaxed font-bold">
+                                        {post.frontmatter.emoji}{' '}{post.frontmatter.title}
+                                    </h1>
+                                    <p>
+                                        {post.frontmatter.description}    
+                                    </p>
+                                    <p>
+                                        Posted on <span id="p-heading">{new Date(post.frontmatter.date).toDateString()}</span> | {post.frontmatter.minutesRead}
+                                    </p>
+                                </div>
+                            )
+                        })
+                    }
+                    <p class="pt-6 p-4">
+                        <a href="/long">
+                            <span class="text-3xl font-bold">See all my evergreen posts</span>
+                        </a>
+                    </p>
+            <span class="block w-full h-1 mt-5 my-5 bg-black"></span>
+                </div>
+            </div>
+            <div>
+                <h1 class="text-5xl font-bold p-4 font-heading">
+                    What even is this?
+                </h1>
+                <div class="p-4">
+                    <p>
+                        This is in a sense, my personal internet space, or for the nerds out there, my digital garden.
+                        The concept of a digital garden is not new, but it is not very popular either.
+                        So, basically a digital garden is a place where I can share my thoughts, ideas, and opinions.
+                        These do not have to be perfect, they can be rough, and they can be incomplete, but still out there.
+                        So, this in a sense, becomes a peaceful and safe place for me to share my thoughts.
+                        Obviously other people can read it too, but I am not writing for them, I am writing for myself.
+                        So, in a sense, tending to a digital garden is like tending to a real garden.
+                        You plant seeds, you water them, you take care of them, and you watch them grow.
+                        And that is what I am doing here.
+                    </p>
+                    <p>
+                        If you can't already tell my looking at the design and stuff, this site is losely inspired by <a class="underline" href="https://maggieappleton.com/garden-history">Maggie Appleton</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</Base>
+<style is:inline>
+    #p-heading{
+        font-weight: 400;
+    }
+    p{
+        font-size: 1.5rem;
+        font-weight: 100;
+        line-height: 2.5rem;
+    }
+</style>
