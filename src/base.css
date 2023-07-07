@@ -7,7 +7,7 @@
 }
 
 
-.btn {
+.special_btn {
     color: inherit;
     padding: 0.6em 1.3em;
     margin: 0.5em;
@@ -18,19 +18,36 @@
     box-shadow: 0.1em 0.1em;
 }
 
-.btn:hover {
+.special_btn:hover {
     transform: translate(-0.05em, -0.05em);
     box-shadow: 0.15em 0.15em;
 }
 
-.btn:active {
+.special_btn:active {
     transform: translate(0.05em, 0.05em);
     box-shadow: 0.05em 0.05em;
 }
 
-.btn a {
+.special_btn a {
     color: black;
     text-decoration: none;
+}
+
+.btn{
+    margin: 1rem 0;
+    padding: 0.4rem 0.8rem;
+    background-color: #000;
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    font-weight: 100;
+    border-radius: 12px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    transition-delay: 0.1s;
+}
+
+.btn:hover{
+    transform: scale(1.1);
 }
 
 .page-div {

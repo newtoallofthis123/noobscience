@@ -35,6 +35,8 @@ export default defineConfig({
   redirects: {
     '/pages/[id]': '/i/[id]',
     '/updates/[id]': '/quips/[id]',
-    '/w': '/writes'
+    '/w': '/writes',
+    '/blog': '/writes',
+    '/green': '/type/long'
   }
 });

@@ -1,0 +1,41 @@
+---
+import Base from "../layouts/base.astro";
+import HomeNav from "../components/navigation/home_nav";
+---
+
+<Base title="About Me">
+    <HomeNav title="About" client:load />
+    <div class="p-4">
+        <div class="flex flex-col md:flex-row justify-center">
+            <div class="md:w-2/5">
+                <div>
+                    <img class="w-full h-auto" src="/assets/profile.png" alt="">
+                </div>
+            </div>
+            <div class="md:w-3/5 p-4">
+                <h1 class="text-5xl py-5 font-heading">
+                    Namaskar!
+                </h1>
+                <div>
+                    <p>
+                        Nice to meet you. I am Ishan, a 18 year old student and tech guy from India.
+                        I spend my day getting a degree at <a href="https://griet.ac.in">GRIET</a> and by night, I am BatMan, I mean, I am a developer.
+                        Just a sarcastic guy who loves to code and make things. That is the best you could know about me.
+                        Not quite active on social media, mostly tending to my digital garden.
+                    </p>
+                    <p>
+                        I'm a Javascript and Python developer, and a Linux enthusiast.
+                        Love to code whenever and wherever possible.
+                        Big fan of the open software movement and the open web.
+                        Opinionated about things, but open to new ideas.
+                    </p>
+                    <button class="btn">
+                        <a href="/contact">
+                            Have a chat    
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</Base>

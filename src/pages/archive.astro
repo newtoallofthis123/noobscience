@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/base.astro";
+import HomeNav from "../components/navigation/home_nav";
+
+let posts = await Astro.glob("./*/*/*.mdx")
+posts = posts.sort(
+    (a: any, b: any) =>
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+);
+---
+
+<Base title="Archives">
+    <HomeNav client:load/>
+    <div class="p-10">
+        <div>
+            <h1 class="md:text-6xl font-heading p-4">
+                Archives ({posts.length})
+            </h1>
+            <p class="px-4">
+                Below are all of my posts, sorted by date. Better filtering coming soon!
+            </p>
+        </div>
+        <div>
+            {
+                posts.map((post) => {
+                    return (
+                        <div onclick={
+                                    "location.href = '" + post.url + "'"
+                                } class="p-4 m-4 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                            <p>{
+                                post.frontmatter.type.slice(0, 1).toUpperCase() + post.frontmatter.type.slice(1, post.frontmatter.type.length)
+                            }</p>
+                                <h1 class="text-3xl leading-relaxed font-bold">
+                                {post.frontmatter.emoji}{' '}{post.frontmatter.title}
+                            </h1>
+                            <p>
+                                {post.frontmatter.description}    
+                            </p>
+                            <p>
+                                Posted on <span id="p-heading">{new Date(post.frontmatter.date).toDateString()}</span> | {post.frontmatter.minutesRead}
+                            </p>
+                        </div>
+                    )
+                })
+            }
+        </div>
+    </div>
+</Base>

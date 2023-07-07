@@ -30,7 +30,15 @@ export default function Notification() {
     return (
         <>
             <p>
-                <span className='font-normal'>Currently:</span> {latest.description}
+                <span className="font-normal">Currently:</span>{' '}
+                {latest.description}
+                <a
+                    // Move the arrow to the right on hover
+                    className='inline-block text-blue-600 ml-2 transition-all duration-300 transform hover:translate-x-1'
+                    href="/now"
+                >
+                    <i className="bi bi-arrow-right"></i>
+                </a>
             </p>
         </>
     );
