@@ -38,7 +38,7 @@ export default function UpdateLatest() {
             )}
             {latest.name != '' && (
                 <div
-                    className="page-div bg-white m-4 md:m-10 mt-0 p-4 md:p-10 cursor-pointer hover:translate-y-1"
+                    className="page-div bg-white m-4 md:m-10 mt-0 p-4 md:py-8 transform hover:scale-105 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                     onClick={() => {
                         typeof window !== 'undefined' &&
                             window.open('/quips/' + latest.hash);
@@ -52,11 +52,12 @@ export default function UpdateLatest() {
                         className="text-xl leading-10"
                         dangerouslySetInnerHTML={{
                             __html: marked(
-                                latest.content.slice(0, 300) + '...'
-                                , {
+                                latest.content.slice(0, 600) + '...',
+                                {
                                     headerIds: false,
                                     mangle: false,
-                            }),
+                                }
+                            ),
                         }}
                     />
                 </div>

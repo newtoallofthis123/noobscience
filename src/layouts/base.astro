@@ -6,6 +6,7 @@ export interface Props {
 }
 const {title, img, description} = Astro.props
 import "../base.css"
+import '../components/styles/nav.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
 ---
 
@@ -88,6 +89,14 @@ import "bootstrap-icons/font/bootstrap-icons.css";
         }
         body{
             font-family: "Josefin Sans", sans-serif;
+        }
+        #p-heading{
+            font-weight: 400;
+        }
+        p{
+            font-size: 1.5rem;
+            font-weight: 100;
+            line-height: 2.8rem;
         }
     </style>
     <script is:raw>

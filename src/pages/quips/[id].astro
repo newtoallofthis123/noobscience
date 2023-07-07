@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/base.astro';
+import Update from "../../components/updates/update"
+import HomeNav from '../../components/navigation/home_nav';
+
+const {id} = Astro.params;
+---
+
+<Base title={id + "- Ishan's Quips"}>
+    <HomeNav client:load />
+    <Update hash={id} client:load />
+</Base>
+<style is:inline>
+    a{
+        text-decoration: 2px underline;
+    }
+    p{
+        line-height: 3.2rem;
+    }
+</style>

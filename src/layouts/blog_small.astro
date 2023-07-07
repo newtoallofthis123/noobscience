@@ -42,15 +42,6 @@ recommended = recommended.filter(
     <HomeNav client:load />
     <div class="p-10">
         <div class="md:p-10">
-            {
-                frontmatter.emoji && (
-                    <p onclick={
-                        "navigator.clipboard.writeText('https://noobscience.rocks/e/" + frontmatter.emoji + "') && toast('Copied to clipboard')"
-                    } class="text-7xl cursor-pointer">
-                        {frontmatter.emoji}
-                    </p>
-                )
-            }
             <h1 class="text-7xl font-heading leading-relaxed">
                 {frontmatter.title}
             </h1>
@@ -104,6 +95,23 @@ recommended = recommended.filter(
             font-size: 3rem;
             line-height: 3.5rem;
             padding: 2rem 0;
+        }
+        article ol{
+            list-style-type: decimal;
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+        }
+        article ul{
+            list-style-type: disc;
+            padding-left: 2rem;
+        }
+        article li{
+            font-size: 1.5rem;
+            font-weight: 100;
+            line-height: 3.6rem;
+        }
+        .math svg{
+            margin: 1.5rem 0;
         }
     </style>
 </Base>

@@ -31,13 +31,13 @@ export default function HomeNav() {
                                 </a>
                             </li>
                             <li>
-                                <a className="special_underline" href="/about">
+                                <a className="special_underline" href="/green">
                                     Greens
                                 </a>
                             </li>
                             <li>
-                                <a className="special_underline" href="/about">
-                                    Longs
+                                <a className="special_underline" href="/writes">
+                                    Writings
                                 </a>
                             </li>
                         </ul>

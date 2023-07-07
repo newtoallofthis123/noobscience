@@ -36,20 +36,20 @@ export default function Update({ hash }: Props) {
             )}
             {latest.name != '' && (
                 <div className="m-2 mt-0 p-2 md:p-10">
-                    <h1 className="md:text-5xl text-3xl py-4 pt-0 font-bold">
+                    <h1 className="md:text-6xl font-heading text-3xl py-4 pt-0 font-bold">
                         {latest.name}
                     </h1>
-                    <p className="font-light text-xl">By {latest.author} on {new Date(latest.date).toDateString()}</p>
+                    <h2 className="font-regular py-2 text-xl">
+                        By {latest.author} on{' '}
+                        {new Date(latest.date).toDateString()}
+                    </h2>
                     <div
-                        className="text-lg md:pt-8 p-4 w-4/6 md:p-0 leading-10"
+                        className="text-lg md:pt-8 p-4 md:p-0 leading-10"
                         dangerouslySetInnerHTML={{
-                            __html: marked(
-                                latest.content,
-                                {
-                                    headerIds: false,
-                                    mangle: false,
-                                }
-                            ),
+                            __html: marked(latest.content, {
+                                headerIds: false,
+                                mangle: false,
+                            }),
                         }}
                     />
                 </div>

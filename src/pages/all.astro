@@ -1,0 +1,41 @@
+---
+import Base from "../layouts/base.astro";
+import HomeNav from "../components/navigation/home_nav";
+
+let posts = await Astro.glob("./*/*/*.mdx");
+
+posts = posts.sort(
+    (a: any, b: any) =>
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+);
+
+let notes = posts.filter((post: any) => post.frontmatter.type == "notes");
+let long = posts.filter((post: any) => post.frontmatter.type == "long");
+let quick = posts.filter((post: any) => post.frontmatter.type == "quick");
+let dev = posts.filter((post: any) => post.frontmatter.type == "dev");
+---
+
+<Base title="All the posts">
+    <HomeNav client:load />
+    <div class="p-6">
+        <div class="">
+            <h1 class="text-6xl font-heading py-8">
+                All of my Garden
+            </h1>
+            <p>
+                Welcome to my garden. I try to categorize these posts as much as I can,
+                using rudimentry tags and algorithms, so I hope you can find what you're looking for.
+                Thanks for checking out my little space on this huge internet ❤️.
+            </p>
+        </div>
+        <div class="flex flex-col md:flex-row justify-center">
+            <div class="md:w-1/2">
+
+            </div>
+            <div class="md:w-1/2">
+
+            </div>
+        </div>
+    </div>
+</Base>

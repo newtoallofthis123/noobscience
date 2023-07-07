@@ -1,0 +1,10 @@
+---
+const {emoji} = Astro.params
+
+const posts = await Astro.glob('../*/*/*.mdx')
+let post = posts.find((post) => post.frontmatter.emoji === emoji)
+if(post){
+    return Astro.redirect(post.url)
+}
+return Astro.redirect('/404')
+---
