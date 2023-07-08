@@ -19,7 +19,7 @@ export default function GoSudo() {
     return (
         <>
         <form onSubmit={submit}>
-            <div className="page-div bg-yellow-300">
+            <div className="page-div">
                 <h1 className="text-4xl px-10 font-bold p-2">
                     The Noob URL Shortener
                 </h1>
@@ -47,7 +47,7 @@ export default function GoSudo() {
                         />
                         <p></p>
                         <button
-                            className="btn bg-gray-300 text-xl my-3"
+                            className="btn bg-gray-300 text-black text-xl my-3"
                             type="submit"
                         >
                             Post The Go

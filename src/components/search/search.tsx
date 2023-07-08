@@ -1,7 +1,7 @@
 import React from 'react'
 
 async function search_blog(term: string) {
-  const url = `/blog/search/api/${term}`
+    const url = `/api/search/${term}`
     const response = await fetch(url)
     const data = await response.json()
     return data
@@ -53,7 +53,9 @@ export default function Search({
                       >
                           <div className="p-4">
                               <p className="text-2xl text-center md:text-justify font-bold">
-                          {post.frontmatter.emoji}{' '}
+                                  {post.frontmatter.emoji && (
+                                      <span>{post.frontmatter.emoji} </span>
+                                  )}
                                   <a href={post.url}>
                                       {post.frontmatter.title}
                                   </a>

@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/base.astro";
+import HomeNav from "../components/navigation/home_nav";
+import Detailed from "../components/utils/notification/detailed";
+
+let posts = await Astro.glob("./*/*/*.mdx");
+
+posts = posts.sort(
+    (a: any, b: any) =>
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+);
+---
+
+<Base title="All the posts">
+    <HomeNav client:load />
+    <div class="p-6">
+        <div class="">
+            <h1 class="text-6xl font-heading py-8">
+                Happening <span class="text-green-500 underline decoration-8">Now</span>
+            </h1>
+            <p>
+                This is my now page. This is more of a reliable source of what I'm up.
+                You can get to know quite a bit about what's up in my life from this page.
+                Based on the concept of <a href="https://nownownow.com/about">nownownow.com</a>.
+                Although, some info might be obfuscated for privacy reasons.                
+            </p>
+            <div>
+                <Detailed client:load />
+            </div>
+        </div>
+    </div>
+</Base>
