@@ -33,13 +33,20 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                         mercy of my whims. (Check your URL bar, you are at my domain)
                     </p>
                     <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
+                    <div class="flex flex-row gap-x-10">
+                        <button class="btn"><a href="#longs">Long Reads</a></button>
+                        <button class="btn"><a href="#notes">Notes and stuff</a></button>
+                        <button class="btn"><a href="#quips">Quips and Quotes</a></button>
+                        <button class="btn"><a href="#quicks">Saplings</a></button>
+                        <button class="btn"><a href="#dev">Devlogs</a></button>
+                    </div>
                     <span class="block w-40 h-1 mb-5 bg-red-600"></span>
                 </div>
                 <div class="md:w-2/6 w-full">
                 </div>
             </div>
             <div class="flex md:flex-row flex-col justify-center">
-                <div class="md:w-3/6 w-full md:px-5 px-1">
+                <div id="longs" class="md:w-3/6 w-full md:px-5 px-1">
                     <h1 class="md:text-5xl text-3xl leading-relaxed py-5 font-heading">
                         My Evergreen Posts
                     </h1>
@@ -78,7 +85,7 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                         })
                     }
                     <p class="pt-6 p-4">
-                        <a href="/long">
+                        <a href="/type/long">
                             <span class="text-3xl font-bold">See all my evergreen posts</span>
                         </a>
                     </p>
@@ -112,7 +119,7 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                 </div>
             </div>
             <div>
-                <h1 class="md:text-5xl text-3xl font-bold p-4 font-heading">
+                <h1 id="notes" class="md:text-5xl text-3xl font-bold p-4 font-heading">
                     My Jots and Notes 
                 </h1>
                 <div class="md:grid md:grid-cols-2 gap-4">
@@ -138,7 +145,7 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                 </div>
             </div>
             <span class="block w-2/5 bg-red-600 h-0.5 my-10"></span>
-            <div class="flex flex-col md:flex-row justify-center">
+            <div id="quips" class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-2/5 w-full">
                     <h1 class="md:text-4xl text-3xl font-heading my-2 md:p-4 p-1">
                         Few Quips and Quotes
@@ -154,7 +161,7 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                 </div>
             </div>
             <span class="block w-2/5 bg-blue-600 h-0.5 my-10"></span>
-            <div class="flex flex-col md:flex-row justify-center">
+            <div id="quicks" class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-1/2 px-5">
                     <h1 class="md:text-5xl text-3xl pb-4 font-heading">
                         Quicks
@@ -162,7 +169,8 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                     <p class="py-2">
                         Because the best things in life are short and sweet.
                         Just a some small thoughts and ideas that I have. They are not long enough to be a full post, but they are still worth sharing.
-                        Most likely will turn into a full post later, so, they are still small seedlings
+                        Most likely will turn into a full post later, so, they are still small seedlings.
+                        So, please treat them as just random thoughts and ideas. Don't be too harsh on them.
                     </p>
                     <div>
                         <img class="md:w-3/5 w-full" src="/assets/images/seedling.webp" alt="Seedling.webp">
@@ -189,10 +197,15 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                             )
                         })
                     }
+                    <p class="p-4">
+                        <a href="/type/quick">
+                            <span class="text-3xl font-bold">All Quicks</span>
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="font-mono text-green-500 bg-gray-800 md:p-10 p-4">
+        <div id="dev" class="font-mono text-green-500 bg-gray-800 md:p-10 p-4">
             <h1 class="md:text-4xl text-3xl pb-4 font-bold">
                 Some of my Devlogs
             </h1>

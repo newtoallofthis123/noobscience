@@ -33,7 +33,6 @@ export default defineConfig({
     redirects: true
   },
   redirects: {
-    '/pages/[id]': '/i/[id]',
     '/updates/[id]': '/quips/[id]',
     '/w': '/writes',
     '/blog': '/writes',

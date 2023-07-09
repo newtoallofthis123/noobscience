@@ -38,14 +38,14 @@ recommended = recommended.filter(
 );
 ---
 
-<Base title={frontmatter.title + " | Long Ishan Reads"}>
+<Base title={frontmatter.title + " | Ishan Reads"}>
     <HomeNav client:load />
-    <div class="md:p-10 p-3">
+    <div id="main" class="md:p-10 p-3">
         <div class="md:p-10">
             {
                 frontmatter.emoji && (
                     <p onclick={
-                        "navigator.clipboard.writeText('https://noobscience.rocks/e/" + frontmatter.emoji + "') && toast('Copied to clipboard')"
+                        "navigator.clipboard.writeText('https://garden.noobscience.rocks/e/" + frontmatter.emoji + "') && toast('Copied to clipboard')"
                     } class="md:text-7xl text-4xl cursor-pointer">
                         {frontmatter.emoji}
                     </p>
@@ -135,4 +135,20 @@ recommended = recommended.filter(
             }
         }
     </style>
+    <script define:vars={{frontmatter}}>
+        // console.log(frontmatter.audio);
+        audio_playing = false;
+        document.querySelector("#main").addEventListener("click", () => {
+            if(!audio_playing){
+                if (frontmatter.audio) {
+                toast("Playing Audio, press m to mute");
+                const audio = new Audio("/assets/audio/" + frontmatter.audio);
+                audio.play();
+                audio.volume = 0.8;
+                audio.loop = true;
+                audio_playing = true;
+                }
+            }
+        });
+    </script>
 </Base>
