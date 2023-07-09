@@ -142,7 +142,7 @@ recommended = recommended.filter(
             if(!audio_playing){
                 if (frontmatter.audio) {
                 toast("Playing Audio, press m to mute");
-                const audio = new Audio("/assets/audio/" + frontmatter.audio);
+                const audio = new Audio(frontmatter.audio);
                 audio.play();
                 audio.volume = 0.8;
                 audio.loop = true;
