@@ -1,10 +1,15 @@
 ---
 import Base from "../../layouts/base.astro";
 import Search from "../../components/search/search"
+import HomeNav from "../../components/navigation/home_nav";
 ---
 
 <Base title="Search">
+    <HomeNav client:load />
     <div>
+        <h1 class="text-4xl text-center font-heading py-4">
+            Search the site
+        </h1>
         <Search client:load />
     </div>
 </Base>

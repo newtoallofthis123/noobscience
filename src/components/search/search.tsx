@@ -37,18 +37,31 @@ export default function Search({
   return (
       <div className="flex flex-col py-3 justify-center items-center">
           <div className="w-5/6 focus:outline-none">
-              <input
-                  type="text"
-                  className="text-lg w-full border-2 border-black rounded-md focus:outline-none p-4 rounded-"
-                  value={search}
-                  onChange={handleChange}
-              />
+              <form
+                  onSubmit={async (e) => {
+                      e.preventDefault();
+                      const value = e.currentTarget.search.value;
+                      const data = await search_blog(value);
+                      if (typeof window !== 'undefined') {
+                          // @ts-ignore
+                          window.location.href = data[0].url;
+                      }
+                  }}
+              >
+                  <input
+                      type="search"
+                      name='search'
+                      className="text-lg w-full border-2 border-black rounded-md focus:outline-none p-4 rounded-"
+                      value={search}
+                      onChange={handleChange}
+                  />
+              </form>
           </div>
           <div className="w-5/6">
               {results.length != 0 &&
                   results.map((post: any) => (
                       <div
-                          key={post.title}
+                          key={post.url}
                           className="flex flex-col justify-center items-center md:justify-normal md:items-start md:flex-row p-4 border-gray-400 border-b-2"
                       >
                           <div className="p-4">

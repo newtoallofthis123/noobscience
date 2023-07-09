@@ -12,36 +12,50 @@ const options = [
 ---
 
 <Base title="NoobScience Rocks Doesn't He?">
-    <div id="nav">
+    <div>
         <HomeNav client:load />
-    </div>
-    <div class="px-10 py-14">
-        <div class="font-serif animate__animated animate__fadeInDown animate__slow text-gray-900">
-            <h1 class="text-7xl">
-                <a href="/about" class="font-bold text-black text-8xl cursor-help transform duration-500">Ishan</a> 
-                    {' '}{options[Math.floor(Math.random() * options.length)]}
-            </h1>
-            <h1 class="py-10 text-6xl font-bold">
-                and you may know him as <span class="text-yellow-400 p-1">NoobScience</span>.
-            </h1>
-        </div>
-        <div class="animate__animated animate__fadeInUp animate__slower">
-            <p>
-                Mostly Codes and Drinks Coffee.
-            </p>
-            <p>
-                1st Student At GRIET.
-            </p>
-        </div>
-        <div class="animate__animated animate__fadeInUp animate__slower">
-            <Notification client:load />
+        <div class="z-0 md:px-10 md:py-14 p-5">
+            <div class="font-serif text-gray-900">
+                <h1 class="md:text-7xl leading-snug text-4xl">
+                    <a href="/about" class="font-bold text-black leading-snug md:text-8xl text-6xl cursor-help transform duration-500">Ishan</a> 
+                        {' '}{options[Math.floor(Math.random() * options.length)]}
+                </h1>
+                <h1 class="md:py-10 md:text-6xl leading-snug text-4xl font-bold">
+                    and you may know him as <span class="text-yellow-400 p-1">NoobScience</span>.
+                </h1>
+            </div>
+            <div class="md:p-0 py-5">
+                <p>
+                    Mostly Codes and Drinks Coffee.
+                </p>
+                <p>
+                    1st Student At GRIET.
+                </p>
+            </div>
+            <div class="">
+                <Notification client:load />
+            </div>
         </div>
     </div>
 </Base>
 <style is:inline>
+    #heading{
+        line-height: 4rem;
+    }
     p{
         font-size: 1.8rem;
         font-weight: 100;
         line-height: 3.2rem;
+    }
+    @media screen and (max-width: 768px){
+        #heading{
+            line-height: 3rem;
+        }
+        p{
+            font-size: 1.5rem;
+            font-weight: 100;
+            line-height: 2.5rem;
+        }
+        
     }
 </style>

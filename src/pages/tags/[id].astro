@@ -1,0 +1,57 @@
+---
+import Base from "../../layouts/base.astro"
+import HomeNav from "../../components/navigation/home_nav";
+
+const {id} = Astro.params;
+let posts: any = await Astro.glob('../*/*/*.mdx');
+posts = posts.filter((post: any) => {
+    return !post.frontmatter.draft;
+});
+posts = posts.sort((a: any, b: any) => {
+    return (
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+    );
+});
+posts = posts.filter((post: any) => {
+    return post.frontmatter.tags.includes(id);
+});
+---
+
+<Base title={"Tag: " + id + " | Ishan Writes"}>
+    <HomeNav client:load/>
+    <div class="p-10">
+        <div>
+            <h1 class="md:text-6xl font-heading p-4">
+                Tagged {id} ({posts.length})
+            </h1>
+            <p class="px-4">
+                Below are the posts tagged <span class="bg-green-300 p-1">{id}</span>
+            </p>
+        </div>
+        <div>
+            {
+                posts.map((post) => {
+                    return (
+                        <div onclick={
+                                    "location.href = '" + post.url + "'"
+                                } class="p-4 m-4 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                            <p>{
+                                post.frontmatter.type.slice(0, 1).toUpperCase() + post.frontmatter.type.slice(1, post.frontmatter.type.length)
+                            }</p>
+                                <h1 class="text-3xl leading-relaxed font-bold">
+                                {post.frontmatter.emoji}{' '}{post.frontmatter.title}
+                            </h1>
+                            <p>
+                                {post.frontmatter.description}    
+                            </p>
+                            <p>
+                                Posted on <span id="p-heading">{new Date(post.frontmatter.date).toDateString()}</span> | {post.frontmatter.minutesRead}
+                            </p>
+                        </div>
+                    )
+                })
+            }
+        </div>
+    </div>
+</Base>

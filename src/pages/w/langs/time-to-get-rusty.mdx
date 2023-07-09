@@ -1,0 +1,165 @@
+---
+title: It's time to get Rusty
+date: 2023-06-22
+author: Ishan
+tags: [rust, programming]
+category: programming
+layout: "../../../layouts/post.astro"
+emoji: 🔗
+theme: rust
+type: dev
+description: Have a old codebase that handles high value, heavy operations? It is time to make that code base Rusty.
+---
+
+Have a old codebase that handles high value, heavy operations? It is time to make that code base Rusty.
+Rust Lang is a modern programming language that is blazing fast, memory safe and thread safe.
+It is a great language for writing high performance code that is also safe to use.
+The beauty of Rust is that it prevents from writing unsafe code, by well, to put it simply, not compiling it.
+I love this concept and the simplicity of it still amazes me.
+There is a reason why so many developers are talking about using rust for their critical infrastructure.
+
+Small Disclaimer before we proceed though, I am not a Rust expert, neither do I have enough experience to be called a Rustacean.
+I merely started learning rust a few weeks ago and I am still learning.
+I am using combination of Rust Book and GitHub CoPilot to learn Rust and so far it has been a great experience.
+One more thing, I am primarily a JavaScript developer, so I might get some things wrong, if I do, please let me know.
+With that out of the way, let's get started.
+
+## Rust Basics
+
+In a way, Rust is the perfect fusion between C++ and JavaScript.
+It has a very beautiful and easy to read syntax, that is quite reminiscent of languages like Elixir and Haskell.
+However, coming from JavaScript, I found the syntax to be a bit confusing at first.
+I still find it a bit confusing, but I am getting used to it.
+Quick pointer, I know this might be wrong, but think of the `A::B` as a B being called from a class A.
+I know I just butchered the explanation, but I hope you get the idea.
+
+This is basic syntax if you are new
+
+```rust
+fn say_hello(name:&str) -> String {
+    format!("Hello {}", name)
+}
+
+fn main(){
+    println!("{}", say_hello("Ishan"));
+}
+```
+
+I don't usually like to include code snippets in my blog posts, but I think it is necessary here.
+The complain about rust I here a lot is that it is too verbose and this makes even the most basic of tasks,
+like asking for user input, a bit too complicated.
+
+For example, to ask the user for two numbers and then add them, you would have to do something like this
+
+```rust
+fn main(){
+    let mut input = String::new();
+    
+    println!("Enter first number");
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+    let first_number: i32 = input.trim().parse().expect("Please type a number!");
+    
+    input.clear();
+    
+    println!("Enter second number");
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+    let second_number: i32 = input.trim().parse().expect("Please type a number!");
+    
+    println!("The sum is {}", first_number + second_number);
+}
+```
+
+As you can see, it is quite a bit of code for a simple task.
+However, I think this is a good thing.
+It forces you to think about what you are doing.
+I know this is just me convincing myself that it is a good thing, but I really do think it is.
+One more thing that is quite overlooked is the fact that Rust is in a weird way, caterred towards a few particular use cases.
+For example, rust has a handy Macro that gathers the command line arguments and returns them as a vector.
+It is called `std::env::args()` and this is one of the most intuitive ways to get command line arguments I have seen from low level languages.
+
+One more thing that makes rust so wonderful is the fact that it has a whole ecosystem of libraries and tools.
+The library ecosystem is called crates and it is quite easy to use.
+It is very similar to npm, but it is built into the language itself.
+One more thing that I love about crates is the fact that it downloads to a global cache, so you don't have to download the same crate again and again.
+Unlike npm, where you have to download the same package again and again for each project.
+
+## The Concept of Ownership
+
+The concept of ownership is one of the most important concepts in Rust.
+Now, most languages have a garbage collector, which means that the memory is managed by the language itself.
+However, Rust does not have a garbage collector, which means that the memory is managed by the programmer.
+This can be a bit daunting at first, but it is actually quite easy to get used to.
+A garbage collector is a program that runs in the background and frees up memory that is no longer being used.
+This process is hence repetitive and can be quite slow.
+Rust on the other hand, takes a different approach.
+Rust frees up memory as soon as the variable goes out of scope.
+This is a very simple concept, but it is quite powerful.
+It means that you don't have to worry about memory leaks, garbage collection or any of that stuff.
+Rust does it for you.
+
+Now, there are a few rules that you have to follow when it comes to ownership.
+
+1. Each value in Rust has a variable that's called its owner.
+2. There can only be one owner at a time.
+3. When the owner goes out of scope, the value will be dropped.
+4. You can however, pass in references to the value, that is owned by another variable.
+
+Let's look at an example
+
+```rust
+let num:i32 = 5; // num owns the value 5
+let num2 = num; // num2 now owns the value 5
+
+add(&num2); // num2 is passed by reference to the add function
+```
+
+In the above example, the variable `num` owns the value 5.
+When we assign the value of `num` to `num2`, `num2` now owns the value 5.
+When we have to pass the value of `num2` to the `add` function, we pass it by reference.
+This ensures that the value of `num2` is not dropped when the function ends.
+It basically makes sure it is still within scope.
+
+This is very powerful way to handle memory.
+This is also one of the reasons why Rust is so fast.
+It is, as *the primagen* would say, "Blazingly Fast".
+
+Something that is very similar to pointers is the concept of borrowing.
+So, this is how it works. When you pass a variable to a function, you can either pass it by value or by reference.
+When you pass it by value, the function takes ownership of the variable.
+In most cases, you don't want this to happen.
+So, you only pass it by reference and this is called borrowing.
+This is a very powerful concept, once you get used to it.
+If you are coming from a language like JavaScript, this might be a bit confusing at first, but you will get used to it.
+
+There is also a concept of lifetime in Rust.
+So, there are basically no dangling pointers in Rust.
+You cannot have a reference that is pointing to a variable that is out of scope.
+All this, makes sure that Rust is a very safe language to use.
+
+## Rust Ecosystem and Community
+
+Rust has a vibrant and rich ecosystem of libraries and tools.
+It has a package manager called Cargo, which is built into the language itself.
+So, it comes with the goodness of npm, without the bad parts.
+It also has a very active community.
+The project itself is backed by Mozilla.
+
+All this being said, Rust is still a very young language.
+It is still in its infancy and it is still evolving.
+I don't think you should be immediately migrate all your projects to Rust, 
+but atleast consider doing so for small moving parts.
+I think integration with other languages is one of the places where Rust shines.
+There are already multiple complilers and core libraries written in Rust.
+I think this is a very good thing, because it means that Rust is not trying to replace other languages, but rather work with them.
+
+So, I want to leave you with this:
+Rust is a very powerful language, but it is not a silver bullet.
+Most of the time, you don't need the power of Rust.
+However, when you do, it is there for you.
+So, don't go about immediately moving your whole startup to Rust, but atleast consider using it for small moving parts.
+
+Thanks for reading and hope you like the new dev blogs style of writing.
+I honestly wrote this blog to test the functionality of syntax highlighting in my blog.
+However, it took a life of its own and I ended up writing a whole blog post.
+
+Anyways, thanks for reading and I hope you have a great day. 

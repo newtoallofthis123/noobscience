@@ -24,8 +24,8 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
         <HomeNav title="Mussing" client:load />
         <div class="p-4">
             <div class="flex md:flex-row flex-col justify-center">
-                <div class="md:w-4/6">
-                    <h1 class="text-6xl font-bold pb-5 font-serif leading-snug">
+                <div class="md:w-4/6 w-full">
+                    <h1 class="md:text-6xl text-4xl font-bold pb-5 font-serif leading-snug">
                         Welcome, to my place on the <span class="text-green-400">Internet</span>
                     </h1>
                     <p id="p-heading">
@@ -35,12 +35,12 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                     <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
                     <span class="block w-40 h-1 mb-5 bg-red-600"></span>
                 </div>
-                <div class="md:w-2/6">
+                <div class="md:w-2/6 w-full">
                 </div>
             </div>
             <div class="flex md:flex-row flex-col justify-center">
-                <div class="md:w-3/6 px-5">
-                    <h1 class="text-5xl leading-relaxed py-5 font-heading">
+                <div class="md:w-3/6 w-full md:px-5 px-1">
+                    <h1 class="md:text-5xl text-3xl leading-relaxed py-5 font-heading">
                         My Evergreen Posts
                     </h1>
                     <p>
@@ -54,17 +54,17 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                         please share them with your friends and family.
                     </p>
                     <div>
-                        <img class="w-4/6" src="/assets/images/coffee.webp" alt="">
+                        <img class="md:w-4/6 w-full" src="/assets/images/coffee.webp" alt="Coffee">
                     </div>
                 </div>
-                <div class="md:w-3/6 p-4">
+                <div class="md:w-3/6 w-full md:p-4 p-1">
                     {
                         long.slice(0, 4).map((post) => {
                             return (
                                 <div onclick={
                                             "location.href = '" + post.url + "'"
-                                        } class="p-4 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
-                                    <h1 class="text-3xl leading-relaxed font-bold">
+                                        } class="md:p-4 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                                    <h1 class="md:text-3xl text-2xl leading-relaxed font-bold">
                                         {post.frontmatter.emoji}{' '}{post.frontmatter.title}
                                     </h1>
                                     <p>
@@ -86,10 +86,10 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                 </div>
             </div>
             <div>
-                <h1 class="text-5xl font-bold p-4 font-heading">
+                <h1 class="md:text-5xl text-3xl font-bold md:p-4 p-1 font-heading">
                     What even is this?
                 </h1>
-                <div class="p-4">
+                <div class="md:p-4 p-1">
                     <p>
                         This is in a sense, my personal internet space, or for the nerds out there, my digital garden.
                         The concept of a digital garden is not new, but it is not very popular either.
@@ -112,10 +112,10 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                 </div>
             </div>
             <div>
-                <h1 class="text-5xl font-bold p-4 font-heading">
+                <h1 class="md:text-5xl text-3xl font-bold p-4 font-heading">
                     My Jots and Notes 
                 </h1>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="md:grid md:grid-cols-2 gap-4">
                     {
                         notes.slice(0, 5).map((post)=>{
                             return (
@@ -139,24 +139,24 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
             </div>
             <span class="block w-2/5 bg-red-600 h-0.5 my-10"></span>
             <div class="flex flex-col md:flex-row justify-center">
-                <div class="md:w-2/5">
-                    <h1 class="text-4xl font-heading my-2 p-4">
+                <div class="md:w-2/5 w-full">
+                    <h1 class="md:text-4xl text-3xl font-heading my-2 md:p-4 p-1">
                         Few Quips and Quotes
                     </h1>
-                    <p class="p-4">
+                    <p class="md:p-4 p-1">
                         These are a few musings and so that I write almost everyday. They are
                         separate from my garden. You can think of them as my journal.
                     </p>
                     <UpdateArchive num={8} client:idle />
                 </div>
-                <div class="md:w-3/5">
+                <div class="md:w-3/5 w-full">
                     <UpdateLatest client:idle />
                 </div>
             </div>
             <span class="block w-2/5 bg-blue-600 h-0.5 my-10"></span>
             <div class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-1/2 px-5">
-                    <h1 class="md:text-5xl pb-4 font-heading">
+                    <h1 class="md:text-5xl text-3xl pb-4 font-heading">
                         Quicks
                     </h1>
                     <p class="py-2">
@@ -165,10 +165,10 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                         Most likely will turn into a full post later, so, they are still small seedlings
                     </p>
                     <div>
-                        <img class="w-3/5" src="/assets/images/seedling.webp" alt="Seedling.webp">
+                        <img class="md:w-3/5 w-full" src="/assets/images/seedling.webp" alt="Seedling.webp">
                     </div>
                 </div>
-                <div class="md:w-1/2 px-10">
+                <div class="md:w-1/2 w-full md:px-10 px-2">
                     {
                         quick.slice(0, 5).map((post)=>{
                             return (
@@ -191,6 +191,35 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                     }
                 </div>
             </div>
+        </div>
+        <div class="font-mono text-green-500 bg-gray-800 md:p-10 p-4">
+            <h1 class="md:text-4xl text-3xl pb-4 font-bold">
+                Some of my Devlogs
+            </h1>
+            <p>
+                I am a developer at heart after all, so I do write about my dev stuff. Although not too much, since
+                I believe that there are already a lot of people out there who are doing a much better job than me.
+            </p>
+            {
+                dev.map((post) => {
+                    return (
+                        <div onclick={
+                                    "location.href = '" + post.url + "'"
+                                } class="p-4 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                            <span id="p-heading">#{post.frontmatter.category}</span>
+                            <h1 class="text-3xl leading-relaxed font-bold">
+                                {post.frontmatter.emoji}{' '}{post.frontmatter.title}
+                            </h1>
+                            <p>
+                                {post.frontmatter.description}    
+                            </p>
+                            <p>
+                                Posted on <span id="p-heading">{new Date(post.frontmatter.date).toDateString()}</span>
+                            </p>
+                        </div>
+                    )
+                })
+            }
         </div>
     </div>
 </Base>

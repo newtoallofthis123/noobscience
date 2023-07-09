@@ -40,21 +40,21 @@ recommended = recommended.filter(
 
 <Base title={frontmatter.title + " | Long Ishan Reads"}>
     <HomeNav client:load />
-    <div class="p-10">
+    <div class="md:p-10 p-3">
         <div class="md:p-10">
             {
                 frontmatter.emoji && (
                     <p onclick={
                         "navigator.clipboard.writeText('https://noobscience.rocks/e/" + frontmatter.emoji + "') && toast('Copied to clipboard')"
-                    } class="text-7xl cursor-pointer">
+                    } class="md:text-7xl text-4xl cursor-pointer">
                         {frontmatter.emoji}
                     </p>
                 )
             }
-            <h1 class="text-7xl font-heading leading-relaxed">
+            <h1 class="md:text-7xl text-4xl font-heading md:py-3 leading-relaxed">
                 {frontmatter.title}
             </h1>
-            <p class="text-gray-500 text-4xl py-5">
+            <p class="text-gray-500 md:text-4xl text-2xl py-5">
                 {new Date(frontmatter.date).toDateString()} • {frontmatter.minutesRead}
             </p>
             <article class="md">
@@ -64,13 +64,13 @@ recommended = recommended.filter(
         <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
         <span class="block w-40 h-1 mb-5 bg-red-600"></span>
         <div>
-            <h3 class="text-4xl font-heading leading-relaxed py-5">
+            <h3 class="md:text-4xl text-2xl font-heading leading-relaxed py-5">
                 Posted in <a href={"/categories/" + frontmatter.category} class="text-gray-800 hover:text-gray-900">@{frontmatter.category}</a>
             </h3>
             {
                 frontmatter.tags.map((tag:string) => {
                     return (
-                        <span class="text-2xl pr-5">
+                        <span class="md:text-2xl text-xl pr-5">
                             <a href={"/tags/" + tag} class="text-gray-800 hover:text-gray-900">
                                 #{tag}
                             </a>
@@ -113,6 +113,26 @@ recommended = recommended.filter(
             background-color: #f5f5f5;
             padding: 0.5rem;
             border-radius: 0.5rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            article h1{
+                font-size: 3rem;
+                line-height: 3.5rem;
+            }
+            article h2{
+                font-size: 2rem;
+                line-height: 2.5rem;
+                padding: 1rem 0;
+            }
+            article p{
+                font-size: 1.2rem;
+                line-height: 2.5rem;
+            }
+            article code{
+                font-size: 1rem;
+                line-height: 2rem;
+            }
         }
     </style>
 </Base>
