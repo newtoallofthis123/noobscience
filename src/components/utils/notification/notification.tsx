@@ -33,6 +33,7 @@ export default function Notification() {
                 <span className="font-normal">Currently:</span>{' '}
                 {latest.title}
                 <a
+                    title='Read more about this update'
                     // Move the arrow to the right on hover
                     className='inline-block text-blue-600 ml-2 transition-all duration-300 transform hover:translate-x-1'
                     href="/now"

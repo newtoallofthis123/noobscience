@@ -25,15 +25,15 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
         <div class="p-4">
             <div class="flex md:flex-row flex-col justify-center">
                 <div class="md:w-4/6 w-full">
-                    <h1 class="md:text-6xl text-4xl font-bold pb-5 font-serif leading-snug">
-                        Welcome, to my place on the <span class="text-green-400">Internet</span>
+                    <h1 class="md:text-6xl text-4xl font-bold pb-5 font-serif leading-relaxed">
+                        Welcome, to my place on the <span class="text-lime-400">Internet</span>
                     </h1>
                     <p id="p-heading">
                         Where I am the boss! Okay, just kidding, but you are still at the
                         mercy of my whims. (Check your URL bar, you are at my domain)
                     </p>
                     <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
-                    <div class="flex flex-row gap-x-10">
+                    <div class="flex flex-row py-4 gap-x-10">
                         <button class="btn"><a href="#longs">Long Reads</a></button>
                         <button class="btn"><a href="#notes">Notes and stuff</a></button>
                         <button class="btn"><a href="#quips">Quips and Quotes</a></button>
@@ -70,7 +70,7 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                             return (
                                 <div onclick={
                                             "location.href = '" + post.url + "'"
-                                        } class="md:p-4 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                                        } class="md:p-4 md:my-5 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
                                     <h1 class="md:text-3xl text-2xl leading-relaxed font-bold">
                                         {post.frontmatter.emoji}{' '}{post.frontmatter.title}
                                     </h1>
@@ -205,7 +205,7 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                 </div>
             </div>
         </div>
-        <div id="dev" class="font-mono text-green-500 bg-gray-800 md:p-10 p-4">
+        <div id="dev" class="font-mono text-lime-300 bg-gray-900 md:p-10 p-4">
             <h1 class="md:text-4xl text-3xl pb-4 font-bold">
                 Some of my Devlogs
             </h1>
@@ -218,7 +218,7 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                     return (
                         <div onclick={
                                     "location.href = '" + post.url + "'"
-                                } class="p-4 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                                } class="md:p-4 md:my-8 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
                             <span id="p-heading">#{post.frontmatter.category}</span>
                             <h1 class="text-3xl leading-relaxed font-bold">
                                 {post.frontmatter.emoji}{' '}{post.frontmatter.title}

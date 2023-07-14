@@ -91,18 +91,31 @@ export default function HomeNav({ title = "" }) {
                                             Writings
                                         </a>
                                     </li>
+                                    <li>
+                                        <a
+                                            className="special_underline"
+                                            href="/writes"
+                                        >
+                                            Contact
+                                        </a>
+                                    </li>
                                 </ul>
                             </motion.div>
                         )}
                         <ul className="items-end hidden gap-x-6 list-none lg:flex flex-row-reverse p-2 justify-center">
+                            <li>
+                                <a className="special_underline" href="/contact">
+                                    Contact
+                                </a>
+                            </li>
                             <li>
                                 <a className="special_underline" href="/about">
                                     About
                                 </a>
                             </li>
                             <li>
-                                <a className="special_underline" href="/green">
-                                    Greens
+                                <a className="special_underline" href="/tools">
+                                    Tools
                                 </a>
                             </li>
                             <li>
@@ -128,7 +141,7 @@ export default function HomeNav({ title = "" }) {
                                         />
                                     </form>
                                     <div className="icon">
-                                        <svg
+                                        {/* <svg
                                             viewBox="0 0 512 512"
                                             className="ionicon"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +162,13 @@ export default function HomeNav({ title = "" }) {
                                                 stroke="currentColor"
                                                 fill="none"
                                             ></path>
-                                        </svg>
+                                        </svg> */}
+                                        <img
+                                            src="/assets/icons/search_left.png"
+                                            className="w-10"
+                                            width="32"
+                                            alt=""
+                                        />
                                     </div>
                                 </div>
                             </li>

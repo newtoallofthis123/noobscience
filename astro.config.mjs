@@ -6,15 +6,15 @@ import vercel from "@astrojs/vercel/serverless";
 import markdownConfig from './markdown.config';
 import sitemap from "@astrojs/sitemap";
 
+import svelte from "@astrojs/svelte";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://beta.noobscience.rocks",
-  integrations: [react(), tailwind(), mdx(
-    {
-      ...markdownConfig,
-      extendPlugins: false
-    }
-  ), sitemap()],
+  integrations: [react(), tailwind(), mdx({
+    ...markdownConfig,
+    extendPlugins: false
+  }), sitemap(), svelte()],
   output: "server",
   adapter: vercel(),
   markdown: {
@@ -23,10 +23,10 @@ export default defineConfig({
     shikiConfig: {
       theme: 'github-light',
       langs: ['javascript', 'html', 'css', 'typescript', 'tsx', 'jsx', 'json', 'markdown', 'mdx', 'bash', 'shell', 'md', 'mdx', 'rust'],
-      wrap: true,
+      wrap: true
     },
     syntaxHighlight: 'shiki',
-    drafts: false,
+    drafts: false
   },
   compressHTML: true,
   experimental: {
