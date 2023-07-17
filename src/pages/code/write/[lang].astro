@@ -1,0 +1,6 @@
+---
+const {lang} = Astro.params;
+import Editor from "../editor.svelte"
+---
+
+<Editor code="print('Hello World')" language={lang} client:load />

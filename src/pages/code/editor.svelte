@@ -52,28 +52,9 @@
 
 <form class="flex flex-col justify-center" on:submit|preventDefault={handleSubmit}>
     <p>Enter the Paste Title</p>
-    <input class="input-field" type="text" placeholder="Title" bind:value={title} required>
+    <input class="border-2 p-2 rounded-xl w-4/5" type="text" placeholder="Title" bind:value={title} required>
     <p>Author Name</p>
     <input class="input-field" type="text" placeholder="Author" bind:value={author} required>
-    <p>Language</p>
-    <select class="input-field" bind:value={language}>
-      <option value="javascript">JavaScript</option>
-      <option value="python">Python</option>
-      <option value="c">C</option>
-      <option value="cpp">C++</option>
-      <option value="java">Java</option>
-      <option value="html">HTML</option>
-      <option value="css">CSS</option>
-      <option value="php">PHP</option>
-      <option value="ruby">Ruby</option>
-      <option value="rust">Rust</option>
-      <option value="go">Go</option>
-      <option value="sql">SQL</option>
-      <option value="swift">Swift</option>
-      <option value="kotlin">Kotlin</option>
-      <option value="typescript">TypeScript</option>
-      <option value="plaintext">Plain Text</option>
-    </select>
     <p>Content</p>
     <div id="monaco-container" style="height: 400px;"></div>
     <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Submit</button>
