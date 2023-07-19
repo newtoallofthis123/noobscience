@@ -30,12 +30,12 @@ export default function Update({ hash }: Props) {
     }, []);
 
     return (
-        <>
+        <div className='flex justify-center'>
             {latest.name == '' && (
                 <h1 className="text-center p-4">Loading...</h1>
             )}
             {latest.name != '' && (
-                <div className="m-2 mt-0 p-2 md:p-10">
+                <div className="m-2 mt-0 p-2 w-4/5 md:p-10">
                     <h1 className="md:text-6xl font-heading text-3xl py-4 pt-0 font-bold">
                         {latest.name}
                     </h1>
@@ -54,6 +54,6 @@ export default function Update({ hash }: Props) {
                     />
                 </div>
             )}
-        </>
+        </div>
     );
 }

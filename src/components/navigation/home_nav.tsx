@@ -3,7 +3,7 @@ import '../styles/nav.scss';
 import { motion } from 'framer-motion';
 import Logo from './logo';
 
-export default function HomeNav({ title = "" }) {
+export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
     const [nav, setNav] = React.useState(false)
     const play_shutter = () => {
         const path = "/assets/audio/shutter.wav"
@@ -15,7 +15,10 @@ export default function HomeNav({ title = "" }) {
     }
     return (
         <>
-            <nav className="bg-white m-2">
+            <nav style={{
+                backgroundColor: bg,
+                color: color
+            }} className="p-2">
                 <div id="nav">
                     <div className="flex flex-row justify-between items-center p-2">
                         <div className="flex-shrink-0 flex flex-row mx-5 justify-around">

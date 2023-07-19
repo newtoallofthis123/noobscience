@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {marked} from "marked"
 
-export default function UpdateLatest() {
+export default function UpdateLatest(
+    {
+        slice_length = 600,
+    }: {
+        slice_length?: number;
+    }
+) {
     const [latest, setLatest] = useState({
         name: '',
         content: '',
@@ -41,7 +47,9 @@ export default function UpdateLatest() {
                     className="page-div bg-white m-4 md:m-10 mt-0 p-4 md:py-8 transform hover:scale-105 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                     onClick={() => {
                         typeof window !== 'undefined' &&
-                            window.open('/quips/' + latest.hash);
+                            window.location.replace(
+                                `/quips/${latest.hash}`
+                            );
                     }}
                 >
                     <h1 className="text-2xl md:text-4xl text-center pb-4 font-bold">
@@ -52,7 +60,7 @@ export default function UpdateLatest() {
                         className="text-xl leading-10"
                         dangerouslySetInnerHTML={{
                             __html: marked(
-                                latest.content.slice(0, 600) + '...',
+                                latest.content.slice(0, slice_length) + '...',
                                 {
                                     headerIds: false,
                                     mangle: false,

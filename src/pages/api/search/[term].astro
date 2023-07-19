@@ -6,6 +6,32 @@ term = term?.split(' ').join('');
 
 let recommend_posts = [];
 
+const site_urls = {
+    "about": "/about",
+    "contact": "/contact",
+    "projects": "/projects",
+    "blog": "/writes",
+    "writing": "/writes",
+    "posts": "/writes",
+    "home": "/",
+}
+
+//@ts-ignore
+if (term in site_urls) {
+    recommend_posts.push({
+        "frontmatter": {
+            "title": "" + term?.slice(0, 1).toUpperCase() + term?.slice(1) + " Page",
+            "description": "Go to the " + term + " page",
+            "tags": [term],
+            "category": term,
+            "draft": false,
+            "date": new Date().toISOString(),
+        },
+//@ts-ignore
+        "url": site_urls[term || "/"],
+    });
+}
+
 // First Level Check the tags
 for (const post of posts) {
     if (post.frontmatter.tags.includes(term)) {

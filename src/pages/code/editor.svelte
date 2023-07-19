@@ -37,6 +37,13 @@
         editor = monaco.editor.create(document.getElementById('monaco-container'), {
           value: code,
           language: language,
+          theme: 'vs-dark',
+          automaticLayout: true,
+          minimap: {
+            enabled: true
+          },
+          fontSize: 18,
+          padding: { top: 10, bottom: 10 },
         });
       });
     };

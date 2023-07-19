@@ -83,6 +83,14 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     <body>
             <slot />
     </body>
+    <footer class="text-center">
+        <p class="font-bold text-xl">
+            Noob's Portfolio &copy {new Date().getFullYear()}
+        </p>
+        <p class="text-lg pt-1">
+            Site Built using Astro. See /credits for more info.
+        </p>
+    </footer>
     <style is:global>
         html{
             scroll-behavior: smooth;
@@ -93,7 +101,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
         #p-heading{
             font-weight: 400;
         }
-        p{
+        p, li{
             font-size: 1.5rem;
             font-weight: 100;
             line-height: 2.8rem;
