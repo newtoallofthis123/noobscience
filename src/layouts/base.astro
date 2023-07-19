@@ -1,10 +1,12 @@
 ---
 export interface Props {
     title: string;
+    color?: string;
+    bg?: string;
     img?: string;
     description?: string;
 }
-const {title, img, description} = Astro.props
+const {title, img, description, color, bg} = Astro.props
 import "../base.css"
 import '../components/styles/nav.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -80,10 +82,21 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     <!-- Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
      crossorigin="anonymous"></script>
-    <body>
+    <style define:vars={{
+        color: color || "#000",
+        bg: bg || "#fff",
+    }}>
+        #content{
+            background-color: var(--bg);
+            color: var(--color);
+        }
+    </style>
+     <body>
+        <div id="content">
             <slot />
+        </div>
     </body>
-    <footer class="text-center">
+    <footer id="content" class="text-center">
         <p class="font-bold text-xl">
             Noob's Portfolio &copy {new Date().getFullYear()}
         </p>
@@ -103,7 +116,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
         }
         p, li{
             font-size: 1.5rem;
-            font-weight: 100;
+            /* font-weight: 100; */
             line-height: 2.8rem;
         }
     </style>
