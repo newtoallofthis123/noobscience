@@ -64,20 +64,20 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                         <img class="md:w-4/6 w-full" src="/assets/images/coffee.webp" alt="Coffee">
                     </div>
                 </div>
-                <div class="md:w-3/6 w-full md:p-4 p-1">
+                <div class="md:w-3/6 w-full md:p-4 py-6">
                     {
                         long.slice(0, 4).map((post) => {
                             return (
                                 <div onclick={
                                             "location.href = '" + post.url + "'"
                                         } class="md:p-4 md:my-5 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
-                                    <h1 class="md:text-3xl text-2xl leading-relaxed font-bold">
+                                    <h1 class="md:text-3xl text-xl leading-relaxed font-bold">
                                         {post.frontmatter.emoji}{' '}{post.frontmatter.title}
                                     </h1>
-                                    <p>
+                                    <p class="text-lg">
                                         {post.frontmatter.description}    
                                     </p>
-                                    <p>
+                                    <p class="text-lg">
                                         Posted on <span id="p-heading">{new Date(post.frontmatter.date).toDateString()}</span> | {post.frontmatter.minutesRead}
                                     </p>
                                 </div>
@@ -118,7 +118,7 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                     </p>
                 </div>
             </div>
-            <div>
+            <!-- <div>
                 <h1 id="notes" class="md:text-5xl text-3xl font-bold p-4 font-heading">
                     My Jots and Notes 
                 </h1>
@@ -143,7 +143,7 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                         })
                     }
                 </div>
-            </div>
+            </div> -->
             <span class="block w-2/5 bg-red-600 h-0.5 my-10"></span>
             <div id="quips" class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-2/5 w-full">
@@ -156,13 +156,16 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                     </p>
                     <UpdateArchive num={8} client:idle />
                 </div>
-                <div class="md:w-3/5 w-full">
+                <div class="hidden md:block md:w-3/5 w-full">
                     <UpdateLatest client:idle />
+                </div>
+                <div class="block md:hidden md:w-3/5 w-full">
+                    <UpdateLatest slice_length={100} client:idle />
                 </div>
             </div>
             <span class="block w-2/5 bg-blue-600 h-0.5 my-10"></span>
             <div id="quicks" class="flex flex-col md:flex-row justify-center">
-                <div class="md:w-1/2 px-5">
+                <div class="md:w-1/2 md:px-5 px-1">
                     <h1 class="md:text-5xl text-3xl pb-4 font-heading">
                         Quicks
                     </h1>
@@ -178,19 +181,19 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                 </div>
                 <div class="md:w-1/2 w-full md:px-10 px-2">
                     {
-                        quick.slice(0, 5).map((post)=>{
+                        quick.slice(0, 3).map((post)=>{
                             return (
                                 <div onclick={
                                             "location.href = '" + post.url + "'"
-                                        } class="p-4 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                                        } class="md:p-4 px-1 my-5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
                                     <span id="p-heading">#{post.frontmatter.category}</span>
-                                    <h1 class="text-3xl leading-relaxed font-bold">
+                                    <h1 class="md:text-3xl text-xl leading-relaxed font-bold">
                                         {post.frontmatter.emoji}{' '}{post.frontmatter.title}
                                     </h1>
-                                    <p>
+                                    <p class="text-lg">
                                         {post.frontmatter.description}    
                                     </p>
-                                    <p>
+                                    <p class="text-lg">
                                         Posted on <span id="p-heading">{new Date(post.frontmatter.date).toDateString()}</span>
                                     </p>
                                 </div>
@@ -206,10 +209,10 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
             </div>
         </div>
         <div id="dev" class="font-mono text-lime-300 bg-gray-900 md:p-10 p-4">
-            <h1 class="md:text-4xl text-3xl pb-4 font-bold">
+            <h1 class="md:text-4xl text-2xl pb-4 font-bold">
                 Some of my Devlogs
             </h1>
-            <p>
+            <p class="text-lg">
                 I am a developer at heart after all, so I do write about my dev stuff. Although not too much, since
                 I believe that there are already a lot of people out there who are doing a much better job than me.
             </p>
@@ -218,15 +221,15 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                     return (
                         <div onclick={
                                     "location.href = '" + post.url + "'"
-                                } class="md:p-4 md:my-8 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                                } class="md:p-4 md:my-2 my-5 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
                             <span id="p-heading">#{post.frontmatter.category}</span>
-                            <h1 class="text-3xl leading-relaxed font-bold">
+                            <h1 class="md:text-3xl text-xl leading-relaxed font-bold">
                                 {post.frontmatter.emoji}{' '}{post.frontmatter.title}
                             </h1>
-                            <p>
+                            <p class="text-lg">
                                 {post.frontmatter.description}    
                             </p>
-                            <p>
+                            <p class="text-lg">
                                 Posted on <span id="p-heading">{new Date(post.frontmatter.date).toDateString()}</span>
                             </p>
                         </div>

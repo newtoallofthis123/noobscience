@@ -3,6 +3,7 @@ import Base from "./base.astro";
 import HomeNav from "../components/navigation/home_nav";
 
 const {frontmatter} = Astro.props;
+const BASE_URL = Astro.url.host
 
 let posts = await Astro.glob('../pages/w/*/*.mdx');
 posts.sort(
@@ -37,25 +38,15 @@ recommended = recommended.filter(
     (post: any) => post.frontmatter.draft !== true && !post.frontmatter.quick
 );
 ---
-
-<style define:vars={{
-    color: frontmatter.color || "#000",
-    bg: frontmatter.bg || "#fff",
-}}>
-    #content{
-        background-color: var(--bg);
-        color: var(--color);
-    }
-</style>
-<Base color={frontmatter.color} bg={frontmatter.bg} title={frontmatter.title + " | Ishan Reads"}>
-    <HomeNav color={frontmatter.color} bg={frontmatter.bg} client:load />
-    <div id="content" class="flex md:flex-row flex-col justify-center">
-        <div class="md:p-10 p-3 w-4/5">
+<Base selection_only={true} color={frontmatter.color} bg={frontmatter.bg} title={frontmatter.title + " | Ishan Reads"}>
+    <HomeNav title={frontmatter.title} color={frontmatter.color} bg={frontmatter.bg} client:load />
+    <div id="content" class="flex md:flex-row md:mt-2 mt-4 flex-col justify-center">
+        <div class="md:p-10 p-4 md:w-4/5 w-full">
             <div class="md:p-10">
                 {
                     frontmatter.emoji && (
                         <p onclick={
-                            "navigator.clipboard.writeText('https://garden.noobscience.rocks/e/" + frontmatter.emoji + "') && toast('Copied to clipboard')"
+                            "navigator.clipboard.writeText('" + BASE_URL + "/e/" + frontmatter.emoji + "') && toast('Copied to clipboard')"
                         } class="md:text-6xl text-4xl cursor-pointer">
                             {frontmatter.emoji}
                         </p>
@@ -97,7 +88,8 @@ recommended = recommended.filter(
         }
         article p{
             font-size: 1.2rem;
-            line-height: 2.8rem;
+            padding-bottom: 1.2rem;
+            line-height: 3rem;
         }
         article a{
             text-decoration: 1.2px underline #000;
@@ -117,7 +109,7 @@ recommended = recommended.filter(
         article h2{
             font-size: 3rem;
             line-height: 3.5rem;
-            padding: 2rem 0;
+            padding: 1.2rem 0;
         }
         article p code{
             font-family: "Fira Code", monospace;
@@ -131,7 +123,7 @@ recommended = recommended.filter(
 
         article pre{
             font-family: "Fira Code", monospace;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 2.5rem;
             padding: 1rem;
             margin: 0.5rem 0;
@@ -140,7 +132,7 @@ recommended = recommended.filter(
         }
 
         article ol, ul{
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             font-weight: 100;
             line-height: 3.6rem;
             padding: 0 2rem;
@@ -158,12 +150,15 @@ recommended = recommended.filter(
                 padding: 1rem 0;
             }
             article p{
-                font-size: 1.2rem;
-                line-height: 2.5rem;
+                font-size: 1.1rem;
+                line-height: 2.6rem;
             }
             article code{
                 font-size: 1rem;
                 line-height: 2rem;
+            }
+            article ol, ul{
+                padding: 0.5rem 1rem;
             }
         }
     </style>

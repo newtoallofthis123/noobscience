@@ -3,10 +3,11 @@ export interface Props {
     title: string;
     color?: string;
     bg?: string;
+    selection_only?: boolean;
     img?: string;
     description?: string;
 }
-const {title, img, description, color, bg} = Astro.props
+const {title, img, description, color, bg, selection_only} = Astro.props
 import "../base.css"
 import '../components/styles/nav.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -82,31 +83,33 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     <!-- Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
      crossorigin="anonymous"></script>
-    <style define:vars={{
-        color: color || "#000",
-        bg: bg || "#fff",
-    }}>
-        #content{
-            background-color: var(--bg);
-            color: var(--color);
-        }
-    </style>
      <body>
         <div id="content">
             <slot />
         </div>
     </body>
-    <footer id="content" class="text-center">
+    <footer id="content" class="py-5 text-center">
         <p class="font-bold text-xl">
             Noob's Portfolio &copy {new Date().getFullYear()}
         </p>
-        <p class="text-lg pt-1">
+        <p class="text-lg pt-1 text-ellipsis">
             Site Built using Astro. See /credits for more info.
         </p>
     </footer>
-    <style is:global>
+    <style is:global define:vars={{
+        bg: bg || "#170dd3",
+        color: color || "#fff",
+    }}>
         html{
             scroll-behavior: smooth;
+        }
+        ::selection {
+            background: var(--bg);
+            color: var(--color);
+        }
+        ::-moz-selection {
+            background: var(--bg);
+            color: var(--color);
         }
         body{
             font-family: "Josefin Sans", sans-serif;
@@ -116,8 +119,14 @@ import "bootstrap-icons/font/bootstrap-icons.css";
         }
         p, li{
             font-size: 1.5rem;
-            /* font-weight: 100; */
+            font-weight: 100;
             line-height: 2.8rem;
+        }
+        @media (max-width: 768px){
+            p, li{
+                font-size: 1.2rem;
+                line-height: 2.4rem;
+            }
         }
     </style>
     <script is:raw>

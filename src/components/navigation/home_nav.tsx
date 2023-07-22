@@ -33,7 +33,7 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                     onClick={play_shutter}
                                 />
                             </div>
-                            <p className="text-2xl py-2 font-bold ml-5">
+                            <p className="md:block hidden text-2xl py-2 font-bold ml-5">
                                 {title && <span>{title}</span>}
                             </p>
                         </div>
