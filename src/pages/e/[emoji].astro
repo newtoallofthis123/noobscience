@@ -3,8 +3,17 @@ const {emoji} = Astro.params
 
 const posts = await Astro.glob('../*/*/*.mdx')
 let post = posts.find((post) => post.frontmatter.emoji === emoji)
+const urls = {
+    "📚": "/writes",
+    "⚡": "/about",
+    "📞": "/contact"
+}
 if(post){
     return Astro.redirect(post.url)
+}
+//@ts-ignore
+if(urls[emoji]){
+    return Astro.redirect(urls[emoji])
 }
 return Astro.redirect('/404')
 ---

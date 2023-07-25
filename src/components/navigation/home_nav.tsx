@@ -15,10 +15,13 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
     }
     return (
         <>
-            <nav style={{
-                backgroundColor: bg,
-                color: color
-            }} className="p-2">
+            <nav
+                style={{
+                    backgroundColor: bg,
+                    color: color,
+                }}
+                className="p-2"
+            >
                 <div id="nav">
                     <div className="flex flex-row justify-between items-center p-2">
                         <div className="flex-shrink-0 flex flex-row mx-5 justify-around">
@@ -102,12 +105,65 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                             Contact
                                         </a>
                                     </li>
+                                    <li>
+                                        <div className="search_container">
+                                            <form
+                                                onSubmit={(e) => {
+                                                    e.preventDefault();
+                                                    typeof window !==
+                                                        'undefined' &&
+                                                        (window.location.href = `/search/${e.currentTarget.text.value}`);
+                                                }}
+                                            >
+                                                <input
+                                                    placeholder="Enter To Search"
+                                                    required={true}
+                                                    className="input"
+                                                    name="text"
+                                                    type="text"
+                                                />
+                                            </form>
+                                            <div className="icon">
+                                                {/* <svg
+                                            viewBox="0 0 512 512"
+                                            className="ionicon"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <title>Search</title>
+                                            <path
+                                                strokeWidth="32"
+                                                strokeMiterlimit="10"
+                                                stroke="currentColor"
+                                                fill="none"
+                                                d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+                                            ></path>
+                                            <path
+                                                d="M338.29 338.29L448 448"
+                                                strokeWidth="32"
+                                                strokeMiterlimit="10"
+                                                strokeLinecap="round"
+                                                stroke="currentColor"
+                                                fill="none"
+                                            ></path>
+                                        </svg> */}
+                                                <img
+                                                    src="/assets/icons/search_left.png"
+                                                    className="w-10"
+                                                    width="32"
+                                                    alt=""
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
                                 </ul>
                             </motion.div>
                         )}
                         <ul className="items-end hidden gap-x-6 list-none lg:flex flex-row-reverse p-2 justify-center">
                             <li>
-                                <a className="special_underline" href="/contact">
+                                <a
+                                    className="special_underline"
+                                    href="/contact"
+                                >
                                     Contact
                                 </a>
                             </li>
@@ -118,7 +174,7 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                             </li>
                             <li>
                                 <a className="special_underline" href="/tools">
-                                    Tools
+                                    Creations
                                 </a>
                             </li>
                             <li>

@@ -88,12 +88,15 @@ import "bootstrap-icons/font/bootstrap-icons.css";
             <slot />
         </div>
     </body>
-    <footer id="content" class="py-5 text-center">
-        <p class="font-bold text-xl">
-            Noob's Portfolio &copy {new Date().getFullYear()}
-        </p>
+    <footer id="content" class="py-5 text-center border-t-2 border-black">
+        <div class="flex flex-row justify-center items-center">
+            <img src="/logo192.webp" class="pr-1 w-8" width="32" alt="">
+            <p class="font-bold text-xl">
+                NoobScience &copy {new Date().getFullYear()}
+            </p>
+        </div>
         <p class="text-lg pt-1 text-ellipsis">
-            Site Built using Astro. See /credits for more info.
+            Site Built using Astro. See <a href="/credits">/credits</a> for more info.
         </p>
     </footer>
     <style is:global define:vars={{

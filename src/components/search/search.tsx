@@ -57,14 +57,14 @@ export default function Search({
                   />
               </form>
           </div>
-          <div className="w-5/6">
+          <div className="md:w-5/6 w-full">
               {results.length != 0 &&
                   results.map((post: any) => (
                       <div
                           key={post.url}
-                          className="flex flex-col justify-center items-center md:justify-normal md:items-start md:flex-row p-4 border-gray-400 border-b-2"
+                          className="flex flex-col justify-center items-center md:justify-normal md:items-start md:flex-row md:p-4 p-1 border-gray-400 border-b-2"
                       >
-                          <div className="p-4">
+                          <div className="md:p-4 p-1">
                               <p className="text-2xl text-center md:text-justify font-bold">
                                   {post.frontmatter.emoji && (
                                       <span>{post.frontmatter.emoji} </span>

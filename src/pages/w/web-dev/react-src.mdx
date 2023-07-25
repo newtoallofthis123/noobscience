@@ -1,0 +1,124 @@
+---
+title:  React Server Components, quirks and perks
+description: React Server Components or RSC's are all people can talk about these days, so wanna read my opinion?
+color: "#000"
+bg: "#a4f4ff"
+tags: ["react", "rsc", "opinion", "devstories"]
+type: dev
+category: devstories
+emoji: 😐
+date: "2023-07-25"
+layout: "../../../layouts/blog_post.astro"
+---
+
+On the 4th of May 2023, Next.js, the popular server framework for the ever green React Framework announced an update to 
+their version `v.13.4`. In a rather detailed blog post, published on [vercel's blog](https://nextjs.org/blog/next-13-4), they
+go into the depth of the released and the controversial introduction of the next.js app router that has out of the box react server components, 
+instead of the traditional client components in the `/pages` directory. Now, to be precise, the previous pages routers were not technically 
+
+## What are RSC?
+
+React server components are a new way of writing react components that are rendered on the server. So, in a sense, we
+reduce the amount of javascript that is sent to the client, and instead, we send the HTML that is rendered on the server.
+What I said here is a very brief abstract of what react server components actually are. Their's working is quite complex
+and it has taken the react team a lot of brilliant minds to make RSC's a reality.
+
+The actual RSC's were introduced way back in react 18, but were only recently popularized due to next.js
+making them their default experience. Now, just to make it very clear, the pages routes will still be supported and
+supported for the for seeable future according to the next.js team. However, they want us to slowly, but surely make the 
+migration to React Server Components.
+
+I am not an expert in the react ecosystem nor have I ever contributed to React or Next.js projects, 
+hence, I cannot delve into the inner workings of the system and how you should incrementally migrate.
+For that, next.js has a great [blog post](https://nextjs.org/docs/getting-started/react-essentials) that I recommend
+you definitely check out.
+
+## Why is it a big deal?
+
+React server components don't seem like such a big deal at this point right? I mean, they are still "React" right?
+
+Now, this is where the controversy really happened in my opinion. React Server Components, along with the migration to the next.js app routes, 
+significant change the "React" way to do things. Here's a small example and by small I mean the most important issue.
+We are all familiar with the React Tree right? The whole fiasco where a javascript bundle is first sent that renders and hydrates the document.
+It's a whole thing, and if you are new to that, I highly recommend you do some digging on the topic.
+Now let's see that has changed. 
+
+Given below is a good illustration by [gaearon](https://github.com/reactwg/server-components/discussions/4) about the differences 
+between React Server Components and the old React Client Components
+
+![React Server Components](/assets/blog/images/rsc.png)
+<p id="credits">Credits [gaearon](https://github.com/reactwg/server-components/discussions/4)</p>
+
+I hope you were able to see the main problem with React Server Components. Yep. There is not client.
+So, essentially, we lose all the "reactivity" we get from React all together. So, in React Server Components, there 
+are no React Hooks, no `useState`, no `useEffect`. Everything is rendered on the server and incrementally 
+hydrated on the client side. As I said, it's a whole thing.
+
+So, this is where the next.js `app/` router comes up with a bunch of solutions for this.
+Here's what they decided to structure the whole thing around RSC's.
+Before you go on twitter and start ranting, normal react components are still there.
+To convert a RSC to a client component, you simply use the `'use client'` directive at the 
+top and you are done. Welcome back client!
+
+```tsx
+'use client'
+
+import React from 'react'
+
+export default function ReactComponent({}: {}) {
+  return (
+    <div>ReactComponent</div>
+  )
+}
+```
+
+Well, this is far from ideal, but it is not the worst. Now, before you react guys react and label me a negative guy, 
+just know I was only talking about the negatives. So, with that said.
+
+## RSC's are cool. Right?
+
+With all this being said, React Server Components, and by extension, the next.js `app/` router is
+very cool. Remember the times where you had to like create a hundred `/api` endpoints to get anything
+significant done in a next.js web app? Say good bye to your `/api` endpoint. You don't need it anymore.
+Since with RSC's you can the ability to call server functions from the React Component itself!
+Yes! So this means, you can do all sorts of cool stuff like query your database, login your users, check the 
+store and the whole thing.
+
+The way to do all of this is also quite simple. You just define the React Component as an async function. Yes! It is that simple.
+In an async react function, you have access to the javascript Promises API which in turn gives you access to the server.
+So, for example:
+
+```tsx
+import React from 'react'
+
+type Props = {}
+
+export default async function ReactAsyncComponent({}: Props) {
+  const data = await fetch("http://127.0.0.1:5500/login")
+  return (
+    <div>
+        {data}
+    </div>
+  )
+}
+```
+
+Hence, you can use your provider's edge functions from your React Component natively, without
+the need to define an `/api` route for that little thing.
+
+Next thing is the layout and page structure of the app directory. I will try and explain the basics, however, 
+I recommend you check out the official [next.js docs](https://nextjs.org/docs/getting-started/project-structure) for a more
+detailed explanation.
+
+This is how a typical next.js app route looks after 13.4
+
+![Next.js Image](https://nextjs.org/_next/image?url=%2Fdocs%2Flight%2Ffile-conventions-component-hierarchy.png&w=1920&q=75&dpl=dpl_3t45xqvdFH5e2mbpGav32WgPREEq)
+
+If you can probably guess, the layout.tsx is based on hierarchy, so in the sense, you can stack layouts up.
+So, you can have a global layout where you can define all of your styles and stuff, then have a intermediate layout that
+handles authentication and all that. It is honestly quite cool what people have already done with this.
+
+Moreover, all the data handling is now done by next.js natively. So, you have a loading skelton defined as `loading.tsx` and you have a 
+data not found page, along with an `error.tsx` file for handling error.
+
+--In Progress--
