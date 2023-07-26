@@ -7,7 +7,7 @@ export interface Props {
     img?: string;
     description?: string;
 }
-const {title, img, description, color, bg, selection_only} = Astro.props
+const {title, img, description, color, bg, selection_only=true} = Astro.props
 import "../base.css"
 import '../components/styles/nav.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -84,7 +84,9 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
      crossorigin="anonymous"></script>
      <body>
-        <div id="content">
+        <div class={
+        !selection_only ? "colored" : ""
+     } id="content">
             <slot />
         </div>
     </body>
@@ -105,6 +107,18 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     }}>
         html{
             scroll-behavior: smooth;
+        }
+        .colored{
+            color: var(--color);
+            background: var(--bg);
+        }
+        .colored ::selection {
+            background: #2500ff;
+            color: #fff;
+        }
+        .colored ::-moz-selection {
+            background: #2500ff;
+            color: #fff;
         }
         ::selection {
             background: var(--bg);

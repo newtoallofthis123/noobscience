@@ -84,9 +84,9 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                     <li>
                                         <a
                                             className="special_underline"
-                                            href="/green"
+                                            href="/creations"
                                         >
-                                            Greens
+                                            Creations
                                         </a>
                                     </li>
                                     <li>
@@ -100,7 +100,7 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                     <li>
                                         <a
                                             className="special_underline"
-                                            href="/writes"
+                                            href="/contact"
                                         >
                                             Contact
                                         </a>
@@ -173,7 +173,7 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                 </a>
                             </li>
                             <li>
-                                <a className="special_underline" href="/tools">
+                                <a className="special_underline" href="/creations">
                                     Creations
                                 </a>
                             </li>

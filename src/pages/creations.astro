@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/base.astro";
+import HomeNav from "../components/navigation/home_nav";
+---
+
+<Base color="#000" bg="#a3a3a3" selection_only={false} title="Ishan's Creations">
+    <HomeNav title="Projects and More" color="#000" bg="#a3a3a3" client:load />
+    <div class="p-4">
+        <div>
+            <p>
+                In my journey into tech, I have created a lot of things. Some of them are listed below. 
+            </p>
+        </div>
+    </div>
+</Base>
