@@ -8,6 +8,7 @@
 import { MongoClient, MongoClientOptions, Db, Collection } from 'mongodb';
 
 // Ensure that MONGODB_URL is defined
+//@ts-ignore
 const MONGODB_URL: string = import.meta.env.MONGODB_URL!;
 if (!MONGODB_URL) {
     throw new Error(

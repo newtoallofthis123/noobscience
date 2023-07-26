@@ -32,14 +32,6 @@ if (term in site_urls) {
     });
 }
 
-// First Level Check the tags
-for (const post of posts) {
-    if (post.frontmatter.tags.includes(term)) {
-        // @ts-ignore
-        recommend_posts.push(post);
-    }
-}
-
 // Second Level Check the title
 for (const post of posts) {
     if (
@@ -55,6 +47,14 @@ for (const post of posts) {
     }
 }
 
+// First Level Check the tags
+for (const post of posts) {
+    if (post.frontmatter.tags.includes(term)) {
+        // @ts-ignore
+        recommend_posts.push(post);
+    }
+}
+
 // Third Level Check the description
 for (const post of posts) {
     if (
@@ -62,6 +62,7 @@ for (const post of posts) {
             ?.toLowerCase()
             ?.split(' ')
             .join('')
+            .replace(/[-.,]/g, '')
             .includes(term)
     ) {
         // @ts-ignore

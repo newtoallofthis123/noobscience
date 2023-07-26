@@ -1,9 +1,9 @@
 ---
-import Base from "./base.astro";
-import HomeNav from "../components/navigation/home_nav";
+import Base from './base.astro';
+import HomeNav from '../components/navigation/home_nav';
 
-const {frontmatter} = Astro.props;
-const BASE_URL = Astro.url.host
+const { frontmatter } = Astro.props;
+const BASE_URL = Astro.url.host;
 
 let posts = await Astro.glob('../pages/w/*/*.mdx');
 posts.sort(
@@ -38,26 +38,62 @@ recommended = recommended.filter(
     (post: any) => post.frontmatter.draft !== true && !post.frontmatter.quick
 );
 ---
-<Base selection_only={true} color={frontmatter.color} bg={frontmatter.bg} title={frontmatter.title + " | Ishan Reads"}>
-    <HomeNav title={frontmatter.title} color={frontmatter.color} bg={frontmatter.bg} client:load />
-    <div id="content" class="flex md:flex-row md:mt-2 mt-4 flex-col justify-center">
+
+<Base
+    selection_only={true}
+    color={frontmatter.color}
+    bg={frontmatter.bg}
+    title={frontmatter.title + ' | Ishan Reads'}
+>
+    <HomeNav
+        title={frontmatter.title}
+        color={frontmatter.color}
+        bg={frontmatter.bg}
+        client:load
+    />
+    <div
+        id="content"
+        class="flex md:flex-row md:mt-2 mt-4 flex-col justify-center"
+    >
         <div class="p-4 md:w-4/6 w-full">
             <div class="md:p-10">
                 {
                     frontmatter.emoji && (
-                        <p onclick={
-                            "navigator.clipboard.writeText('" + BASE_URL + "/e/" + frontmatter.emoji + "') && toast('Copied to clipboard')"
-                        } class="md:text-6xl text-4xl cursor-pointer">
+                        <p
+                            onclick={
+                                "navigator.clipboard.writeText('" +
+                                BASE_URL +
+                                '/e/' +
+                                frontmatter.emoji +
+                                "') && toast('Copied to clipboard')"
+                            }
+                            class="md:text-6xl text-4xl cursor-pointer"
+                        >
                             {frontmatter.emoji}
                         </p>
                     )
                 }
-                <h1 class="md:text-6xl text-4xl font-heading md:py-3 leading-relaxed">
+                <h1
+                    class="md:text-5xl text-4xl font-heading md:py-3 leading-relaxed"
+                >
                     {frontmatter.title}
                 </h1>
                 <p class="text-gray-500 md:text-3xl text-2xl py-5">
-                    {new Date(frontmatter.date).toDateString()} • {frontmatter.minutesRead}
+                    {new Date(frontmatter.date).toDateString()} • {
+                        frontmatter.minutesRead
+                    }
                 </p>
+                {
+                    frontmatter.img && (
+                        <div class="py-1">
+                            <img
+                                class="rounded-md"
+                                src={frontmatter.img}
+                                alt=""
+                            />
+                        </div>
+                    )
+                }
                 <article class="md">
                     <slot />
                 </article>
@@ -65,54 +101,74 @@ recommended = recommended.filter(
             <div>
                 <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
                 <span class="block w-40 h-1 mb-5 bg-red-600"></span>
-                <h3 class="md:text-4xl text-2xl font-heading leading-relaxed py-5">
-                    Posted in <a href={"/categories/" + frontmatter.category} class="">@{frontmatter.category}</a>
+                <h3
+                    class="md:text-4xl text-2xl font-heading leading-relaxed py-5"
+                >
+                    Posted in <a
+                        href={'/categories/' + frontmatter.category}
+                        class="">@{frontmatter.category}</a
+                    >
                 </h3>
                 {
-                    frontmatter.tags.map((tag:string) => {
+                    frontmatter.tags.map((tag: string) => {
                         return (
                             <span class="md:text-2xl text-xl pr-5">
-                                <a href={"/tags/" + tag} class="">
+                                <a href={'/tags/' + tag} class="">
                                     #{tag}
                                 </a>
                             </span>
-                        )
+                        );
                     })
                 }
             </div>
         </div>
     </div>
     <style is:inline>
-        article{
-            font-family: "Libre Baskerville", serif;
+        article {
+            font-family: 'Libre Baskerville', serif;
         }
-        article p{
+        article p {
             font-size: 1.2rem;
             padding-bottom: 1.2rem;
             line-height: 3rem;
         }
-        article a{
+        article a {
             text-decoration: 1.2px underline #000;
         }
-        h1,h2,h3,h4,h5,h6{
-            font-family: "Archivo Black", sans-serif;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Archivo Black', sans-serif;
         }
-        article h1>a, article h2>a, article h3>a, article h4>a, article h5>a, article h6>a{
+        article h1 > a,
+        article h2 > a,
+        article h3 > a,
+        article h4 > a,
+        article h5 > a,
+        article h6 > a {
             text-decoration: none;
         }
 
-        article h1{
+        article h1 {
             font-size: 5rem;
             line-height: 4rem;
         }
 
-        article h2{
-            font-size: 3rem;
+        article h2 {
+            font-size: 2.5rem;
             line-height: 3.5rem;
             padding: 1.2rem 0;
         }
-        article p code{
-            font-family: "Fira Code", monospace;
+        article h3 {
+            font-size: 2rem;
+            line-height: 3.5rem;
+            padding: 1.2rem 0;
+        }
+        article p code {
+            font-family: 'Fira Code', monospace;
             font-size: 1.1rem;
             line-height: 2.5rem;
             color: #ee1ccb;
@@ -120,14 +176,20 @@ recommended = recommended.filter(
             padding: 0.25rem;
             border-radius: 0.25rem;
         }
-        article #credits{
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+        article strong{
+            font-weight: 700;
+        }
+        article #credits {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+                'Helvetica Neue', sans-serif;
             text-align: center;
             font-size: 0.8rem;
         }
 
-        article pre{
-            font-family: "Fira Code", monospace;
+        article pre {
+            font-family: 'Fira Code', monospace;
             font-size: 1.1rem;
             line-height: 2.5rem;
             padding: 1rem;
@@ -136,49 +198,59 @@ recommended = recommended.filter(
             border-radius: 0.5rem;
         }
 
-        article ol, ul{
-            font-size: 1.1rem;
-            font-weight: 100;
-            line-height: 3.6rem;
-            padding: 0 2rem;
+        article ul {
+            padding: 0 1rem;
             list-style: initial;
         }
 
+        article ol {
+            padding: 0 1rem;
+            list-style: decimal;
+        }
+
+        article li {
+            padding: 0;
+            font-size: 1.2rem;
+            font-weight: 100;
+            line-height: 3.6rem;
+        }
+
         @media screen and (max-width: 768px) {
-            article h1{
+            article h1 {
                 font-size: 3rem;
                 line-height: 3.5rem;
             }
-            article h2{
+            article h2 {
                 font-size: 2rem;
                 line-height: 2.5rem;
                 padding: 1rem 0;
             }
-            article p{
+            article p {
                 font-size: 1.1rem;
                 line-height: 2.6rem;
             }
-            article code{
+            article code {
                 font-size: 1rem;
                 line-height: 2rem;
             }
-            article ol, ul{
+            article ol,
+            ul {
                 padding: 0.5rem 1rem;
             }
         }
     </style>
-    <script define:vars={{frontmatter}}>
+    <script define:vars={{ frontmatter }}>
         // console.log(frontmatter.audio);
         audio_playing = false;
-        document.querySelector("#main").addEventListener("click", () => {
-            if(!audio_playing){
+        document.querySelector('#main').addEventListener('click', () => {
+            if (!audio_playing) {
                 if (frontmatter.audio) {
-                toast("Playing Audio, press m to mute");
-                const audio = new Audio(frontmatter.audio);
-                audio.play();
-                audio.volume = 0.8;
-                audio.loop = true;
-                audio_playing = true;
+                    toast('Playing Audio, press m to mute');
+                    const audio = new Audio(frontmatter.audio);
+                    audio.play();
+                    audio.volume = 0.8;
+                    audio.loop = true;
+                    audio_playing = true;
                 }
             }
         });

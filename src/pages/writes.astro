@@ -12,6 +12,8 @@ posts = posts.sort(
         new Date(a.frontmatter.date).getTime()
 );
 
+posts = posts.filter((post: any) => post.frontmatter.draft != true);
+
 let notes = posts.filter((post: any) => post.frontmatter.type == "notes");
 let long = posts.filter((post: any) => post.frontmatter.type == "long");
 let quick = posts.filter((post: any) => post.frontmatter.type == "quick");

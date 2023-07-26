@@ -1,7 +1,7 @@
 {
   "name": "noobscience",
   "type": "module",
-  "version": "1.2",
+  "version": "1.2.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -19,10 +19,15 @@
     "@types/marked": "^5.0.0",
     "@types/react": "^18.2.9",
     "@types/react-dom": "^18.2.4",
+    "algoliasearch": "^4.19.1",
     "astro": "^2.8.3",
     "bootstrap-icons": "^1.10.5",
+    "dotenv": "^16.3.1",
     "framer-motion": "^10.12.16",
+    "glob": "^10.3.3",
+    "gray-matter": "^4.0.3",
     "highlight.js": "^11.8.0",
+    "instantsearch.css": "^8.0.0",
     "marked": "^5.0.5",
     "mdast-util-to-string": "^3.2.0",
     "monaco-editor": "^0.40.0",
@@ -38,6 +43,7 @@
     "remark-html": "^15.0.2",
     "remark-math": "^5.1.1",
     "remark-rehype": "^10.1.0",
+    "remove-markdown": "^0.5.0",
     "svelte": "^4.0.5",
     "tailwindcss": "^3.3.2"
   },

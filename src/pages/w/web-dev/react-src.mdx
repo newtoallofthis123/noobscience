@@ -121,4 +121,174 @@ handles authentication and all that. It is honestly quite cool what people have 
 Moreover, all the data handling is now done by next.js natively. So, you have a loading skelton defined as `loading.tsx` and you have a 
 data not found page, along with an `error.tsx` file for handling error.
 
---In Progress--
+So, to summarize all of this, you no longer need to write complex, but small old cookie cutter logic to fetch data from your api, 
+or do anything server related in next.js. You no longer need to use `getStaticProps` and all that preprocessing stuff that usually used to slow down 
+the initial page hydration. So, forget `swr` and all that stuff you would have needed to configure to have a stable app to api config.
+Your API request loads just once when the page is rendered, keyword here being rendered not hydrated.
+
+As you can quite clearly see, React Server Components make the whole next.js experience a lot more streamlined and a lot more
+data driven. You can now focus on the actual app logic and not worry about the data fetching and all that stuff.
+If that line sounded like corporate talk, it is because it is and the only reason I used it is because it quite succinctly 
+explains the whole thing.
+
+Moreover, the change is not really that paradigm shifting. It is just a change in the way we write our components.
+You can still use the old client components, all you need to do is add the `'use client'` directive at the top of the file.
+As easy as that. All the react hooks and the old react libraries still work A OK. So, you don't need to worry about that.
+
+What really is the problem then?
+
+## The problem
+
+Now, know that I am not like a next.js expert or anything, but I have been using next.js for a while now and I have
+a pretty good idea of how it works. So, I will try and explain the problem as best as I can.
+
+The problem is not with the React Server Components themselves. They are a great addition to the React ecosystem and
+have a lot of potential.
+The problem people have is with the next.js `app/` router. The problem is that it is a significant change to the way
+we write our next.js apps and by extension, our react apps.
+Most people argue that it is too much of a change and that it is not worth it.
+
+Now the next.js team has been very clear about this. They are not forcing anyone to use the `app/` router. They are
+merely making this exciting new feature the default experience. So, you can still use your old next.js app routes
+and your old client components. They are not going anywhere. However, the next.js team has made it very clear that
+they want to move to React Server Components and the `app/` router in the future. So, it is not a matter of if, but
+when. 
+
+In my _personal opinion_, I think the next.js team is hinting at slowly deprecating the old next.js app routes and
+switching to the new `app/` router. Now I think they have a good reason for this that I will explain later on in the
+article. However, to give credit where credit is due, the next.js team has been doing a fantastic job of listening to
+the community and taking feedback and also just being responsive and transparent about the whole thing. So, props to 
+them for that.
+
+Let's now get into the nitty gritty of the problem. The problem is that the next.js `app/` router is a significant change
+to the "react way" of doing things.
+So, the most basic of "react things" have been changed. For example, if you needed a form in your react app, you would
+have to use the `useState` hook to manage the state of the form. However, in the next.js `app/` router, you can't do that.
+You would have to use the `e.currentTarget.value` to get the value of the input. Now, this is not a big deal, but when you zoom 
+out and look at the whole picture, you can see that the next.js `app/` router is not as easy to migrate to as the next.js team
+would like you to believe.
+
+```tsx
+// Old way
+
+import React, { useState } from 'react'
+
+export default function ReactComponent({}: {}) {
+  const [value, setValue] = useState("")
+
+  return (
+    <div>
+        <input 
+        type="text" 
+        value={value} 
+        onChange={(e) => setValue(e.currentTarget.value)} 
+        />
+    </div>
+  )
+}
+```
+
+```tsx
+// New way
+
+import React from 'react'
+
+type Props = {}
+
+async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    console.log(e.name.value)
+}
+
+export default async function ReactComponent({}: Props) {
+  return (
+    <form onSubmit={handleSubmit}>
+        <input name="name" type="text" />
+    </form>
+  )
+}
+
+```
+
+You would have to change some of the most fundamental workings of your components, which when you think about it, is a lot of work and money.
+Remember next.js is not just used for portfolio websites. It is used for large scale enterprise applications that have a lot of
+moving parts and complex business logic. Let's just say you have a hard time convincing your boss to migrate to the next.js `app/` router.
+
+## Recommendations
+
+As always in my dev stories, I would not like to leave you with the definitive answer to the problem, mostly because I don't know myself.
+However, here are some of my recommendations on how to go about this if you are a next.js dev.
+
+1. **Don't panic** - The next.js team has made it very clear that they are not forcing anyone to use the `app/` router. They are merely
+making it the default experience. So, you can still use your old next.js app routes and your old client components. They are not going anywhere.
+
+2. **Get a Scale** - See how complex your app is. If it is a simple portfolio website, then you can probably migrate to the `app/` router
+without much hassle. However, if you are working on a large scale enterprise application, then you might want to wait a bit and see how the
+next.js `app/` router evolves and mostly how the community reacts to it.
+
+3. **Check core dependencies** - If you are using a lot of third party libraries, then you might want to check if they are compatible with
+the next.js `app/` router. If they are not, then you might want to wait a bit. Many of javascript libraries are open source and are maintained
+by independent developers. So, it might take a while for them to migrate to the new `app/` router. So, you might want to wait a bit before you end up
+with a half baked app.
+
+4. **Start small** - If you are still adamant on migrating to the `app/` router, then I recommend you start small. Start with a small component
+that is not too complex and doesn't use _any_ third party libraries. Then, slowly, but surely, migrate to the `app/` router. This way, you can 
+follow the next.js team's advice and incrementally migrate to the `app/` router.
+You might mark this method as "next.js approved". Good starting points are maybe your `/about` page or your footer component.
+
+5. **Make a plan** - If you are still adamant on migrating to the `app/` router, then I recommend you make a plan. Start by first having a clear 
+understanding of your component tree and your layout structure. Then, start by migrating the most basic components and then slowly move up the
+hierarchy. This way, you can immediately see if something is not working and you can fix it before it becomes a problem.
+Make sure you use the next.js `app/` router docs as a reference. They are quite good and have a lot of examples.
+
+6. **Don't Switch** - If you are a large scale enterprise application, then I recommend you don't switch to the `app/` router. The next.js team
+is still working on a lot of things and the best is yet to come. So, I recommend you wait a bit and see how the next.js `app/` router evolves.
+Moreover, the next.js team has made it very clear that they are not forcing anyone to use the `app/` router. Hence, I am pretty 
+sure that for the for seeable future, at least for enterprise applications, the next.js page routes will be supported.
+
+7. **Don't just use `'use client'`** - If you are migrating to the `app/` router, then I recommend you don't just use the `'use client'` directive
+to each and every one of your react client components. Trust me I did that and it is not fun. I basically had to _rewrite_ all of my components.
+So, I recommend you use the `'use client'` directive only for the components you know need it. For example, your responsive navbar component might
+need it, but your contact component might not. So, use it only where you need it. Then again, planning (point 5) is key here.
+
+8. **Ask for help to _people_** - If you encounter any problems, then I recommend you ask for help from the community. The next.js team has been
+very responsive and transparent about the whole thing. I know asking chatGPT sounds way easier, but remember, this is a new technology and it is
+still not very well documented. So, I recommend you ask for help from the community. They are very helpful and will help you out.
+Some useful places are given down in the resources section.
+
+## Conclusion
+
+Now, I for one have every less applications written in next.js. I have a few small scale applications that I am leaving as is.
+I tried migrating my v.3 site to the `app/` router before I made the [shift to astro](/e/🌏) and it was not the best.
+As I pointed out in point 7 of the recommendations, I basically just used the `'use client'` directive to all of my components and
+it made the whole thing a lot more complex than it needed to be. So, I recommend you don't do that.
+Rewrite all of the components that need to be rewritten and then use the `'use client'` directive only where you need it.
+However, all the projects of mine that I am working on right now are all using the `app/` router and I am loving it.
+I think I am slowly getting the hang of it and I am starting to see the benefits of the `app/` router.
+So, I recommend you try it out and see if it works for you. If it doesn't, then you can always switch back to the old next.js app routes.
+However, eventually, you will have to migrate to the `app/` router. So, I recommend you start small and start early, if you are a small scale
+application. If you are a large scale enterprise application, then I recommend you wait a bit and see how the next.js `app/` router evolves.
+There are a lot of exciting things coming up and I am sure the next.js team will make the migration process a lot easier.
+
+In my personal opinion, React Server Components are a great addition to the React ecosystem. They have a lot of potential and
+I am excited to see where the react team takes it. However, it needs to be acknowledged that the next.js `app/` router is a significant
+change to the way we write our next.js apps and even though the next.js team has been quite helpful and transparent about the whole thing,
+there needs to be more well written documentation and examples on how to migrate to the `app/` router.
+
+I for one have to give kudos to the supabase team for their [supabase](https://supabase.io/docs) docs. They didn't take 
+long to rewrite most of their documentation and examples to the new `app/` router. So, props to them for that.
+
+With that being said, I hope you enjoyed this dev story. I know it was a bit long, but I hope you got something out of it.
+Have any questions or suggestions? Feel free to reach out to me on my [contact page](/contact). Would love to hear from you.
+Thanks for reading and have a nice day!
+
+## Resources
+
+- [Next.js Docs](https://nextjs.org/docs/getting-started/react-essentials)
+- [Next.js GitHub Discussions](https://github.com/vercel/next.js/discussions)
+- [RSC's Explained](https://github.com/reactwg/server-components/discussions/4)
+- [Responding to Reddit on the Next.js App Router - Lee Robinson]("https://www.youtube.com/watch?v=-YO_z14dUyI")
+- [Incrementally adopt the Next.js App Router - Lee Robinson](https://www.youtube.com/watch?v=YQMSietiFm0)
+- [Is Next.js App Router SLOW? Performance Deep Dive - Theo - t3.gg](https://www.youtube.com/watch?v=HbUDiNlU6Yw)
+- [Next.js App Router REVIEW (Six Months In Prod) - Theo - t3.gg](https://www.youtube.com/watch?v=zsa9Ey9INEg)
+- [Next.js App Router: Routing, Data Fetching, Caching - Vercel](https://www.youtube.com/watch?v=gSSsZReIFRk)
