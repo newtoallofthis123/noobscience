@@ -62,7 +62,7 @@ export default function Search({ term = '' }: any) {
                             key={post.url}
                             className="flex flex-col justify-center items-center md:justify-normal md:items-start md:flex-row md:p-4 p-1 border-gray-400 border-b-2"
                         >
-                            <div className="md:p-4 p-1">
+                            <div className="p-4">
                                 <p className="text-2xl text-center md:text-justify font-bold">
                                     {post.frontmatter.emoji && (
                                         <span>{post.frontmatter.emoji} </span>
