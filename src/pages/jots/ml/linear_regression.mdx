@@ -1,0 +1,208 @@
+---
+title: Linear Regression
+author: Ishan
+layout: "../../../layouts/blog_post.astro"
+description: "Linear Regression discussed mathematically and with code"
+date: 2023-07-03
+tags: ["ml", "regression", "linear"]
+color: "#000"
+bg: "#f65858"
+type: notes
+emoji: 📈
+category: ml
+---
+
+Regression is basically a method to predict any continuous dataset.
+It is a supervised learning algorithm. So, we need to have a dataset with labels.
+The best way I can explain this is by giving an example.
+Let's say we have a dataset of house prices in a city.
+The dataset contains the area of the house and the price of the house.
+So, in this case, the area of the house is the independent variable and the price of the house is the dependent variable.
+Now, we want to predict the price of a house given its area.
+Hence, mathematically, this can be represented as:
+
+$$
+
+f(X) = y
+
+$$
+
+where $$X$$ is the area of the house and $$y$$ is the price of the house.
+Now, we need to find a function $$f$$ that can predict the price of the house given its area.
+
+## Linear Regression
+
+Now, if you remember your high school math, you might remember that the equation of a line is:
+
+$$
+y = mx + c
+$$
+
+where $$m$$ is the slope of the line and $$c$$ is the y-intercept.
+However, in fancy math terms, these are called the parameters of the line.
+In the case of linear regression, the slope
+is called the coefficient and the y-intercept is called the intercept.
+So, the equation of a line in the case of linear regression is:
+
+$$
+y = \beta_0 + \beta_1x
+$$
+
+where $$\beta_0$$ is the intercept and $$\beta_1$$ is the coefficient.
+
+Hence, basically we are trying to find a line equation that perfectly fits the data.
+So, imagine a line that passes through all the points in the dataset.
+
+![Regression](https://github.com/newtoallofthis123/math/blob/main/code/regression/regression_files/regression_2_1.png?raw=true)
+
+Now, this is not possible in real life.
+We can't find a line that passes through all the points in the dataset.
+However, we can find a line that is as close as possible to all the points in the dataset.
+This is called the best fit line.
+
+## Cost Function
+
+So, how to find the best line that fits the data?
+Well, we need to find the best values of $$\beta_0$$ and $$\beta_1$$.
+But, how do we find the best values?
+
+Well, we need to define what is called a cost function.
+A cost function is basically a function that tells us how good our line is.
+So it measures the error of our predicted line from the actual data.
+Since we are actually using labels and this is a supervised learning algorithm, we can actually calculate the error
+of our predicted line from the actual data.
+
+Now there are various cost functions that we can use.
+However, the most common one is the mean squared error.
+The mean squared error is basically the average of the squared difference between the predicted value and the actual value.
+So, mathematically, it can be represented as:
+
+$$
+MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y_i})^2
+$$
+
+where $$y_i$$ is the actual value and $$\hat{y_i}$$ is the predicted value.
+
+Now, we need to find the values of $$\beta_0$$ and $$\beta_1$$ that minimize the cost function.
+Then, the line that we get will be the best fit line.
+
+## Gradient Descent
+
+Now, how do we find the values of $$\beta_0$$ and $$\beta_1$$ that minimize the cost function?
+Well, we can use a method called gradient descent.
+
+Gradient descent is basically an optimization algorithm that is used to find the minimum of a function.
+So, in gradient descent, we define a learning rate.
+Then we take the derivative of the cost function with respect to the parameters.
+Then we update the parameters using the following formula:
+
+$$
+\beta_0 = \beta_0 - \alpha\frac{\partial}{\partial\beta_0}MSE
+$$
+
+$$
+\beta_1 = \beta_1 - \alpha\frac{\partial}{\partial\beta_1}MSE
+$$
+
+where $$\alpha$$ is the learning rate.
+
+Now, we keep on updating the parameters until we reach the minimum of the cost function.
+The thing about gradient descent is that it goes slowly towards the minimum.
+Hence, the chances of overshooting the minimum are very less.
+However, it is very slow. Hence, usually, an optimized version of gradient descent, called stochastic gradient descent
+is used.
+
+## Code
+
+Now, let's see how to implement linear regression in Python.
+We will be using the scikit-learn library for this and the dataset that we will be using is linked [here](https://bit.ly/3goOAnt).
+
+<span class="font-mono text-sm p-0">linear_regression.ipynb</span>
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+df = pd.read_csv('https://bit.ly/3goOAnt', delimiter=',')
+
+x = df.values[:, -1].reshape(-1, 1)
+y = df.values[:, -1].reshape(-1, 1)
+
+fit = LinearRegression().fit(x, y)
+
+m = fit.coef_.flatten()
+b = fit.intercept_.flatten()
+
+print(f"m = {m}, b = {b}")
+plt.scatter(x, y)
+plt.plot(x, m*x + b, color='red')
+plt.show()
+```
+
+Now let us go through the code line by line.
+First, we import the necessary libraries.
+We will be needing pandas to process the dataset, matplotlib to plot the graph
+for better visualization and `sklearn.linear_model` to use the LinearRegression function.
+Now, we are using quite a bit of abstraction here.
+The actual LinearRegression function is quite complex.
+However, we are using it as a black box.
+
+Next, we split the dataset into the independent and dependent variables.
+X is the independent variable and y is the dependent variable.
+After that, we reshape the variables and finally
+we fit the model using the LinearRegression function.
+Now, we get the values of $$\beta_0$$ and $$\beta_1$$ using the `coef_` and `intercept_` functions.
+Finally, we plot the graph using matplotlib.
+
+## The LinearRegression function
+
+Now, let's take a look at the LinearRegression function.
+We know we have a dataset of X and y.
+So, we can now define two y variables.
+
+$$
+y_{pred} = \beta_0 + \beta_1x
+$$
+
+$$
+y_{actual} = y
+$$
+
+Here, we randomly initialize the values of $$\beta_0$$ and $$\beta_1$$.
+Then, we calculate the difference between the predicted value and the actual value.
+
+```python
+import pandas as pd
+import math
+
+df = pd.read_csv('https://bit.ly/3goOAnt', delimiter=',').itertuples()
+
+residuals = []
+
+m = 1.832
+b = 4.7
+
+for point in df:
+    actual = point.y
+    predicted = m*point.x + b
+    residuals.append(round(math.pow(actual - predicted, 2), 2))
+
+print(residuals)
+```
+```
+[2.35, 2.68, 0.04, 8.83, 0.02, 0.48, 2.18, 1.84, 14.53, 0.0]
+```
+
+So, we get a list of residuals.
+You can then start to see how the cost function is calculated.
+Start improving the values of $$\beta_0$$ and $$\beta_1$$
+such that the cost function is minimized.
+Hence, we can see that the LinearRegression function is basically
+a black box that does all the work for us.
+
+## Conclusion
+
+So, I hope you enjoyed this small jot.
+Share it with someone who might enjoy it.
+If you have any doubts, feel free to reach out to me on my [contact page](/contact).
+Thanks for reading, hope you have a nice day!

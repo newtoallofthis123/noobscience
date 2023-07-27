@@ -8,6 +8,7 @@ posts = posts.sort(
         new Date(b.frontmatter.date).getTime() -
         new Date(a.frontmatter.date).getTime()
 );
+posts = posts.filter((post: any) => post.frontmatter.draft != true);
 ---
 
 <Base title="Archives">

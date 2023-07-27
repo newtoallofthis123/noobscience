@@ -20,6 +20,7 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                     backgroundColor: bg,
                     color: color,
                 }}
+                id="home_nav"
                 className="p-2"
             >
                 <div id="nav">

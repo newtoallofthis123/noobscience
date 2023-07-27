@@ -16,9 +16,8 @@ posts = posts.filter((post: any) => post.frontmatter.draft != true);
 
 let notes = posts.filter((post: any) => post.frontmatter.type == "notes");
 let long = posts.filter((post: any) => post.frontmatter.type == "long");
-let quick = posts.filter((post: any) => post.frontmatter.type == "quick");
 let dev = posts.filter((post: any) => post.frontmatter.type == "dev");
-let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes(post) && !quick.includes(post) && !dev.includes(post));
+let others = posts.filter((post: any) => !notes.includes(post) && !long.includes(post) && !dev.includes(post));
 ---
 
 <Base title="Ishan Writes">
@@ -37,10 +36,10 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                     <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
                     <div class="flex md:flex-row flex-col py-4 md:gap-x-10 gap-x-5">
                         <button class="btn"><a href="#longs">Long Reads</a></button>
-                        <button class="btn"><a href="#notes">Notes and stuff</a></button>
+                        <!-- <button class="btn"><a href="#notes">Notes and stuff</a></button> -->
                         <button class="btn"><a href="#quips">Quips and Quotes</a></button>
-                        <button class="btn"><a href="#quicks">Saplings</a></button>
                         <button class="btn"><a href="#dev">Devlogs</a></button>
+                        <button class="btn"><a href="/archive">Archives</a></button>
                     </div>
                     <span class="block w-40 h-1 mb-5 bg-red-600"></span>
                 </div>
@@ -114,14 +113,14 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                         If you can't already tell my looking at the design and stuff, this site is losely inspired by <a class="underline" href="https://maggieappleton.com/garden-history">Maggie Appleton</a>.
                     </p>
                     <p>
-                        <a href="/latest">
+                        <a href="/archive">
                             <span class="text-2xl text-red-600 font-regular">See all my latest posts</span>
                         </a>
                     </p>
                 </div>
             </div>
-            <!-- <div>
-                <h1 id="notes" class="md:text-5xl text-3xl font-bold p-4 font-heading">
+            <div>
+                <h1 id="notes" class="md:text-5xl mx-4 text-3xl font-bold p-4 font-heading">
                     My Jots and Notes 
                 </h1>
                 <div class="md:grid md:grid-cols-2 gap-4">
@@ -145,7 +144,7 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                         })
                     }
                 </div>
-            </div> -->
+            </div>
             <span class="block w-2/5 bg-red-600 h-0.5 my-10"></span>
             <div id="quips" class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-2/5 w-full">
@@ -169,13 +168,9 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
             <div id="quicks" class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-1/2 md:px-5 px-1">
                     <h1 class="md:text-5xl text-3xl pb-4 font-heading">
-                        Quicks
+                        Miscellaneous
                     </h1>
                     <p class="py-2">
-                        Because the best things in life are short and sweet.
-                        Just a some small thoughts and ideas that I have. They are not long enough to be a full post, but they are still worth sharing.
-                        Most likely will turn into a full post later, so, they are still small seedlings.
-                        So, please treat them as just random thoughts and ideas. Don't be too harsh on them.
                     </p>
                     <div>
                         <img class="md:w-3/5 w-full" src="/assets/images/seedling.webp" alt="Seedling.webp">
@@ -183,12 +178,12 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                 </div>
                 <div class="md:w-1/2 w-full md:px-10 px-2">
                     {
-                        quick.slice(0, 3).map((post)=>{
+                        others.slice(0, 3).map((post)=>{
                             return (
                                 <div onclick={
                                             "location.href = '" + post.url + "'"
                                         } class="md:p-4 px-1 my-5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
-                                    <span id="p-heading">#{post.frontmatter.category}</span>
+                                    <span id="p-heading">@{post.frontmatter.category}</span>
                                     <h1 class="md:text-3xl text-xl leading-relaxed font-bold">
                                         {post.frontmatter.emoji}{' '}{post.frontmatter.title}
                                     </h1>
@@ -202,11 +197,6 @@ let normal = posts.filter((post: any) => !notes.includes(post) && !long.includes
                             )
                         })
                     }
-                    <p class="p-4">
-                        <a href="/type/quick">
-                            <span class="text-3xl font-bold">All Quicks</span>
-                        </a>
-                    </p>
                 </div>
             </div>
         </div>
