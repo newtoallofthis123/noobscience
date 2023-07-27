@@ -6,8 +6,10 @@ export interface Props {
     selection_only?: boolean;
     img?: string;
     description?: string;
+    selection_color?: string;
+    selection_bg?: string;
 }
-const {title, img, description, color, bg, selection_only=true} = Astro.props
+const {title, img, description, color, bg, selection_only=true, selection_color="#fff", selection_bg="#2500ff"} = Astro.props
 import "../base.css"
 import '../components/styles/nav.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -104,6 +106,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     <style is:global define:vars={{
         bg: bg || "#170dd3",
         color: color || "#fff",
+        selection_bg: selection_bg || "#2500ff",
+        selection_color: selection_color || "#fff",
     }}>
         html{
             scroll-behavior: smooth;
@@ -113,12 +117,12 @@ import "bootstrap-icons/font/bootstrap-icons.css";
             background: var(--bg);
         }
         .colored ::selection {
-            background: #2500ff;
-            color: #fff;
+            background: var(--selection_bg);
+            color: var(--selection_color);
         }
         .colored ::-moz-selection {
-            background: #2500ff;
-            color: #fff;
+            background: var(--selection_bg);
+            color: var(--selection_color);
         }
         ::selection {
             background: var(--bg);

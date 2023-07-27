@@ -6,15 +6,15 @@ const { frontmatter } = Astro.props;
 const BASE_URL = Astro.url.host;
 let selection_only = true;
 
-if(frontmatter.selection_only === false){
+if (frontmatter.selection_only === false) {
     selection_only = false;
 }
 
-if(frontmatter.draft){
+if (frontmatter.draft) {
     Astro.redirect('/404');
 }
 
-if(frontmatter.redirect){
+if (frontmatter.redirect) {
     Astro.redirect(frontmatter.redirect);
 }
 
@@ -94,9 +94,7 @@ recommended = recommended.filter(
                     {frontmatter.title}
                 </h1>
                 <p class="text-gray-500 md:text-3xl text-2xl py-5">
-                    {new Date(frontmatter.date).toDateString()} • {
-                        frontmatter.minutesRead
-                    }
+                    {new Date(frontmatter.date).toDateString()} | Headphones Recommended 🎧
                 </p>
                 {
                     frontmatter.img && (
@@ -110,6 +108,14 @@ recommended = recommended.filter(
                     )
                 }
                 <article class="md">
+                    <p>
+                        {frontmatter.description}
+                    </p>
+                    <iframe src={"https://podcasters.spotify.com/pod/show/noobscience/embed/episodes/" + frontmatter.audio_url} class="w-full h-3/5 my-5" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+                    <p>
+                        The above is a audio blog hosted on spotify. You can listen to it here or login to spotify and listen to it there for a better experience.
+                        The author is not responsible for the privacy policies of spotify.
+                    </p>
                     <slot />
                 </article>
             </div>
@@ -192,7 +198,7 @@ recommended = recommended.filter(
             border-radius: 0.25rem;
         }
 
-        article strong{
+        article strong {
             font-weight: 700;
         }
         article #credits {
@@ -252,36 +258,10 @@ recommended = recommended.filter(
             ul {
                 padding: 0.5rem 1rem;
             }
-            article li{
+            article li {
                 font-size: 1rem;
                 line-height: 2.6rem;
             }
         }
-        .math{
-            margin: 1rem 0;
-        }
-        .math svg{
-            margin: 0;
-            padding: 0;
-            line-height: 0;
-            font-size: 1.3rem;
-            display: inline;
-        }
     </style>
-    <script define:vars={{ frontmatter }}>
-        // console.log(frontmatter.audio);
-        audio_playing = false;
-        document.querySelector('#main').addEventListener('click', () => {
-            if (!audio_playing) {
-                if (frontmatter.audio) {
-                    toast('Playing Audio, press m to mute');
-                    const audio = new Audio(frontmatter.audio);
-                    audio.play();
-                    audio.volume = 0.8;
-                    audio.loop = true;
-                    audio_playing = true;
-                }
-            }
-        });
-    </script>
 </Base>
