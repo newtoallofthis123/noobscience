@@ -224,9 +224,9 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                         </svg> */}
                                         <img
                                             src="/assets/icons/search_left.png"
-                                            className="w-10"
+                                            className="w-8"
                                             width="32"
-                                            alt=""
+                                            alt="Search Icon"
                                         />
                                     </div>
                                 </div>

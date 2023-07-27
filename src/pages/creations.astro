@@ -1,15 +1,87 @@
 ---
 import Base from "../layouts/base.astro";
 import HomeNav from "../components/navigation/home_nav";
+
+const projects = [
+    {
+        "name": "NoobPaste",
+        "description": "NoobPaste is a simple PasteBin clone made with Flask and Jquery. It has a simple UI and an easy to use API. I am quite proud of this project, as it was my first proper web project. It mostly uses Bootstrap for the UI, and I have used the CodeMirror library for the code editor.",
+        "langs": ["python", "javascript", "flask", "jquery"],
+        "github": "https://github.com/newtoallofthis123/NoobPaste",
+    },
+    {
+        "name": "My Website",
+        "description": "My personal website, made with Astro.",
+        "langs": ["javascript", "astro", "tailwindcss"],
+        "github": "https://github.com/newtoallofthis123/noobscience",
+    },
+    {
+        "name": "Cache",
+        "langs": ["javascript", "next.js", "tailwindcss", "python", "flask"],
+        "description": "A simple and beautiful hospital management system.",
+        "github": "https://github.com/newtoallofthis123/clicky",
+    },
+    {
+        "name": "YTPS",
+        "description": "Standing for YouTube Terminal Search and Play, this is a simple script that allows you to search and play YouTube videos from the terminal.",
+        "langs": ["python", "rich cli"],
+        "github": "https://github.com/newtoallofthis123/ytps",
+    },
+    {
+        "name": "NoobGo",
+        "description": "A Url shortener made with Node.js and MongoDB.",
+        "langs": ["javascript", "astro", "tailwindcss", "mongodb"],
+        "github": "https://noobscience.rocks/go",
+    },
+    {
+        "name": "rustydo",
+        "langs": ["rust", "cli"],
+        "description": "A todo cli made with Rust, just to learn the language.",
+        "github": "https://github.com/newtoallofthis123/rustydo",
+    }
+]
 ---
 
-<Base color="#000" bg="#a3a3a3" selection_only={false} title="Ishan's Creations">
-    <HomeNav title="Projects and More" color="#000" bg="#a3a3a3" client:load />
-    <div class="p-4">
-        <div>
-            <p>
-                In my journey into tech, I have created a lot of things. Some of them are listed below. 
-            </p>
+<Base color="#000" bg="#ebfff9" title="Ishan's Creations">
+    <HomeNav color="#000" bg="#ebfff9" title="Projects that worked I have" client:load />
+    <div class="p-4">        
+        <div class="flex justify-center items-center">
+            <div class="md:w-4/5 w-full">
+                <p>
+                    I am primarily a web developer, but I also like to dabble in other things. Here are some of my creations.
+                    They are all open source, so feel free to check them out and contribute!
+                    I know that some of them are not the best, but I am always learning and improving.
+                </p>
+                <h1 class="text-2xl md:text-4xl font-heading py-3 pt-6">
+                    My Major Creations
+                </h1>
+                {
+                    projects.map((project) => (
+                        <div class="py-4">
+                            <div class="flex flex-row justify-between">
+                                <div>
+                                    <h1 class="text-xl md:text-3xl py-2 font-bold">{project.name}</h1>
+                                    <p class="text-gray-700 text-xl leading-8">{project.description}</p>
+                                </div>
+                                <div>
+                                    <a href={project.github} class="inline-block text-blue-600 ml-2 transition-all duration-300 transform hover:translate-x-1" target="_blank" rel="noopener noreferrer">
+                                        <i class="bi bi-arrow-right text-4xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex flex-row">
+                                {
+                                    project.langs.map((lang) => (
+                                        <div class="p-1 my-2 mr-4 bg-gray-200 rounded-md">
+                                            <p class="text-lg">{lang}</p>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     </div>
 </Base>
