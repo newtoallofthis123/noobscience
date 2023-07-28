@@ -1,0 +1,288 @@
+---
+title: Binary Search Trees
+description: Binary Search Tree, implemented in C
+date: 2023-07-26
+author: Ishan
+layout: "../../../layouts/blog_post.astro"
+tags: ["c", "trees", "bst", "dsa"]
+category: "dsa"
+type: notes
+emoji: 🌲
+color: "#000"
+bg: "#26fbe0"
+---
+
+Binary search trees are a type of binary tree that satisfies the following properties:
+
+- The left subtree of a node contains only nodes with keys lesser than the node's key.
+- The right subtree of a node contains only nodes with keys greater than the node's key.
+- The left and right subtree each must also be a binary search tree.
+
+Once all of these properties are satisfied, we can perform operations like searching, insertion, and deletion in O(log n) time.
+Which is what makes them so useful.
+Usually, we use binary search trees to store data that can be compared, like numbers or strings.
+
+{/* [![bst](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/1200px-Binary_search_tree.svg.png)](https://en.wikipedia.org/wiki/Binary_search_tree) */}
+
+[![austingwalters bst](https://austingwalters.com/wp-content/uploads/2014/10/binary-tree-1-pre-order.gif)](https://austingwalters.com/binary-trees-traversals-everyday-algorithms/binary-tree-1-pre-order/)
+<p id="credits">Credit: austingwalters</p>
+
+So, in this small jot, we'll be looking at implementing the following operations on a binary search tree:
+
+- Insertion
+- Deletion
+- Searching
+- Traversal (Inorder, Preorder, Postorder)
+- Finding the minimum and maximum elements
+- Finding the height of the tree
+
+## Init
+
+First, we'll need to define a node structure for our tree and write a function to create a new node.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+  int data;
+  struct node *left;
+  struct node *right;
+} *root = NULL;
+
+struct node *getNode(int data)
+{
+  struct node *new_node = (struct node *)malloc(sizeof(struct node));
+  new_node->data = data;
+  new_node->left = NULL;
+  new_node->right = NULL;
+  return new_node;
+}
+```
+
+## Insertion
+
+Insertion in a binary search tree is pretty straightforward.
+We just need to traverse the tree until we find a node whose value is greater than the value we want to insert.
+Then, we insert the new node as the left or right child of that node, depending on whether the value is lesser or greater than the node's value.
+
+```c
+struct node *insert(struct node *root, int data)
+{
+  if (root == NULL)
+  {
+    root = getNode(data);
+  }
+  else if (data <= root->data)
+  {
+    root->left = insert(root->left, data);
+  }
+  else
+  {
+    root->right = insert(root->right, data);
+  }
+  return root;
+}
+```
+
+## Deletion
+
+Deletion is a bit more complicated than insertion.
+We need to consider three cases:
+
+- The node to be deleted is a leaf node (no children)
+- The node to be deleted has one child
+- The node to be deleted has two children
+
+_A leaf node is a node that has no children._
+
+```c
+void delete(struct node *root, int data)
+{
+  if (root == NULL)
+  {
+    return;
+  }
+  else if (data < root->data)
+  {
+    delete (root->left, data);
+  }
+  else if (data > root->data)
+  {
+    delete (root->right, data);
+  }
+  else
+  {
+    if (root->left == NULL && root->right == NULL)
+    {
+      free(root);
+      root = NULL;
+    }
+    else if (root->left == NULL)
+    {
+      struct node *temp = root;
+      root = root->right;
+      free(temp);
+    }
+    else if (root->right == NULL)
+    {
+      struct node *temp = root;
+      root = root->left;
+      free(temp);
+    }
+    else
+    {
+      struct node *temp = root->right;
+      while (temp->left != NULL)
+      {
+        temp = temp->left;
+      }
+      root->data = temp->data;
+      delete (root->right, temp->data);
+    }
+  }
+}
+```
+
+## Searching
+
+To search, we just need to traverse the tree until we find a node whose value is equal to the value we want to search for.
+
+```c
+int search(struct node *root, int data)
+{
+  if (root == NULL)
+  {
+    return 0;
+  }
+  else if (root->data == data)
+  {
+    return 1;
+  }
+  else if (data <= root->data)
+  {
+    return search(root->left, data);
+  }
+  else
+  {
+    return search(root->right, data);
+  }
+}
+```
+
+## Traversal
+
+Traversal is the process of visiting each node in the tree exactly once.
+There are three ways to traverse a tree:
+
+- Inorder (Left, Root, Right)
+- Preorder (Root, Left, Right)
+- Postorder (Left, Right, Root)
+
+```c
+void displayInorder(struct node *root)
+{
+  if (root == NULL)
+  {
+    return;
+  }
+  displayInorder(root->left);
+  printf("%d ", root->data);
+  displayInorder(root->right);
+}
+
+void displayPreorder(struct node *root)
+{
+  if (root == NULL)
+  {
+    return;
+  }
+  printf("%d ", root->data);
+  displayPreorder(root->left);
+  displayPreorder(root->right);
+}
+
+void displayPostorder(struct node *root)
+{
+  if (root == NULL)
+  {
+    return;
+  }
+  displayPostorder(root->left);
+  displayPostorder(root->right);
+  printf("%d ", root->data);
+}
+```
+
+## Finding the minimum and maximum elements
+
+The minimum element in a binary search tree is the leftmost node.
+The maximum element in a binary search tree is the rightmost node.
+
+```c
+int min_ele(struct node *root)
+{
+  if (root->left == NULL)
+  {
+    return root->data;
+  }
+  min_ele(root->left);
+}
+
+int max_ele(struct node *root)
+{
+  if (root->right == NULL)
+  {
+    return root->data;
+  }
+  max_ele(root->right);
+}
+```
+
+## Finding the height of the tree and the number of nodes
+
+The height of a tree is the number of edges in the longest path from the root node to a leaf node.
+To find the height of a tree, we need to find the height of the left and right subtrees and return the maximum of the two heights.
+The number of nodes in a tree is the number of nodes in the left subtree plus the number of nodes in the right subtree plus one (for the root node).
+
+```c
+int getMax(int a, int b)
+{
+  return (a > b) ? a : b;
+}
+
+int getHeight(struct node *root)
+{
+  if (root == NULL)
+  {
+    return -1;
+  }
+  else
+  {
+    return (1 + getMax(getHeight(root->left), getHeight(root->right)));
+  }
+}
+
+int countNodes(struct node *root)
+{
+  if (root == NULL)
+  {
+    return 0;
+  }
+  else
+  {
+    return (1 + countNodes(root->left) + countNodes(root->right));
+  }
+}
+```
+
+## Conclusion
+
+Hence, these were all the basic operations that can be performed on a binary search tree.
+Binary search trees are a very important data structure and are used in many applications.
+The thing that makes them so useful is that they have a very fast search time.
+The time complexity of searching in a binary search tree is O(log n), where n is the number of nodes in the tree.
+Hence, binary search trees are very useful when we need to search for elements in a sorted list.
+
+With that being said, thank you for reading this quick jot on binary search trees. I hope you have a great day!

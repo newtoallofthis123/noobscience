@@ -1,0 +1,469 @@
+---
+title: Linked Lists in C
+description: Easy to read notes on Linked lists, implemented in C
+date: 2023-07-20
+author: Ishan
+layout: "../../../layouts/blog_post.astro"
+tags: ["c", "linked lists", "dsa", "lists"]
+category: "dsa"
+type: notes
+emoji: ➡️
+color: "#000"
+bg: "#26fbe0"
+---
+
+Arrays in c are not always the best and are sometimes more pain then they are worth.
+For example, if I want to add an element to an array, I have to create a new array with a larger size, copy all the elements from the old array to the new array, and then add the new element to the new array.
+This is a lot of work and is not very efficient. This is where linked lists come in.
+
+## What is a linked list?
+
+A linked list is a data structure that is made up of nodes that are linked together.
+Each node contains a value and a pointer to the next node in the list.
+By convention, the last node in the list points to a null pointer.
+
+<small>An Integer List Node</small>
+```c
+struct node{
+  int data;
+  struct node *next;
+} *head;
+```
+
+Hence, we get something like this:
+
+[![Geek for Geeks Singly Linked List](https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200922124319/Singly-Linked-List1.png)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200922124319/Singly-Linked-List1.png)
+<p id="credits">Credit: Geeks for Geeks</p>
+
+## Complexities
+
+The complexities of linked lists and arrays are compared below:
+
+| Operation | Array | Linked List |
+| --- | --- | --- |
+| Access | O(1) | O(n) |
+| Search | O(n) | O(n) |
+| Insertion | O(n) | O(1) |
+| Deletion | O(n) | O(1) |
+
+Hence, as you can clearly see from the complexities, arrays are ideal or reading, whearas linked lists are ideal for insertion and deletion.
+So, in most cases, linked lists are finally stored as arrays in databases for faster access.
+
+## Implementing a linked list
+
+The following functions are implemented in the code below:
+
+- `createNode()` - Creates a new node
+- `insert` - Inserts a node at a given position in the list
+- `delete()` - Deletes a node from a given position in the list
+- `display()` - Displays the list
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// Node structure and head pointer to NULL
+struct node{
+  int data;
+  struct node *next;
+} *head = NULL;
+
+// Function to create a new node
+struct *node *createNode(int data){
+  struct node *newNode = (struct node *)malloc(sizeof(struct node));
+  newNode->data = data;
+  newNode->next = NULL;
+  return newNode;
+}
+
+// Function to create a new node
+void insert(int data, int pos=0){
+  struct node *newNode = createNode(data);
+  if(pos == 0){
+    newNode->next = head;
+    head = newNode;
+  }
+  else {
+    struct node *temp = head;
+    for(int i = 0; i < pos - 1; i++){
+      temp = temp->next;
+    }
+    newNode->next = temp->next;
+    temp->next = newNode;
+  }
+}
+
+// Function to delete a node
+void delete(int pos){
+  struct node *temp = head;
+  if(pos == 0){
+    head = temp->next;
+    free(temp);
+  }
+  else {
+    for(int i = 0; i < pos - 1; i++){
+      temp = temp->next;
+    }
+    struct node *temp2 = temp->next;
+    temp->next = temp2->next;
+    free(temp2);
+  }
+}
+
+// Function to display the list
+void display(){
+  struct node *temp = head;
+  while(temp != NULL){
+    printf("%d ", temp->data);
+    temp = temp->next;
+  }
+  printf("\n");
+}
+
+```
+
+## A Circular Linked List
+
+A circular linked list is a linked list where the last node points to the first node.
+So, this in turn prevents unnecessary traversal to find the last node. Moreover, it also helps
+prevent memory leaks.
+
+A circular linked list looks something like this:
+
+[![Geek for Geeks Circular Linked List](https://media.geeksforgeeks.org/wp-content/uploads/CircularSinglyLinkedList.png)](https://media.geeksforgeeks.org/wp-content/uploads/CircularSinglyLinkedList.png)
+<p id="credits">Credit: Geeks for Geeks</p>
+
+## Implementing a circular linked list
+
+The following functions are implemented in the code below:
+
+- `createNode()` - Creates a new node
+- `insert` - Inserts a node at a given position in the list
+- `delete()` - Deletes a node from a given position in the list
+- `display()` - Displays the list
+
+<small>Operations in Circular Linked List</small>
+```c
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+  int data;
+  struct node *next;
+};
+struct node *head;
+int c = 0, b = 0;
+
+void insert()
+{
+  int n, p, i;
+  struct node *temp = (struct node *)malloc(sizeof(struct node));
+  struct node *temp2, *x;
+  scanf("%d %d", &n, &p);
+  if (p <= 0 || p > c + 1)
+    printf("Enter a valid position");
+  else
+  {
+    c++;
+    temp->data = n;
+    temp->next = NULL;
+    if (p == 1)
+    {
+      temp->next = head;
+      head = temp;
+      x = head;
+      for (i = 1; i < c; i++)
+      {
+          x = x->next;
+      }
+      x->next = temp;
+    }
+    else
+    {
+    temp2 = head;
+    for (i = 1; i < p - 1; i++)
+      temp2 = temp2->next;
+    temp->next = temp2->next;
+    temp2->next = temp;
+    }
+  }
+}
+void delete()
+{
+  int p, i;
+  struct node *temp1 = head, *temp2, *x;
+  scanf("%d", &p);
+  if (p <= 0 || p > c)
+    printf("Enter a valid position");
+  else
+  {
+    c--;
+    if (p == 1)
+    {
+      head = temp1->next;
+      free(temp1);
+      x = head;
+      for (i = 1; i < c; i++)
+          x = x->next;
+      x->next = head;
+    }
+    else
+    {
+      for (i = 1; i < p - 1; i++)
+      {
+          temp1 = temp1->next;
+      }
+      temp2 = temp1->next;
+      temp1->next = temp2->next;
+      free(temp2);
+    }
+  }
+}
+void display()
+{
+  struct node *ptr;
+  ptr = head;
+  if (ptr == NULL)
+  {
+    printf("List is empty\n");
+    return;
+  }
+  do
+  {
+    printf("%d->", ptr->data);
+    ptr = ptr->next;
+  } while (ptr != head);
+}
+```
+
+## A Doubly Linked List
+
+A doubly linked list is a linked list where each node has two pointers, one pointing to the next node and the other pointing to the previous node.
+So, this in turn prevents unnecessary traversal to find the previous node.
+
+A doubly linked list looks something like this:
+
+[![Medium Doubly Linked List](https://miro.medium.com/v2/resize:fit:2012/1*KTD-Fr2wOHUANnA1QeIr1Q.png)](https://miro.medium.com/v2/resize:fit:2012/1*KTD-Fr2wOHUANnA1QeIr1Q.png)
+<p id="credits">Credit: Medium</p>
+
+## Implementing a doubly linked list
+
+The following functions are implemented in the code below:
+
+- `createNode()` - Creates a new node
+- `insert` - Inserts a node at a given position in the list
+- `delete()` - Deletes a node from a given position in the list
+- `display()` - Displays the list
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+  int data;
+  struct node *next;
+  struct node *pre;
+};
+struct node *head;
+int c = 0, b = 0;
+
+void insert()
+{
+  int n, p, i;
+  struct node *temp = (struct node *)malloc(sizeof(struct node));
+  struct node *temp2, *x;
+  scanf("%d%d", &n, &p);
+  if (p <= 0 || p > c + 1)
+    printf("Enter a valid position");
+  else
+  {
+    c++;
+    temp->data = n;
+    temp->next = NULL;
+    temp->pre = NULL;
+    if (head == NULL)
+      head = temp;
+    else if (p == 1)
+    {
+      x = head;
+      x->pre = temp;
+      temp->next = x;
+      head = temp;
+    }
+    else
+    {
+      temp2 = head;
+      for (i = 1; i < p - 1; i++)
+      {
+        temp2 = temp2->next;
+      }
+      temp->next = temp2->next;
+      temp2->next = temp;
+      temp->pre = temp2;
+      if (p != c)
+      {
+        temp2 = temp->next;
+        temp2->pre = temp;
+      }
+    }
+  }
+}
+
+void delete()
+{
+  int p, i;
+  struct node *temp1 = head, *temp2;
+  scanf("%d", &p);
+  if (p <= 0 || p > c)
+    printf("Enter a valid position");
+  else
+  {
+    c--;
+    if (p == 1)
+    {
+      head = temp1->next;
+      if (c != 0)
+      {
+        temp2 = temp1->next;
+        temp2->pre = temp1->pre;
+      }
+      free(temp1);
+    }
+    else
+    {
+      for (i = 1; i < p - 1; i++)
+      {
+        temp1 = temp1->next;
+      }
+      temp2 = temp1->next;
+      temp1->next = temp2->next;
+      if (p != c + 1)
+      {
+        temp1 = temp2->next;
+        temp1->pre = temp2->pre;
+      }
+      free(temp2);
+    }
+  }
+}
+
+void display()
+{
+  int i;
+  struct node *x, *y;
+  if (head == NULL)
+  {
+    printf("DLL is empty");
+    return;
+  }
+  x = head;
+  y = head;
+  printf("\nFORWARD Traversal: ");
+  while (x != NULL)
+  {
+    printf("%d ", x->data);
+    x = x->next;
+  }
+  printf("\nBACKWARD Traversal: ");
+  for (i = 0; i < c - 1; i++)
+  {
+    y = y->next;
+  }
+  while (y != NULL)
+  {
+    printf("%d ", y->data);
+    y = y->pre;
+  }
+}
+```
+
+## A Stack using Linked List
+
+A stack is a linear data structure that follows the LIFO (Last In First Out) principle. The last element inserted into the stack is the first one to be deleted from the stack.
+A stack can be implemented using an array or a linked list. When implemented using a linked list, the top of the stack is the head of the linked list.
+
+```c
+struct node{
+    int data;
+    struct node *next;
+} *head = NULL;
+
+void push(int ele){
+    struct node *newnode;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = ele;
+    newnode->next = head;
+    head = newnode;
+}
+
+void pop(){
+    struct node *temp = head;
+    head = temp->next;
+    free(temp);
+}
+
+void display(){
+    struct node *temp = head;
+    while(temp != NULL){
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+}
+```
+
+## A Queue using Linked List
+
+A queue is a linear data structure that follows the FIFO (First In First Out) principle. The first element inserted into the queue is the first one to be deleted from the queue.
+A queue can be implemented using an array or a linked list. When implemented using a linked list, the front of the queue is the head of the linked list and the rear of the queue is the last node of the linked list.
+
+```c
+struct node{
+    int data;
+    struct node *next;
+} *front = NULL, *rear = NULL;
+
+void enqueue(int x){
+    struct node *t;
+    t = (struct node *)malloc(sizeof(struct node));
+    if(t == NULL){
+        printf("Queue is full\n");
+    }else{
+        t->data = x;
+        t->next = NULL;
+        if(front == NULL){
+            front = rear = t;
+        }else{
+            rear->next = t;
+            rear = t;
+        }
+    }
+}
+
+int dequeue(){
+    int x = -1;
+    struct node *t;
+    if(front == NULL){
+        printf("Queue is empty\n");
+    }else{
+        t = front;
+        front = front->next;
+        x = t->data;
+        free(t);
+    }
+    return x;
+}
+
+void display(){
+    struct node *p = front;
+    while(p != NULL){
+        printf("%d ", p->data);
+        p = p->next;
+    }
+    printf("\n");
+}
+```
+
+## Conclusion
+
+Hence, these were some of the most common implementations of linked lists in C. Linked lists are a very important data structure and are used in many applications.
+With that, thanks for reading, hope you have a great day!

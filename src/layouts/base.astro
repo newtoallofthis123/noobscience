@@ -9,10 +9,11 @@ export interface Props {
     selection_color?: string;
     selection_bg?: string;
 }
-const {title, img, description, color, bg, selection_only=true, selection_color="#fff", selection_bg="#2500ff"} = Astro.props
+const {title, img="/assets/banner.png", description, color, bg, selection_only=true, selection_color="#fff", selection_bg="#2500ff"} = Astro.props
 import "../base.css"
 import '../components/styles/nav.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
+const BASE_URL = "https://garden.noobscience.rocks"
 ---
 
 <html lang="en">
@@ -41,7 +42,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     />
     <meta name="author" content="NoobScience" />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://noobscience.rocks" />
+    <meta property="twitter:url" content={BASE_URL} />
     <meta property="twitter:title" content="NoobScience" />
     <meta
         property="twitter:description"
@@ -49,10 +50,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     />
     <meta
         property="twitter:image"
-        content={ "https://noobscience.rocks"+ img || "https://noobscience.rocks/assets/banner.png"}
+        content={ BASE_URL+ img}
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://noobscience.rocks/" />
+    <meta property="og:url" content={BASE_URL} />
     <meta property="og:title" content={title || "NoobScience"} />
     <meta
         property="og:description"
@@ -60,7 +61,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     />
     <meta
         property="og:image"
-        content={"https://noobscience.rocks" + img || "https://noobscience.rocks/assets/banner.png"}
+        content={BASE_URL + img}
     />
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="canonical" href="https://noobscience.rocks" />

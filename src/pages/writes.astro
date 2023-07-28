@@ -125,12 +125,12 @@ let others = posts.filter((post: any) => !notes.includes(post) && !long.includes
                 </h1>
                 <div class="md:grid md:grid-cols-2 gap-4">
                     {
-                        notes.slice(0, 5).map((post)=>{
+                        notes.slice(0, 6).map((post)=>{
                             return (
                                 <div onclick={
                                             "location.href = '" + post.url + "'"
-                                        } class="p-4 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
-                                    <h1 class="text-3xl leading-relaxed font-bold">
+                                        } class="p-4 m-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                                    <h1 class="text-2xl leading-relaxed font-bold">
                                         {post.frontmatter.emoji}{' '}{post.frontmatter.title}
                                     </h1>
                                     <p>
