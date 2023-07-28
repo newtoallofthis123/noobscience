@@ -24,7 +24,7 @@ It is called bubble sort because the largest element bubbles up to the top of th
 It is not very efficient, but it is very simple to implement.
 
 ```c
-void selection_sort(int arr, int n){
+void bubble_sort(int arr, int n){
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n - i - 1; j++){
             if(arr[j] > arr[j + 1]){
@@ -56,6 +56,9 @@ void selection_sort(int arr[], int n){
                 min = j;
             }
         }
+        int temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
     }
 }
 ```
