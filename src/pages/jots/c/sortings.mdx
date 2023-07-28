@@ -1,0 +1,292 @@
+---
+title: Sortings in C
+description: Just some quick jots on sorting algorithms in C
+date: 2023-06-23
+author: Ishan
+layout: "../../../layouts/blog_post.astro"
+tags: ["c", "sorting", "algorithms"]
+category: "dsa"
+type: notes
+emoji: 🔢
+color: "#000"
+bg: "#26fbe0"
+---
+
+Sortings are sort of a rite of passage for any programmer. I've been meaning to write this for a while now, but I've been putting it off, so here it is.
+Sorting refers to the process of arranging elements in a particular order. The most common orderings are numerical and lexicographical.
+Numerical ordering is ordering by the value of the number, and lexicographical ordering is ordering by the value of the string.
+There are many sorting algorithms, and they all have their own pros and cons. I'll be going over some of the most common ones.
+
+## Bubble Sort
+
+Bubble sort is the simplest sorting algorithm. It works by repeatedly swapping adjacent elements if they are in the wrong order.
+It is called bubble sort because the largest element bubbles up to the top of the array in each iteration.
+It is not very efficient, but it is very simple to implement.
+
+```c
+void selection_sort(int arr, int n){
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n - i - 1; j++){
+            if(arr[j] > arr[j + 1]){
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+```
+
+The time complexity of bubble sort is $O(n^2)$, and the space complexity is $O(1)$.
+In the best case, when the array is already sorted, the time complexity is $O(n)$.
+However, the worst and average case time complexity is $O(n^2)$.
+
+## Selection Sort
+
+Selection sort is another simple sorting algorithm. It works by repeatedly finding the minimum element from the unsorted part of the array and putting it at the beginning.
+Hence we are selecting the smallest element and putting it at the beginning, hence the name selection sort.
+Simple to implement, but not very efficient.
+
+```c
+void selection_sort(int arr[], int n){
+    for(int i = 0; i< n ; i++){
+        int min = i;
+        for(int j = i + 1; j < n; j++){
+            if(arr[j] < arr[min]){
+                min = j;
+            }
+        }
+    }
+}
+```
+
+The time complexity of selection sort is $O(n^2)$, and the space complexity is $O(1)$.
+In the best case, when the array is already sorted, the time complexity is $O(n^2)$.
+However, the worst and average case time complexity is $O(n^2)$.
+
+## Insertion Sort
+
+Insertion sort is another simple sorting algorithm. It works by repeatedly inserting an element from the unsorted part of the array into the sorted part of the array.
+Hence we are inserting an element into the sorted part of the array, hence the name insertion sort.
+It is like sorting a deck of cards, where you pick up a card and insert it into the correct position in the sorted part of the deck.
+
+```c
+void insertion_sort(int arr[], int n){
+    for(int i = 1; i<n; i++){
+        int key = arr[i];
+        int j = i - 1;
+        while(j >= 0 && arr[j] > key){
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+```
+
+The time complexity of insertion sort is $O(n^2)$, and the space complexity is $O(1)$.
+In the best case, when the array is already sorted, the time complexity is $O(n)$.
+
+## Merge Sort
+
+Merge sort is a divide and conquer algorithm. It works by dividing the array into two halves, sorting them, and then merging them.
+It is quite stable and is relatively easy to implement.
+However, while being more efficient than the previous algorithms, it takes a lot of space.
+
+```c
+void merge_sort(int arr[], int n){
+    if (n < 2) return;
+
+    int mid = n / 2;
+
+    int left[mid];
+    int right[n - mid];
+
+    for(int i = 0; i < mid; i++){
+        left[i] = arr[i];
+    }
+
+    for(int i = mid; i < n; i++){
+        right[i - mid] = arr[i];
+    }
+
+    merge_sort(left, mid);
+    merge_sort(right, n - mid);
+    merge(arr, left, mid, right, n - mid);
+}
+
+void merge(int arr[], int left[], int left_size, int right[], int right_size){
+    int i = 0, j = 0, k = 0;
+
+    while(i < left_size && j < right_size){
+        if(left[i] <= right[j]){
+            arr[k] = left[i];
+            i++;
+        } else {
+            arr[k] = right[j];
+            j++;
+        }
+        k++;
+    }
+
+    while(i < left_size){
+        arr[k] = left[i];
+        i++;
+        k++;
+    }
+
+    while(j < right_size){
+        arr[k] = right[j];
+        j++;
+        k++;
+    }
+}
+```
+
+The time complexity of merge sort is $O(nlogn)$, and the space complexity is $O(n)$.
+In the best case, when the array is already sorted, the time complexity is $O(nlogn)$.
+However, the worst and average case time complexity is $O(nlogn)$.
+Hence, it is a _stable sorting algorithm_.
+
+## Quick Sort
+
+Quick sort is another divide and conquer algorithm. It works by picking an element as a pivot and partitioning the array around it.
+Quick sort has the most use in practice, as it is quite efficient and is an in-place sorting algorithm.
+Hence you can sort everything in place, without using any extra space, which was the major drawback of merge sort.
+
+```c
+void merge_sort(int arr[], int left, int right){
+    if(left < right){
+        int pivot = arr[(left + right) / 2];
+        int i = left;
+        int j = right;
+        while(1){
+            while(arr[i] < pivot){
+                i++;
+            }
+            while(arr[j] > pivot){
+                j--;
+            }
+            if(i >= j){
+                break;
+            }
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        merge_sort(arr, left, j);
+        merge_sort(arr, j + 1, right);
+    }
+}
+```
+
+The time complexity of quick sort is $O(nlogn)$, and the space complexity is $O(1)$.
+In the best case, when the array is already sorted, the time complexity is $O(nlogn)$ and 
+the worst case time complexity is $O(n^2)$.
+The worst case time complexity can be avoided by using a randomized quick sort, where we pick a random element as the pivot.
+
+## Counting Sort
+
+Counting sort is a sorting algorithm that sorts the elements of an array by counting the number of occurrences of each unique element in the array.
+It is quite efficient if the range of elements is small.
+Hence, with counting sort, the elements of the array are used to compute an index in the final sorted array.
+It is not a comparison-based sorting algorithm.
+
+```c
+#define RANGE 100
+
+void counting_sort(int arr[], int n){
+    int count[RANGE + 1] = {0};
+    int output[n];
+    int i;
+
+    for(i = 0; i < n; i++){
+        count[arr[i]]++;
+    }
+
+    for(i = 1; i <= RANGE; i++){
+        count[i] += count[i - 1];
+    }
+
+    for(i = n - 1; i >=0; i++){
+        output[count[arr[i]] - 1] = arr[i];
+        count[arr[i]]--;
+    }
+
+    for(i = 0; i < n; i++){
+        arr[i] = output[i];
+    }
+}
+```
+
+The time complexity of counting sort is $O(n + k)$, and the space complexity is $O(n + k)$.
+In the best case, when the array is already sorted, the time complexity is $O(n + k)$.
+However, the worst and average case time complexity is $O(n + k)$.
+
+## Radix Sort
+
+Radix sort is a sorting algorithm that sorts the elements of an array by grouping the individual digits of the same place value.
+It is not a comparison-based sorting algorithm.
+Hence, with radix sort, the elements of the array are used to compute an index in the final sorted array.
+
+```c
+void counting_sort(int arr[], int n, int exp){
+    int output[n];
+    int i, count[10] = {0};
+
+    for(i = 0; i < n; i++){
+        count[(arr[i] / exp) % 10]++;
+    }
+
+    for(i = 1; i < 10; i++){
+        count[i] += count[i - 1];
+    }
+
+    for(i = n - 1; i >= 0; i--){
+        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+        count[(arr[i] / exp) % 10]--;
+    }
+
+    for(i = 0; i < n; i++){
+        arr[i] = output[i];
+    }
+}
+
+void radix_sort(int arr[], int n){
+    int m = max(arr, n);
+
+    for(int exp = 1; m / exp > 0; exp *= 10){
+        counting_sort(arr, n, exp);
+    }
+}
+```
+
+The time complexity of radix sort is $O(nk)$, and the space complexity is $O(n + k)$.
+In the best case, when the array is already sorted, the time complexity is $O(nk)$.
+However, the worst and average case time complexity is $O(nk)$.
+Hence, you can see that radix sort is sort of a more efficient version of counting sort.
+
+## Conclusion
+
+So, these were the most common sorting algorithms, implemented in C.
+The algorithms of them are quite simple, and you can easily implement them in any other language.
+However, you should be able to understand the algorithms and their time and space complexities.
+
+Here is a table of the time and space complexities of the sorting algorithms discussed above.
+
+| Algorithm | Time Complexity | Space Complexity |
+| --- | --- | --- |
+| Bubble Sort | $O(n^2)$ | $O(1)$ |
+| Selection Sort | $O(n^2)$ | $O(1)$ |
+| Insertion Sort | $O(n^2)$ | $O(1)$ |
+| Merge Sort | $O(nlogn)$ | $O(n)$ |
+| Quick Sort | $O(nlogn)$ | $O(1)$ |
+| Counting Sort | $O(n + k)$ | $O(n + k)$ |
+| Radix Sort | $O(nk)$ | $O(n + k)$ |
+
+So, with that, thanks for reading this article, hope you have a great day.
+
+<div class="bg-red-300 p-2 rounded-lg">
+    <strong>Disclaimer</strong>: Parts of this article are AI generated, and hence, may not be completely accurate.
+    The author is not responsible for any damage caused by the article.
+</div>

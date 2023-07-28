@@ -58,7 +58,7 @@ recommended = recommended.filter(
     bg={frontmatter.bg}
     selection_bg={frontmatter.selection_bg || null}
     selection_color={frontmatter.selection_color || null}
-    title={frontmatter.title + ' | Ishan Reads'}
+    title={(frontmatter.type == "notes")?(frontmatter.title + " | Ishan's Jots"):(frontmatter.title + " | Ishan Writes")}
 >
     <HomeNav
         title={frontmatter.title}
@@ -190,6 +190,26 @@ recommended = recommended.filter(
             background-color: #f5f5f5;
             padding: 0.25rem;
             border-radius: 0.25rem;
+        }
+
+        article table{
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        article table td, article table th{
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        table .math svg{
+            font-size: 1.1rem;
+        }
+
+        article table tr:nth-child(even){
+            background-color: #f2f2f2;
         }
 
         article strong{
