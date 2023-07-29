@@ -6,7 +6,6 @@ import vercel from "@astrojs/vercel/serverless";
 import markdownConfig from './markdown.config';
 import sitemap from "@astrojs/sitemap";
 
-import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +13,7 @@ export default defineConfig({
   integrations: [react(), tailwind(), mdx({
     ...markdownConfig,
     extendPlugins: false
-  }), sitemap(), svelte()],
+  }), sitemap()],
   output: "server",
   adapter: vercel(),
   markdown: {

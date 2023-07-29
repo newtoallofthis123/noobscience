@@ -10,7 +10,7 @@ const {slug} = Astro.params
 const blogPost = await getEntry('blog', slug)
 const frontmatter = blogPost?.data;
 const meta = await blogPost?.render()
-const BASE_URL = "garden.noobscience.rocks"
+const BASE_URL = Astro.url.host
 
 //@ts-ignore
 const {Content} = await blogPost?.render()
@@ -41,7 +41,7 @@ const {Content} = await blogPost?.render()
                 {
                     frontmatter?.emoji &&
                     (
-                        <p id="emoji-btn" class="md:text-6xl text-4xl cursor-pointer"
+                        <p onclick={`navigator.clipboard.writeText('http://${BASE_URL}/e/${frontmatter.emoji}')`} class="md:text-6xl text-4xl cursor-pointer"
                         >
                             <span id="emoji">{frontmatter.emoji}</span>
                         </p>

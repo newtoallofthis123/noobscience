@@ -9,7 +9,7 @@ export const get = async (req: any) => {
     });
 
     if (!data) {
-        return new Response('Data not found', { status: 404 });
+        return new Response(null, { status: 404 });
     }
 
     return new Response(JSON.stringify(data), {

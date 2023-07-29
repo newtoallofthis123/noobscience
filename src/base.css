@@ -74,16 +74,16 @@
 
 .search_container {
     position: relative;
-    --size-button: 32px;
+    --size-button: 42px;
 }
 
 .input {
     padding-left: var(--size-button);
-    height: 48px;
+    height: 24px;
     font-weight: 400;
     font-size: 18px;
     border: none;
-    color: #000;
+    color: inherit;
     outline: none;
     width: var(--size-button);
     transition: all ease 0.3s;
@@ -94,7 +94,7 @@
 
 .input:focus,
 .input:not(:invalid) {
-    width: 200px;
+    width: 250px;
     cursor: text;
 }
 
@@ -106,7 +106,7 @@
 
 .search_container .icon {
     position: absolute;
-    width: 2.4rem;
+    width: 2.5rem;
     height: var(--size-button);
     top: 0;
     left: 0;

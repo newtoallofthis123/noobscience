@@ -28,8 +28,8 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                             <div>
                                 {/* <Logo /> */}
                                 <img
-                                    width={180}
-                                    height={180}
+                                    width={192}
+                                    height={192}
                                     className="w-10 h-10 md:w-12 md:h-12 ease-in-out cursor-pointer duration-500 transform hover:-translate-y-1 hover:scale-110"
                                     src="/logo192.webp"
                                     alt="NoobScience Logo"
@@ -79,6 +79,14 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                             href="/others"
                                         >
                                             Others
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className="special_underline"
+                                            href="/social"
+                                        >
+                                            Social
                                         </a>
                                     </li>
                                     <li>
@@ -173,6 +181,11 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                 </a>
                             </li>
                             <li>
+                                <a className="special_underline" href="/social">
+                                    Social
+                                </a>
+                            </li>
+                            <li>
                                 <a
                                     className="special_underline"
                                     href="/contact"
@@ -219,7 +232,8 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                         <img
                                             src="/assets/icons/search_left.png"
                                             className="w-8"
-                                            width="32"
+                                            width={32}
+                                            height={32}
                                             alt="Search Icon"
                                         />
                                     </div>

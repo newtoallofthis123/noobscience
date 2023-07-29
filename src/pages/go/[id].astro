@@ -1,6 +1,12 @@
 ---
-import Go from '../../components/pages/go/go';
 const { id } = Astro.params;
----
 
-<Go hash={id} client:load />
+const res = await fetch(`http://${Astro.url.host}/api/go/${id}`)
+if(res.status !== 200){
+    return Astro.redirect('/404')
+}
+else{
+    const data = await res.json()
+    return Astro.redirect(data.url)
+}
+---

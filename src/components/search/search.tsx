@@ -44,11 +44,9 @@ export default function Search({ term = '' }: any) {
                 <form
                     onSubmit={async (e) => {
                         e.preventDefault();
-                        const value = e.currentTarget.search.value;
-                        const data = await search_blog(value);
                         if (typeof window !== 'undefined') {
                             // @ts-ignore
-                            window.location.href = "/blog/" + data[0].slug;
+                            window.location.href = "/blog/" + results[0].slug;
                         }
                     }}
                 >

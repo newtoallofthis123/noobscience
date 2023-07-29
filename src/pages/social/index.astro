@@ -1,0 +1,55 @@
+---
+import Base from "../../layouts/base.astro"
+import HomeNav from "../../components/navigation/home_nav"
+---
+
+<Base title="Ishan's Links | NoobScience" color="#fff" bg="#000"> 
+    <HomeNav color="#fff" bg="#000" client:load />
+    <div>
+        <h1 class="text-5xl text-center p-4 font-bold">
+            Social Links
+        </h1>
+        <div class="flex flex-col items-center">
+            <a type="button" class="social_btn" href="/social/github">
+                <i class="bi bi-github"></i> GitHub
+            </a>
+            <a href="/social/yt" type="button" class="social_btn">
+                <i class="bi bi-youtube"></i> YouTube
+            </a>
+            <a href="/social/twitter" type="button" class="social_btn">
+                <i class="bi bi-twitter"></i> Twitter
+            </a>
+            <a href="/social/blog" type="button" class="social_btn">
+                <i class="bi bi-pen-fill"></i> Blog
+            </a>
+            <a href="/social/website" type="button" class="social_btn">
+                <i class="bi bi-globe"></i> Website
+            </a>
+            <a href="/social/ig" type="button" class="social_btn">
+                <i class="bi bi-instagram"></i> Instagram
+            </a>
+            <a href="/social/twitch" type="button" class="social_btn">
+                <i class="bi bi-twitch"></i> Twitch
+            </a>
+            <a href="/social/github" type="button" class="social_btn">
+                <i class="bi bi-spotify"></i> Spotify
+            </a>
+            <a href="/social/github" type="button" class="social_btn">
+                <i class="bi bi-stack-overflow"></i> StackOverflow
+            </a>
+        </div>
+    </div>
+</Base>
+<style>
+    .social_btn{
+        border-radius: 24px;
+        @apply px-8 py-2 md:py-4 w-4/5 md:w-3/5 text-xl border-2 border-black dark:border-white hover:shadow-lg text-center m-2 md:m-3
+    }
+    body{
+        background-color: #f5f5f5;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    h1{
+        font-family: "Archivo Black", --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+</style>
