@@ -29,13 +29,9 @@ export default defineConfig({
     drafts: false
   },
   compressHTML: true,
-  experimental: {
-    redirects: true
-  },
   redirects: {
-    '/updates/[id]': '/quips/[id]',
-    '/w': '/writes',
-    '/blog': '/writes',
+    '/updates/[slug]': '/quips/[slug]',
+    '/w/[...slug]': '/blog/[...slug]',
     '/green': '/type/long'
   }
 });

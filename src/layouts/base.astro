@@ -1,6 +1,6 @@
 ---
 export interface Props {
-    title: string;
+    title?: string;
     color?: string;
     bg?: string;
     selection_only?: boolean;
@@ -22,7 +22,7 @@ const BASE_URL = "https://garden.noobscience.rocks"
             title || "NoobScience | Student and Open Source Enthusiast."
         }
     </title>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

@@ -1,55 +1,40 @@
 ---
-const posts = await Astro.glob('../../*/*/*.mdx');
+import { getCollection } from "astro:content";
+
+let posts = await getCollection('blog', ({data}) => {
+    return data.draft !== true
+});
+
+posts = posts.sort(
+    (a: any, b: any) =>
+        new Date(b.data.date).getTime() -
+        new Date(a.data.date).getTime()
+);
 let { term } = Astro.params;
+term = term?.toString()
 term = term?.toLowerCase();
 term = term?.split(' ').join('');
 
 let recommend_posts = [];
 
-const site_urls = {
-    "about": "/about",
-    "contact": "/contact",
-    "projects": "/projects",
-    "blog": "/writes",
-    "writing": "/writes",
-    "posts": "/writes",
-    "home": "/",
-}
-
-//@ts-ignore
-if (term in site_urls) {
-    recommend_posts.push({
-        "frontmatter": {
-            "title": "" + term?.slice(0, 1).toUpperCase() + term?.slice(1) + " Page",
-            "description": "Go to the " + term + " page",
-            "tags": [term],
-            "category": term,
-            "draft": false,
-            "date": new Date().toISOString(),
-        },
-//@ts-ignore
-        "url": site_urls[term || "/"],
-    });
-}
-
 // Second Level Check the title
 for (const post of posts) {
     if (
-        post.frontmatter.title
+        post.data.title
             ?.toLowerCase()
             ?.split(' ')
             .join('')
+            //@ts-ignore
             .includes(term)
     ) {
-        // @ts-ignore
-
         recommend_posts.push(post);
     }
 }
 
 // First Level Check the tags
 for (const post of posts) {
-    if (post.frontmatter.tags.includes(term)) {
+            //@ts-ignore
+    if (post.data.tags.includes(term)) {
         // @ts-ignore
         recommend_posts.push(post);
     }
@@ -58,11 +43,12 @@ for (const post of posts) {
 // Third Level Check the description
 for (const post of posts) {
     if (
-        post.frontmatter.description
+        post.data.description
             ?.toLowerCase()
             ?.split(' ')
             .join('')
             .replace(/[-.,]/g, '')
+            //@ts-ignore
             .includes(term)
     ) {
         // @ts-ignore
@@ -72,7 +58,7 @@ for (const post of posts) {
 
 // Check the Category
 for (const post of posts) {
-    if (post.frontmatter.category?.toLowerCase() == term?.toLowerCase()) {
+    if (post.data.category?.toLowerCase() == term?.toLowerCase()) {
         // @ts-ignore
         recommend_posts.push(post);
     }
@@ -81,7 +67,8 @@ for (const post of posts) {
 // Fourth level tags
 
 for (const post of posts) {
-    for (const tag of post.frontmatter.tags) {
+    for (const tag of post.data.tags) {
+            //@ts-ignore
         if (tag.toLowerCase().includes(term)) {
         // @ts-ignore
             recommend_posts.push(post);
@@ -89,14 +76,27 @@ for (const post of posts) {
     }
 }
 
-// Remove Drafts
-// @ts-ignore
-recommend_posts = recommend_posts.filter((post) => !post.frontmatter.draft);
+// Fifth level check the body
+// Only do this if the term is longer than 10 characters
+//@ts-ignore
+if(term?.length > 8){
+    for(const post of posts) {
+                //@ts-ignore
+        if(post.body?.toLowerCase()?.split(' ').join('').includes(term)) {
+            recommend_posts.push(post);
+        }
+    }
+}
 
-// Remove the duplicates
-recommend_posts = [...new Set(recommend_posts)];
+// Remove the duplicates while preserving the order
+const final_posts:any = []
+for(const post of recommend_posts) {
+    if(!final_posts.includes(post)) {
+        final_posts.push(post);
+    }
+}
 
-return new Response(JSON.stringify(recommend_posts), {
+return new Response(JSON.stringify(final_posts), {
     headers: {
         'content-type': 'application/json;charset=UTF-8',
     },

@@ -27,9 +27,15 @@ export default function Search({ term = '' }: any) {
             setSearch('');
             return;
         }
+        if (value.length < 3) {
+            setSearch(value);
+            return;
+        };
         setSearch(value);
         const data = await search_blog(value);
-        setResults(data);
+        if (data.length != 0) {
+            setResults(data);
+        }
     };
 
     return (
@@ -42,7 +48,7 @@ export default function Search({ term = '' }: any) {
                         const data = await search_blog(value);
                         if (typeof window !== 'undefined') {
                             // @ts-ignore
-                            window.location.href = data[0].url;
+                            window.location.href = "/blog/" + data[0].slug;
                         }
                     }}
                 >
@@ -51,6 +57,7 @@ export default function Search({ term = '' }: any) {
                         name="search"
                         className="text-lg w-full border-2 border-black rounded-md focus:outline-none p-4 rounded-"
                         value={search}
+                        placeholder="Search anything with a minimum of 3 characters, use 8 for better results"
                         onChange={handleChange}
                     />
                 </form>
@@ -64,19 +71,19 @@ export default function Search({ term = '' }: any) {
                         >
                             <div className="p-4">
                                 <p className="text-2xl text-center md:text-justify font-bold">
-                                    {post.frontmatter.emoji && (
-                                        <span>{post.frontmatter.emoji} </span>
+                                    {post.data.emoji && (
+                                        <span>{post.data.emoji} </span>
                                     )}
-                                    <a href={post.url}>
-                                        {post.frontmatter.title}
+                                    <a href={"/blog/" + post.slug}>
+                                        {post.data.title}
                                     </a>
                                 </p>
                                 <p className="text-gray-500 text-lg w-full md:w-3/5 py-2">
-                                    {post.frontmatter.description}
+                                    {post.data.description}
                                 </p>
-                                {post.frontmatter.tags.length > 0 && (
+                                {post.data.tags.length > 0 && (
                                     <ul>
-                                        {post.frontmatter.tags.map(
+                                        {post.data.tags.map(
                                             (tag: string) => (
                                                 <a href={"/tags/" + tag}>
                                                     <li className="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
@@ -88,9 +95,7 @@ export default function Search({ term = '' }: any) {
                                     </ul>
                                 )}
                                 <p className="text-gray-500 text-sm">
-                                    {new Date(
-                                        post.frontmatter.date
-                                    ).toDateString()}
+                                    {new Date(post.data.date).toDateString()}
                                 </p>
                             </div>
                         </div>

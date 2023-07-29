@@ -1,15 +1,24 @@
 ---
+import { getCollection } from 'astro:content';
 const {emoji} = Astro.params
 
-const posts = await Astro.glob('../*/*/*.mdx')
-let post = posts.find((post) => post.frontmatter.emoji === emoji)
+let posts = await getCollection('blog', ({data}) => {
+    return data.draft !== true
+});
+
+posts = posts.sort(
+    (a: any, b: any) =>
+        new Date(b.data.date).getTime() -
+        new Date(a.data.date).getTime()
+);
+let post = posts.find((post) => post.data.emoji === emoji)
 const urls = {
     "📚": "/writes",
     "⚡": "/about",
     "📞": "/contact"
 }
 if(post){
-    return Astro.redirect(post.url)
+    return Astro.redirect("/blog/" + post.slug)
 }
 //@ts-ignore
 if(urls[emoji]){

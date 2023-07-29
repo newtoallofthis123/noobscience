@@ -1,20 +1,20 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "../../layouts/base.astro"
 import HomeNav from "../../components/navigation/home_nav";
 
 const {id} = Astro.params;
-let posts: any = await Astro.glob('../*/*/*.mdx');
-posts = posts.filter((post: any) => {
-    return !post.frontmatter.draft;
+let posts = await getCollection('blog', ({data}) => {
+    return data.draft !== true
 });
-posts = posts.sort((a: any, b: any) => {
-    return (
-        new Date(b.frontmatter.date).getTime() -
-        new Date(a.frontmatter.date).getTime()
-    );
-});
+
+posts = posts.sort(
+    (a: any, b: any) =>
+        new Date(b.data.date).getTime() -
+        new Date(a.data.date).getTime()
+);
 posts = posts.filter((post: any) => {
-    return post.frontmatter.tags.includes(id);
+    return post.data.tags.includes(id);
 });
 ---
 
@@ -34,19 +34,19 @@ posts = posts.filter((post: any) => {
                 posts.map((post) => {
                     return (
                         <div onclick={
-                                    "location.href = '" + post.url + "'"
+                                    "location.href = '/blog/" + post.slug + "'"
                                 } class="p-4 m-4 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
                             <p>{
-                                post.frontmatter.type.slice(0, 1).toUpperCase() + post.frontmatter.type.slice(1, post.frontmatter.type.length)
+                                post.data.type.slice(0, 1).toUpperCase() + post.data.type.slice(1, post.data.type.length)
                             }</p>
                                 <h1 class="text-3xl leading-relaxed font-bold">
-                                {post.frontmatter.emoji}{' '}{post.frontmatter.title}
+                                {post.data.emoji}{' '}{post.data.title}
                             </h1>
                             <p>
-                                {post.frontmatter.description}    
+                                {post.data.description}    
                             </p>
                             <p>
-                                Posted on <span id="p-heading">{new Date(post.frontmatter.date).toDateString()}</span> | {post.frontmatter.minutesRead}
+                                Posted on <span id="p-heading">{new Date(post.data.date).toDateString()}</span> | {post.data.minutesRead}
                             </p>
                         </div>
                     )
