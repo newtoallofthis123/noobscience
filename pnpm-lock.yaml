@@ -11,6 +11,9 @@ dependencies:
   '@astrojs/react':
     specifier: ^2.2.1
     version: 2.2.1(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
+  '@astrojs/rss':
+    specifier: ^2.4.3
+    version: 2.4.3
   '@astrojs/sitemap':
     specifier: ^1.3.3
     version: 1.3.3
@@ -131,6 +134,9 @@ dependencies:
   tailwindcss:
     specifier: ^3.3.2
     version: 3.3.2
+  toastify-js:
+    specifier: ^1.12.0
+    version: 1.12.0
 
 devDependencies:
   '@types/aos':
@@ -142,6 +148,9 @@ devDependencies:
   '@types/nodemailer':
     specifier: ^6.4.8
     version: 6.4.8
+  '@types/toastify-js':
+    specifier: ^1.12.0
+    version: 1.12.0
   sass:
     specifier: ^1.63.2
     version: 1.63.2
@@ -352,6 +361,13 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@astrojs/rss@2.4.3:
+    resolution: {integrity: sha512-Dc8lxsXiDlnxONVIUuc3ohO1+vV1Hp9fRFdUianOola0S9/xv/6FzIHhkQ62MkaFSlcZm5uIOllRWNKVvuFuoA==}
+    dependencies:
+      fast-xml-parser: 4.2.6
+      kleur: 4.1.5
     dev: false
 
   /@astrojs/sitemap@1.3.3:
@@ -1455,6 +1471,10 @@ packages:
     resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
     dev: false
 
+  /@types/toastify-js@1.12.0:
+    resolution: {integrity: sha512-fqpDHaKhFukN9KRm24bbH0wozvHmSwjvkaLjBUrWcSfSS4zysIwTYqNLG3XbSNhRlsTNRNLGS23tp/VhPwsfHQ==}
+    dev: true
+
   /@types/unist@2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
     dev: false
@@ -2515,6 +2535,13 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
+    dev: false
+
+  /fast-xml-parser@4.2.6:
+    resolution: {integrity: sha512-Xo1qV++h/Y3Ng8dphjahnYe+rGHaaNdsYOBWL9Y9GCPKpNKilJtilvWkLcI9f9X2DoKTLsZsGYAls5+JL5jfLA==}
+    hasBin: true
+    dependencies:
+      strnum: 1.0.5
     dev: false
 
   /fastq@1.15.0:
@@ -5066,6 +5093,10 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
+  /strnum@1.0.5:
+    resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
+    dev: false
+
   /style-to-object@0.4.1:
     resolution: {integrity: sha512-HFpbb5gr2ypci7Qw+IOhnP2zOU7e77b+rzM+wTzXzfi1PrtBCX0E7Pk4wL4iTLnhzZ+JgEGAhX81ebTg/aYjQw==}
     dependencies:
@@ -5235,6 +5266,10 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
+
+  /toastify-js@1.12.0:
+    resolution: {integrity: sha512-HeMHCO9yLPvP9k0apGSdPUWrUbLnxUKNFzgUoZp1PHCLploIX/4DSQ7V8H25ef+h4iO9n0he7ImfcndnN6nDrQ==}
+    dev: false
 
   /tough-cookie@4.1.3:
     resolution: {integrity: sha512-aX/y5pVRkfRnfmuX+OdbSdXvPe6ieKX/G2s7e98f4poJHnqH3281gDPm/metm6E/WRamfx7WC4HUqkWHfQHprw==}

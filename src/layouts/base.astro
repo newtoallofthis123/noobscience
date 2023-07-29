@@ -13,6 +13,7 @@ const {title, img="/assets/banner.png", description, color, bg, selection_only=t
 import "../base.css"
 import '../components/styles/nav.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "toastify-js/src/toastify.css"
 import '@fontsource/atkinson-hyperlegible';
 import '@fontsource-variable/inter';
 import '@fontsource-variable/josefin-sans';
@@ -75,13 +76,6 @@ const BASE_URL = "https://garden.noobscience.rocks"
     <link rel="canonical" href="https://noobscience.rocks" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="mask-icon" href="/favicon.ico" color="#0f0f28" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
      crossorigin="anonymous"></script>
      
@@ -159,22 +153,4 @@ const BASE_URL = "https://garden.noobscience.rocks"
             }
         }
     </style>
-    <script is:raw>
-        const toast = (text) => {
-            Toastify({
-                text: text,
-                duration: 3000,
-                close: true,
-                gravity: "top",
-                position: "right",
-                style: {
-                    background: "linear-gradient(to right, #00b09b, #96c93d)",
-                },
-                stopOnFocus: true,
-                onClick: function () {
-                    window.location.href = "/w/" + frontmatter.emoji;
-                },
-            }).showToast();
-        }
-    </script>
 </html>
