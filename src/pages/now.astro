@@ -2,14 +2,6 @@
 import Base from "../layouts/base.astro";
 import HomeNav from "../components/navigation/home_nav";
 import Detailed from "../components/utils/notification/detailed";
-
-let posts = await Astro.glob("./*/*/*.mdx");
-
-posts = posts.sort(
-    (a: any, b: any) =>
-        new Date(b.frontmatter.date).getTime() -
-        new Date(a.frontmatter.date).getTime()
-);
 ---
 
 <Base title="All the posts">

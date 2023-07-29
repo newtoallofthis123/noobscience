@@ -4,18 +4,17 @@ import { ranHash } from '../../../utils/utils';
 
 export const post: APIRoute = async ({ request }) => {
     const body = await request.json();
-    console.log(body);
-    const { title, code, author, language } = body;
+    const { title, content, author, lang } = body;
     const hash = ranHash();
 
     const { db }: { db: Database } = await connectToDatabase();
 
     const insertResult = await db.collection('code').insertOne({
         title,
-        code,
+        content,
         author,
         hash,
-        language,
+        lang: lang,
     });
 
     const result = {

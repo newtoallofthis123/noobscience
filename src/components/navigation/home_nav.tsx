@@ -76,6 +76,22 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                     <li>
                                         <a
                                             className="special_underline"
+                                            href="/others"
+                                        >
+                                            Others
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className="special_underline"
+                                            href="/contact"
+                                        >
+                                            Contact
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className="special_underline"
                                             href="/about"
                                         >
                                             About
@@ -95,14 +111,6 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                             href="/blog"
                                         >
                                             Blog
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            className="special_underline"
-                                            href="/contact"
-                                        >
-                                            Contact
                                         </a>
                                     </li>
                                     <li>
@@ -160,6 +168,11 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                         )}
                         <ul className="items-end hidden gap-x-6 list-none lg:flex flex-row-reverse p-2 justify-center">
                             <li>
+                                <a className="special_underline" href="/others">
+                                    Others
+                                </a>
+                            </li>
+                            <li>
                                 <a
                                     className="special_underline"
                                     href="/contact"
@@ -173,7 +186,10 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                 </a>
                             </li>
                             <li>
-                                <a className="special_underline" href="/creations">
+                                <a
+                                    className="special_underline"
+                                    href="/creations"
+                                >
                                     Creations
                                 </a>
                             </li>

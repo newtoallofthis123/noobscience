@@ -1,5 +1,12 @@
 ---
-import Editor from "./_editor.svelte"
+import Base from "../../layouts/base.astro";
+import HomeNav from "../../components/navigation/home_nav";
+import CodeEditor from "../../components/pages/code/editor"
 ---
 
-<Editor code="print('Hello World')" language="python" client:load />
+<Base title="Pastebin | NoobScience">
+    <HomeNav title="NoobPaste Mini" client:load />
+    <div>
+        <CodeEditor client:load/>
+    </div>
+</Base>
