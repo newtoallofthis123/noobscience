@@ -52,12 +52,12 @@ export default function GoForm() {
                             <span className="text-lg font-base py-3">
                                 Thank me later for this: {' '}
                             </span>{' '}
-                            <a href={"https://noobscience.rocks/go/" + slug} className='text-lg font-base underline'>
+                            <a href={"https://garden.noobscience.rocks/go/" + slug} className='text-lg font-base underline'>
                               {slug}  
                             </a> {
                                 slug && (
                                     <span onClick={() => {
-                                navigator.clipboard.writeText("https://noobscience.rocks/go/" + slug);
+                                navigator.clipboard.writeText("https://garden.noobscience.rocks/go/" + slug);
                                 toast.success("Copied to Clipboard");
                             }}><i className="bi bi-clipboard text-2xl font-base cursor-pointer"></i></span>
                                 )
