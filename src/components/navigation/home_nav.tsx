@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/nav.scss';
 import { motion } from 'framer-motion';
-import Logo from './logo';
 
 export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
     const [nav, setNav] = React.useState(false)

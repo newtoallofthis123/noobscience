@@ -2,6 +2,7 @@
 import Base from '../../layouts/base.astro';
 import HomeNav from '../../components/navigation/home_nav';
 import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 
 const {slug} = Astro.params
 
@@ -17,7 +18,7 @@ const {Content} = await blogPost?.render()
 
 <Base
     description={frontmatter?.description}
-    img={frontmatter?.img || "/assets/banner.png"}
+    img={frontmatter?.img?.src || "/assets/banner.png"}
     selection_only={frontmatter?.selection_only}
     color={frontmatter?.color}
     bg={frontmatter?.bg}
@@ -69,10 +70,10 @@ const {Content} = await blogPost?.render()
                 {
                     frontmatter?.img && (
                         <div class="py-1">
-                            <img
+                            <Image
                                 class="rounded-md"
                                 src={frontmatter.img}
-                                alt=""
+                                alt={frontmatter?.title}
                             />
                         </div>
                     )

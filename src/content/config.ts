@@ -2,7 +2,7 @@ import { z, defineCollection } from 'astro:content';
 
 const blogContent = defineCollection({
     type: 'content',
-    schema: z.object({
+    schema: ({image}) => z.object({
         title: z.string(),
         author: z.string().default('Ishan Joshi'),
         date: z.date(),
@@ -17,7 +17,7 @@ const blogContent = defineCollection({
         selection_only: z.boolean().optional().default(true),
         category: z.string().optional(),
         minutesRead: z.string().optional(),
-        img: z.string().optional(),
+        img: image().refine((img)=>img).optional(),
         draft: z.boolean().optional().default(false),
     }),
 });

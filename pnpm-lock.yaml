@@ -23,6 +23,24 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^3.5.0
     version: 3.5.0(astro@2.9.6)(react@18.2.0)
+  '@fontsource-variable/inter':
+    specifier: ^5.0.5
+    version: 5.0.5
+  '@fontsource-variable/josefin-sans':
+    specifier: ^5.0.6
+    version: 5.0.6
+  '@fontsource/archivo-black':
+    specifier: ^5.0.5
+    version: 5.0.5
+  '@fontsource/atkinson-hyperlegible':
+    specifier: ^5.0.5
+    version: 5.0.5
+  '@fontsource/libre-baskerville':
+    specifier: ^5.0.5
+    version: 5.0.5
+  '@fontsource/open-sans':
+    specifier: ^5.0.5
+    version: 5.0.5
   '@types/marked':
     specifier: ^5.0.0
     version: 5.0.0
@@ -1073,6 +1091,30 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource-variable/inter@5.0.5:
+    resolution: {integrity: sha512-hmj/jffr+1tabEPmvm+/b89MtbO6hd5PVbQ6HoMGTO7RMF5eD2C9UcprCgZTOF3OWh5uC21C9HZGN0O9wxe+UQ==}
+    dev: false
+
+  /@fontsource-variable/josefin-sans@5.0.6:
+    resolution: {integrity: sha512-olxH6x9JPHXhqe17+H8h9t8ClJpvRgguDeJsiMe1vntdqsWMz7K9/pZtuqNQ+4VAI29J6wGSFh98UETMMSnOxw==}
+    dev: false
+
+  /@fontsource/archivo-black@5.0.5:
+    resolution: {integrity: sha512-OJktAAUfFAY1vnNg44UIFyv/6uIXofP/CqDfO97XG2DOTZHmJfOCQ4xx0ZlbUPqPMdJuDn8CVJFKE2F+W7Yc+Q==}
+    dev: false
+
+  /@fontsource/atkinson-hyperlegible@5.0.5:
+    resolution: {integrity: sha512-bilyGBdB2Us/OrSj6luzvHTI16pLuQVOUWARI7o+3NmpW2yUHjF8u7jbgNJgPDQ2//4tAjsWjVeqN9H222OFpg==}
+    dev: false
+
+  /@fontsource/libre-baskerville@5.0.5:
+    resolution: {integrity: sha512-4sPF8ZcMzmr+90qlg3ZpSjU72No97h5okx5Naxh9GntD77zufURs9X1rJvYv0yIpIm6Mdf+v43v32ai3vTrdfA==}
+    dev: false
+
+  /@fontsource/open-sans@5.0.5:
+    resolution: {integrity: sha512-gxFAandXkpbHKysq5gXk1zEpx44izNyaJs82gjnx8Z0Qi2nwCamweowiSGv42JxLZPgM8RB5amztHxPCeKcBJw==}
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}

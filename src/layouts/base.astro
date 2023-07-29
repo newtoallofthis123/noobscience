@@ -13,6 +13,14 @@ const {title, img="/assets/banner.png", description, color, bg, selection_only=t
 import "../base.css"
 import '../components/styles/nav.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import '@fontsource/atkinson-hyperlegible';
+import '@fontsource-variable/inter';
+import '@fontsource-variable/josefin-sans';
+import '@fontsource/libre-baskerville';
+import '@fontsource/archivo-black';
+
+import { ViewTransitions } from 'astro:transitions';
+
 const BASE_URL = "https://garden.noobscience.rocks"
 ---
 
@@ -74,18 +82,10 @@ const BASE_URL = "https://garden.noobscience.rocks"
     />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin="anonymous"
-    />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@200;400;700&family=Josefin+Sans:wght@300;400;700&family=Libre+Baskerville:wght@100;400;700&family=Archivo+Black&family=Scheherazade+New:wght@400;700&display=swap"
-        rel="stylesheet"
-    />
-    <!-- Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
      crossorigin="anonymous"></script>
+     
+     <ViewTransitions />
      <body>
         <div class={
         !selection_only ? "colored" : ""
@@ -149,7 +149,7 @@ const BASE_URL = "https://garden.noobscience.rocks"
         }
         p, li{
             font-size: 1.5rem;
-            font-weight: 100;
+            font-weight: 300;
             line-height: 2.8rem;
         }
         @media (max-width: 768px){

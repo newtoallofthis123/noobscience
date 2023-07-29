@@ -4,6 +4,9 @@ import Base from "../layouts/base.astro";
 import HomeNav from "../components/navigation/home_nav";
 import Notification from "../components/utils/notification/notification";
 import UpdateLatest from "../components/updates/latest";
+import welcomeImg from "../assets/welcome.webp"
+import circleSvg from "../assets/circle.svg"
+import { Image } from "astro:assets";
 
 const options = [
     'is a Developer',
@@ -54,7 +57,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 3
                     </div>
                 </div>
                 <div class="md:block hidden md:w-1/4 w-full">
-                    <img width="190" class="w-2/6" src="/assets/svgs/circle.svg" alt="">
+                    <Image class="w-2/6" src={circleSvg} alt="Circle Svg">
                 </div>
             </div>
             <span class="block w-1/5 h-1 mt-8 bg-red-600"></span>
@@ -103,7 +106,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 3
                     </ul>
                 </div>
                 <div class="md:w-2/5 w-full">
-                    <img src="/assets/images/welcome.webp" alt="">
+                    <Image src={welcomeImg} alt="">
                 </div>
             </div>
             <div class="flex md:flex-row flex-col justify-center items-center">

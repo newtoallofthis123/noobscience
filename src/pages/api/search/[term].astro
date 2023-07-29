@@ -1,17 +1,16 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
-let posts = await getCollection('blog', ({data}) => {
-    return data.draft !== true
+let posts = await getCollection('blog', ({ data }) => {
+    return data.draft !== true;
 });
 
 posts = posts.sort(
     (a: any, b: any) =>
-        new Date(b.data.date).getTime() -
-        new Date(a.data.date).getTime()
+        new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 let { term } = Astro.params;
-term = term?.toString()
+term = term?.toString();
 term = term?.toLowerCase();
 term = term?.split(' ').join('');
 
@@ -33,7 +32,7 @@ for (const post of posts) {
 
 // First Level Check the tags
 for (const post of posts) {
-            //@ts-ignore
+    //@ts-ignore
     if (post.data.tags.includes(term)) {
         // @ts-ignore
         recommend_posts.push(post);
@@ -68,9 +67,9 @@ for (const post of posts) {
 
 for (const post of posts) {
     for (const tag of post.data.tags) {
-            //@ts-ignore
+        //@ts-ignore
         if (tag.toLowerCase().includes(term)) {
-        // @ts-ignore
+            // @ts-ignore
             recommend_posts.push(post);
         }
     }
@@ -79,19 +78,19 @@ for (const post of posts) {
 // Fifth level check the body
 // Only do this if the term is longer than 10 characters
 //@ts-ignore
-if(term?.length > 8){
-    for(const post of posts) {
-                //@ts-ignore
-        if(post.body?.toLowerCase()?.split(' ').join('').includes(term)) {
+if (term?.length > 8) {
+    for (const post of posts) {
+        //@ts-ignore
+        if (post.body?.toLowerCase()?.split(' ').join('').includes(term)) {
             recommend_posts.push(post);
         }
     }
 }
 
 // Remove the duplicates while preserving the order
-const final_posts:any = []
-for(const post of recommend_posts) {
-    if(!final_posts.includes(post)) {
+const final_posts: any = [];
+for (const post of recommend_posts) {
+    if (!final_posts.includes(post)) {
         final_posts.push(post);
     }
 }

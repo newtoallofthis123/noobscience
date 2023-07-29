@@ -4,6 +4,9 @@ import Base from '../../layouts/base.astro';
 import HomeNav from '../../components/navigation/home_nav';
 import UpdateArchive from '../../components/updates/archive';
 import UpdateLatest from '../../components/updates/latest';
+import { Image } from 'astro:assets';
+import coffeeImage from "../../assets/coffee.webp"
+import saplingImage from "../../assets/seedling.webp"
 
 let posts = await getCollection('blog', ({data}) => {
     return data.draft !== true
@@ -81,9 +84,9 @@ let others = posts.filter(
                         family.
                     </p>
                     <div>
-                        <img
+                        <Image
                             class="md:w-4/6 w-full"
-                            src="/assets/images/coffee.webp"
+                            src={coffeeImage}
                             alt="Coffee"
                         />
                     </div>
@@ -231,9 +234,9 @@ let others = posts.filter(
                     </h1>
                     <p class="py-2"></p>
                     <div>
-                        <img
+                        <Image
                             class="md:w-3/5 w-full"
-                            src="/assets/images/seedling.webp"
+                            src={saplingImage}
                             alt="Seedling.webp"
                         />
                     </div>
@@ -321,7 +324,7 @@ let others = posts.filter(
     }
     p {
         font-size: 1.5rem;
-        font-weight: 100;
+        font-weight: 300;
         line-height: 2.5rem;
     }
 </style>

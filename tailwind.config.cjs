@@ -6,10 +6,8 @@ module.exports = {
 			colors: {
 				transparent: 'transparent',
 				current: 'currentColor',
-				primaryDark: '#181c16',
-				primaryWhite: '#f7fafc',
-				primaryWhiteText: '#f7fafc',
-				primaryBlackText: '#1a202c',
+				primary: 'rgb(var(--primary) / <alpha-value>)',
+				bg: 'rgb(var(--bg) / <alpha-value>)',
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],

@@ -29,6 +29,10 @@ export default defineConfig({
     drafts: false
   },
   compressHTML: true,
+  experimental: {
+    assets: true,
+    viewTransitions: true
+  },
   redirects: {
     '/updates/[slug]': '/quips/[slug]',
     '/w/[...slug]': '/blog/[...slug]',
