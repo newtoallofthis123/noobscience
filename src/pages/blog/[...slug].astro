@@ -34,67 +34,93 @@ const {Content} = await blogPost?.render()
     />
     <div
         id="content"
-        class="flex md:flex-row md:mt-2 mt-4 flex-col justify-center"
+        class="flex flex-col justify-center items-center"
     >
-        <div class="p-4 md:w-4/6 w-full">
-            <div class="md:p-10">
+        <div class={
+            (frontmatter?.full_img)?"section_colored text-center":"cool"
+        }>
+            <div class="md:pt-2 pt-4 flex flex-col justify-center items-center">
+                <div class={` ${(frontmatter?.full_img)?"md:w-full":"md:w-3/5"}  p-4`}>
+                    <h1
+                    class={` ${(frontmatter?.full_img)?"md:text-7xl":"md:text-5xl"} text-4xl font-heading md:py-3`}
+                >
                 {
-                    frontmatter?.emoji &&
+                    !frontmatter?.full_img &&
                     (
-                        <p onclick={`navigator.clipboard.writeText('http://${BASE_URL}/e/${frontmatter.emoji}')`} class="md:text-6xl text-4xl cursor-pointer"
-                        >
-                            <span id="emoji">{frontmatter.emoji}</span>
+                        <p onclick={`navigator.clipboard.writeText('http://${BASE_URL}/e/${
+                            //@ts-ignore
+                            frontmatter.emoji}')`} class="md:text-6xl text-4xl md:mb-8 mb-4 cursor-pointer"
+                        >{
+                            //@ts-ignore
+                            frontmatter.emoji}
                         </p>
                     )
                 }
-                <h1
-                    class="md:text-5xl text-4xl font-heading md:py-3 leading-relaxed"
-                >
+                {
+                    frontmatter?.full_img &&
+                    (
+                        <span onclick={`navigator.clipboard.writeText('http://${BASE_URL}/e/${frontmatter.emoji}')`} class="md:text-8xl text-4xl md:mb-8 mb-4 mr-4 cursor-pointer"
+                        >{frontmatter.emoji}
+                        </span>
+                    )
+                }
                     {frontmatter?.title}
                 </h1>
-                <p class="text-gray-500 md:text-3xl text-2xl py-5">
+                <p class="md:text-3xl text-lg md:py-5 py-2">
                     {frontmatter?.date.toDateString()} • {
                         meta?.remarkPluginFrontmatter?.minutesRead
                     } • {
                         meta?.remarkPluginFrontmatter?.wordsRead
                     } words
                 </p>
+                </div>
                 {
                     frontmatter?.img && (
-                        <div class="py-1">
+                        <div class={`py-1 items-center w-full ${(frontmatter.full_img)?"md:w-full":"md:w-3/5"}`}>
                             <Image
-                                class="rounded-md"
+                                class={`${(frontmatter.full_img)?"rounded-none":"rounded-md"}`}
                                 src={frontmatter.img}
                                 alt={frontmatter?.title}
                             />
                         </div>
                     )
                 }
-                <Content />
             </div>
-            <div>
-                <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
-                <span class="block w-40 h-1 mb-5 bg-red-600"></span>
-                <h3
-                    class="md:text-4xl text-2xl font-heading leading-relaxed py-5"
+        </div>
+        <div class="md:px-10 px-2 md:w-4/6 w-full flex flex-col">
+            <Content />
+            <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
+            <span class="block w-40 h-1 mb-5 bg-red-600"></span>
+            <h3
+                class="md:text-4xl text-2xl font-heading leading-relaxed md:py-5"
+            >
+                Posted in <a
+                    href={'/categories/' + frontmatter?.category}
+                    class="">@{frontmatter?.category}</a
                 >
-                    Posted in <a
-                        href={'/categories/' + frontmatter?.category}
-                        class="">@{frontmatter?.category}</a
-                    >
-                </h3>
+            </h3>
+            <div class="flex md:flex-row flex-col">
                 {
-                    frontmatter?.tags.map((tag: string) => {
-                        return (
-                            <span class="md:text-2xl text-xl pr-5">
-                                <a href={'/tags/' + tag} class="">
-                                    #{tag}
-                                </a>
-                            </span>
-                        );
-                    })
+                frontmatter?.tags.map((tag: string) => {
+                    return (
+                        <div class="md:text-2xl text-xl pr-5">
+                            <a href={'/tags/' + tag} class="">
+                                #{tag}
+                            </a>
+                        </div>
+                    );
+                })
                 }
             </div>
         </div>
     </div>
+    <style define:vars={{
+        section_bg: frontmatter?.bg,
+        section_color: frontmatter?.color,
+    }}>
+        .section_colored {
+            background-color: var(--section_bg);
+            color: var(--section_color);
+        }
+    </style>
 </Base>

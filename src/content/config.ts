@@ -17,7 +17,8 @@ const blogContent = defineCollection({
         selection_only: z.boolean().optional().default(true),
         category: z.string().optional(),
         minutesRead: z.string().optional(),
-        img: image().refine((img)=>img).optional(),
+        img: image().refine((img) => img).optional(),
+        full_img: z.boolean().optional().default(false),
         draft: z.boolean().optional().default(false),
     }),
 });
