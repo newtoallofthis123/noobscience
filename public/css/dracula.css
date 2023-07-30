@@ -1,122 +1,81 @@
-/**
- * Dracula Theme originally by Zeno Rocha [@zenorocha]
- * https://draculatheme.com/
+/* Dracula Theme v1.2.5
  *
- * Ported for PrismJS by Albert Vallverdu [@byverdu]
+ * https://github.com/dracula/highlightjs
+ *
+ * Copyright 2016-present, All rights reserved
+ *
+ * Code licensed under the MIT license
+ *
+ * @author Denis Ciccale <dciccale@gmail.com>
+ * @author Zeno Rocha <hi@zenorocha.com>
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
-    color: #f8f8f2;
-    background: none;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-    padding: 1em;
-    margin: .5em 0;
-    overflow: auto;
-    border-radius: 0.3em;
-}
-
-:not(pre)>code[class*="language-"],
-pre[class*="language-"] {
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
     background: #282a36;
 }
 
-/* Inline code */
-:not(pre)>code[class*="language-"] {
-    padding: .1em;
-    border-radius: .3em;
-    white-space: normal;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-    color: #6272a4;
-}
-
-.token.punctuation {
-    color: #f8f8f2;
-}
-
-.namespace {
-    opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.constant,
-.token.symbol,
-.token.deleted {
-    color: #ff79c6;
-}
-
-.token.boolean,
-.token.number {
-    color: #bd93f9;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-    color: #50fa7b;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string,
-.token.variable {
-    color: #f8f8f2;
-}
-
-.token.atrule,
-.token.attr-value,
-.token.function,
-.token.class-name {
-    color: #f1fa8c;
-}
-
-.token.keyword {
+.hljs-built_in,
+.hljs-selector-tag,
+.hljs-section,
+.hljs-link {
     color: #8be9fd;
 }
 
-.token.regex,
-.token.important {
-    color: #ffb86c;
+.hljs-keyword {
+    color: #ff79c6;
 }
 
-.token.important,
-.token.bold {
+.hljs,
+.hljs-subst {
+    color: #f8f8f2;
+}
+
+.hljs-title,
+.hljs-attr,
+.hljs-meta-keyword {
+    font-style: italic;
+    color: #50fa7b;
+}
+
+.hljs-string,
+.hljs-meta,
+.hljs-name,
+.hljs-type,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+    color: #f1fa8c;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion {
+    color: #6272a4;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-title,
+.hljs-section,
+.hljs-doctag,
+.hljs-type,
+.hljs-name,
+.hljs-strong {
     font-weight: bold;
 }
 
-.token.italic {
-    font-style: italic;
+.hljs-literal,
+.hljs-number {
+    color: #bd93f9;
 }
 
-.token.entity {
-    cursor: help;
+.hljs-emphasis {
+    font-style: italic;
 }

@@ -1,7 +1,6 @@
 ---
 import Base from "../../layouts/base.astro";
 import HomeNav from "../../components/navigation/home_nav";
-import { Prism } from '@astrojs/prism';
 import { hypens } from "../../utils/utils";
 
 const { hash } = Astro.params;
@@ -20,15 +19,23 @@ const data = await res.json()
             <p class="text-lg my-2">
                 {data.lang}
             </p>
-            <Prism code={data.content} lang={data.lang} />
+            <pre class=`hls ${data.lang}`>
+                <code class=`language-${data.lang}`>
+{data.content}
+                </code>
+            </pre>
         </div>
     </div>
 </Base>
 <style is:inline>
-    pre{
-        font-family: "Fira Code", 'Courier New', Courier, monospace;
-        font-size: 1.2rem;
-        padding: 1rem;
+    code{
+        font-family: "Fira Code Variable", 'Courier New', Courier, monospace;
+        font-size: 1.1rem;
+        padding: 0.5rem;
         border-radius: 0.5rem;
     }
 </style>
+<script>
+    import hljs from 'highlight.js';
+    hljs.highlightAll();
+</script>
