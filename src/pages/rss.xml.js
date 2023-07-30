@@ -5,7 +5,7 @@ export async function get() {
     title: 'Ishan Writes | NoobScience',
     description: 'Ishan Writes about cool stuff like Tech, Movies, Opinions and basically anything he wants to.',
     site: 'https://noobscience.rocks',
-    items: await pagesGlobToRssItems(import.meta.glob('../../src/content/blog/*/*.mdx')),
+    items: await pagesGlobToRssItems(import.meta.glob('./src/content/blog/*/*.mdx')),
     customData: `<language>en-us</language>`,
   });
 }
