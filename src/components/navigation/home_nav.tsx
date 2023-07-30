@@ -49,30 +49,30 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                                     rotateZ: nav ? 45 : 0,
                                     y: nav ? 8 : 0,
                                 }}
-                                className="block h-0.5 w-8 bg-black dark:bg-white"
+                                className="block h-0.5 w-8 bg-current"
                             ></motion.span>
                             <motion.span
                                 animate={{
                                     opacity: nav ? 0 : 1,
                                 }}
-                                className="block h-0.5 w-8 bg-black dark:bg-white"
+                                className="block h-0.5 w-8 bg-current"
                             ></motion.span>
                             <motion.span
                                 animate={{
                                     rotateZ: nav ? -45 : 0,
                                     y: nav ? -8 : 0,
                                 }}
-                                className="block h-0.5 w-8 bg-black dark:bg-white"
+                                className="block h-0.5 w-8 bg-current"
                             ></motion.span>
                         </div>
                         {nav && (
                             <motion.div
-                                className="fixed flex bottom-0 bg-white left-0 w-full h-screen items-center justify-center"
+                                className="fixed flex bottom-0 bg-black left-0 w-full h-screen items-center justify-center"
                                 animate={{ opacity: 1, x: 0 }}
                                 initial={{ opacity: 0, x: 25 }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <ul className="flex bg-white flex-col-reverse gap-4">
+                                <ul className="flex bg-black flex-col-reverse gap-4">
                                     <li>
                                         <a
                                             className="special_underline"

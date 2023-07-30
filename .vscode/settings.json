@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.cursorBlinking": false,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
+    "terminal.integrated.fontSize": 16
+}
