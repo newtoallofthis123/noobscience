@@ -68,7 +68,7 @@ export default function CodeEditor({}: Props) {
                                 <option value="javascript">Javascript</option>
                                 <option value="python">Python</option>
                                 <option value="c">C</option>
-                                <option value="c++">C++</option>
+                                <option value="cpp">C++</option>
                                 <option value="java">Java</option>
                                 <option value="html">HTML</option>
                                 <option value="css">CSS</option>
@@ -94,7 +94,6 @@ export default function CodeEditor({}: Props) {
                                 <option value="lisp">Lisp</option>
                                 <option value="xml">XML</option>
                                 <option value="yaml">YAML</option>
-                                <option value="other">Other</option>
                             </select>
                             <p className="text-xl">
                                 <b>Author</b>: Enter your name

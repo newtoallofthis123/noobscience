@@ -21,8 +21,30 @@ export default defineConfig({
     gfm: true,
     shikiConfig: {
       theme: 'github-light',
-      langs: ['javascript', 'html', 'css', 'typescript', 'tsx', 'jsx', 'json', 'markdown', 'mdx', 'bash', 'shell', 'md', 'mdx', 'rust'],
-      wrap: true
+      langs: [
+        'javascript',
+        'html',
+        'css',
+        'typescript',
+        'tsx', 'jsx',
+        'json', 'markdown',
+        'mdx', 'bash', 'shell',
+        'rust',
+        'c', 'cpp',
+        'go', 'java',
+        'python', 'ruby',
+        'php', 'sql',
+        'dart', 'scala',
+        'r', 'perl',
+        'lua', 'matlab',
+        'bash', 'dart',
+        'kotlin', 'swift',
+        'powershell', 'elixir',
+        'clojure', 'julia',
+        'xml', 'yaml',
+        
+      ],
+      wrap: false
     },
     syntaxHighlight: 'shiki',
     drafts: false
