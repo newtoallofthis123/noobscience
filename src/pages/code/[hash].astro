@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/base.astro";
 import HomeNav from "../../components/navigation/home_nav";
-import { Code } from 'astro/components';
+import { Prism } from '@astrojs/prism';
 import { hypens } from "../../utils/utils";
 
 const { hash } = Astro.params;
@@ -20,7 +20,7 @@ const data = await res.json()
             <p class="text-lg my-2">
                 {data.lang}
             </p>
-            <Code code={data.content} lang={data.lang} theme="github-dark" />
+            <Prism code={data.content} lang={data.lang} />
         </div>
     </div>
 </Base>

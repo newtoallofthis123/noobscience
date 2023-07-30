@@ -33,16 +33,6 @@ export default defineConfig({
         'c', 'cpp',
         'go', 'java',
         'python', 'ruby',
-        'php', 'sql',
-        'dart', 'scala',
-        'r', 'perl',
-        'lua', 'matlab',
-        'bash', 'dart',
-        'kotlin', 'swift',
-        'powershell', 'elixir',
-        'clojure', 'julia',
-        'xml', 'yaml',
-        
       ],
       wrap: false
     },
