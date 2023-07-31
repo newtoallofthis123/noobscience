@@ -1,0 +1,11 @@
+---
+const {id} = Astro.props;
+
+const res = await fetch("https://publish.twitter.com/oembed?url=https://twitter.com/" + id)
+const data = await res.json();
+const {html} = data;
+---
+
+<div set:html={html}>
+
+</div>

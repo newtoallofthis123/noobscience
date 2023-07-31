@@ -1,0 +1,11 @@
+---
+const { id } = Astro.props;
+
+const res = await fetch(
+    'https://www.reddit.com/oembed?url=https://www.reddit.com/' + id
+);
+const data = await res.json();
+const { html } = data;
+---
+
+<div set:html={html} />
