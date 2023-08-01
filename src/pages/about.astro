@@ -2,13 +2,14 @@
 import Base from "../layouts/base.astro";
 import HomeNav from "../components/navigation/home_nav";
 import { Image } from "astro:assets";
+import * as icons from 'simple-icons';
 
 import profile from "~/assets/profile.png"
 ---
 
 <Base title="About Me">
     <HomeNav title="About" client:load />
-    <div class="p-4">
+    <div class="md:p-4 p-1">
         <div class="flex flex-col md:flex-row justify-center items-center">
             <div class="md:w-2/5">
                 <div>
@@ -40,5 +41,92 @@ import profile from "~/assets/profile.png"
                 </div>
             </div>
         </div>
+        <div class="flex md:flex-row flex-col justify-center md:pt-10">
+            <div class="md:w-3/5 w-full">
+                <h1 class="font-heading text-center md:text-5xl text-3xl">
+                    Check out my skills
+                </h1>
+                <div class="md:p-6 p-4">
+                    <p>
+                        I started programming when I was about 17 years old. I started primarily with 
+                        Python and then moved on to web development. I have been working with Typescript
+                        and Javascript for about two years now. I have also worked with C and Rust.
+                        I have worked with a lot of libraries and frameworks, and I am always open to learning new things.
+                    </p>
+                    <p>
+                        Recently, I started learning Machine Learning and Data Science. I have worked with
+                        multiple libraries and frameworks in this field, and I am currently working on a few projects.
+                        Still learning, but I am getting there.
+                    </p>
+                    <p>
+                        I also have projects related to all these fields, which you can check out on my <a class="underline" href="/social/github">Github</a>.
+                        All of these projects are open source, so feel free to contribute to them.
+                        Wanna have a look at my resume? <a class="underline" href="/resume">Here</a> you go.
+                    </p>
+                </div>
+            </div>
+            <div class="md:w-2/5 w-full md:pl-10 pl-5">
+                <h1 class="text-2xl font-bold py-2">
+                    Languages
+                </h1>
+                <ul class="skills_ul flex flex-row">
+                    <li><a href="https://python.org" set:html={icons.siPython.svg}></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" set:html={icons.siJavascript.svg}></a></li>
+                    <li><a href="https://www.typescriptlang.org/" set:html={icons.siTypescript.svg}></a></li>
+                    <li><a href="https://www.rust-lang.org/" set:html={icons.siRust.svg}></a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/C_(programming_language)" set:html={icons.siC.svg}></a></li>
+                </ul>
+                <h1 class="text-2xl font-bold py-2">
+                    Libraries
+                </h1>
+                <ul class="skills_ul flex flex-row">
+                    <li><a href="https://flask.palletsprojects.com/en/" set:html={icons.siFlask.svg}></a></li>
+                    <li><a href="https://numpy.org" set:html={icons.siNumpy.svg}></a></li>
+                    <li><a href="https://pandas.pydata.org" set:html={icons.siPandas.svg}></a></li>
+                    <li><a href="https://react.dev" set:html={icons.siReact.svg}></a></li>
+                    <li><a href="https://expressjs.com" set:html={icons.siExpress.svg}></a></li>
+                    <li><a href="https://expressjs.com" set:html={icons.siTailwindcss.svg}></a></li>
+                    <li><a href="https://jquery.com" set:html={icons.siJquery.svg}></a></li>
+                </ul>
+                <h1 class="text-2xl font-bold py-2">
+                    Frameworks
+                </h1>
+                <ul class="skills_ul flex flex-row">
+                    <li><a href="https://nextjs.org/" set:html={icons.siNextdotjs.svg}></a></li>
+                    <li><a href="https://astro.build" set:html={icons.siAstro.svg}></a></li>
+                    <li><a href="https://www.djangoproject.com" set:html={icons.siDjango.svg}></a></li>
+                    <li><a href="https://scikit-learn.org" set:html={icons.siScikitlearn.svg}></a></li>
+                    <li><a href="https://www.tensorflow.org" set:html={icons.siTensorflow.svg}></a></li>
+                    <li><a href="https://pytorch.org" set:html={icons.siPytorch.svg}></a></li>
+                </ul>
+                <h1 class="text-2xl font-bold py-2">
+                    Tools
+                </h1>
+                <ul class="skills_ul flex flex-row">
+                    <li><a href="https://github.com" set:html={icons.siGithub.svg}></a></li>
+                    <li><a href="https://vercel.com" set:html={icons.siVercel.svg}></a></li>
+                    <li><a href="https://colab.research.google.com/" set:html={icons.siGooglecolab.svg}></a></li>
+                    <li><a href="https://code.visualstudio.com" set:html={icons.siVisualstudiocode.svg}></a></li>
+                    <li><a href="https://figma.com" set:html={icons.siFigma.svg}></a></li>
+                </ul>
+                <h1 class="text-2xl font-bold py-2">
+                    Db's and Cloud
+                </h1>
+                <ul class="skills_ul flex flex-row">
+                    <li><a href="https://www.sqlite.org/index.html" set:html={icons.siSqlite.svg}></a></li>
+                    <li><a href="https://postgresql.org/" set:html={icons.siPostgresql.svg}></a></li>
+                    <li><a href="https://www.mongodb.com" set:html={icons.siMongodb.svg}></a></li>
+                    <li><a href="https://docker.com/" set:html={icons.siDocker.svg}></a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Linux" set:html={icons.siLinux.svg}></a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </Base>
+<style is:inline>
+    .skills_ul li{
+        width: 2.4rem;
+        height: 2.4rem;
+        margin: 1rem 0.8rem;
+    }
+</style>

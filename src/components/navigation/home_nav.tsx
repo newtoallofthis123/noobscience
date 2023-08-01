@@ -67,12 +67,12 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                         </div>
                         {nav && (
                             <motion.div
-                                className="fixed flex bottom-0 bg-black left-0 w-full h-screen items-center justify-center"
+                                className="fixed flex bottom-0 bg-white text-black left-0 w-full h-screen items-center justify-center"
                                 animate={{ opacity: 1, x: 0 }}
                                 initial={{ opacity: 0, x: 25 }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <ul className="flex bg-black flex-col-reverse gap-4">
+                                <ul className="flex bg-white text-black flex-col-reverse gap-4">
                                     <li>
                                         <a
                                             className="special_underline"
