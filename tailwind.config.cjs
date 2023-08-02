@@ -8,8 +8,8 @@ module.exports = {
 				current: 'currentColor',
 				primary: 'rgb(var(--primary) / <alpha-value>)',
 				bg: 'rgb(var(--bg) / <alpha-value>)',
-				dark: '#121313',
-				light: '#fff',
+				dark: '#040300',
+				light: '#fbfcff',
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],

@@ -20,7 +20,7 @@ export default defineConfig({
     ...markdownConfig,
     gfm: true,
     shikiConfig: {
-      theme: 'github-dark-dimmed',
+      theme: 'dark-plus',
       langs: [
         'javascript',
         'html',

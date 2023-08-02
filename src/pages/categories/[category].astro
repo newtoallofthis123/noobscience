@@ -19,12 +19,12 @@ posts = posts.filter((post: any) => post.data.category === category);
 
 <Base title="Archives">
     <HomeNav client:load />
-    <div class="p-10">
+    <div class="md:p-10 p-2">
         <div>
-            <h1 class="md:text-6xl font-heading p-4">
+            <h1 class="md:text-6xl text-4xl font-heading p-4">
                 @{category} ({posts.length})
             </h1>
-            <p class="px-4">
+            <p class="md:px-4 px-2">
                 Below are all of my posts tagged {category}. If you're looking
                 for something specific, try using the search bar above.
             </p>
@@ -35,7 +35,7 @@ posts = posts.filter((post: any) => post.data.category === category);
                     return (
                         <div
                             onclick={"location.href = '/blog/" + post.slug + "'"}
-                            class="p-4 m-4 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                            class="md:p-4 md:m-4 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                         >
                             <p>
                                 {post.data.type
@@ -46,7 +46,7 @@ posts = posts.filter((post: any) => post.data.category === category);
                                         post.data.type.length
                                     )}
                             </p>
-                            <h1 class="text-3xl leading-relaxed font-bold">
+                            <h1 class="md:text-3xl text-2xl leading-relaxed font-bold">
                                 {post.data.emoji}{' '}
                                 {post.data.title}
                             </h1>

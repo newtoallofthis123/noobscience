@@ -46,14 +46,7 @@ export default function Init() {
     return (
         <>
             <button
-                style={{
-                    marginLeft: '0.5rem',
-                    background: 'none',
-                    color: 'currentColor',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: '1.5rem',
-                }}
+                className="md:text-xl text-lg my-1"
                 onClick={() => {
                     const theme = localStorage.getItem('theme');
                     if (theme === 'dark') {
@@ -64,19 +57,10 @@ export default function Init() {
                 }}
             >
                 <i className={`bi ${icon}`}></i>
-                {
-                    (icon === 'bi-sun') && " Better with the lights on"
-                }
+                {icon === 'bi-sun' && ' Better with the lights on'}
             </button>{' '}
             <button
-                style={{
-                    marginLeft: '0.5rem',
-                    background: 'none',
-                    color: 'currentColor',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: '1.5rem',
-                }}
+                className="md:text-xl text-lg my-1"
                 onClick={() => {
                     toggleTheme('system');
                 }}

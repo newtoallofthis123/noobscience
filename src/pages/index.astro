@@ -108,7 +108,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
                 </div>
                 <div class="md:w-3/5 w-full">
                     <div>
-                        <h1 class="text-3xl font-heading text-center">
+                        <h1 class="text-3xl font-heading text-center py-2">
                             Latest Update
                         </h1>
                         <UpdateLatest slice_length={250} client:load />
@@ -119,17 +119,17 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
                 <h1 class="text-5xl py-5 pt-8 font-bold">
                     Latest Posts
                 </h1>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid md:grid-cols-2 md:gap-4">
                     {latest.map((post) => {
                         return (
-                            <div onclick={"location.href = '/blog/" + post.slug + "'"} class="p-3 my-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                            <div onclick={"location.href = '/blog/" + post.slug + "'"} class="md:p-3 p-1 my-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
                                 <h1 class="text-2xl leading-relaxed font-bold">
-                                    {post.data.emoji} {post.data.title}
+                                    {post.data.emoji}{' '} {post.data.title}
                                 </h1>
-                                <p class="text-xl leading-relaxed">
+                                <p class="md:text-xl text-lg leading-relaxed">
                                     {post.data.description}    
                                 </p>
-                                <p class="text-xl leading-relaxed">
+                                <p class="md:text-xl text-lg leading-relaxed">
                                     Posted on <span>{new Date(post.data.date).toDateString()}</span>
                                 </p>
                             </div>

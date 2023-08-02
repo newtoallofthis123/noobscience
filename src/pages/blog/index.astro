@@ -120,19 +120,19 @@ let others = posts.filter(
                             );
                         })
                     }
-                    <p class="pt-6 p-4">
+                    <p class="md:pt-6 md:p-4 p-2">
                         <a href="/type/long">
-                            <span class="text-3xl font-bold"
+                            <span class="md:text-3xl text-xl font-bold"
                                 >See all my evergreen posts</span
                             >
                         </a>
                     </p>
-                    <span class="block w-full h-1 mt-5 my-5 bg-black"></span>
+                    <span class="block w-full h-1 md:mt-5 md:my-5 bg-black"></span>
                 </div>
             </div>
             <div>
                 <h1
-                    class="md:text-5xl text-3xl font-bold md:p-4 p-1 font-heading"
+                    class="md:text-5xl text-2xl font-bold md:p-4 p-1 font-heading"
                 >
                     What even is this?
                 </h1>
@@ -173,7 +173,7 @@ let others = posts.filter(
             <div>
                 <h1
                     id="notes"
-                    class="md:text-5xl mx-4 text-3xl font-bold p-4 font-heading"
+                    class="md:text-5xl md:mx-4 mt-3 text-3xl font-bold md:p-4 p-2 font-heading"
                 >
                     My Jots and Notes
                 </h1>
@@ -185,14 +185,14 @@ let others = posts.filter(
                                     onclick={
                                         "location.href = '/blog/" + post.slug + "'"
                                     }
-                                    class="p-4 m-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                                    class="md:p-4 md:m-2 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                                 >
                                     <h1 class="text-2xl leading-relaxed font-bold">
                                         {post.data.emoji}{' '}
                                         {post.data.title}
                                     </h1>
-                                    <p>{post.data.description}</p>
-                                    <p>
+                                    <p class="md:text-xl text-lg">{post.data.description}</p>
+                                    <p class="md:text-xl text-lg">
                                         <span id="p-heading">
                                             #{post.data.category}
                                         </span>
@@ -253,14 +253,14 @@ let others = posts.filter(
                                     <span id="p-heading">
                                         @{post.data.category}
                                     </span>
-                                    <h1 class="md:text-3xl text-xl leading-relaxed font-bold">
+                                    <h1 class="md:text-3xl text-2xl leading-relaxed font-bold">
                                         {post.data.emoji}{' '}
                                         {post.data.title}
                                     </h1>
-                                    <p class="text-lg">
+                                    <p class="md:text-lg text-base">
                                         {post.data.description}
                                     </p>
-                                    <p class="text-lg">
+                                    <p class="md:text-lg text-base">
                                         Posted on{' '}
                                         <span id="p-heading">
                                             {new Date(
@@ -275,7 +275,7 @@ let others = posts.filter(
                 </div>
             </div>
         </div>
-        <div id="dev" class="font-mono text-lime-300 bg-gray-900 md:p-10 p-4">
+        <div id="dev" class="font-mono text-lime-300 bg-gray-900 dark:bg-black md:p-10 p-4">
             <h1 class="md:text-4xl text-2xl pb-4 font-bold">
                 Some of my Devlogs
             </h1>
@@ -290,7 +290,7 @@ let others = posts.filter(
                     return (
                         <div
                             onclick={"location.href = '/blog/" + post.slug + "'"}
-                            class="md:p-4 md:my-2 my-5 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                            class="md:p-4 md:my-2 my-3 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                         >
                             <span id="p-heading">
                                 #{post.data.category}
@@ -320,10 +320,5 @@ let others = posts.filter(
 <style is:inline>
     #p-heading {
         font-weight: 400;
-    }
-    p {
-        font-size: 1.5rem;
-        font-weight: 300;
-        line-height: 2.5rem;
     }
 </style>
