@@ -11,6 +11,7 @@ export interface Props {
 }
 const {title, img="/assets/banner.png", description, color, bg, selection_only=true, selection_color="#fff", selection_bg="#2500ff"} = Astro.props
 import "../base.css"
+import Init from "../components/utils/theme";
 import '../components/styles/nav.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import '@fontsource/atkinson-hyperlegible';
@@ -77,7 +78,7 @@ const BASE_URL = "https://" + Astro.url.host
     <link rel="mask-icon" href="/favicon.ico" color="#0f0f28" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
      crossorigin="anonymous"></script>
-     <body>
+     <body class="dark:bg-dark dark:text-white">
         <div class={
         !selection_only ? "colored" : ""
      } id="content">
@@ -88,6 +89,9 @@ const BASE_URL = "https://" + Astro.url.host
                     <a href="/credits" class="font-bold text-xl">
                         NoobScience &copy {new Date().getFullYear()}
                     </a>
+                    <span class="pl-4">
+            <Init client:load/>
+                    </span>
                 </div>
             </footer>
         </div>

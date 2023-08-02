@@ -44,7 +44,7 @@ export default function UpdateLatest(
             )}
             {latest.name != '' && (
                 <div
-                    className="page-div bg-white m-1 md:m-10 mt-0 p-4 md:py-8 transform hover:scale-105 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                    className="page-div bg-white dark:bg-dark m-1 md:m-10 mt-0 p-4 md:py-8 transform hover:scale-105 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                     onClick={() => {
                         typeof window !== 'undefined' &&
                             window.location.replace(

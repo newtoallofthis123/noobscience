@@ -52,7 +52,7 @@ export default function CodeEditor({}: Props) {
                             </p>
                             <input
                                 type="text"
-                                className="w-2/4 border-black border-2 p-2 text-lg font-mono rounded-xl my-4"
+                                className="w-2/4 border-current dark:bg-dark  border-2 p-2 text-lg font-mono rounded-xl my-4"
                                 name="code_title"
                                 id="title"
                             />
@@ -61,7 +61,7 @@ export default function CodeEditor({}: Props) {
                                 snippet.
                             </p>
                             <select
-                                className="border-2 w-2/5 border-black p-2 text-lg bg-gray-100 font-mono rounded-xl my-4"
+                                className="border-2 w-2/5 border-current p-2 text-lg bg-gray-100 dark:bg-dark font-mono rounded-xl my-4"
                                 name="code_lang"
                                 id="code_lang"
                             >
@@ -100,7 +100,7 @@ export default function CodeEditor({}: Props) {
                             </p>
                             <input
                                 type="text"
-                                className="w-2/4 border-black border-2 p-2 text-lg font-mono rounded-xl my-4"
+                                className="w-2/4 border-current dark:bg-dark  border-2 p-2 text-lg font-mono rounded-xl my-4"
                                 name="author"
                                 id="lang"
                             />
@@ -111,13 +111,16 @@ export default function CodeEditor({}: Props) {
                             <textarea
                                 name="content"
                                 id="content"
-                                className="w-3/5 border-2 border-black rounded-xl p-2 text-md font-mono"
+                                className="w-3/5 border-2 border-current dark:bg-dark rounded-xl p-2 text-md font-mono"
                                 rows={10}
                                 cols={10}
                             ></textarea>
                             <p></p>
                             <p></p>
-                            <button type="submit" className="text-xl my-4 w-2/5 rounded-2xl bg-black text-white p-4 hover:scale-105 transition duration-200">
+                            <button
+                                type="submit"
+                                className="text-xl my-4 w-2/5 rounded-2xl bg-black text-white dark:dark:bg-light dark:text-black  p-4 hover:scale-105 transition duration-200"
+                            >
                                 Sent Code to the Database
                             </button>
                             <p></p>

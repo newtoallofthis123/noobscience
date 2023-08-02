@@ -6,6 +6,7 @@ import Notification from "../components/utils/notification/notification";
 import UpdateLatest from "../components/updates/latest";
 import welcomeImg from "../assets/welcome.webp"
 import circleSvg from "../assets/circle.svg"
+import logoDark from "../assets/logo512.png"
 import { Image } from "astro:assets";
 
 const options = [
@@ -24,17 +25,17 @@ posts = posts.sort(
         new Date(b.data.date).getTime() -
         new Date(a.data.date).getTime()
 );
-const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 3)
+const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6)
 ---
 
 <Base title="NoobScience | Student and Open Source Enthusiast">
     <div>
         <HomeNav title="NOOBSCIENCE" client:load />
         <div class="z-0 md:px-20  md:py-14 p-5">
-            <div class="font-serif text-gray-900">
+            <div class="font-serif text-gray-900 dark:text-gray-200">
                 <div>
                     <h1 class="md:text-7xl leading-snug text-4xl">
-                        <a href="/about" class="font-bold text-black leading-snug md:text-8xl text-6xl cursor-help transform duration-500">Ishan</a> 
+                        <a href="/about" class="font-bold dark:text-white text-black leading-snug md:text-8xl text-6xl cursor-help transform duration-500">Ishan</a> 
                             {' '}{options[Math.floor(Math.random() * options.length)]}
                     </h1>
                 </div>
@@ -63,7 +64,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 3
             <span class="block w-1/5 h-1 mt-8 bg-red-600"></span>
             <div>
                 <h1 class="py-4 text-3xl font-mono">
-                    <a href="/about" class="bg-green-100 p-1">Know me more</a>
+                    <a href="/about" class="bg-green-100 dark:text-black p-1">Know me more</a>
                 </h1>
                 <p class="text-lg">
                     By the way, you should scroll down or check out my writings
@@ -105,37 +106,35 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 3
                         <li></li>
                     </ul>
                 </div>
-                <div class="md:w-2/5 w-full">
-                    <Image src={welcomeImg} alt="">
+                <div class="md:w-3/5 w-full">
+                    <div>
+                        <h1 class="text-3xl font-heading text-center">
+                            Latest Update
+                        </h1>
+                        <UpdateLatest slice_length={250} client:load />
+                    </div>
                 </div>
             </div>
-            <div class="flex md:flex-row flex-col justify-center items-center">
-                <div class="md:w-2/4 w-full">
-                    <h1 class="text-5xl py-5 pt-8 font-bold">
-                        Latest Posts
-                    </h1>
-                    {
-                        latest.map((post) => {
-                            return (
-                                <div onclick={
-                                            "location.href = '/blog/" + post.slug + "'"
-                                        } class="md:p-3 md:my-3 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
-                                    <h1 class="text-2xl leading-relaxed font-bold">
-                                        {post.data.emoji}{' '}{post.data.title}
-                                    </h1>
-                                    <p class="text-xl leading-relaxed">
-                                        {post.data.description}    
-                                    </p>
-                                    <p class="text-xl leading-relaxed">
-                                        Posted on <span>{new Date(post.data.date).toDateString()}</span> | {post.data.minutesRead}
-                                    </p>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-                <div class="md:w-2/4 w-full">
-                    <UpdateLatest slice_length={300} client:load />
+            <div>
+                <h1 class="text-5xl py-5 pt-8 font-bold">
+                    Latest Posts
+                </h1>
+                <div class="grid grid-cols-2 gap-4">
+                    {latest.map((post) => {
+                        return (
+                            <div onclick={"location.href = '/blog/" + post.slug + "'"} class="p-3 my-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                                <h1 class="text-2xl leading-relaxed font-bold">
+                                    {post.data.emoji} {post.data.title}
+                                </h1>
+                                <p class="text-xl leading-relaxed">
+                                    {post.data.description}    
+                                </p>
+                                <p class="text-xl leading-relaxed">
+                                    Posted on <span>{new Date(post.data.date).toDateString()}</span>
+                                </p>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ export default function Form() {
 
     return (
         <form onSubmit={submit}>
-            <div className='page-div bg-lime-300'>
+            <div className='page-div text-dark bg-lime-300'>
                 <h1 className='text-4xl px-10 font-bold p-2'>
                     Contact The Noob
                 </h1>

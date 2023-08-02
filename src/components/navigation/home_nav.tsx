@@ -2,16 +2,16 @@ import React from 'react';
 import '../styles/nav.scss';
 import { motion } from 'framer-motion';
 
-export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
-    const [nav, setNav] = React.useState(false)
+export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' }) {
+    const [nav, setNav] = React.useState(false);
     const play_shutter = () => {
-        const path = "/assets/audio/shutter.wav"
-        const audio = new Audio(path)
+        const path = '/assets/audio/shutter.wav';
+        const audio = new Audio(path);
         audio.play();
         setTimeout(() => {
-            window.location.href = "/"
+            window.location.href = '/';
         }, 500);
-    }
+    };
     return (
         <>
             <nav
@@ -20,7 +20,7 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                     color: color,
                 }}
                 id="home_nav"
-                className="p-2"
+                className="p-2 dark:bg-dark dark:text-white"
             >
                 <div id="nav">
                     <div className="flex flex-row justify-between items-center p-2">
@@ -67,12 +67,12 @@ export default function HomeNav({ title = "", bg = "#fff", color = "#000" }) {
                         </div>
                         {nav && (
                             <motion.div
-                                className="fixed flex bottom-0 bg-white text-black left-0 w-full h-screen items-center justify-center"
+                                className="fixed flex bottom-0 bg-white dark:bg-dark text-black dark:text-white left-0 w-full h-screen items-center justify-center"
                                 animate={{ opacity: 1, x: 0 }}
                                 initial={{ opacity: 0, x: 25 }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <ul className="flex bg-white text-black flex-col-reverse gap-4">
+                                <ul className="flex flex-col-reverse gap-4">
                                     <li>
                                         <a
                                             className="special_underline"

@@ -45,12 +45,11 @@ export default function Init() {
     }, []);
     return (
         <>
-            Toggle Mode:
             <button
                 style={{
                     marginLeft: '0.5rem',
                     background: 'none',
-                    color: 'var(--color)',
+                    color: 'currentColor',
                     border: 'none',
                     cursor: 'pointer',
                     fontSize: '1.5rem',
@@ -65,13 +64,15 @@ export default function Init() {
                 }}
             >
                 <i className={`bi ${icon}`}></i>
+                {
+                    (icon === 'bi-sun') && " Better with the lights on"
+                }
             </button>{' '}
-            or
             <button
                 style={{
                     marginLeft: '0.5rem',
                     background: 'none',
-                    color: 'var(--color)',
+                    color: 'currentColor',
                     border: 'none',
                     cursor: 'pointer',
                     fontSize: '1.5rem',

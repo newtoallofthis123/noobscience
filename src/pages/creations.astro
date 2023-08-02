@@ -42,8 +42,8 @@ const projects = [
 ]
 ---
 
-<Base color="#000" bg="#ebfff9" title="Ishan's Creations">
-    <HomeNav color="#000" bg="#ebfff9" title="Projects that worked I have" client:load />
+<Base title="Ishan's Creations">
+    <HomeNav title="Projects that worked I have" client:load />
     <div class="p-4">        
         <div class="flex justify-center items-center">
             <div class="md:w-4/5 w-full">
@@ -61,7 +61,7 @@ const projects = [
                             <div class="flex flex-row justify-between">
                                 <div>
                                     <h1 class="text-xl md:text-3xl py-2 font-bold">{project.name}</h1>
-                                    <p class="text-gray-700 text-xl leading-8">{project.description}</p>
+                                    <p class="text-gray-700 dark:text-gray-200 text-xl leading-8">{project.description}</p>
                                 </div>
                                 <div>
                                     <a href={project.github} class="inline-block text-blue-600 ml-2 transition-all duration-300 transform hover:translate-x-1" target="_blank" rel="noopener noreferrer">
@@ -72,7 +72,7 @@ const projects = [
                             <div class="flex flex-row">
                                 {
                                     project.langs.map((lang) => (
-                                        <div class="p-1 my-2 mr-4 bg-gray-200 rounded-md">
+                                        <div class="p-1 my-2 mr-4 bg-gray-200 md:bg-gray-800 rounded-md">
                                             <p class="text-lg">{lang}</p>
                                         </div>
                                     ))

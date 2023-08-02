@@ -53,7 +53,7 @@ export default function Search({ term = '' }: any) {
                     <input
                         type="search"
                         name="search"
-                        className="text-lg w-full border-2 border-black rounded-md focus:outline-none p-4 rounded-"
+                        className="text-lg w-full border-2 border-current dark:text-white dark:bg-dark rounded-md focus:outline-none p-4 rounded-"
                         value={search}
                         placeholder="Search anything with a minimum of 3 characters, use 8 for better results"
                         onChange={handleChange}
