@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 const {emoji} = Astro.params
 
 let posts = await getCollection('blog', ({data}) => {
-    return data.draft !== true
+    return data
 });
 
 posts = posts.sort(

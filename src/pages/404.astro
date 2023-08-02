@@ -3,9 +3,9 @@ import Base from "../layouts/base.astro";
 import HomeNav from "../components/navigation/home_nav";
 ---
 
-<Base title="404 Resource Not Found">
-    <HomeNav bg="#fde884" title="Not Found :(" client:load />
-    <div style="background-color: #fde884;" class="flex flex-col md:flex-row">
+<Base bg="#fde884" color="#000" selection_only={false} title="404 Resource Not Found">
+    <HomeNav bg="#fde884" color="#000" title="Not Found :(" client:load />
+    <div class="flex flex-col md:flex-row">
         <div class="w-full md:w-1/2">
             <div style="margin-top: 4vw;" class="text-center mx-10 md:mx-0">
                 <h1 class="md:text-6xl py-4 text-3xl font-bold">

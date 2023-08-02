@@ -45,7 +45,7 @@ const {Content} = await blogPost?.render()
             <div class="md:pt-2 pt-4 flex flex-col justify-center items-center">
                 <div class={` ${(frontmatter?.full_img)?"md:w-full": (frontmatter?.img)?"md:4/5":"md:w-full"}  p-4`}>
                     <h1
-                    class={` ${(frontmatter?.full_img)?"md:text-7xl":"md:text-5xl"} text-4xl font-heading md:py-3`}
+                    class={` ${(frontmatter?.full_img)?"md:text-5xl":"md:text-5xl"} text-3xl font-heading md:py-3`}
                 >
                 {
                     !frontmatter?.full_img &&
@@ -62,14 +62,14 @@ const {Content} = await blogPost?.render()
                 {
                     frontmatter?.full_img &&
                     (
-                        <span onclick={`navigator.clipboard.writeText('http://${BASE_URL}/e/${frontmatter.emoji}')`} class="md:text-8xl text-4xl md:mb-8 mb-4 mr-4 cursor-pointer"
+                        <span onclick={`navigator.clipboard.writeText('http://${BASE_URL}/e/${frontmatter.emoji}')`} class="md:text-5xl text-4xl md:mb-8 mb-4 mr-4 cursor-pointer"
                         >{frontmatter.emoji}
                         </span>
                     )
                 }
                     {frontmatter?.title}
                 </h1>
-                <p class="md:text-3xl text-lg md:py-5 py-2">
+                <p class="md:text-2xl text-lg md:py-5 py-2">
                     {frontmatter?.date.toDateString()} • {
                         meta?.remarkPluginFrontmatter?.minutesRead
                     } • {
@@ -95,7 +95,7 @@ const {Content} = await blogPost?.render()
             <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
             <span class="block w-40 h-1 mb-5 bg-red-600"></span>
             <h3
-                class="md:text-4xl text-2xl font-heading leading-relaxed md:py-5"
+                class="md:text-3xl text-2xl font-heading leading-relaxed md:py-5"
             >
                 Posted in <a
                     href={'/categories/' + frontmatter?.category}
@@ -106,7 +106,7 @@ const {Content} = await blogPost?.render()
                 {
                 frontmatter?.tags.map((tag: string) => {
                     return (
-                        <div class="md:text-2xl text-xl pr-5">
+                        <div class="md:text-xl text-lg pr-5 pb-5">
                             <a href={'/tags/' + tag} class="">
                                 #{tag}
                             </a>

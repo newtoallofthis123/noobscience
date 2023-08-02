@@ -13,15 +13,6 @@ export default {
     ],
     rehypePlugins: [
         rehypeMathJaxSvg,
-        rehypeSlug,
-        [
-            rehypeAutolinkHeadings,
-            {
-                behavior: 'wrap',
-                properties: {
-                    className: 'heading',
-                },
-            },
-        ],
+        rehypeSlug
     ],
 };

@@ -275,16 +275,18 @@ let others = posts.filter(
                 </div>
             </div>
         </div>
-        <div id="dev" class="font-mono text-lime-300 bg-gray-900 dark:bg-black md:p-10 p-4">
-            <h1 class="md:text-4xl text-2xl pb-4 font-bold">
-                Some of my Devlogs
-            </h1>
-            <p class="text-lg">
-                I am a developer at heart after all, so I do write about my dev
-                stuff. Although not too much, since I believe that there are
-                already a lot of people out there who are doing a much better
-                job than me.
-            </p>
+        <div id="dev" class=" md:p-10 p-4">
+            <div class="font-mono text-lime-300 bg-gray-900 dark:bg-black p-2 rounded-lg">
+                <h1 class="md:text-4xl text-2xl pb-4 font-bold">
+                    Some of my Devlogs
+                </h1>
+                <p class="text-lg">
+                    I am a developer at heart after all, so I do write about my dev
+                    stuff. Although not too much, since I believe that there are
+                    already a lot of people out there who are doing a much better
+                    job than me.
+                </p>
+            </div>
             {
                 dev.map((post) => {
                     return (
@@ -293,7 +295,7 @@ let others = posts.filter(
                             class="md:p-4 md:my-2 my-3 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                         >
                             <span id="p-heading">
-                                #{post.data.category}
+                                @{post.data.category}
                             </span>
                             <h1 class="md:text-3xl text-xl leading-relaxed font-bold">
                                 {post.data.emoji}{' '}
