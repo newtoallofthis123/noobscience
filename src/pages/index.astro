@@ -4,10 +4,10 @@ import Base from "../layouts/base.astro";
 import HomeNav from "../components/navigation/home_nav";
 import Notification from "../components/utils/notification/notification";
 import UpdateLatest from "../components/updates/latest";
-import welcomeImg from "../assets/welcome.webp"
 import circleSvg from "../assets/circle.svg"
-import logoDark from "../assets/logo512.png"
+import Current from "../components/utils/notification/current";
 import { Image } from "astro:assets";
+import Youtube from "../components/utils/md/social/youtube.astro";
 
 const options = [
     'is a Developer',
@@ -78,7 +78,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
                     <p>
                         Hi! I am Ishan. Get to know me from these bullets.
                     </p>
-                    <ul class="list-none font-normal py-3">
+                    <ul id="points" class="list-none font-normal py-3">
                         <li>
                             🎒 1st year Student at GRIET
                         </li>
@@ -89,7 +89,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
                             <i class="bi bi-github pl-1"></i> Open Source Enthusiast
                         </li>
                         <li>
-                            📝 Opinionated Writer
+                            🌱 Web Gardener
                         </li>
                         <li>
                             🤖 Learning to teach Machines
@@ -106,7 +106,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
                         <li></li>
                     </ul>
                 </div>
-                <div class="md:w-3/5 w-full">
+                <div id="update" class="md:w-3/5 w-full">
                     <div>
                         <h1 class="text-3xl font-heading text-center py-2">
                             Latest Update
@@ -115,7 +115,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
                     </div>
                 </div>
             </div>
-            <div>
+            <div id="latest">
                 <h1 class="text-5xl py-5 pt-8 font-bold">
                     Latest Posts
                 </h1>
@@ -135,6 +135,35 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
                             </div>
                         );
                     })}
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row py-5 justify-center">
+                <div id="current" class="md:w-2/5">
+                    <Current client:load />
+                </div>
+                <div class="md:w-3/5 md:my-5 md:px-10">
+                    <h1 class="md:text-5xl text-3xl font-heading">
+                        What I'm doing now?
+                    </h1>
+                    <h2 class="pt-8 md:text-3xl text-xl">
+                        Well, I'm teaching Machines.
+                    </h2>
+                    <div class="py-5">
+                        <p>
+                            Atleast that is how I like to put it. I'm learning Machine Learning and Deep Learning.
+                            Machine learning was always something that I tried to learn but never got around to it.
+                            Well, I'm glad to say that I am finally doing it and I'm loving it (KFC<sup>TM</sup>).
+                        </p>
+                    </div>
+                    <div id="music">
+                        <h1 class="text-3xl py-2 font-bold">
+                            What I'm currently listening to
+                        </h1>
+                        <Youtube id="v4pi1LxuDHc"/>
+                        <p>
+                        The Lumineers - Sleep On The Floor: Check out my full <a class="underline" href="https://music.youtube.com/playlist?list=PL1QxBqlyOFkXJoQFw--WK2B9GcMLDD6ka&feature=share" >playlist</a> on Youtube Music.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
