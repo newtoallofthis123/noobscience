@@ -5,7 +5,6 @@ import HomeNav from "../components/navigation/home_nav";
 import Notification from "../components/utils/notification/notification";
 import UpdateLatest from "../components/updates/latest";
 import circleSvg from "../assets/circle.svg"
-import Current from "../components/utils/notification/current";
 import { Image } from "astro:assets";
 import Youtube from "../components/utils/md/social/youtube.astro";
 
@@ -111,7 +110,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
                         <h1 class="text-3xl font-heading text-center py-2">
                             Latest Update
                         </h1>
-                        <UpdateLatest slice_length={250} client:load />
+                        <UpdateLatest slice_length={225} client:load />
                     </div>
                 </div>
             </div>
@@ -139,7 +138,19 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
             </div>
             <div class="flex flex-col md:flex-row py-5 justify-center">
                 <div id="current" class="md:w-2/5">
-                    <Current client:load />
+                    <h1 class="md:text-5xl text-3xl font-heading md:py-5 py-2">
+                        Current Thoughts
+                    </h1>
+                    <p>
+                        Why does this describe me so well 😂
+                    </p>
+                    <div>
+                        <img src="https://i.redd.it/z9iyqzrdmrfb1.jpg" alt="Meme" />
+                    </div>
+                    <p>
+                        From <a class="underline" href="https://www.reddit.com/r/ProgrammerHumor/comments/15gklx0/totalltmycase/">r/ProgrammerHumor</a>
+                        Just thought I'd share it here.
+                    </p>
                 </div>
                 <div class="md:w-3/5 md:my-5 md:px-10">
                     <h1 class="md:text-5xl text-3xl font-heading">
