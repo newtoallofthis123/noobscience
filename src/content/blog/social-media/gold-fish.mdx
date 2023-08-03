@@ -8,7 +8,7 @@ category: "social-media"
 tags: ["social-media", "attention-span", "tech"]
 img: "../../../assets/gold_fish.jpg"
 emoji: 🐟
-selection_only: false
+selection_only: true
 type: long
 full_img: true
 color: "#f0f0f0"
@@ -17,7 +17,7 @@ selection_color: "#000"
 selection_bg: "#ff7f00"
 ---
 import YouTube from "../../../components/utils/md/social/youtube.astro"
-import Twitter from "../../../components/utils/md/social/twitter.astro"
+import Twitter from "../../../components/utils/md/social/twitter.tsx"
 import Reddit from "../../../components/utils/md/social/reddit.astro"
 
 Ever seen a gold fish? Beautiful creatures aren't they? There's something in the
@@ -165,7 +165,7 @@ Meditate if you need to, but it's not necessary. Just to clarity, I am not askin
 you to take time out of your schedule to do this. I am just asking you to do this when you are bored and 
 already have nothing to do.
 
-<Twitter id="JamesClear/status/1296885438561517569" />
+<Twitter id="1296885438561517569" client:idle/>
 
 To answer the final question for you, the next time you are bored, do nothing, or better yet, just
 learn how to do cool pen tricks. It is nerd approved.

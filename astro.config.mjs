@@ -16,6 +16,11 @@ export default defineConfig({
   }), sitemap()],
   output: "server",
   adapter: vercel(),
+  vite: {
+    ssr: {
+      noExternal: ['react-tweet']
+    }
+  },
   markdown: {
     ...markdownConfig,
     gfm: true,
