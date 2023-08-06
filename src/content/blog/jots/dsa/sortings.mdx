@@ -74,15 +74,15 @@ Hence we are inserting an element into the sorted part of the array, hence the n
 It is like sorting a deck of cards, where you pick up a card and insert it into the correct position in the sorted part of the deck.
 
 ```c
-void insertion_sort(int arr[], int n){
-    for(int i = 1; i<n; i++){
-        int key = arr[i];
-        int j = i - 1;
-        while(j >= 0 && arr[j] > key){
-            arr[j + 1] = arr[j];
+void insertion(int arr[], int n){
+    for (int i = 0; i < n; i++){
+        int j = i;
+        while (j > 0 && arr[j] < arr[j-1]){
+            int temp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = temp;
             j--;
         }
-        arr[j + 1] = key;
     }
 }
 ```
