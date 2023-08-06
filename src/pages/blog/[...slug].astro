@@ -40,9 +40,9 @@ const {Content} = await blogPost?.render()
         class="flex flex-col justify-center items-center"
     >
         <div class={
-            (frontmatter?.full_img)?"section_colored text-center":"cool"
+            (frontmatter?.full_img)?"section_colored text-center":"md:w-3/5 w-full "
         }>
-            <div class="md:pt-2 pt-4 flex flex-col justify-center items-center">
+            <div class="md:pt-2 pt-4 flex flex-col justify-center">
                 <div class={` ${(frontmatter?.full_img)?"md:w-full": (frontmatter?.img)?"md:4/5":"md:w-full"}  p-4`}>
                     <h1
                     class={` ${(frontmatter?.full_img)?"md:text-5xl":"md:text-5xl"} text-3xl font-heading md:py-3`}

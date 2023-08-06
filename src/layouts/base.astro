@@ -9,7 +9,7 @@ export interface Props {
     selection_color?: string;
     selection_bg?: string;
 }
-const {title, img="/assets/banner.png", description, color, bg, selection_only=true, selection_color="#fff", selection_bg="#2500ff"} = Astro.props
+const {title, img="/assets/banner.png", description, color, bg, selection_only=true, selection_color=color, selection_bg=bg} = Astro.props
 import "../base.css"
 import Init from "../components/utils/theme";
 import { Image } from "astro:assets";
@@ -125,21 +125,13 @@ const BASE_URL = "https://" + Astro.url.host
             color: var(--color);
             background: var(--bg);
         }
-        .colored ::selection {
-            background: var(--selection_bg);
-            color: var(--selection_color);
-        }
-        .colored ::-moz-selection {
-            background: var(--selection_bg);
-            color: var(--selection_color);
-        }
         ::selection {
-            background: var(--bg);
-            color: var(--color);
+            background: var(--selection_bg);
+            color: var(--selection_color);
         }
         ::-moz-selection {
-            background: var(--bg);
-            color: var(--color);
+            background: var(--selection_bg);
+            color: var(--selection_color);
         }
         #home_nav ::selection {
             background: #2500ff;
