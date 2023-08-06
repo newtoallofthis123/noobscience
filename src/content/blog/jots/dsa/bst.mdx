@@ -216,6 +216,36 @@ void displayPostorder(struct node *root)
 }
 ```
 
+## Level Order Traversal
+
+Level order traversal is a bit different from the other three traversals.
+It uses a queue to store the nodes of the tree.
+We start by pushing the root node into the queue.
+Then, we pop the front node from the queue and print its value.
+Then, we push the left and right children of the node into the queue.
+
+```c
+void levelOrder(struct node *root){
+  if(root == NULL){
+    return;
+  }
+  struct node *queue[100];
+  int front = -1, rear = -1;
+  queue[++rear] = root;
+
+  while(front != rear){
+    struct node *current = queue[++front];
+    printf("%d ", current->data);
+    if(current->left != NULL){
+        queue[++rear] = current->left;
+    }
+    if(current->right != NULL){
+        queue[++rear] = current->right;
+    }
+  }
+}
+```
+
 ## Finding the minimum and maximum elements
 
 The minimum element in a binary search tree is the leftmost node.

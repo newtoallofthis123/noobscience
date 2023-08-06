@@ -7,6 +7,7 @@ import UpdateLatest from "../components/updates/latest";
 import circleSvg from "../assets/circle.svg"
 import { Image } from "astro:assets";
 import Youtube from "../components/utils/md/social/youtube.astro";
+import Current from "../components/utils/notification/current";
 
 const options = [
     'is a Developer',
@@ -138,19 +139,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
             </div>
             <div class="flex flex-col md:flex-row py-5 justify-center">
                 <div id="current" class="md:w-2/5">
-                    <h1 class="md:text-5xl text-3xl font-heading md:py-5 py-2">
-                        Current Thoughts
-                    </h1>
-                    <p>
-                        Why does this describe me so well 😂
-                    </p>
-                    <div>
-                        <img src="https://i.redd.it/z9iyqzrdmrfb1.jpg" alt="Meme" />
-                    </div>
-                    <p>
-                        From <a class="underline" href="https://www.reddit.com/r/ProgrammerHumor/comments/15gklx0/totalltmycase/">r/ProgrammerHumor</a>
-                        Just thought I'd share it here.
-                    </p>
+                    <Current client:idle />
                 </div>
                 <div class="md:w-3/5 md:my-5 md:px-10">
                     <h1 class="md:text-5xl text-3xl font-heading">
@@ -164,15 +153,6 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
                             Atleast that is how I like to put it. I'm learning Machine Learning and Deep Learning.
                             Machine learning was always something that I tried to learn but never got around to it.
                             Well, I'm glad to say that I am finally doing it and I'm loving it (KFC<sup>TM</sup>).
-                        </p>
-                    </div>
-                    <div id="music">
-                        <h1 class="text-3xl py-2 font-bold">
-                            What I'm currently listening to
-                        </h1>
-                        <Youtube id="v4pi1LxuDHc"/>
-                        <p>
-                        The Lumineers - Sleep On The Floor: Check out my full <a class="underline" href="https://music.youtube.com/playlist?list=PL1QxBqlyOFkXJoQFw--WK2B9GcMLDD6ka&feature=share" >playlist</a> on Youtube Music.
                         </p>
                     </div>
                 </div>

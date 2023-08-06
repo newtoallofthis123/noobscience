@@ -146,93 +146,64 @@ The following functions are implemented in the code below:
 ```c
 #include <stdio.h>
 #include <stdlib.h>
+
 struct node
 {
-  int data;
-  struct node *next;
+    int data;
+    struct node *next;
 };
-struct node *head;
-int c = 0, b = 0;
 
-void insert()
+struct node *head = NULL;
+
+struct node *getNode(int data)
 {
-  int n, p, i;
-  struct node *temp = (struct node *)malloc(sizeof(struct node));
-  struct node *temp2, *x;
-  scanf("%d %d", &n, &p);
-  if (p <= 0 || p > c + 1)
-    printf("Enter a valid position");
+  struct node *newNode = (struct node *)(malloc(sizeof(struct node)));
+  newNode->data = data;
+  newNode->next = NULL;
+  return newNode;
+}
+
+void insert(int data, int pos)
+{
+  struct node *newNode = getNode(data);
+  if (pos == 0)
+  {
+    newNode->next = head;
+    head = newNode;
+  }
   else
   {
-    c++;
-    temp->data = n;
-    temp->next = NULL;
-    if (p == 1)
+    struct node *current = head;
+    for (int i = 0; i < pos - 1 && current != NULL; i++)
     {
-      temp->next = head;
-      head = temp;
-      x = head;
-      for (i = 1; i < c; i++)
-      {
-          x = x->next;
-      }
-      x->next = temp;
+        current = current->next;
     }
-    else
+    if (current == NULL)
     {
-    temp2 = head;
-    for (i = 1; i < p - 1; i++)
-      temp2 = temp2->next;
-    temp->next = temp2->next;
-    temp2->next = temp;
+        printf("Invalid position, cannot insert.\n");
+        free(newNode);
+        return;
     }
+    newNode->next = current->next;
+    current->next = newNode;
   }
 }
-void delete()
-{
-  int p, i;
-  struct node *temp1 = head, *temp2, *x;
-  scanf("%d", &p);
-  if (p <= 0 || p > c)
-    printf("Enter a valid position");
-  else
-  {
-    c--;
-    if (p == 1)
-    {
-      head = temp1->next;
-      free(temp1);
-      x = head;
-      for (i = 1; i < c; i++)
-          x = x->next;
-      x->next = head;
-    }
-    else
-    {
-      for (i = 1; i < p - 1; i++)
-      {
-          temp1 = temp1->next;
-      }
-      temp2 = temp1->next;
-      temp1->next = temp2->next;
-      free(temp2);
-    }
-  }
-}
+
 void display()
 {
-  struct node *ptr;
-  ptr = head;
-  if (ptr == NULL)
+  if (head == NULL)
   {
-    printf("List is empty\n");
+    printf("List is empty.\n");
     return;
   }
-  do
+
+  struct node *temp = head;
+  while (temp != NULL)
   {
-    printf("%d->", ptr->data);
-    ptr = ptr->next;
-  } while (ptr != head);
+    printf("%d -> ", temp->data);
+    temp = temp->next;
+  }
+  printf("NULL\n");
 }
 ```
 
@@ -258,122 +229,83 @@ The following functions are implemented in the code below:
 ```c
 #include <stdio.h>
 #include <stdlib.h>
+
 struct node
 {
   int data;
   struct node *next;
-  struct node *pre;
-};
-struct node *head;
-int c = 0, b = 0;
+  struct node *prev;
+} *head = NULL;
 
-void insert()
-{
-  int n, p, i;
-  struct node *temp = (struct node *)malloc(sizeof(struct node));
-  struct node *temp2, *x;
-  scanf("%d%d", &n, &p);
-  if (p <= 0 || p > c + 1)
-    printf("Enter a valid position");
-  else
-  {
-    c++;
-    temp->data = n;
-    temp->next = NULL;
-    temp->pre = NULL;
-    if (head == NULL)
-      head = temp;
-    else if (p == 1)
-    {
-      x = head;
-      x->pre = temp;
-      temp->next = x;
-      head = temp;
-    }
-    else
-    {
-      temp2 = head;
-      for (i = 1; i < p - 1; i++)
-      {
-        temp2 = temp2->next;
-      }
-      temp->next = temp2->next;
-      temp2->next = temp;
-      temp->pre = temp2;
-      if (p != c)
-      {
-        temp2 = temp->next;
-        temp2->pre = temp;
-      }
-    }
-  }
+struct node *getNode(int data){
+  struct node *newNode = (struct node *)malloc(sizeof(struct node));
+  newNode->data = data;
+  newNode->next = NULL;
+  newNode->prev = NULL;
+  return newNode;
 }
 
-void delete()
+void insert(int data, int pos)
 {
-  int p, i;
-  struct node *temp1 = head, *temp2;
-  scanf("%d", &p);
-  if (p <= 0 || p > c)
-    printf("Enter a valid position");
-  else
-  {
-    c--;
-    if (p == 1)
-    {
-      head = temp1->next;
-      if (c != 0)
-      {
-        temp2 = temp1->next;
-        temp2->pre = temp1->pre;
-      }
-      free(temp1);
-    }
-    else
-    {
-      for (i = 1; i < p - 1; i++)
-      {
-        temp1 = temp1->next;
-      }
-      temp2 = temp1->next;
-      temp1->next = temp2->next;
-      if (p != c + 1)
-      {
-        temp1 = temp2->next;
-        temp1->pre = temp2->pre;
-      }
-      free(temp2);
-    }
-  }
-}
-
-void display()
-{
-  int i;
-  struct node *x, *y;
+  struct node *newNode = getNode(data);
   if (head == NULL)
   {
-    printf("DLL is empty");
-    return;
+    head = newNode;
   }
-  x = head;
-  y = head;
-  printf("\nFORWARD Traversal: ");
-  while (x != NULL)
+  else if (pos == 0)
   {
-    printf("%d ", x->data);
-    x = x->next;
+    newNode->next = head;
+    head->prev = newNode;
+    head = newNode;
   }
-  printf("\nBACKWARD Traversal: ");
-  for (i = 0; i < c - 1; i++)
+  else
   {
-    y = y->next;
+    struct node *current = head;
+    for (int i = 0; i < pos - 1 && current != NULL; i++)
+    {
+      current = current->next;
+    }
+    if (current == NULL)
+    {
+      printf("Invalid position. Node will be added at the end.\n");
+      struct node *last = head;
+      while (last->next != NULL)
+          last = last->next;
+      last->next = newNode;
+      newNode->prev = last;
+    }
+    else
+    {
+      newNode->next = current->next;
+      newNode->prev = current;
+      if (current->next != NULL)
+          current->next->prev = newNode;
+      current->next = newNode;
+    }
   }
-  while (y != NULL)
+}
+
+void display(){
+  struct node *current = head;
+  while(current != NULL){
+    printf("%d->", current->data);
+    current = current->next;
+  }
+}
+
+void rev_display()
+{
+  struct node *current = head;
+  while (current->next != NULL)
   {
-    printf("%d ", y->data);
-    y = y->pre;
+    current = current->next;
   }
+  while (current != NULL)
+  {
+    printf("%d->", current->data);
+    current = current->prev;
+  }
+  printf("NULL\n");
 }
 ```
 

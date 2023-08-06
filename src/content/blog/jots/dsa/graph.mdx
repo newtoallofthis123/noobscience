@@ -1,0 +1,211 @@
+---
+title: Graphs and Traversals
+description: Graphs and Traversals, implemented in C
+date: 2023-07-26
+author: Ishan
+tags: ["c", "bst", "graph", "dsa"]
+layout: "../../../../layouts/blog_post.astro"
+category: "dsa"
+selection_only: true
+type: notes
+emoji: 🍇
+color: "#000"
+bg: "#26fbe0"
+---
+
+Graphs are a data structure that are used to represent relationships between objects. They are made up of nodes and edges.
+Nodes are the objects and edges are the relationships between them. Graphs are used to represent many real world things, such as social networks, maps, and more.
+
+In C, graphs are usually implemented using adjacency lists. Adjacency lists are a list of lists, where each list represents the edges of a node. For example, if we have a graph with 3 nodes,
+A, B, and C, and A is connected to B and C, then the adjacency list would look like this:
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 10
+int G[MAX][MAX]={0,0};
+void addEdge(int s,int d,int gt);
+void printAdjMatrix(int v,int gtype);
+int main()
+{
+    int v,e,s,d,i,gtype;
+    scanf("%d",&gtype);
+    scanf("%d",&v);
+    scanf("%d",&e);
+    for(i=1;i<=e;i++)
+    {
+      scanf("%d %d",&s,&d); 
+      addEdge(s,d,gtype);
+    }
+   
+    printAdjMatrix(v,gtype);
+}
+
+void addEdge(int s,int d,int gt)
+{
+    G[s][d]=1;
+    if(gt==2)
+    G[d][s]=1;
+}
+
+void printAdjMatrix(int v,int gtype)
+{
+ int i,j;
+ if(gtype==1)
+   printf("\nThe Adjacency Matrix for Directed Graph is :\n");
+   else
+    printf("\nThe Adjacency Matrix for Undirected Graph is :\n");
+ for(i=1;i<=v;i++)
+ {
+      printf("\nVERTEX %d :  ",i);
+     for(j=1;j<=v;j++)
+     {
+         printf("%d   ",G[i][j]);
+     }
+    
+ }
+}
+
+```
+
+## Traversals
+
+Traversals are a way to visit every node in a graph. There are two main types of traversals: depth-first search and breadth-first search.
+
+### Depth-First Search
+
+Depth-first search is a traversal that starts at a node and visits all of its neighbors, then visits all of its neighbors' neighbors, and so on. It does this until it has visited every node in the graph.
+DFS is implemented using a stack. The stack is used to keep track of which nodes to visit next. When a node is visited, it is pushed onto the stack. When a node is popped off the stack, it is visited.
+
+```c
+#include<stdio.h>
+#define MAX 10
+void getgraph();
+void DFS(int v);
+int Visited[MAX]={0};
+int G[MAX][MAX];
+int n;
+int main()
+{
+    int s,i;
+    scanf("%d",&n);
+    getgraph();
+    scanf("%d",&s);
+    printf("\nThe DFS Traversal of Graph is :\n");
+    DFS(s);
+    for(i=1;i<=n;i++)
+    {
+    if(Visited[i]==0)
+    DFS(i);
+    } 
+}
+void DFS(int v)
+{
+int i;
+Visited[v]=1;
+printf("%d - ",v);
+for(i=1;i<=n;i++)
+ if((G[v][i]==1)&&(Visited[i]==0))
+  DFS(i);
+}
+void getgraph()
+{
+  int i,j;
+    for(i=1;i<=n;i++)
+    {
+        for(j=1;j<=n;j++)
+        {
+            scanf("%d",&G[i][j]);
+        }
+    }  
+}
+```
+
+### Breadth-First Search
+
+Breadth-first search is a traversal that starts at a node and visits all of its neighbors, then visits all of its neighbors' neighbors, and so on. It does this until it has visited every node in the graph.
+BFS is implemented using a queue. The queue is used to keep track of which nodes to visit next. When a node is visited, it is added to the queue. When a node is removed from the queue, it is visited.
+
+```c
+#include<stdio.h>
+#define MAX 15
+void getAdjMatrix();//read a graph
+void BFS(int v);
+int dequeue();
+void enqueue(int v);
+int Visited[MAX]={0};
+int G[MAX][MAX];
+int Q[MAX];
+int n,r=-1,f=-1;
+int main()
+{
+    int s,i;
+    scanf("%d",&n);
+    getAdjMatrix();
+    scanf("%d",&s);
+    printf("\nThe BFS Traversal of Graph is : ");    
+    BFS(s);
+    for(i=1;i<=n;i++)
+    {
+    if(Visited[i]==0)
+    BFS(i);
+    } 
+}
+void BFS(int v)
+{
+int i,res;
+Visited[v]=1;
+enqueue(v);
+while(f!=-1)
+{
+   res=dequeue();
+   printf("%d ",res);
+   for(i=1;i<=n;i++)
+   {
+       if(G[res][i]==1&&Visited[i]==0)
+       {
+           enqueue(i);
+           Visited[i]=1;
+       }
+   }
+ }
+}
+int dequeue()
+{
+    int ver;
+    if(f==-1)
+    {
+        printf("\n Q Underflow");
+        return -1;
+    }
+    ver=Q[f];
+    if(r==f)
+    r=f=-1;
+    else
+    f++;
+    return(ver);
+}
+void enqueue(int v)
+{
+  if(r==MAX-1)
+    {
+        printf("\n Q Overflow");
+        return;
+    }  
+    Q[++r]=v;
+    if(r==0)
+    f=0;
+}
+
+void getAdjMatrix()
+{
+  int i,j;
+    for(i=1;i<=n;i++)
+    {
+        for(j=1;j<=n;j++)
+        {
+            scanf("%d",&G[i][j]);
+        }
+    }  
+}
+```
