@@ -57,7 +57,6 @@ export default function Init() {
                 }}
             >
                 <i className={`bi ${icon}`}></i>
-                {icon === 'bi-sun' && ' Better with the lights on'}
             </button>{' '}
             <button
                 className="md:text-xl text-lg my-1"
