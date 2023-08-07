@@ -1,0 +1,10 @@
+---
+import Base from "../../layouts/base.astro";
+import Quick from "../../components/quicks/quick"
+
+const {hash} = Astro.params
+---
+
+<Base footer={false}>
+    <Quick hash={hash} client:load/>
+</Base>

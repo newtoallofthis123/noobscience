@@ -9,7 +9,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://garden.noobscience.rocks",
+  site: "https://noobscience.rocks",
   integrations: [react(), tailwind(), mdx({
     ...markdownConfig,
     extendPlugins: false
