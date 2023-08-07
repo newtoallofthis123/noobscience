@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/base.astro';
+import HomeNav from '../components/navigation/home_nav';
+---
+
+<Base
+    title="404 Resource Not Found"
+>
+    <HomeNav bg="#ffffff" color="#000" title="Not Found :(" client:load />
+    <div class="flex flex-col md:flex-row">
+        <div class="w-full md:w-1/2">
+            <div style="margin-top: 4vw;" class="text-center mx-10 md:mx-0">
+                <h1 class="md:text-6xl py-4 text-3xl font-bold">
+                    401 Unauthorized
+                </h1>
+                <p class="p-4 text-xl">
+                    You are not authorized to access this page.
+                </p>
+                <div>
+                    <button class="btn text-3xl py-4 text-white px-8 bg-black">
+                        <a href="/"> Go Home</a>
+                    </button>
+                </div>
+            </div>
+            <div class="pt-8 text-center">
+                <h1 class="text-3xl font-bold">Atleast get inspired</h1>
+                <blockquote class="px-10 py-5">
+                    <p class="text-xl">
+                        <span id="quote"></span>
+                    </p>
+                    <p class="text-xl">
+                        <span class="text-gray-500">
+                            - <span id="author"></span>
+                        </span>
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="w-full md:w-1/2">
+            <>
+                <img src="/assets/401.svg" class="w-full" alt="" />
+            </>
+        </div>
+    </div>
+</Base>
+<script>
+    const quotes = await fetch(
+        'https://api.quotable.io/quotes/random?maxLength=300&minLength=100&limit=1'
+    );
+    const quote = await quotes.json();
+    //@ts-ignore
+    document.querySelector('#quote').innerHTML = quote[0].content;
+    //@ts-ignore
+    document.querySelector('#author').innerHTML = quote[0].author;
+</script>

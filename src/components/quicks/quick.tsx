@@ -36,7 +36,7 @@ export default function Quick({ hash }: Props) {
             )}
             {latest.title != '' && (
                 <div className="md:p-4 p-1">
-                    <h1 className="md:text-6xl font-heading text-3xl md:py-4 py-1 pt-0 font-bold">
+                    <h1 className="md:text-3xl font-heading text-xl md:py-4 py-1 pt-0 font-bold">
                         {latest.title}
                     </h1>
                     {latest.type == 'md' && (
@@ -52,15 +52,17 @@ export default function Quick({ hash }: Props) {
                             />
                         </div>
                     )}
-                    {
-                        latest.type == 'txt' && (
-                            <div className='font-mono'>
-                                {
-                                    latest.content
-                                }
-                            </div>
-                        )
-                    }
+                    {latest.type == 'txt' && (
+                        <div
+                            className="font-mono"
+                            dangerouslySetInnerHTML={{
+                                __html: marked(latest.content, {
+                                    headerIds: false,
+                                    mangle: false,
+                                }),
+                            }}
+                        />
+                    )}
                 </div>
             )}
         </div>

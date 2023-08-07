@@ -5,11 +5,7 @@ import { hypens } from '../../../utils/utils';
 export const post: APIRoute = async ({ request }) => {
     const data = await request.formData();
     const title = data.get('title');
-    let content = data.get('content'); // Explicitly define the type as string
-    //@ts-ignore
-    content = content.replace(/\r?\n|\r/g, '');
-    //@ts-ignore
-    content = content.replace(/"/g, '\\"');
+    let content = data.get('content');
     const type = data.get('type');
     const hash = data.get('hash') || hypens(title);
     const decorate = data.get('decorate') || 'none';
