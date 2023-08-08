@@ -42,10 +42,10 @@ posts = posts.filter((post: any) => {
                                 <h1 class="md:text-3xl text-2xl leading-relaxed font-bold">
                                 {post.data.emoji}{' '}{post.data.title}
                             </h1>
-                            <p class="md:text-xl text-lg">
+                            <p class="text-lg py-4">
                                 {post.data.description}    
                             </p>
-                            <p class="md:text-xl text-lg">
+                            <p class="text-lg">
                                 Posted on <span id="p-heading">{new Date(post.data.date).toDateString()}</span> | {post.data.minutesRead}
                             </p>
                         </div>

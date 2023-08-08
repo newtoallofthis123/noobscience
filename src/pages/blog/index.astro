@@ -99,13 +99,13 @@ let others = posts.filter(
                                     onclick={
                                         "location.href = '/blog/" + post.slug + "'"
                                     }
-                                    class="md:p-4 md:my-5 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                                    class="md:p-4 md:my-2 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                                 >
-                                    <h1 class="md:text-3xl text-xl leading-relaxed font-bold">
+                                    <h1 class="md:text-2xl text-xl leading-relaxed font-bold">
                                         {post.data.emoji}{' '}
                                         {post.data.title}
                                     </h1>
-                                    <p class="text-lg">
+                                    <p class="text-lg py-3">
                                         {post.data.description}
                                     </p>
                                     <p class="text-lg">
@@ -185,14 +185,14 @@ let others = posts.filter(
                                     onclick={
                                         "location.href = '/blog/" + post.slug + "'"
                                     }
-                                    class="md:p-4 md:m-2 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                                    class="md:p-4 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                                 >
                                     <h1 class="text-2xl leading-relaxed font-bold">
                                         {post.data.emoji}{' '}
                                         {post.data.title}
                                     </h1>
-                                    <p class="md:text-xl text-lg">{post.data.description}</p>
-                                    <p class="md:text-xl text-lg">
+                                    <p class="text-lg py-2">{post.data.description}</p>
+                                    <p class="text-lg">
                                         <span id="p-heading">
                                             #{post.data.category}
                                         </span>
@@ -257,7 +257,7 @@ let others = posts.filter(
                                         {post.data.emoji}{' '}
                                         {post.data.title}
                                     </h1>
-                                    <p class="md:text-lg text-base">
+                                    <p class="md:text-lg text-base py-2">
                                         {post.data.description}
                                     </p>
                                     <p class="md:text-lg text-base">
@@ -275,8 +275,8 @@ let others = posts.filter(
                 </div>
             </div>
         </div>
-        <div id="dev" class=" md:p-10 p-4">
-            <div class="font-mono text-lime-300 bg-gray-900 dark:bg-black p-2 rounded-lg">
+        <div id="dev" class=" md:p-10 p-2">
+            <div class="font-mono text-lime-300 bg-gray-900 dark:bg-black p-4 rounded-lg">
                 <h1 class="md:text-4xl text-2xl pb-4 font-bold">
                     Some of my Devlogs
                 </h1>
@@ -301,7 +301,7 @@ let others = posts.filter(
                                 {post.data.emoji}{' '}
                                 {post.data.title}
                             </h1>
-                            <p class="text-lg">
+                            <p class="text-lg py-2">
                                 {post.data.description}
                             </p>
                             <p class="text-lg">

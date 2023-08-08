@@ -25,7 +25,7 @@ export default defineConfig({
     ...markdownConfig,
     gfm: true,
     shikiConfig: {
-      theme: 'dark-plus',
+      theme: 'nord',
       langs: [
         'javascript',
         'html',

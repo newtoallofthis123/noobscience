@@ -39,12 +39,12 @@ export default function Update({ hash }: Props) {
                     <h1 className="md:text-6xl font-heading text-3xl md:py-4 py-1 pt-0 font-bold">
                         {latest.name}
                     </h1>
-                    <h2 className="font-regular py-2 md:text-2xl text-xl">
+                    <h2 className="font-base py-2 md:text-2xl text-xl">
                         By {latest.author} on{' '}
                         {new Date(latest.date).toDateString()}
                     </h2>
                     <div
-                        className="text-lg md:pt-8 p-0 md:leading-10"
+                        className="text-lg md:pt-4 p-0 md:leading-10"
                         dangerouslySetInnerHTML={{
                             __html: marked(latest.content, {
                                 headerIds: false,

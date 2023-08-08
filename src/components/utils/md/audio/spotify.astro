@@ -1,9 +1,10 @@
 ---
 const {url} = Astro.props
-
-const res = await fetch(`https://open.spotify.com/oembed?url=https://open.spotify.com/episode/${url}`)
-const {html} = await res.json()
 ---
 
-<div set:html={html}>
+<div>
+    <span>
+        Listen on Spotify (iframe embed)
+    </span>
+    <iframe src={"https://podcasters.spotify.com/pod/show/noobscience/embed/episodes/" + url} height="102px" width="400px" class="w-full h-auto py-2" frameborder="0" scrolling="no"></iframe>
 </div>

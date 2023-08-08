@@ -46,7 +46,7 @@ export default function Init() {
     return (
         <>
             <button
-                className="md:text-xl text-lg my-1"
+                className="md:text-xl text-lg my-1 mx-2"
                 onClick={() => {
                     const theme = localStorage.getItem('theme');
                     if (theme === 'dark') {

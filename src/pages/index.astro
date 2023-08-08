@@ -31,7 +31,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
 <Base title="NoobScience | Student and Open Source Enthusiast">
     <div>
         <div class="p-1 text-center">
-            <a href="/go/dsl">Click Here if you know :)</a>
+            <a href="/code/B2vEoG">Click Here if you know :)</a>
         </div>
         <HomeNav title="NOOBSCIENCE" client:load />
         <div class="z-0 md:px-20  md:py-14 p-5">
@@ -122,17 +122,17 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 6
                 <h1 class="text-5xl py-5 pt-8 font-bold">
                     Latest Posts
                 </h1>
-                <div class="grid md:grid-cols-2 md:gap-4">
+                <div class="grid md:grid-cols-2 md:gap-3">
                     {latest.map((post) => {
                         return (
                             <div onclick={"location.href = '/blog/" + post.slug + "'"} class="md:p-3 p-1 my-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
                                 <h1 class="text-2xl leading-relaxed font-bold">
                                     {post.data.emoji}{' '} {post.data.title}
                                 </h1>
-                                <p class="md:text-xl text-lg leading-relaxed">
+                                <p class="md:text-lg text-base leading-relaxed py-2">
                                     {post.data.description}    
                                 </p>
-                                <p class="md:text-xl text-lg leading-relaxed">
+                                <p class="md:text-lg leading-relaxed">
                                     Posted on <span>{new Date(post.data.date).toDateString()}</span>
                                 </p>
                             </div>

@@ -4,30 +4,33 @@ import HomeNav from '../../components/navigation/home_nav';
 import { getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 
-const {slug} = Astro.params
+const { slug } = Astro.params;
 
 //@ts-ignore
-const blogPost = await getEntry('blog', slug)
-if(!blogPost){
-    return Astro.redirect('/404')
+const blogPost = await getEntry('blog', slug);
+if (!blogPost) {
+    return Astro.redirect('/404');
 }
 const frontmatter = blogPost?.data;
-const meta = await blogPost?.render()
-const BASE_URL = Astro.url.host
+const meta = await blogPost?.render();
+const BASE_URL = Astro.url.host;
+const share_url = Astro.url.host + Astro.url.pathname;
 
 //@ts-ignore
-const {Content} = await blogPost?.render()
+const { Content } = await blogPost?.render();
 ---
 
 <Base
     description={frontmatter?.description}
-    img={frontmatter?.img?.src || "/assets/banner.png"}
+    img={frontmatter?.img?.src || '/assets/banner.png'}
     selection_only={frontmatter?.selection_only}
     color={frontmatter?.color}
     bg={frontmatter?.bg}
     selection_bg={frontmatter?.selection_bg}
     selection_color={frontmatter?.selection_color}
-    title={(frontmatter?.type == "notes")?(frontmatter?.title + " | Ishan's Jots"):(frontmatter?.title + " | Ishan Writes")}
+    title={frontmatter?.type == 'notes'
+        ? frontmatter?.title + " | Ishan's Jots"
+        : frontmatter?.title + ' | Ishan Writes'}
 >
     <HomeNav
         title={frontmatter?.title}
@@ -35,21 +38,19 @@ const {Content} = await blogPost?.render()
         bg={frontmatter?.bg}
         client:load
     />
-    <div
-        id="content"
-        class="flex flex-col justify-center items-center"
-    >
-        <div class="md:px-20 px-4 flex flex-col">
-            <div class="w-4/5">
+    <div class={`flex flex-col justify-center md:pt-10 ${(frontmatter.full_img != false)?"section_colored":""}`}>
+        <div class="md:px-20 px-2 flex flex-col ">
+            <div class="md:w-4/5 w-full">
                 <div class="py-2 md:pt-5">
                     <a
-                    href={'/categories/' + frontmatter?.category}
-                    id="cat" class="p-1">{frontmatter?.category}</a
+                        href={'/categories/' + frontmatter?.category}
+                        id="cat"
+                        class="p-1">{frontmatter?.category}</a
                     >
                     {
                         frontmatter?.tags.map((tag: string) => {
                             return (
-                                <a href={'/tags/' + tag} class="pl-5 bg-white">
+                                <a href={'/tags/' + tag} class="pl-5">
                                     {tag}
                                 </a>
                             );
@@ -57,30 +58,91 @@ const {Content} = await blogPost?.render()
                     }
                 </div>
                 <div>
-                    <h1 class="md:text-5xl text-4xl font-heading leading-relaxed md:py-6">
+                    <h1
+                        class="md:text-5xl text-3xl font-heading leading-snug md:py-3 py-2"
+                    >
                         {frontmatter?.title}
                     </h1>
                     <div>
-                        <p class="font-serif text-base leading-loose">
+                        <p class="font-sans text-lg leading-loose">
                             {frontmatter?.description}
                         </p>
+                        <p class="font-sans text-sm leading-loose py-1">
+                            By {frontmatter.author} | <a href="https://twitter.com/noobscience1">@noobscience1</a> | {new Date(frontmatter?.date).toDateString()}
+                        </p>
+                        <div class="py-2">
+                            <button class="font-light cursor-text">
+                                Share it with the Noobs: 
+                            </button>
+                            <button class="px-2 text-xl">
+                                <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent("https://" + share_url)}&text=${encodeURIComponent(frontmatter.title) + '\n\n' + frontmatter.description }&via=noobscience1`}>
+                                    <i class="bi bi-twitter"></i>
+                                </a>
+                            </button>
+                            <button class="px-2 text-xl">
+                                <a href={`https://www.reddit.com/submit?url=${encodeURIComponent("https://" + share_url)}&title=${encodeURIComponent(frontmatter.title)}`}>
+                                    <i class="bi bi-reddit"></i>
+                                </a>
+                            </button>
+                            <button class="px-2 text-xl">
+                                <a href={`https://www.instagram.com/direct?url=${encodeURIComponent("https://" + share_url)}&text=${encodeURIComponent(frontmatter.title + '\n\n' + frontmatter.description + '\n\nvia @noobscience123')}`}>
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                            </button>
+                            <button class="px-2 text-xl">
+                                <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${frontmatter.title}\n${frontmatter.description}\n\nCheck it out: ${"https://" + share_url}`)}`}>
+                                    <i class="bi bi-whatsapp"></i>
+                                </a>
+                            </button>
+                            <button class="px-2 text-xl">
+                                <a href={`mailto:?subject=${encodeURIComponent(frontmatter.title)}&body=${encodeURIComponent(frontmatter.description + '\n\nCheck it out: ' + "https://" + share_url + '\n\nvia Noob Science (noobscience@duck.com)')}`}>
+                                    <i class="bi bi-envelope"></i>
+                                </a>
+                            </button>
+                            <button class="font-light md:pl-4 cursor-text">
+                                Copy Short Link: 
+                            </button>
+                            <button onclick=
+                            {`navigator.clipboard.writeText('http://${BASE_URL}/e/${
+                            //@ts-ignore
+                            frontmatter.emoji}')`} class="px-2 py-1 text-xl">
+                                {frontmatter.emoji}
+                            </button>
+                        </div>
                     </div>
+                    {
+                    frontmatter?.img && (
+                        <div class={`items-center w-full py-5`}>
+                            <Image
+                                class="rounded-md"
+                                src={frontmatter.img}
+                                alt={frontmatter?.title}
+                            />
+                        </div>
+                    )
+                    }
                 </div>
-                <Content />
-                <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
-                <span class="block w-40 h-1 mb-5 bg-red-600"></span>
             </div>
         </div>
     </div>
-    <style define:vars={{
-        section_bg: frontmatter?.bg,
-        section_color: frontmatter?.color,
-    }}>
+    <div class="flex flex-col justify-center md:pb-10 ">
+        <div class="md:px-20 px-2 flex flex-col">
+            <div class="md:w-4/5 w-full py-4">
+                <Content />
+            </div>
+        </div>
+    </div>
+    <style
+        define:vars={{
+            section_bg: frontmatter?.bg,
+            section_color: frontmatter?.color,
+        }}
+    >
         .section_colored {
             background-color: var(--section_bg);
             color: var(--section_color);
         }
-        #cat{
+        #cat {
             background-color: var(--bg);
             color: var(--color);
         }

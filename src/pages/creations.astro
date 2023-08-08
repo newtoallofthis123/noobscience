@@ -61,7 +61,7 @@ const projects = [
                             <div class="flex flex-row justify-between">
                                 <div>
                                     <h1 class="text-xl md:text-3xl py-2 font-bold">{project.name}</h1>
-                                    <p class="text-gray-700 dark:text-gray-200 text-xl leading-8">{project.description}</p>
+                                    <p class="text-gray-700 dark:text-gray-200 text-lg leading-8">{project.description}</p>
                                 </div>
                                 <div>
                                     <a href={project.github} class="inline-block text-blue-600 ml-2 transition-all duration-300 transform hover:translate-x-1" target="_blank" rel="noopener noreferrer">
@@ -72,8 +72,8 @@ const projects = [
                             <div class="flex flex-row">
                                 {
                                     project.langs.map((lang) => (
-                                        <div class="p-1 my-2 mr-4 bg-gray-200 md:bg-gray-800 rounded-md">
-                                            <p class="text-lg">{lang}</p>
+                                        <div class="p-1 my-2 mr-4 bg-gray-200 md:bg-gray-800 text-dark md:text-white rounded-md">
+                                            <p class="text-base">{lang}</p>
                                         </div>
                                     ))
                                 }
