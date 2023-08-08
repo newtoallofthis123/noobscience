@@ -39,7 +39,7 @@ export default function Init() {
             if (theme) {
                 toggleTheme(theme);
             } else {
-                toggleTheme('system');
+                toggleTheme('light');
             }
         }
     }, []);

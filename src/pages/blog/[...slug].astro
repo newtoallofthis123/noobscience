@@ -39,81 +39,36 @@ const {Content} = await blogPost?.render()
         id="content"
         class="flex flex-col justify-center items-center"
     >
-        <div class={
-            (frontmatter?.full_img)?"section_colored text-center":"md:w-3/5 w-full "
-        }>
-            <div class="md:pt-2 pt-4 flex flex-col justify-center">
-                <div class={` ${(frontmatter?.full_img)?"md:w-full": (frontmatter?.img)?"md:4/5":"md:w-full"}  p-4`}>
-                    <h1
-                    class={` ${(frontmatter?.full_img)?"md:text-5xl":"md:text-5xl"} text-3xl font-heading md:py-3`}
-                >
-                {
-                    !frontmatter?.full_img &&
-                    (
-                        <p onclick={`navigator.clipboard.writeText('http://${BASE_URL}/e/${
-                            //@ts-ignore
-                            frontmatter.emoji}')`} class="md:text-6xl text-4xl md:mb-8 mb-4 cursor-pointer"
-                        >{
-                            //@ts-ignore
-                            frontmatter.emoji}
-                        </p>
-                    )
-                }
-                {
-                    frontmatter?.full_img &&
-                    (
-                        <span onclick={`navigator.clipboard.writeText('http://${BASE_URL}/e/${frontmatter.emoji}')`} class="md:text-5xl text-4xl md:mb-8 mb-4 mr-4 cursor-pointer"
-                        >{frontmatter.emoji}
-                        </span>
-                    )
-                }
-                    {frontmatter?.title}
-                </h1>
-                <p class="md:text-2xl text-lg md:py-5 py-2">
-                    {frontmatter?.date.toDateString()} • {
-                        meta?.remarkPluginFrontmatter?.minutesRead
-                    } • {
-                        meta?.remarkPluginFrontmatter?.wordsRead
-                    } words
-                </p>
-                </div>
-                {
-                    frontmatter?.img && (
-                        <div class={`py-1 items-center w-full ${(frontmatter.full_img)?"md:w-full":"md:w-3/5"}`}>
-                            <Image
-                                class={`${(frontmatter.full_img)?"rounded-none":"rounded-md"}`}
-                                src={frontmatter.img}
-                                alt={frontmatter?.title}
-                            />
-                        </div>
-                    )
-                }
-            </div>
-        </div>
-        <div class="md:px-10 px-4 md:w-4/6 w-full flex flex-col">
-            <Content />
-            <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
-            <span class="block w-40 h-1 mb-5 bg-red-600"></span>
-            <h3
-                class="md:text-3xl text-2xl font-heading leading-relaxed md:py-5"
-            >
-                Posted in <a
+        <div class="md:px-20 px-4 flex flex-col">
+            <div class="w-4/5">
+                <div class="py-2 md:pt-5">
+                    <a
                     href={'/categories/' + frontmatter?.category}
-                    class="">@{frontmatter?.category}</a
-                >
-            </h3>
-            <div class="flex md:flex-row flex-col">
-                {
-                frontmatter?.tags.map((tag: string) => {
-                    return (
-                        <div class="md:text-xl text-lg pr-5 pb-5">
-                            <a href={'/tags/' + tag} class="">
-                                #{tag}
-                            </a>
-                        </div>
-                    );
-                })
-                }
+                    id="cat" class="p-1">{frontmatter?.category}</a
+                    >
+                    {
+                        frontmatter?.tags.map((tag: string) => {
+                            return (
+                                <a href={'/tags/' + tag} class="pl-5 bg-white">
+                                    {tag}
+                                </a>
+                            );
+                        })
+                    }
+                </div>
+                <div>
+                    <h1 class="md:text-5xl text-4xl font-heading leading-relaxed md:py-6">
+                        {frontmatter?.title}
+                    </h1>
+                    <div>
+                        <p class="font-serif text-base leading-loose">
+                            {frontmatter?.description}
+                        </p>
+                    </div>
+                </div>
+                <Content />
+                <span class="block w-40 h-1 mt-5 my-5 bg-blue-800"></span>
+                <span class="block w-40 h-1 mb-5 bg-red-600"></span>
             </div>
         </div>
     </div>
@@ -124,6 +79,10 @@ const {Content} = await blogPost?.render()
         .section_colored {
             background-color: var(--section_bg);
             color: var(--section_color);
+        }
+        #cat{
+            background-color: var(--bg);
+            color: var(--color);
         }
     </style>
 </Base>
