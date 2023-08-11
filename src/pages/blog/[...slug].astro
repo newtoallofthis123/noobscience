@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/base.astro';
 import HomeNav from '../../components/navigation/home_nav';
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
 const { slug } = Astro.params;
@@ -18,6 +18,36 @@ const share_url = Astro.url.host + Astro.url.pathname;
 
 //@ts-ignore
 const { Content } = await blogPost?.render();
+
+const posts = await getCollection('blog');
+let recommended: any = [];
+
+for (let i = 0; i < posts.length; i++) {
+    if (posts[i].data.category == frontmatter.category) {
+        recommended.push(posts[i]);
+    }
+}
+for (let i = 0; i < posts.length; i++) {
+    frontmatter.tags.forEach((tag: string) => {
+        if (posts[i].data.tags.includes(tag)) {
+            recommended.push(posts[i]);
+        }
+    });
+}
+recommended = recommended.filter((item: any, index: number) => {
+    return recommended.indexOf(item) === index;
+});
+recommended = recommended.filter((item: any) => {
+    return item.data.title != frontmatter.title && item.data.draft != true;
+});
+recommended = recommended.slice(0, 5);
+
+type headings = {
+    depth: number;
+    slug: string;
+    text: string;
+}[];
+const headings:headings= meta.headings;
 ---
 
 <Base
@@ -38,8 +68,12 @@ const { Content } = await blogPost?.render();
         bg={frontmatter?.bg}
         client:load
     />
-    <div class={`flex flex-col justify-center md:pt-10 ${(frontmatter.full_img != false)?"section_colored":""}`}>
-        <div class="md:px-20 px-2 flex flex-col ">
+    <div
+        class={`p-1 flex flex-col justify-center md:pt-10 ${
+            frontmatter.full_img != false ? 'section_colored' : ''
+        }`}
+    >
+        <div class="md:px-20 px-2 flex flex-col">
             <div class="md:w-4/5 w-full">
                 <div class="py-2 md:pt-5">
                     <a
@@ -57,7 +91,7 @@ const { Content } = await blogPost?.render();
                         })
                     }
                 </div>
-                <div>
+                <div class="pb-2">
                     <h1
                         class="md:text-5xl text-3xl font-heading leading-snug md:py-3 py-2"
                     >
@@ -67,68 +101,321 @@ const { Content } = await blogPost?.render();
                         <p class="font-sans text-lg leading-loose">
                             {frontmatter?.description}
                         </p>
-                        <p class="font-sans text-sm leading-loose py-1">
-                            By {frontmatter.author} | <a href="https://twitter.com/noobscience1">@noobscience1</a> | {new Date(frontmatter?.date).toDateString()} | {meta.remarkPluginFrontmatter.minutesRead} | {meta.remarkPluginFrontmatter.wordsRead} words
+                        <p class="font-sans text-base leading-loose py-1">
+                            By {frontmatter.author} | <a
+                                href="https://twitter.com/noobscience1"
+                                >@noobscience1</a
+                            > | {new Date(frontmatter?.date).toDateString()} | {
+                                meta.remarkPluginFrontmatter.minutesRead
+                            }
                         </p>
-                        <div class="py-2">
+                        <div class="py-2 md:hidden block">
                             <button class="font-light cursor-text">
-                                Share it with the Noobs: 
+                                Share it with the Noobs:
                             </button>
                             <button class="px-2 text-xl">
-                                <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent("https://" + share_url)}&text=${encodeURIComponent(frontmatter.title) + '\n\n' + frontmatter.description }&via=noobscience1`}>
+                                <a
+                                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                                        'https://' + share_url
+                                    )}&text=${
+                                        encodeURIComponent(frontmatter.title) +
+                                        '\n\n' +
+                                        frontmatter.description
+                                    }&via=noobscience1`}
+                                >
                                     <i class="bi bi-twitter"></i>
                                 </a>
                             </button>
                             <button class="px-2 text-xl">
-                                <a href={`https://www.reddit.com/submit?url=${encodeURIComponent("https://" + share_url)}&title=${encodeURIComponent(frontmatter.title)}`}>
+                                <a
+                                    href={`https://www.reddit.com/submit?url=${encodeURIComponent(
+                                        'https://' + share_url
+                                    )}&title=${encodeURIComponent(
+                                        frontmatter.title
+                                    )}`}
+                                >
                                     <i class="bi bi-reddit"></i>
                                 </a>
                             </button>
                             <button class="px-2 text-xl">
-                                <a href={`https://www.instagram.com/direct?url=${encodeURIComponent("https://" + share_url)}&text=${encodeURIComponent(frontmatter.title + '\n\n' + frontmatter.description + '\n\nvia @noobscience123')}`}>
+                                <a
+                                    href={`https://www.instagram.com/direct?url=${encodeURIComponent(
+                                        'https://' + share_url
+                                    )}&text=${encodeURIComponent(
+                                        frontmatter.title +
+                                            '\n\n' +
+                                            frontmatter.description +
+                                            '\n\nvia @noobscience123'
+                                    )}`}
+                                >
                                     <i class="bi bi-instagram"></i>
                                 </a>
                             </button>
                             <button class="px-2 text-xl">
-                                <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${frontmatter.title}\n${frontmatter.description}\n\nCheck it out: ${"https://" + share_url}`)}`}>
+                                <a
+                                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
+                                        `${frontmatter.title}\n${
+                                            frontmatter.description
+                                        }\n\nCheck it out: ${
+                                            'https://' + share_url
+                                        }`
+                                    )}`}
+                                >
                                     <i class="bi bi-whatsapp"></i>
                                 </a>
                             </button>
                             <button class="px-2 text-xl">
-                                <a href={`mailto:?subject=${encodeURIComponent(frontmatter.title)}&body=${encodeURIComponent(frontmatter.description + '\n\nCheck it out: ' + "https://" + share_url + '\n\nvia Noob Science (noobscience@duck.com)')}`}>
+                                <a
+                                    href={`mailto:?subject=${encodeURIComponent(
+                                        frontmatter.title
+                                    )}&body=${encodeURIComponent(
+                                        frontmatter.description +
+                                            '\n\nCheck it out: ' +
+                                            'https://' +
+                                            share_url +
+                                            '\n\nvia Noob Science (noobscience@duck.com)'
+                                    )}`}
+                                >
                                     <i class="bi bi-envelope"></i>
                                 </a>
                             </button>
                             <button class="font-light md:pl-4 cursor-text">
-                                Copy Short Link: 
+                                Copy Short Link:
                             </button>
-                            <button onclick=
-                            {`navigator.clipboard.writeText('http://${BASE_URL}/e/${
-                            //@ts-ignore
-                            frontmatter.emoji}')`} class="px-2 py-1 text-xl">
+                            <button
+                                onclick={`navigator.clipboard.writeText('http://${BASE_URL}/e/${
+                                    //@ts-ignore
+                                    frontmatter.emoji
+                                }')`}
+                                class="px-2 py-1 text-xl"
+                            >
                                 {frontmatter.emoji}
                             </button>
                         </div>
                     </div>
                     {
-                    frontmatter?.img && (
-                        <div class={`items-center w-full py-5`}>
-                            <Image
-                                class="rounded-md"
-                                src={frontmatter.img}
-                                alt={frontmatter?.title}
-                            />
-                        </div>
-                    )
+                        frontmatter?.img && (
+                            <div class={`items-center w-full py-5`}>
+                                <Image
+                                    class="rounded-md"
+                                    src={frontmatter.img}
+                                    alt={frontmatter?.title}
+                                />
+                            </div>
+                        )
                     }
                 </div>
             </div>
         </div>
     </div>
-    <div class="flex flex-col justify-center md:pb-10 ">
-        <div class="md:px-20 px-2 flex flex-col">
-            <div class="md:w-4/5 w-full py-4">
-                <Content />
+    <div class="flex flex-col justify-center md:pb-10">
+        <div class="md:px-20 px-2 flex flex-col md:flex-row">
+            <div class="md:w-4/6 w-full py-4 md:pr-5 overflow-x-hidden">
+                {
+                    frontmatter.type != "quick" && (
+                        <div>
+                    <h2 class="text-2xl py-2">
+                        ➡️ Table of Contents
+                    </h2>
+                    <ul>
+                        {
+                            headings.map((heading) => {
+                                return (
+                                    <li class="py-0.5 cursor-pointer transform hover:translate-x-1 transition duration-300 ease-in-out">
+                                        <a
+                                            href={`#${heading.slug}`}
+                                            class=`text-lg ${heading.depth == 2 ? 'font-semibold' : ''} ${heading.depth == 3 ? 'pl-3 font-normal' : ''}`
+                                        >
+                                            {heading.text}
+                                        </a>
+                                    </li>
+                                );
+                            })
+                        }
+                    </ul>
+                </div>
+                    )
+                }
+                <div class="md:p-0 p-2">
+                    <h1 class="py-4 text-3xl font-heading">
+                        Happy Reading ☕
+                    </h1>
+                    <Content />
+                </div>
+            </div>
+            <div
+                id="recommended"
+                class="md:w-1/3 w-full md:py-10 md:sticky md:pl-12 md:top-0 md:h-screen overflow-y-none flex flex-col"
+            >
+                <form onsubmit={
+                        `window.location.href = '/search/' + document.getElementById('search').value; return false;`
+                    }
+                    class="md:pb-2"
+                    >
+                    <p>
+                        Search the site easily:
+                    </p>
+                    <div class="flex bg-inherit cursor-auto flex-row items-center border-2 border-b-4 border-r-4 px-2 border-dark dark:border-primary rounded-lg w-full">
+                        <input 
+                        class="p-2 px-5 bg-inherit text-lg focus:outline-none w-5/6"
+                        type="search" name="search" placeholder="Search using anything" id="search" />
+                        <button class="w-1/6">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="pb-2">
+                    <h1 class="text-2xl py-2">⚙️ MetaData</h1>
+                    <div class="text-sm leading-3">
+                        <p class="text-base leading-relaxed">
+                            This post was written <span class="text-green-500 dark:text-lime-300">
+                                {
+                                    new Date(
+                                        new Date().getTime() -
+                                            new Date(frontmatter.date).getTime()
+                                    ).getUTCDate() - 1
+                                } days ago
+                            </span> on {
+                                new Date(frontmatter.date).toDateString()
+                            } by {frontmatter.author}. Apparently it is
+                            categorized as <a
+                                href={'/tags/' + frontmatter.category}
+                                style="text-decoration:none;"
+                                class="text-blue-500 dark:text-sky-300">{frontmatter.category}</a
+                            >
+                            The Author Drank <span class="text-red-500 dark:text-red-300"
+                                >{
+                                    Math.floor(
+                                        parseInt(
+                                            meta.remarkPluginFrontmatter.minutesRead.split(
+                                                ' '
+                                            )[0]
+                                        ) / 4
+                                    )
+                                } cups of coffee</span
+                            > while writing this.
+                        </p>
+                    </div>
+                </div>
+                <h1 class="text-2xl py-2">~ Similar Articles</h1>
+                {
+                    recommended.length > 0 &&
+                        recommended.map((post: any) => {
+                            return (
+                                <div class="cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                                    <a
+                                        href={'/blog/' + post.slug}
+                                        class="font-sans text-lg leading-loose"
+                                    >
+                                        {post.data.title}
+                                    </a>
+                                </div>
+                            );
+                        })
+                }
+                {
+                    recommended.length == 0 && (
+                        <div class="font-sans text-xl leading-loose">
+                            No recommendations yet. Check back later!
+                        </div>
+                    )
+                }
+                <div class="py-5">
+                    <button
+                        class="special_btn p-3 border-2 rounded-3xl border-black"
+                    >
+                        <a
+                            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                                'https://' + share_url
+                            )}&text=${
+                                encodeURIComponent(frontmatter.title) +
+                                '\n\n' +
+                                frontmatter.description
+                            }&via=noobscience1`}
+                        >
+                            <i class="bi bi-twitter"></i> Help me go viral on X
+                        </a>
+                    </button>
+                    <button
+                        class="special_btn p-3 border-2 rounded-3xl border-black"
+                    >
+                        <a
+                            href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
+                                `${frontmatter.title}\n${
+                                    frontmatter.description
+                                }\n\nCheck it out: ${'https://' + share_url}`
+                            )}`}
+                        >
+                            <i class="bi bi-whatsapp"></i> Argue with your friends
+                        </a>
+                    </button>
+                    <button
+                        class="special_btn p-3 border-2 rounded-3xl border-black"
+                    >
+                        <a
+                            href={`https://www.reddit.com/submit?url=${encodeURIComponent(
+                                'https://' + share_url
+                            )}&title=${encodeURIComponent(frontmatter.title)}`}
+                        >
+                            <i class="bi bi-reddit"></i> Get upvoted on Reddit
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-center md:pt-8">
+            <div class="md:w-3/5 w-full">
+                <h1 class="text-center text-2xl">
+                    Feel free to leave a comment below!
+                </h1>
+                <script
+                    src="https://utteranc.es/client.js"
+                    repo="newtoallofthis123/comments"
+                    issue-term="pathname"
+                    label="comment"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async
+                ></script>
+            </div>
+            <div class="md:w-2/5 w-full p-2">
+                <h2 class="text-2xl">General Niceties</h2>
+                <div>
+                    <p class="text-lg leading-relaxed py-2">
+                        The Above article is <em>not news</em>. It is the
+                        personal opinion of the author. If you disagree with the
+                        author, please <a
+                            href="https://twitter.com/noobscience1"
+                            class="text-green-500 dark:text-lime-300">tweet to the author</a
+                        >
+                        or leave a comment below. If you want to discuss about the
+                        contents of this post, please leave a comment below mentioning
+                        the post in question.
+                    </p>
+                </div>
+                <h2 class="text-2xl">License</h2>
+                <div>
+                    <p class="text-lg leading-relaxed py-2">
+                        This post is licensed under <a
+                            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                            class="text-green-500 dark:text-lime-300">CC BY-NC-SA 4.0</a
+                        >. You can find the full text of the license <a
+                            href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode"
+                            class="text-green-500 dark:text-lime-300">here</a
+                        >.
+                    </p>
+                </div>
+                <h2 class="text-2xl">About the Author</h2>
+                <div>
+                    <p class="text-lg leading-relaxed py-2">
+                        Ishan (@noobscience) is a 18 year old student who is
+                        interested in Computer Science. He likes to write about
+                        his opinions on various topics and is a strong believer
+                        in the Open Source movement. He is currently pursuing
+                        his Bachelors in Computer Science and Engineering from
+                        GRIET, Hyderabad.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -145,6 +432,12 @@ const { Content } = await blogPost?.render();
         #cat {
             background-color: var(--bg);
             color: var(--color);
+        }
+        .special_btn{
+            background-color: var(--selection_bg);
+        }
+        .special_btn a {
+            color: var(--selection_color);
         }
     </style>
 </Base>

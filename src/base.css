@@ -1,14 +1,25 @@
 /* Fancy BTN from https: //uiverse.io/adamgiebl/giant-donkey-36 */
 /* Slightly Modified for My Needs */
 
+::-webkit-scrollbar {
+    width: 0.8em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--selection_bg);
+}
+
 ::selection{
     background: #000ea5;
     color: #e8e8e8;
 }
 
-
 .special_btn {
-    color: inherit;
+    color: black;
     padding: 0.6em 1.3em;
     margin: 0.5em;
     cursor: pointer;
@@ -112,4 +123,7 @@
     left: 0;
     padding: 8px;
     pointer-events: none;
+}
+.utterances{
+    text-align: center;
 }

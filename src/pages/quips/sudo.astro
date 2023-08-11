@@ -1,0 +1,12 @@
+---
+import Base from "../../layouts/base.astro";
+import HomeNav from "../../components/navigation/home_nav";
+import UpdateForm from "../../components/updates/form";
+---
+
+<Base>
+    <HomeNav client:load />
+    <div>
+        <UpdateForm client:load />
+    </div>
+</Base>

@@ -24,7 +24,7 @@ import '@fontsource/archivo-black';
 import '@fontsource-variable/fira-code';
 import logo from "../assets/logo192.png"
 
-const BASE_URL = "https://" + Astro.url.host
+const BASE_URL = "https://" + Astro.url
 ---
 
 <html lang="en">
@@ -76,7 +76,6 @@ const BASE_URL = "https://" + Astro.url.host
         content={BASE_URL + img}
     />
     <link rel="apple-touch-icon" href="/logo192.png" />
-    <link rel="canonical" href="https://noobscience.rocks" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="mask-icon" href="/favicon.ico" color="#0f0f28" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
@@ -95,8 +94,8 @@ const BASE_URL = "https://" + Astro.url.host
                         <a class="text-xl" href="/">&copy NoobScience 2023</a>
                     </div>
                     <div class="hidden md:flex md:flex-row flex-col gap-x-8 px-5 justify-center items-center">
-                        <a>
-                            noobscience@v.1.7 
+                        <a href="https://github.com/newtoallofthis123/noobscience">
+                            noobscience@v.2.0
                         </a>
                         <a href="/credits">Credits</a>
                         <a href="/privacy">Privacy</a>
@@ -118,10 +117,10 @@ const BASE_URL = "https://" + Astro.url.host
         </div>
     </body>
     <style is:global define:vars={{
-        bg: bg || "#170dd3",
-        color: color || "#fff",
-        selection_bg: selection_bg || "#2500ff",
-        selection_color: selection_color || "#fff",
+        bg: bg || "#a3e635",
+        color: color || "#000",
+        selection_bg: selection_bg || "#a3e635",
+        selection_color: selection_color || "#000",
     }}>
         html{
             scroll-behavior: smooth;

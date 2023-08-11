@@ -1,56 +1,55 @@
 ---
 import Base from '../../layouts/base.astro';
-import Update from "../../components/updates/update"
+import UpdateLatest from '../../components/updates/latest';
 import HomeNav from '../../components/navigation/home_nav';
 
-const {id} = Astro.params;
+const { id } = Astro.params;
 ---
 
-<Base title={id + "- Ishan's Quips"} bg='#212121' color='#fff'>
-    <HomeNav title='Quips' client:load bg='#212121' color='#fff' />
+<Base title={id + "- Ishan's Quips"} bg="#212121" color="#fff">
+    <HomeNav title="Quips" client:load bg="#212121" color="#fff" />
     <div id="update">
-        <Update hash={id} client:load />
+        <UpdateLatest client:load />
     </div>
     <div>
-        <h1 class="text-2xl text-center font-bold">
-            Tell me what you think!
-        </h1>
-        <script src="https://utteranc.es/client.js"
+        <h1 class="text-2xl text-center font-bold">Tell me what you think!</h1>
+        <script
+            src="https://utteranc.es/client.js"
             repo="newtoallofthis123/comments"
             issue-term="pathname"
             label="comment"
             theme="preferred-color-scheme"
             crossorigin="anonymous"
-            async>
-        </script>
+            async
+        ></script>
     </div>
 </Base>
 <style is:inline>
-    h2{
+    h2 {
         font-size: 1.8rem;
         padding: 1rem 0;
         font-weight: 700;
     }
-    .utterances{
+    .utterances {
         max-width: 80%;
     }
-    h3{
+    h3 {
         font-size: 1.5rem;
         font-weight: 600;
     }
-    p{
+    p {
         font-weight: 400;
         line-height: 2.8rem;
     }
-    #update a{
-        color: #1f59f9
+    #update a {
+        color: #1f59f9;
     }
 
-    @media screen and (max-width: 728px){
-        p{
+    @media screen and (max-width: 728px) {
+        p {
             line-height: 2rem;
         }
-        .utterances{
+        .utterances {
             max-width: 100%;
         }
     }

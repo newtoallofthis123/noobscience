@@ -1,21 +1,20 @@
 ---
-import { getCollection} from 'astro:content';
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/base.astro';
 import HomeNav from '../../components/navigation/home_nav';
 import UpdateArchive from '../../components/updates/archive';
 import UpdateLatest from '../../components/updates/latest';
 import { Image } from 'astro:assets';
-import coffeeImage from "../../assets/coffee.webp"
-import saplingImage from "../../assets/seedling.webp"
+import coffeeImage from '../../assets/coffee.webp';
+import saplingImage from '../../assets/seedling.webp';
 
-let posts = await getCollection('blog', ({data}) => {
-    return data.draft !== true
+let posts = await getCollection('blog', ({ data }) => {
+    return data.draft !== true;
 });
 
 posts = posts.sort(
     (a: any, b: any) =>
-        new Date(b.data.date).getTime() -
-        new Date(a.data.date).getTime()
+        new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
 let notes = posts.filter((post: any) => post.data.type == 'notes');
@@ -97,13 +96,14 @@ let others = posts.filter(
                             return (
                                 <div
                                     onclick={
-                                        "location.href = '/blog/" + post.slug + "'"
+                                        "location.href = '/blog/" +
+                                        post.slug +
+                                        "'"
                                     }
                                     class="md:p-4 md:my-2 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                                 >
                                     <h1 class="md:text-2xl text-xl leading-relaxed font-bold">
-                                        {post.data.emoji}{' '}
-                                        {post.data.title}
+                                        {post.data.emoji} {post.data.title}
                                     </h1>
                                     <p class="text-lg py-3">
                                         {post.data.description}
@@ -127,7 +127,8 @@ let others = posts.filter(
                             >
                         </a>
                     </p>
-                    <span class="block w-full h-1 md:mt-5 md:my-5 bg-black"></span>
+                    <span class="block w-full h-1 md:mt-5 md:my-5 bg-black"
+                    ></span>
                 </div>
             </div>
             <div>
@@ -177,21 +178,29 @@ let others = posts.filter(
                 >
                     My Jots and Notes
                 </h1>
-                <div class="md:grid md:grid-cols-2 gap-4">
+                <p class="md:px-6 p-2">
+                    Simply put, these are my notes. They are short, concise and
+                    meant to be for quick consumption. By no means are they
+                    perfect, but they are out there.
+                </p>
+                <div class="md:grid md:grid-cols-2 gap-4 mx-4">
                     {
                         notes.slice(0, 6).map((post) => {
                             return (
                                 <div
                                     onclick={
-                                        "location.href = '/blog/" + post.slug + "'"
+                                        "location.href = '/blog/" +
+                                        post.slug +
+                                        "'"
                                     }
                                     class="md:p-4 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                                 >
                                     <h1 class="text-2xl leading-relaxed font-bold">
-                                        {post.data.emoji}{' '}
-                                        {post.data.title}
+                                        {post.data.emoji} {post.data.title}
                                     </h1>
-                                    <p class="text-lg py-2">{post.data.description}</p>
+                                    <p class="text-lg py-2">
+                                        {post.data.description}
+                                    </p>
                                     <p class="text-lg">
                                         <span id="p-heading">
                                             #{post.data.category}
@@ -226,27 +235,19 @@ let others = posts.filter(
                 </div>
             </div>
             <span class="block w-2/5 bg-blue-600 h-0.5 my-10"></span>
-            <div id="quicks" class="flex flex-col md:flex-row justify-center">
-                <div class="md:w-1/2 md:px-5 px-1">
-                    <h1 class="md:text-5xl text-3xl pb-4 font-heading">
-                        Miscellaneous
-                    </h1>
-                    <p class="py-2"></p>
-                    <div>
-                        <Image
-                            class="md:w-3/5 w-full dark:invert"
-                            src={saplingImage}
-                            alt="Seedling.webp"
-                        />
-                    </div>
-                </div>
-                <div class="md:w-1/2 w-full md:px-10 px-2">
+            <div id="quicks" class="w-full md:px-10 px-2">
+                <h1 class="text-2xl md:text-4xl font-heading py-2">
+                    Few Quick Thoughts
+                </h1>
+                <div class="grid md:grid-cols-2 md:gap-3">
                     {
                         others.slice(0, 3).map((post) => {
                             return (
                                 <div
                                     onclick={
-                                        "location.href = '/blog/" + post.slug + "'"
+                                        "location.href = '/blog/" +
+                                        post.slug +
+                                        "'"
                                     }
                                     class="md:p-4 px-1 my-5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                                 >
@@ -254,8 +255,7 @@ let others = posts.filter(
                                         @{post.data.category}
                                     </span>
                                     <h1 class="md:text-3xl text-2xl leading-relaxed font-bold">
-                                        {post.data.emoji}{' '}
-                                        {post.data.title}
+                                        {post.data.emoji} {post.data.title}
                                     </h1>
                                     <p class="md:text-lg text-base py-2">
                                         {post.data.description}
@@ -275,47 +275,52 @@ let others = posts.filter(
                 </div>
             </div>
         </div>
-        <div id="dev" class=" md:p-10 p-2">
-            <div class="font-mono text-lime-300 bg-gray-900 dark:bg-black p-4 rounded-lg">
-                <h1 class="md:text-4xl text-2xl pb-4 font-bold">
+        <div id="dev" class="md:p-10 p-2 font-mono text-lime-300 bg-gray-900 dark:bg-black">
+            <div
+                class=" p-4 rounded-lg"
+            >
+                <h1 class="md:text-5xl text-2xl pb-4 font-bold">
                     Some of my Devlogs
                 </h1>
                 <p class="text-lg">
-                    I am a developer at heart after all, so I do write about my dev
-                    stuff. Although not too much, since I believe that there are
-                    already a lot of people out there who are doing a much better
-                    job than me.
+                    I am a developer at heart after all, so I do write about my
+                    dev stuff. Although not too much, since I believe that there
+                    are already a lot of people out there who are doing a much
+                    better job than me.
                 </p>
             </div>
-            {
-                dev.map((post) => {
-                    return (
-                        <div
-                            onclick={"location.href = '/blog/" + post.slug + "'"}
-                            class="md:p-4 md:my-2 my-3 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
-                        >
-                            <span id="p-heading">
-                                @{post.data.category}
-                            </span>
-                            <h1 class="md:text-3xl text-xl leading-relaxed font-bold">
-                                {post.data.emoji}{' '}
-                                {post.data.title}
-                            </h1>
-                            <p class="text-lg py-2">
-                                {post.data.description}
-                            </p>
-                            <p class="text-lg">
-                                Posted on{' '}
+            <div class="md:grid md:grid-cols-2 gap-4 mx-4">
+                {
+                    dev.map((post) => {
+                        return (
+                            <div
+                                onclick={
+                                    "location.href = '/blog/" + post.slug + "'"
+                                }
+                                class="md:p-4 md:my-2 my-3 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                            >
                                 <span id="p-heading">
-                                    {new Date(
-                                        post.data.date
-                                    ).toDateString()}
+                                    @{post.data.category}
                                 </span>
-                            </p>
-                        </div>
-                    );
-                })
-            }
+                                <h1 class="md:text-3xl text-xl leading-relaxed font-bold">
+                                    {post.data.emoji} {post.data.title}
+                                </h1>
+                                <p class="text-lg py-2">
+                                    {post.data.description}
+                                </p>
+                                <p class="text-lg">
+                                    Posted on{' '}
+                                    <span id="p-heading">
+                                        {new Date(
+                                            post.data.date
+                                        ).toDateString()}
+                                    </span>
+                                </p>
+                            </div>
+                        );
+                    })
+                }
+            </div>
         </div>
     </div>
 </Base>

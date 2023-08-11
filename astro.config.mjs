@@ -51,6 +51,7 @@ export default defineConfig({
   redirects: {
     '/updates/[slug]': '/quips/[slug]',
     '/w/[...slug]': '/blog/[...slug]',
-    '/green': '/type/long'
+    '/green': '/type/long',
+    'editor': 'https://htmler.noobscience.rocks'
   }
 });

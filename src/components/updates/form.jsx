@@ -73,7 +73,7 @@ export default function UpdateForm() {
                             ></textarea>
                             <p></p>
                             <button
-                                className="btn bg-gray-300 text-xl my-3"
+                                className="btn bg-dark text-xl my-3"
                                 type="submit"
                             >
                                 Post The Update

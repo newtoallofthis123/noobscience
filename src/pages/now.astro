@@ -2,6 +2,7 @@
 import Base from "../layouts/base.astro";
 import HomeNav from "../components/navigation/home_nav";
 import Detailed from "../components/utils/notification/detailed";
+import UpdateLatest from "../components/updates/latest";
 ---
 
 <Base title="All the posts">
@@ -17,6 +18,13 @@ import Detailed from "../components/utils/notification/detailed";
                 Based on the concept of <a href="https://nownownow.com/about">nownownow.com</a>.
                 Although, some info might be obfuscated for privacy reasons.                
             </p>
+            <h2 class="md:text-4xl text-2xl font-heading py-4">Latest Quip</h2>
+            <p>
+                Quips are an in depth look into my life. They are a bit more personal and I only write them ever so often.
+            </p>
+            <div>
+                <UpdateLatest client:load />
+            </div>
             <div>
                 <Detailed client:load />
             </div>
