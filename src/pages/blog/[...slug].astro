@@ -75,6 +75,13 @@ const headings:headings= meta.headings;
     >
         <div class="md:px-20 px-2 flex flex-col">
             <div class="md:w-4/5 w-full">
+                <h1 class="text-4xl cursor-pointer" onclick=`
+                navigator.clipboard.writeText('${BASE_URL}/e/${frontmatter.emoji}');
+                `>
+                    {
+                        frontmatter.emoji
+                    }
+                </h1>
                 <div class="py-2 md:pt-5">
                     <a
                         href={'/categories/' + frontmatter?.category}
@@ -321,6 +328,7 @@ const headings:headings= meta.headings;
                     )
                 }
                 <div class="py-5">
+                    
                     <button
                         class="special_btn p-3 border-2 rounded-3xl border-black"
                     >
@@ -430,8 +438,8 @@ const headings:headings= meta.headings;
             color: var(--section_color);
         }
         #cat {
-            background-color: var(--bg);
-            color: var(--color);
+            background-color: var(--selection_bg);
+            color: var(--selection_color);
         }
         .special_btn{
             background-color: var(--selection_bg);
