@@ -172,5 +172,10 @@ const BASE_URL = "http://" + Astro.url.host
                 window.location.href = "/search";
             }
         });
+        document.addEventListener("keydown", function(event) {
+            if (event.altKey && event.key === "l") {
+                window.location.href = "/";
+            }
+        });
     </script>
 </html>

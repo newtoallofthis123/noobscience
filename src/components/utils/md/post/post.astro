@@ -1,0 +1,51 @@
+---
+//@ts-ignore
+import { Image } from "astro:assets";
+//@ts-ignore
+import { getCollection } from "astro:content";
+
+let posts = await getCollection('blog', ({data}) => {
+    return data
+});
+
+const {slug} = Astro.props;
+
+let post = posts.find((post) => post.slug === slug);
+if(post)
+post = post.data;
+else
+post = {
+    title: "404",
+    description: "Page not found",
+    emoji: "❌",
+    date: new Date().toISOString(),
+    author: "Astro",
+    tags: ["404"]
+}
+---
+
+<div
+    onclick={"location.href = '/blog/" + slug + "'"}
+    class="cursor-pointer flex flex-col justify-center bg-gray-100 dark:bg-gray-800 rounded-lg p-4"
+>
+    <h2 class="md:text-3xl text-xl">
+        {post.emoji}{' '}{post.title}
+    </h2>
+    <p class="font-sans p-0">
+        {new Date(post.date).toDateString()}{' | '}{post.author}
+    </p>
+    <p class="font-sans p-0 leading-relaxed">
+        {post.description}
+    </p>
+    <ul class="py-1">
+        {
+            post.tags.map((tag) => {
+                return (
+                    <li class="inline-block p-0 font-sans bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                        {tag}
+                    </li>
+                )
+            })
+        }
+    </ul>
+</div>

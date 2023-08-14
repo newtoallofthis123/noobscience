@@ -112,3 +112,70 @@ beginners as they don't have to worry about configuring a routing
 library. You also get the `<Link />` component that you can use to
 navigate between pages, without having to worry about the underlying
 caching mechanism.
+Next.js also provides a lot of other features like server side rendering
+and static site generation that you can use to build your application.
+It is basically a eco system that you can use to build your application.
+
+So, you can see the appeal of a framework. It abstracts away everything.
+In a previous article, I talked about the dangers of abstraction. But,
+frameworks are a different beast altogether.
+
+import Post from "../../../components/utils/md/post/post.astro"
+
+<Post slug="web-dev/abstraction-cloud-computing" />
+
+## JS Bundle 💰
+
+This site is written in Astro, a new static site generator that supports the 
+island architecture. This means that I can use any framework or library that I want
+to build this site. I can use React or Vue or Svelte or even plain old vanilla HTML, CSS and JS.
+It is a very powerful feature and I am very excited to see where it goes.
+
+However, if you are using a framework like Next.js, you will have to use React.
+React by default, loads the entire library into the browser. This is a huge problem
+as it increases the bundle size of your application. 
+Bundle sizes have reduced significantly over the years, but they are still a problem.
+For example, my next.js version of this site is 1.5MB. For contrast, my Astro version
+of this site is 200KB. That's a huge difference for a site that is just a blog.
+
+For a fast and SEO optimized Next.js site, you will have to make a lot of changes.
+You will have to use `next/image` instead of `img` tags. You should have to render 
+the page on the server side and send it to the client. It's a whole thing.
+Luckily, Next.js provides a lot of features that help you with these.
+
+The recent versions of Next.js ship react server side rendered by default. This is a huge
+win for Next.js as it helps you build fast and SEO optimized sites.
+I discuss more about this in my article on the same topic.
+
+<Post slug="web-dev/react-src" />
+
+However, in my humble opinion, Multi Page Applications and Single Page Applications
+are not in the same league. They are two different things and should be treated as such.
+Let me explain.
+
+## Multi Page Applications vs Single Page Applications
+
+Multi Page Applications are applications that have multiple pages. Each page is a separate
+HTML file. When you click on a link, the browser makes a request to the server and the server
+sends the HTML file for that page. This is the traditional way of building websites.
+
+Single Page applications on the other hand, are applications that have only one HTML file.
+When you click on a link, the browser doesn't make a request to the server. Instead, it
+renders the page on the client side. This is the modern way of building websites.
+The most popular SPA framework is React. React uses a virtual dom to keep a track of the
+changes in the application. When a user clicks on a link, React renders the page on the
+client side and updates the virtual dom. This makes the experience more app like and natural.
+
+## Do we need frameworks?
+
+Now, let's get to the question at hand. Do we really need frameworks?
+Well, the answer is, it depends. 
+I know that it is a very unsatisfying answer, but it is the truth.
+Cliched developer answer for a cliched developer question.
+
+![Answer to everything](https://i.redd.it/go1w28pv487a1.png)
+
+Frameworks are a huge plus for beginners. They help you get started
+and build applications fast and efficiently. You don't need to get scared and
+worry about conditional rendering and state management and all the other things,
+you just need to create a `about.tsx` file and start writing your code.

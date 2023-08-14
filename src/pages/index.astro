@@ -25,7 +25,7 @@ posts = posts.sort(
         new Date(b.data.date).getTime() -
         new Date(a.data.date).getTime()
 );
-const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 8)
+const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 10)
 ---
 
 <Base title="NoobScience | Student and Open Source Enthusiast">
@@ -111,7 +111,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 8
                         <h1 class="text-3xl font-heading text-center py-2">
                             Latest Update
                         </h1>
-                        <UpdateLatest slice_length={225} client:load />
+                        <UpdateLatest slice_length={275} client:load />
                     </div>
                 </div>
             </div>
@@ -137,26 +137,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 8
                     })}
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row py-5 justify-center">
-                <div id="current" class="md:w-2/5">
-                    <Current client:idle />
-                </div>
-                <div class="md:w-3/5 md:my-5 md:px-10">
-                    <h1 class="md:text-5xl text-3xl font-heading">
-                        What I'm doing now?
-                    </h1>
-                    <h2 class="pt-8 md:text-3xl text-xl">
-                        Well, I'm delving into how machines learn
-                    </h2>
-                    <div class="py-5">
-                        <p>
-                            At least that is how I like to put it. I'm learning Machine Learning and Deep Learning.
-                            Machine learning was always something that I tried to learn but never got around to it.
-                            Well, I'm glad to say that I am finally doing it and I'm loving it (KFC<sup>TM</sup>).
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <Current client:idle />
         </div>
     </div>
 </Base>
