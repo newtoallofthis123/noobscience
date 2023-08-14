@@ -99,6 +99,15 @@ const headings:headings= meta.headings;
                     }
                 </div>
                 <div class="pb-2">
+                    {
+                        frontmatter.draft && (
+                            <h1 class="md:my-8">
+                                <span class="text-white bg-red-500 font-bold p-2 md:text-3xl text-xl">
+                                    Hold your horses! This is a draft. It will be published soon.
+                                </span>    
+                            </h1>
+                        )
+                    }
                     <h1
                         class="md:text-5xl text-3xl font-heading leading-snug md:py-3 py-2"
                     >

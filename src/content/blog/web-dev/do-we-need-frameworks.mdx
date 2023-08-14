@@ -1,0 +1,114 @@
+---
+title: Do we need frameworks?
+author: Ishan
+date: 2023-08-13
+layout: "../../../layouts/blog_post.astro"
+description: Do we really need frameworks or are they just as useful as a salt shaker in the ocean?
+tags: ["web-dev", "javascript", "frameworks"]
+category: devstories
+emoji: 🏗️
+draft: true
+type: dev
+color: "#000"
+bg: "#ffb02e"
+---
+
+Hey quick, I have a small job for you. I want you to quickly build a website
+that fetches data from only a _single endpoint_ that I will provide and
+just display the information on the page. You have 2 hours. Go!. Oh! and
+you cannot use _anything_. No frameworks, no libraries, no nothing. Just
+plain old vanilla HTML, CSS and JS. Oh and you cannot use any CSS or JS
+pre-processors either. You have to write everything from scratch. Go!
+
+Yes I can't do it either, so don't beat yourself up.
+So, let's explore the question, do we really need frameworks or are they
+just as useful as a salt shaker in the ocean and then finally, we'll try to 
+replicate this article using only vanilla HTML, CSS and JS.
+
+## What is a framework?
+
+A framework is a collection of libraries that are bundled together to
+provide a set of tools to make it easier to build applications.
+Frameworks are usually opinionated and have a set of rules that you have
+to follow to use them. They are usually built to solve a specific problem
+that is common in a lot of applications. Usually open source, frameworks
+are maintained by a community of developers and are usually free to use.
+
+Liked the CoPilot Answer? Now Listen to a human ;)
+
+### What is a library?
+
+First, to understand frameworks, you will have to understand libraries.
+Libraries are a collection of functions that you can use to solve a
+specific problem. For example, if you want to make an HTTP request to a
+server, you can use the `fetch` function that is provided by the browser.
+Now, what if you want to make a request to a server that is not on the
+same domain as your website? You will have to use the `XMLHttpRequest`
+object. Basically you will have to write a lot of code to make a simple
+request that handles all the edge cases. This is where libraries come in.
+
+You might have heard of libraries like `axios` or `superagent`. These
+libraries are built on top of the `XMLHttpRequest` object and provide a
+simpler interface to make HTTP requests. They also handle all the edge
+cases for you. So, you can just use the library and not worry about
+anything else.
+
+Why not just write it yourself? Well, happy weekend! You can write it
+yourself, but why reinvent the wheel? You can just use the library and
+save yourself a lot of time and effort.
+
+So, libs are a huge plus to believers of the DRY(Donot Repeat YourSelf) principle. But, what
+about frameworks?
+
+### Summation of libraries
+
+Frameworks are a collection of libraries that are bundled together and abstracted
+away from the developer. 
+So, her's how I like to think of frameworks. Imagine you are a chef and you have to
+make a dish. You have to make a lot of things from scratch. You have to make the
+sauce, the bread, the cheese, the whole thing. Now, imagine you have a sous chef
+who makes all the things for you and you just have to assemble them. That's what
+frameworks are. They are a collection of libraries that are bundled together and
+abstracted away from the developer. So, you don't have to worry about the
+underlying libraries and you can just focus on building your application.
+
+Most importantly, frameworks abstract away the necessary configurations that enable 
+libraries to work together. For example, if you want to use `react` and `webpack` together,
+you will have to configure `webpack` to work with `react`. This is a lot of work and
+can be a huge pain. Frameworks like `create-react-app` abstract away all the necessary
+configurations and provide you with a boilerplate that you can use to build your
+application.
+
+So, to understand them better, let's look at a rather famous framework, `next.js`.
+
+## Next.js: An Example
+
+React likes to think of itself as more of a library than a framework.
+This is because, while React is usually used in a certain way, it doesn't
+force you to use it in that way. You can use React in any way you want.
+You can use it with webpack or rollup or even without a
+bundler. You can have state management and auth and routing and all the
+other things that you need to build an application. But, you will have
+not be forced to use them. You can use them if you want to.
+
+The choice is not the problem here. The problem is that you have to
+configure all these things yourself. You have to configure webpack to
+work well with redux and react-router and react. You have to
+configure babel to work with react. 
+It's a whole thing. If you are a beginner, just try to successfully make a 
+react app without `create-react-app` or `vite` and you'll come to 
+appreciate the work that these frameworks do.
+
+This is where frameworks like `next.js` come in. They abstract away all
+the necessary configurations and provide you with a boilerplate that you
+can use to build your application. So, you don't have to worry about
+configuring webpack or babel or anything else. You can just focus on
+building your application.
+
+Next.js also introduces the most important feature of a framework, the
+routing system. Next.js provides a inbuilt file based routing system
+that you can use to build your application. This is a huge plus for
+beginners as they don't have to worry about configuring a routing
+library. You also get the `<Link />` component that you can use to
+navigate between pages, without having to worry about the underlying
+caching mechanism.

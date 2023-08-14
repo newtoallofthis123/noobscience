@@ -28,8 +28,8 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' 
                             <div>
                                 {/* <Logo /> */}
                                 <img
-                                    width={192}
-                                    height={192}
+                                    width={48}
+                                    height={48}
                                     className="w-10 h-10 md:w-12 md:h-12 ease-in-out cursor-pointer duration-500 transform hover:-translate-y-1 hover:scale-110"
                                     src="/logo192.webp"
                                     alt="NoobScience Logo"
