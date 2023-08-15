@@ -24,24 +24,24 @@ export default defineConfig({
   markdown: {
     ...markdownConfig,
     gfm: true,
-    // shikiConfig: {
-    //   theme: 'nord',
-    //   langs: [
-    //     'javascript',
-    //     'html',
-    //     'css',
-    //     'typescript',
-    //     'tsx', 'jsx',
-    //     'json', 'markdown',
-    //     'mdx', 'bash', 'shell',
-    //     'rust',
-    //     'c', 'cpp',
-    //     'go', 'java',
-    //     'python', 'ruby',
-    //   ],
-    //   wrap: false
-    // },
-    // syntaxHighlight: 'shiki',
+    shikiConfig: {
+      theme: 'material-theme-darker',
+      langs: [
+        'javascript',
+        'html',
+        'css',
+        'typescript',
+        'tsx', 'jsx',
+        'json', 'markdown',
+        'mdx', 'bash', 'shell',
+        'rust',
+        'c', 'cpp',
+        'go', 'java',
+        'python', 'ruby',
+      ],
+      wrap: false
+    },
+    syntaxHighlight: 'shiki',
     drafts: false
   },
   compressHTML: true,
