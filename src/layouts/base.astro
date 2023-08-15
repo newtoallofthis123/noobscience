@@ -166,14 +166,14 @@ const BASE_URL = "http://" + Astro.url.host
         }
     </style>
     <script>
-        // Navigate to /search on pressing Ctrl + K
+        // Navigate to /search on pressing Ctrl + g
         document.addEventListener("keydown", function(event) {
-            if (event.ctrlKey && event.key === "k") {
+            if (event.ctrlKey && event.key === "y") {
                 window.location.href = "/search";
             }
         });
         document.addEventListener("keydown", function(event) {
-            if (event.altKey && event.key === "l") {
+            if (event.altKey && event.key === "y") {
                 window.location.href = "/";
             }
         });
