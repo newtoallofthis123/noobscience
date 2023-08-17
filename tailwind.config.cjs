@@ -10,6 +10,9 @@ module.exports = {
 				bg: 'rgb(var(--bg) / <alpha-value>)',
 				dark: '#040300',
 				light: '#fbfcff',
+				sky: {
+					400: "#00cbec"
+				}
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],

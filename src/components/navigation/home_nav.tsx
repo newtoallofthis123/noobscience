@@ -36,9 +36,9 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' 
                                     onClick={play_shutter}
                                 />
                             </div>
-                            <p className="md:block hidden text-2xl py-2 font-bold ml-5">
+                            <a href='/' className="md:block hidden text-2xl py-2 font-bold ml-5">
                                 {title && <span>{title}</span>}
-                            </p>
+                            </a>
                         </div>
                         <div
                             onClick={() => setNav(!nav)}
