@@ -51,7 +51,7 @@ export default function UpdateArchiveGrid({ num }: Props) {
                     ))}
                     <div className="pl-4 py-1">
                         <h4 className="text-2xl font-base">
-                            <a className="underline" href={`/quips}`}>
+                            <a className="underline" href={`/quips/archive`}>
                                 View All
                             </a>
                         </h4>

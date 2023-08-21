@@ -6,7 +6,7 @@ export default function GoForm() {
     async function submit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
-        if(!formData.get('url')) return toast.error('Please enter a URL')
+        if (!formData.get('url')) return toast.error('Please enter a URL')
         const response = await fetch('/api/go', {
             method: 'POST',
             body: formData,

@@ -1,28 +1,13 @@
 ---
 import Base from '../../layouts/base.astro';
 import Update from "../../components/updates/update"
-import HomeNav from '../../components/navigation/home_nav';
 
 const {id} = Astro.params;
 ---
 
-<Base title={id + "- Ishan's Quips"} bg='#212121' color='#fff'>
-    <HomeNav title='Quips' client:load bg='#212121' color='#fff' />
+<Base title={id + "- Ishan's Quips"} footer={false} bg='#212121' color='#fff' selection_bg='#b7b7b7' selection_color='#000'>
     <div id="update">
         <Update hash={id} client:load />
-    </div>
-    <div>
-        <h1 class="text-2xl text-center font-bold">
-            Tell me what you think!
-        </h1>
-        <script src="https://utteranc.es/client.js"
-            repo="newtoallofthis123/comments"
-            issue-term="pathname"
-            label="comment"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-        </script>
     </div>
 </Base>
 <style is:inline>

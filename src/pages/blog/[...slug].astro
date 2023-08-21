@@ -75,23 +75,24 @@ const headings:headings= meta.headings;
     >
         <div class="md:px-20 px-2 flex flex-col">
             <div class="md:w-4/5 w-full">
-                <h1 class="text-4xl cursor-pointer" onclick=`
+                <h1 class="md:text-4xl text-xl cursor-pointer" onclick=`
                 navigator.clipboard.writeText('${BASE_URL}/e/${frontmatter.emoji}');
+                alert('Copied to clipboard!')
                 `>
                     {
-                        frontmatter.emoji
+                        "/e/" + frontmatter.emoji
                     }
                 </h1>
-                <div class="py-2 md:pt-5">
+                <div class="py-2 md:pt-5 flex flex-row flex-wrap">
                     <a
                         href={'/categories/' + frontmatter?.category}
                         id="cat"
-                        class="p-1">{frontmatter?.category}</a
+                        class="p-0.5 mr-5">{frontmatter?.category}</a
                     >
                     {
                         frontmatter?.tags.map((tag: string) => {
                             return (
-                                <a href={'/tags/' + tag} class="pl-5">
+                                <a href={'/tags/' + tag} class="pr-5">
                                     {tag}
                                 </a>
                             );
@@ -109,105 +110,19 @@ const headings:headings= meta.headings;
                         )
                     }
                     <h1
-                        class="md:text-5xl text-3xl font-heading leading-snug md:py-3 py-2"
+                        class="md:text-5xl text-4xl font-heading leading-snug md:py-3 py-2"
                     >
                         {frontmatter?.title}
                     </h1>
                     <div>
-                        <p class="font-sans text-lg leading-loose">
+                        <p class="font-sans md:text-lg text-base leading-loose">
                             {frontmatter?.description}
                         </p>
                         <p class="font-sans text-base leading-loose py-1">
-                            By {frontmatter.author} | <a
-                                href="https://twitter.com/noobscience1"
-                                >@noobscience1</a
-                            > | {new Date(frontmatter?.date).toDateString()} | {
+                            {new Date(frontmatter?.date).toDateString()} | {
                                 meta.remarkPluginFrontmatter.minutesRead
                             }
                         </p>
-                        <div class="py-2 md:hidden block">
-                            <button class="font-light cursor-text">
-                                Share it with the Noobs:
-                            </button>
-                            <button class="px-2 text-xl">
-                                <a
-                                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                                        'https://' + share_url
-                                    )}&text=${
-                                        encodeURIComponent(frontmatter.title) +
-                                        '\n\n' +
-                                        frontmatter.description
-                                    }&via=noobscience1`}
-                                >
-                                    <i class="bi bi-twitter"></i>
-                                </a>
-                            </button>
-                            <button class="px-2 text-xl">
-                                <a
-                                    href={`https://www.reddit.com/submit?url=${encodeURIComponent(
-                                        'https://' + share_url
-                                    )}&title=${encodeURIComponent(
-                                        frontmatter.title
-                                    )}`}
-                                >
-                                    <i class="bi bi-reddit"></i>
-                                </a>
-                            </button>
-                            <button class="px-2 text-xl">
-                                <a
-                                    href={`https://www.instagram.com/direct?url=${encodeURIComponent(
-                                        'https://' + share_url
-                                    )}&text=${encodeURIComponent(
-                                        frontmatter.title +
-                                            '\n\n' +
-                                            frontmatter.description +
-                                            '\n\nvia @noobscience123'
-                                    )}`}
-                                >
-                                    <i class="bi bi-instagram"></i>
-                                </a>
-                            </button>
-                            <button class="px-2 text-xl">
-                                <a
-                                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
-                                        `${frontmatter.title}\n${
-                                            frontmatter.description
-                                        }\n\nCheck it out: ${
-                                            'https://' + share_url
-                                        }`
-                                    )}`}
-                                >
-                                    <i class="bi bi-whatsapp"></i>
-                                </a>
-                            </button>
-                            <button class="px-2 text-xl">
-                                <a
-                                    href={`mailto:?subject=${encodeURIComponent(
-                                        frontmatter.title
-                                    )}&body=${encodeURIComponent(
-                                        frontmatter.description +
-                                            '\n\nCheck it out: ' +
-                                            'https://' +
-                                            share_url +
-                                            '\n\nvia Noob Science (noobscience@duck.com)'
-                                    )}`}
-                                >
-                                    <i class="bi bi-envelope"></i>
-                                </a>
-                            </button>
-                            <button class="font-light md:pl-4 cursor-text">
-                                Copy Short Link:
-                            </button>
-                            <button
-                                onclick={`navigator.clipboard.writeText('http://${BASE_URL}/e/${
-                                    //@ts-ignore
-                                    frontmatter.emoji
-                                }')`}
-                                class="px-2 py-1 text-xl"
-                            >
-                                {frontmatter.emoji}
-                            </button>
-                        </div>
                     </div>
                     {
                         frontmatter?.img && (
@@ -233,7 +148,7 @@ const headings:headings= meta.headings;
                     <h2 class="text-2xl py-2">
                         ➡️ Table of Contents
                     </h2>
-                    <ul>
+                    <ul class="py-2">
                         {
                             headings.map((heading) => {
                                 return (
@@ -249,13 +164,11 @@ const headings:headings= meta.headings;
                             })
                         }
                     </ul>
+                    <span class="block w-1/5 h-1 mb-2 md:mb-8 bg-black dark:bg-white"></span>
                 </div>
                     )
                 }
-                <div class="md:p-0 p-2">
-                    <h1 class="py-4 text-3xl font-heading">
-                        Happy Reading ☕
-                    </h1>
+                <div class={`md:p-0 p-2 font-${frontmatter.font}`}>
                     <Content />
                 </div>
             </div>
@@ -284,32 +197,25 @@ const headings:headings= meta.headings;
                     <h1 class="text-2xl py-2">⚙️ MetaData</h1>
                     <div class="text-sm leading-3">
                         <p class="text-base leading-relaxed">
-                            This post was written <span class="text-green-500 dark:text-lime-300">
-                                {
+                            Published {
                                     new Date(
                                         new Date().getTime() -
                                             new Date(frontmatter.date).getTime()
                                     ).getUTCDate() - 1
-                                } days ago
-                            </span> on {
+                                } days ago (
+                                {
                                 new Date(frontmatter.date).toDateString()
-                            } by {frontmatter.author}. Apparently it is
-                            categorized as <a
-                                href={'/category/' + frontmatter.category}
-                                style="text-decoration:none;"
-                                class="text-blue-500 dark:text-sky-300">{frontmatter.category}</a
-                            >
-                            The Author Drank <span class="text-red-500 dark:text-red-300"
-                                >{
-                                    Math.floor(
-                                        parseInt(
-                                            meta.remarkPluginFrontmatter.minutesRead.split(
-                                                ' '
-                                            )[0]
-                                        ) / 4
-                                    )
-                                } cups of coffee</span
-                            > while writing this.
+                                }
+                            )
+                        </p>
+                        <p class="text-base leading-relaxed">
+                            Avg {meta.remarkPluginFrontmatter.minutesRead} ({meta.remarkPluginFrontmatter.wordsRead} words)
+                        </p>
+                        <p class="text-base leading-relaxed">
+                            Written with ❤️ by <a class="underline" href="https://twitter.com/noobscience1">{frontmatter.author}{' '}</a>
+                        </p>
+                        <p class="text-base">
+                            Category: <a class="underline" href={'/categories/' + frontmatter.category}>{frontmatter.category}</a>
                         </p>
                     </div>
                 </div>
@@ -396,18 +302,19 @@ const headings:headings= meta.headings;
                 ></script>
             </div>
             <div class="md:w-2/5 w-full p-2">
-                <h2 class="text-2xl">General Niceties</h2>
+                <h2 class="text-2xl">Niceties</h2>
                 <div>
                     <p class="text-lg leading-relaxed py-2">
-                        The Above article is <em>not news</em>. It is the
-                        personal opinion of the author. If you disagree with the
-                        author, please <a
+                        Hey! I am Ishan, I write most of the stuff on this
+                        website. I just like the idea of a place where I can put
+                        forth my thoughts and ideas. So, if you have any questions, feel
+                        free to reach out to me on{' '}
+                        <a
                             href="https://twitter.com/noobscience1"
-                            class="text-green-500 dark:text-lime-300">tweet to the author</a
+                            class="text-sky-500 dark:text-lime-300"
                         >
-                        or leave a comment below. If you want to discuss about the
-                        contents of this post, please leave a comment below mentioning
-                        the post in question.
+                            Twitter
+                        </a>
                     </p>
                 </div>
                 <h2 class="text-2xl">License</h2>
@@ -415,23 +322,25 @@ const headings:headings= meta.headings;
                     <p class="text-lg leading-relaxed py-2">
                         This post is licensed under <a
                             href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-                            class="text-green-500 dark:text-lime-300">CC BY-NC-SA 4.0</a
+                            class="text-sky-500 dark:text-lime-300">CC BY-NC-SA 4.0</a
                         >. You can find the full text of the license <a
                             href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode"
-                            class="text-green-500 dark:text-lime-300">here</a
+                            class="text-sky-500 dark:text-lime-300">here</a
                         >.
                     </p>
                 </div>
-                <h2 class="text-2xl">About the Author</h2>
+                <h2 class="text-2xl">This Post is Editable!</h2>
                 <div>
                     <p class="text-lg leading-relaxed py-2">
-                        Ishan (@noobscience) is a 18 year old student who is
-                        interested in Computer Science. He likes to write about
-                        his opinions on various topics and is a strong believer
-                        in the Open Source movement. He is currently pursuing
-                        his Bachelors in Computer Science and Engineering from
-                        GRIET, Hyderabad.
+                        I believe in the whole open source philosophy. So, if you
+                        are interested in correcting or adding anything to the above post,
+                        just send me a pull request on
                     </p>
+                    <button class="special_btn rounded-3xl">
+                        <a href=`https://github.com/newtoallofthis123/noobscience/tree/master/src/content/blog/${slug}.mdx`>
+                            Send me a pull request on <i class="bi bi-github"></i> Github
+                        </a>
+                    </button>
                 </div>
             </div>
         </div>

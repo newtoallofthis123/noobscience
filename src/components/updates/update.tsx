@@ -30,7 +30,7 @@ export default function Update({ hash }: Props) {
     }, []);
 
     return (
-        <div className='flex justify-center'>
+        <div className="flex justify-center">
             {latest.name == '' && (
                 <h1 className="text-center p-4">Loading...</h1>
             )}
@@ -52,6 +52,12 @@ export default function Update({ hash }: Props) {
                             }),
                         }}
                     />
+                    <h1 className="py-2 md:text-xl text-lg font-bold">
+                        <a href="/quips">Read more quips</a> ||{' '}
+                        <button
+                        onClick={() => window.history.back()}
+                        >Go back</button>
+                    </h1>
                 </div>
             )}
         </div>

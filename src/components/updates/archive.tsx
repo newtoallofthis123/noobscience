@@ -54,7 +54,7 @@ export default function UpdateArchive({num}: Props) {
                         <h4 className="text-2xl font-base">
                             <a
                                 className="underline"
-                                href={`/quips}`}
+                                href={`/quips`}
                             >
                                 View All
                             </a>

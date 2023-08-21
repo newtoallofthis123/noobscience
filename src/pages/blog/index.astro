@@ -92,7 +92,7 @@ let others = posts.filter(
                 </div>
                 <div class="md:w-3/6 w-full md:p-4 py-6">
                     {
-                        long.slice(0, 4).map((post) => {
+                        long.slice(0, 3).map((post) => {
                             return (
                                 <div
                                     onclick={
@@ -225,7 +225,7 @@ let others = posts.filter(
                         everyday. They are separate from my garden. You can
                         think of them as my journal.
                     </p>
-                    <UpdateArchive num={8} client:idle />
+                    <UpdateArchive num={6} client:idle />
                 </div>
                 <div class="hidden md:block md:w-3/5 w-full">
                     <UpdateLatest client:idle />
@@ -235,13 +235,13 @@ let others = posts.filter(
                 </div>
             </div>
             <span class="block w-2/5 bg-blue-600 h-0.5 my-10"></span>
-            <div id="quicks" class="w-full md:px-10 px-2">
+            <div id="quicks" class="w-full md:px-6 px-2">
                 <h1 class="text-2xl md:text-4xl font-heading py-2">
                     Few Quick Thoughts
                 </h1>
                 <div class="grid md:grid-cols-2 md:gap-3">
                     {
-                        others.slice(0, 3).map((post) => {
+                        others.slice(0, 4).map((post) => {
                             return (
                                 <div
                                     onclick={
@@ -275,7 +275,7 @@ let others = posts.filter(
                 </div>
             </div>
         </div>
-        <div id="dev" class="md:p-10 p-2 font-mono text-lime-300 bg-gray-900 dark:bg-black">
+        <div id="dev" class="md:p-6 p-2">
             <div
                 class=" p-4 rounded-lg"
             >
@@ -289,7 +289,7 @@ let others = posts.filter(
                     better job than me.
                 </p>
             </div>
-            <div class="md:grid md:grid-cols-2 gap-4 mx-4">
+            <div class="md:grid md:grid-cols-2 gap-4 mx-2">
                 {
                     dev.map((post) => {
                         return (
@@ -297,7 +297,7 @@ let others = posts.filter(
                                 onclick={
                                     "location.href = '/blog/" + post.slug + "'"
                                 }
-                                class="md:p-4 md:my-2 my-3 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                                class="md:p-4 my-2 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
                             >
                                 <span id="p-heading">
                                     @{post.data.category}

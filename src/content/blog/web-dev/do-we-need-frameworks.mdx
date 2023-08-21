@@ -7,10 +7,12 @@ description: Do we really need frameworks or are they just as useful as a salt s
 tags: ["web-dev", "javascript", "frameworks"]
 category: devstories
 emoji: 🏗️
-draft: true
 type: dev
-color: "#000"
-bg: "#ffb02e"
+color: "#fff"
+bg: "#1a0072"
+selection_color: "#000"
+selection_bg: "#ffb02e"
+full_img: true
 ---
 
 Hey quick, I have a small job for you. I want you to quickly build a website
@@ -21,10 +23,7 @@ plain old vanilla HTML, CSS and JS. Oh and you cannot use any CSS or JS
 pre-processors either. You have to write everything from scratch. Go!
 
 Yes I can't do it either, so don't beat yourself up.
-So, let's explore the question, do we really need frameworks or are they
-just as useful as a salt shaker in the ocean and then finally, we'll try to 
-replicate this article using only vanilla HTML, CSS and JS.
-
+So, let's explore the question, do we really need frameworks
 ## What is a framework?
 
 A framework is a collection of libraries that are bundled together to
@@ -124,7 +123,7 @@ import Post from "../../../components/utils/md/post/post.astro"
 
 <Post slug="web-dev/abstraction-cloud-computing" />
 
-## JS Bundle 💰
+### JS Bundle 💰
 
 This site is written in Astro, a new static site generator that supports the 
 island architecture. This means that I can use any framework or library that I want
@@ -153,7 +152,7 @@ However, in my humble opinion, Multi Page Applications and Single Page Applicati
 are not in the same league. They are two different things and should be treated as such.
 Let me explain.
 
-## Multi Page Applications vs Single Page Applications
+### Multi Page Applications vs Single Page Applications
 
 Multi Page Applications are applications that have multiple pages. Each page is a separate
 HTML file. When you click on a link, the browser makes a request to the server and the server
@@ -179,3 +178,64 @@ Frameworks are a huge plus for beginners. They help you get started
 and build applications fast and efficiently. You don't need to get scared and
 worry about conditional rendering and state management and all the other things,
 you just need to create a `about.tsx` file and start writing your code.
+
+### Where are they useful?
+
+Let me give you an example. Let's say you are an indie hacker and you want to build a
+small sass application. You might build the actual application using JAMStack and
+a good DataBase, but you will need a UI to interact with the database. You can use
+a framework like Next.js to build the UI. It will help you get started fast and
+you can build a MVP in a few days. 
+
+Using a framework like Next.js would also give you an amazing community of developers
+that work on plugins, libraries and other things that you can use to build your application.
+You can fully use the power of the react.dev ecosystem and build your application.
+
+> Seconds, overtime, add up to minutes and minutes add up to hours.
+
+One more scenario. Imagine me building this very site you are reading. This site has a 
+dynamic updates section that is linked to a mongoDB database. I use typescript bindings to interact
+with it using [Astro.js](https://astro.build), a MPA framework. My blog is less than 8000
+lines of code and I have a fully functional blog with a dynamic updates section and a url shortener.
+I could have built this site using vanilla HTML, CSS and JS, but it would have taken me a lot of time
+and a lot of boilerplate. Thing is, I tried to make it work like that. However, once my 
+amount of posts increased, I had to switch to a framework. I could have used a library like
+
+### Stability
+
+A framework provides stability. You might have heard of create app cli's like `create-t3-app` and `create-react-app`.
+These cli's provide you with a boilerplate that you can use to build your application with industry standard
+configurations.
+All this might seem benign at start, but overtime, seconds add up to minutes and minutes add up to hours.
+And overall, you will save a lot of time and effort.
+
+### Developer Experience
+
+You are most likely to have a better developer experience with a framework. Frameworks provide you with
+a set of rules that you have to work with. You know the good thing about having rules? Others have the same rules.
+So, if you on board a new developer, you don't have to worry about teaching them the rules. They already know them.
+Atleast you can assume that they know them. 
+
+This is because by nature, these frameworks are opinionated.
+Hence, you don't need to worry about having internal documentation for your application. You can just
+use the documentation of the framework.
+
+## Conclusion
+
+So, I have given you all the arguments and now it's time for you to decide. Do you need a framework?
+Thing is, you probably do. You might not need it now, but you will need it in the future.
+However, if you are a beginner, I would suggest you to try to build a small application without a framework.
+Just try to get the hang of it. It will help you understand the underlying concepts and you will be able to
+appreciate the work that these frameworks do.
+
+So, the thing I am getting to is that while you should work with frameworks, know and appreciate the 
+underlying concepts. It will help in the long run.
+
+With that said, I hope you liked this article. If you did, please consider sharing it with your friends.
+It would mean a lot to me. Also, if you have any questions or suggestions, please let me know in the comments.
+
+Thanks for reading and have a nice day!
+
+import AI from "../../../components/utils/md/ai.astro"
+
+<AI percentage="60" topics={["Initial Structure", "Grammer", "Introduction", "General AutoComplete"]} />

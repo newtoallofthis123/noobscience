@@ -34,17 +34,10 @@ export default function CodeEditor({}: Props) {
         <>
             <div>
                 <div className="page-div">
-                    <h1 className="text-5xl font-heading pt-6 pb-4">
-                        Enter Cool Code Snippets
+                    <h1 className="text-5xl font-heading">
+                        NoobPaste Mini
                     </h1>
-                    <p className="text-xl">
-                        Yep. Enter the code and boom. It's there. As easy as
-                        that
-                    </p>
                     <div className="py-4">
-                        <h2 className="text-3xl font-bold py-2">
-                            Write a new code snippet
-                        </h2>
                         <form className="py-4" onSubmit={addCode} method="POST">
                             <p className="text-xl">
                                 <b>Title</b>: Enter the title of the code
@@ -52,7 +45,7 @@ export default function CodeEditor({}: Props) {
                             </p>
                             <input
                                 type="text"
-                                className="w-2/4 border-current dark:bg-dark  border-2 p-2 text-lg font-mono rounded-xl my-4"
+                                className="w-2/4 border-current dark:bg-dark  border-2 p-2 text-lg font-mono rounded-md my-4"
                                 name="code_title"
                                 id="title"
                             />

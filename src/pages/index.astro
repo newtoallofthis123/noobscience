@@ -6,7 +6,6 @@ import Notification from "../components/utils/notification/notification";
 import UpdateLatest from "../components/updates/latest";
 import circleSvg from "../assets/circle.svg"
 import { Image } from "astro:assets";
-import Youtube from "../components/utils/md/social/youtube.astro";
 import Current from "../components/utils/notification/current";
 
 const options = [
@@ -31,6 +30,11 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 1
 <Base title="NoobScience | Student and Open Source Enthusiast">
     <div>
         <HomeNav title="NOOBSCIENCE" client:load />
+        <!-- <div class="text-center p-8 bg-black text-white">
+            <p class="text-2xl">
+                Ravat Leda? <a class="text-red-500" href="https://www.noobscience.rocks/code/X3hLZc">Kotu</a>.
+            </p>
+        </div> -->
         <div class="z-0 md:px-20  md:py-14 p-5">
             <div class="font-serif text-gray-900 dark:text-gray-200">
                 <div>
@@ -64,7 +68,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 1
             <span class="block w-1/5 h-1 mt-8 bg-red-600"></span>
             <div>
                 <h1 class="py-4 text-3xl font-mono">
-                    <a href="/about" class="bg-red-600 text-white dark:text-black p-1">Know me more</a>
+                    <a href="/about" class="bg-sky-300 text-black p-1">Know me more</a>
                 </h1>
                 <p class="text-lg">
                     By the way, you should scroll down or check out my writings
