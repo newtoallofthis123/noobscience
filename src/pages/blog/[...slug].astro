@@ -56,8 +56,8 @@ const headings:headings= meta.headings;
     selection_only={frontmatter?.selection_only}
     color={frontmatter?.color}
     bg={frontmatter?.bg}
-    selection_bg={frontmatter?.selection_bg}
-    selection_color={frontmatter?.selection_color}
+    selection_bg={frontmatter?.selection_bg  || "#000"}
+    selection_color={frontmatter?.selection_color  || "#fff"}
     title={frontmatter?.type == 'notes'
         ? frontmatter?.title + " | Ishan's Jots"
         : frontmatter?.title + ' | Ishan Writes'}
