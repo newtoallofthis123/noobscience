@@ -16,6 +16,7 @@ const blogContent = defineCollection({
         selection_bg: z.string().optional(),
         selection_only: z.boolean().optional().default(true),
         category: z.string().optional(),
+        audio: z.string().optional(),
         minutesRead: z.string().optional(),
         font: z.string().optional().default('serif'),
         img: image().refine((img) => img).optional(),

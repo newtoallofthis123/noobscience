@@ -3,7 +3,6 @@ import Base from '../../layouts/base.astro';
 import HomeNav from '../../components/navigation/home_nav';
 import { getEntry, getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import Spotify from '../../components/utils/md/audio/spotify.astro';
 
 const { slug } = Astro.params;
 
@@ -57,8 +56,8 @@ const headings:headings= meta.headings;
     selection_only={frontmatter?.selection_only}
     color={frontmatter?.color}
     bg={frontmatter?.bg}
-    selection_bg={frontmatter?.selection_bg  || frontmatter?.bg  || "#000"}
-    selection_color={frontmatter?.selection_color  || frontmatter?.color  || "#fff"}
+    selection_bg={frontmatter?.selection_bg  || "#000"}
+    selection_color={frontmatter?.selection_color  || "#fff"}
     title={frontmatter?.type == 'notes'
         ? frontmatter?.title + " | Ishan's Jots"
         : frontmatter?.title + ' | Ishan Writes'}
@@ -69,56 +68,19 @@ const headings:headings= meta.headings;
         bg={frontmatter?.bg}
         client:load
     />
-    <div>
-        <div id="searchBar" style="display:none" class="z-10 bg-white dark:bg-dark drop-shadow-md shadow-black dark:shadow-white p-0.5 fixed top-0 left-0 w-full">
-            <div class="flex flex-row justify-between items-center p-2">
-                <div class="md:w-2/6 flex-shrink-0 flex flex-row mx-5">
-                    <div>
-                        <img
-                            width={24}
-                            height={24}
-                            class="w-8 h-8"
-                            src="/logo192.webp"
-                            alt="NoobScience Logo"
-                        />
-                    </div>
-                    <a href='/' class="md:block hidden text-lg pl-2 pt-0.5 font-bold">
-                        {frontmatter.title}
-                    </a>
-                </div>
-                <div class="md:w-3/6 w-full">
-                    <form onsubmit={
-                        `window.location.href = '/search/' + document.getElementById('search').value; return false;`
-                    }>
-                        <div class="flex flex-row items-center w-full border-2 border-b-4 border-r-4 p-1 border-black dark:border-white rounded-2xl">
-                            <input spellcheck="false" class="w-full dark:bg-dark focus:outline-none px-2" type="search" name="search" placeholder="Press Ctrl+F to Search" id="search">
-                            <button class="w-1/6">
-                                <span class="md:block hidden">
-                                    Search
-                                </span>
-                                <span class="md:hidden block">
-                                    <i class="bi bi-search"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <div
         class={`p-1 flex flex-col justify-center md:pt-10 ${
             frontmatter.full_img != false ? 'section_colored' : ''
         }`}
     >
-        <div class="md:pl-8 px-2 flex flex-col">
-            <div class="w-full">
-                <h1 class="md:text-4xl text-2xl py-2 cursor-pointer" onclick=`
+        <div class="md:px-20 px-2 flex flex-col">
+            <div class="md:w-4/5 w-full">
+                <h1 class="md:text-4xl text-xl cursor-pointer" onclick=`
                 navigator.clipboard.writeText('${BASE_URL}/e/${frontmatter.emoji}');
                 alert('Copied to clipboard!')
                 `>
                     {
-                        frontmatter.emoji
+                        "/e/" + frontmatter.emoji
                     }
                 </h1>
                 <div class="py-2 md:pt-5 flex flex-row flex-wrap">
@@ -148,12 +110,12 @@ const headings:headings= meta.headings;
                         )
                     }
                     <h1
-                        class="md:text-6xl text-4xl font-heading leading-snug md:py-5 py-2"
+                        class="md:text-5xl text-4xl font-heading leading-snug md:py-3 py-2"
                     >
                         {frontmatter?.title}
                     </h1>
                     <div>
-                        <p class="font-sans md:text-xl md:pb-2 text-base leading-loose">
+                        <p class="font-sans md:text-lg text-base leading-loose">
                             {frontmatter?.description}
                         </p>
                         <p class="font-sans text-base leading-loose py-1">
@@ -178,19 +140,22 @@ const headings:headings= meta.headings;
         </div>
     </div>
     <div class="flex flex-col justify-center md:pb-10">
-        <div id="searchTrigger" class="md:pl-8 md:pr-20 px-2 flex flex-col md:flex-row">
-            <div class="md:w-1/6 w-full md:pt-16 px-2 overflow-x-auto md:sticky md:pr-6 md:pl-0 md:top-0 md:h-screen overflow-y-none flex flex-col">
-                <h2 class="text-xl py-2">
+        <div class="md:px-20 px-2 flex flex-col md:flex-row">
+            <div class="md:w-4/6 w-full py-4 md:pr-5 overflow-x-hidden">
+                {
+                    frontmatter.type != "quick" && (
+                        <div>
+                    <h2 class="text-2xl py-2">
                         ➡️ Table of Contents
                     </h2>
                     <ul class="py-2">
                         {
                             headings.map((heading) => {
                                 return (
-                                    <li class="cursor-pointer transform hover:translate-x-1 transition duration-300 ease-in-out">
+                                    <li class="py-0.5 cursor-pointer transform hover:translate-x-1 transition duration-300 ease-in-out">
                                         <a
                                             href={`#${heading.slug}`}
-                                            class=`text-base ${heading.depth == 2 ? 'font-semibold' : ''} ${heading.depth == 3 ? 'pl-3 font-normal' : ''} truncate`
+                                            class=`text-lg ${heading.depth == 2 ? 'font-semibold' : ''} ${heading.depth == 3 ? 'pl-3 font-normal' : ''}`
                                         >
                                             {heading.text}
                                         </a>
@@ -199,11 +164,89 @@ const headings:headings= meta.headings;
                             })
                         }
                     </ul>
-                <div class="hidden md:block">
-                    <h2 class="text-xl py-2">
-                        Speard the ❤️
-                    </h2>
-                    <button class="block py-1">
+                    <span class="block w-1/5 h-1 mb-2 md:mb-8 bg-black dark:bg-white"></span>
+                </div>
+                    )
+                }
+                <div class={`md:p-0 p-2 font-${frontmatter.font}`}>
+                    <Content />
+                </div>
+            </div>
+            <div
+                id="recommended"
+                class="md:w-1/3 w-full md:py-10 md:sticky md:pl-12 md:top-0 md:h-screen overflow-y-none flex flex-col"
+            >
+                <form onsubmit={
+                        `window.location.href = '/search/' + document.getElementById('search').value; return false;`
+                    }
+                    class="md:pb-2"
+                    >
+                    <p>
+                        Search the site easily:
+                    </p>
+                    <div class="flex bg-inherit cursor-auto flex-row items-center border-2 border-b-4 border-r-4 px-2 border-dark dark:border-primary rounded-lg w-full">
+                        <input 
+                        class="p-2 px-5 bg-inherit text-lg focus:outline-none w-5/6"
+                        type="search" name="search" placeholder="Search using anything" id="search" />
+                        <button class="w-1/6">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="pb-2">
+                    <h1 class="text-2xl py-2">⚙️ MetaData</h1>
+                    <div class="text-sm leading-3">
+                        <p class="text-base leading-relaxed">
+                            Published {
+                                    new Date(
+                                        new Date().getTime() -
+                                            new Date(frontmatter.date).getTime()
+                                    ).getUTCDate() - 1
+                                } days ago (
+                                {
+                                new Date(frontmatter.date).toDateString()
+                                }
+                            )
+                        </p>
+                        <p class="text-base leading-relaxed">
+                            Avg {meta.remarkPluginFrontmatter.minutesRead} ({meta.remarkPluginFrontmatter.wordsRead} words)
+                        </p>
+                        <p class="text-base leading-relaxed">
+                            Written with ❤️ by <a class="underline" href="https://twitter.com/noobscience1">{frontmatter.author}{' '}</a>
+                        </p>
+                        <p class="text-base">
+                            Category: <a class="underline" href={'/categories/' + frontmatter.category}>{frontmatter.category}</a>
+                        </p>
+                    </div>
+                </div>
+                <h1 class="text-2xl py-2">~ Similar Articles</h1>
+                {
+                    recommended.length > 0 &&
+                        recommended.map((post: any) => {
+                            return (
+                                <div class="cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                                    <a
+                                        href={'/blog/' + post.slug}
+                                        class="font-sans text-lg leading-loose"
+                                    >
+                                        {post.data.title}
+                                    </a>
+                                </div>
+                            );
+                        })
+                }
+                {
+                    recommended.length == 0 && (
+                        <div class="font-sans text-xl leading-loose">
+                            No recommendations yet. Check back later!
+                        </div>
+                    )
+                }
+                <div class="py-5">
+                    
+                    <button
+                        class="special_btn p-3 border-2 rounded-3xl border-black"
+                    >
                         <a
                             href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
                                 'https://' + share_url
@@ -212,11 +255,13 @@ const headings:headings= meta.headings;
                                 '\n\n' +
                                 frontmatter.description
                             }&via=noobscience1`}
-                            <i class="bi bi-twitter"></i>
-                            <span class="pl-2">Twitter</span>
+                        >
+                            <i class="bi bi-twitter"></i> Help me go viral on X
                         </a>
                     </button>
-                    <button class="block py-1">
+                    <button
+                        class="special_btn p-3 border-2 rounded-3xl border-black"
+                    >
                         <a
                             href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
                                 `${frontmatter.title}\n${
@@ -224,37 +269,20 @@ const headings:headings= meta.headings;
                                 }\n\nCheck it out: ${'https://' + share_url}`
                             )}`}
                         >
-                            <i class="bi bi-whatsapp"></i> Whatsapp
+                            <i class="bi bi-whatsapp"></i> Argue with your friends
                         </a>
                     </button>
-                    <button class="block py-1">
+                    <button
+                        class="special_btn p-3 border-2 rounded-3xl border-black"
+                    >
                         <a
                             href={`https://www.reddit.com/submit?url=${encodeURIComponent(
                                 'https://' + share_url
                             )}&title=${encodeURIComponent(frontmatter.title)}`}
                         >
-                            <i class="bi bi-reddit"></i> Reddit
+                            <i class="bi bi-reddit"></i> Get upvoted on Reddit
                         </a>
                     </button>
-                </div>
-            </div>
-            <div class="md:w-5/6 w-full py-4 md:pl-10 overflow-x-hidden">
-                {
-                        frontmatter?.audio && (
-                            <div class={`items-center w-full py-5`}>
-                                <Spotify url={frontmatter.audio} />
-                            </div>
-                        )
-                    }
-                {
-                    frontmatter.type != "quick" && (
-                        <div>
-                    <span class="block w-1/5 h-1 mb-2 md:mb-8 bg-black dark:bg-white"></span>
-                </div>
-                    )
-                }
-                <div class={`md:p-0 p-2 font-${frontmatter.font}`}>
-                    <Content />
                 </div>
             </div>
         </div>
@@ -272,38 +300,47 @@ const headings:headings= meta.headings;
                     crossorigin="anonymous"
                     async
                 ></script>
-                <div class="text-center my-2">
-                    <button class="special_btn rounded-3xl">
-                        <a href=`https://github.com/newtoallofthis123/noobscience/tree/master/src/content/blog/${slug}.mdx`>
-                            Edit the post on <i class="bi bi-github"></i> Github
-                        </a>
-                    </button>
-                </div>
             </div>
             <div class="md:w-2/5 w-full p-2">
-                <h2 class="text-2xl">
-                    Recommended Reading
-                </h2>
-                <p class="leading-snug text-base py-2">
-                    Recommendations are based on the category and tags of this post.
-                </p>
+                <h2 class="text-2xl">Niceties</h2>
                 <div>
-                    {
-                        recommended.map((post: any) => {
-                            return (
-                                <div class="py-2">
-                                    <a href={`/blog/${post.slug}`}>
-                                        <h3 class="text-xl">
-                                            {post.data.emoji}{' '}{post.data.title}
-                                        </h3>
-                                    </a>
-                                    <p class="text-base">
-                                        {post.data.description}
-                                    </p>
-                                </div>
-                            );
-                        })
-                    }        
+                    <p class="text-lg leading-relaxed py-2">
+                        Hey! I am Ishan, I write most of the stuff on this
+                        website. I just like the idea of a place where I can put
+                        forth my thoughts and ideas. So, if you have any questions, feel
+                        free to reach out to me on{' '}
+                        <a
+                            href="https://twitter.com/noobscience1"
+                            class="text-sky-500 dark:text-lime-300"
+                        >
+                            Twitter
+                        </a>
+                    </p>
+                </div>
+                <h2 class="text-2xl">License</h2>
+                <div>
+                    <p class="text-lg leading-relaxed py-2">
+                        This post is licensed under <a
+                            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                            class="text-sky-500 dark:text-lime-300">CC BY-NC-SA 4.0</a
+                        >. You can find the full text of the license <a
+                            href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode"
+                            class="text-sky-500 dark:text-lime-300">here</a
+                        >.
+                    </p>
+                </div>
+                <h2 class="text-2xl">This Post is Editable!</h2>
+                <div>
+                    <p class="text-lg leading-relaxed py-2">
+                        I believe in the whole open source philosophy. So, if you
+                        are interested in correcting or adding anything to the above post,
+                        just send me a pull request on
+                    </p>
+                    <button class="special_btn rounded-3xl">
+                        <a href=`https://github.com/newtoallofthis123/noobscience/tree/master/src/content/blog/${slug}.mdx`>
+                            Send me a pull request on <i class="bi bi-github"></i> Github
+                        </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -329,35 +366,4 @@ const headings:headings= meta.headings;
             color: var(--selection_color);
         }
     </style>
-    <script>
-        // Get references to the necessary elements
-        const triggerDiv = document.getElementById("searchTrigger");
-        const fixedSearchBar = document.getElementById("searchBar");
-
-        // @ts-ignore
-        const triggerDivPosition = triggerDiv.offsetTop;
-
-        // Function to toggle the visibility of the fixed search bar
-        function toggleSearchBar() {
-        if (window.pageYOffset > triggerDivPosition) {
-            // @ts-ignore
-            fixedSearchBar.style.display = "block";
-        } else {
-            // @ts-ignore
-            fixedSearchBar.style.display = "none";
-        }
-        }
-
-        // Listen for scroll events and call the toggleSearchBar function
-        window.addEventListener("scroll", toggleSearchBar);
-
-        //bind ctrl + f to trigger cursor on search bar
-        document.addEventListener("keydown", function (e) {
-            if (e.ctrlKey && e.key === "f") {
-                e.preventDefault();
-                // @ts-ignore
-                document.getElementById("search").focus();
-            }
-        });
-    </script>
 </Base>

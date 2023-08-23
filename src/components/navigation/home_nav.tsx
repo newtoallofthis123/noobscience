@@ -225,6 +225,7 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' 
                                             required={true}
                                             className="input"
                                             name="text"
+                                            id = "search_input"
                                             type="text"
                                         />
                                     </form>
