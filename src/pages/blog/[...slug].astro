@@ -93,7 +93,7 @@ const headings:headings= meta.headings;
                         `window.location.href = '/search/' + document.getElementById('search').value; return false;`
                     }>
                         <div class="flex flex-row items-center w-full border-2 border-b-4 border-r-4 p-1 border-black dark:border-white rounded-2xl">
-                            <input spellcheck="false" class="w-full dark:bg-dark focus:outline-none px-2" type="search" name="search" placeholder="Press Ctrl+F to Search" id="search">
+                            <input spellcheck="false" class="w-full dark:bg-dark focus:outline-none px-2" type="search" name="search" placeholder="Press Ctrl+K to Search" id="search">
                             <button class="w-1/6">
                                 <span class="md:block hidden">
                                     Search
@@ -354,7 +354,7 @@ const headings:headings= meta.headings;
 
         //bind ctrl + f to trigger cursor on search bar
         document.addEventListener("keydown", function (e) {
-            if (e.ctrlKey && e.key === "f") {
+            if (e.ctrlKey && e.key === "k") {
                 e.preventDefault();
                 // @ts-ignore
                 document.getElementById("search").focus();

@@ -16,8 +16,8 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				heading: ['Archivo Black', 'sans-serif'],
-				serif: ['Libre Baskerville', 'serif']
+				heading: ['"Archivo Black"', 'sans-serif'],
+				serif: ['"Libre Baskerville"', 'serif']
 			},
 		},
 	},
