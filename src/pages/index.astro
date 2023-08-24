@@ -24,13 +24,13 @@ posts = posts.sort(
         new Date(b.data.date).getTime() -
         new Date(a.data.date).getTime()
 );
-const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 10)
+const latest = posts.filter((post: any) => post.data.type != 'quick' && post.data.type != 'notes').slice(0, 10)
 ---
 
 <Base title="NoobScience | Student and Open Source Enthusiast">
     <div>
         <HomeNav title="NOOBSCIENCE" client:load />
-        <div class="-z-10 md:px-20  md:py-14 p-5">
+        <div class="-z-10 md:px-20  md:py-14 p-2">
             <div class="font-serif text-gray-900 dark:text-gray-200">
                 <div>
                     <h1 class="md:text-7xl leading-snug text-4xl">
@@ -62,9 +62,9 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 1
             </div>
             <span class="block w-1/5 h-1 mt-8 bg-red-600"></span>
             <div>
-                <h1 class="py-4 text-3xl font-mono">
-                    <a href="/about" class="bg-sky-300 text-black p-1">Know me more</a>
-                </h1>
+                <button class="btn p-4 text-2xl mx-0 bg-dark dark:bg-white">
+                    <a href="/about">Know me better</a>
+                </button>
                 <p class="text-lg">
                     By the way, you should scroll down or check out my writings
                 </p>
@@ -105,7 +105,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick').slice(0, 1
                         <li></li>
                     </ul>
                 </div>
-                <div id="update" class="md:w-3/5 w-full">
+                <div id="update" class="md:w-3/5 w-full pr-2">
                     <div>
                         <h1 class="text-3xl font-heading text-center py-2">
                             Latest Update

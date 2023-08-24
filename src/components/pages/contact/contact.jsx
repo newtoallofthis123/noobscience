@@ -19,17 +19,17 @@ export default function Form() {
     return (
         <form onSubmit={submit}>
             <div className='page-div text-dark bg-lime-300'>
-                <h1 className='text-4xl px-10 font-bold p-2'>
+                <h1 className='text-4xl md:px-10 font-bold px-2 pt-5'>
                     Contact The Noob
                 </h1>
-                <p  className='px-10 pt-5 font-normal text-xl leading-relaxed'>
+                <p  className='md:px-10 px-2 pt-5 font-normal text-xl leading-relaxed'>
                     Is this a overengineered contact form? Yes. Was it fun to make? No.
                     However, it is a good way to prevent spam and I can use it to
                     practice my backend skills. So, if you want to contact me, fill out
                     the form below and I will get back to you as soon as I can.
                 </p>
                 <div>
-                    <div className='mt-0 pt-4 p-4 md:p-10'>
+                    <div className='mt-0 pt-4 p-1 md:p-10'>
                         <h2>
                             <span className='text-2xl font-base'>Enter Your Name:</span>{' '}
                         </h2>
