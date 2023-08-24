@@ -124,7 +124,7 @@ I have used it in the past and I have had no issues with it. So, I decided to us
 The plan is simple. I want to write a CLI tool that can be used to manage my content.
 I had to manage three types of content with the following B-JSON schemas:
 
-```json
+```json title="BSON Schemas" frame="code"
 // Quips
 {
     "_id": "ObjectId",
@@ -160,7 +160,7 @@ So, the idea was that each of these had the following operations:
 - Delete
 The __CRUD__ operations if you may. The CLI would have the following commands:
 
-```bash
+```bash title="CLI Commands" frame="terminal"
 handler __doc__ __hash__
 
 handler new __doc__
@@ -193,7 +193,7 @@ First up was actually setting up the database. I already had a database with the
 I just used the URI of it and connected to it using the `mongodb` crate. It was pretty easy to do.
 It looks something like this:
 
-```rust
+```rust title="Connecting to MongoDB" frame="code"
 async fn get_connection() -> Result<Client, mongodb::error::Error> {
     let client = Client::with_uri_str(get_mongo_url()).await?;
     Ok(client)
@@ -207,7 +207,7 @@ Next up was actually enabling CRUD operations on the database. This was pretty e
 So, the `mongodb` crate has a `Collection` struct that you can use to interact with the database.
 I predefine the collections and then I just use the `Collection` struct to interact with the database.
 
-```rust
+```rust title="Defining the Collections" frame="code"
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Page{
     pub _id: ObjectId,
@@ -222,7 +222,7 @@ pub struct Page{
 The collections use `serde` to automatically serialize and deserialize the data.
 Next, I can use the inbuilt functions of the collections struct like `insert_one`, `find_one`, `find`, `delete_one`, and `update_one` to interact with the database.
 
-```rust
+```rust title="Getting a Page" frame="code"
 pub async fn get_page(hash: &str)->Page{
     let collection = get_page_conn().await;
     let result = collection.find_one(doc! {"hash": hash}, None).await.unwrap();
@@ -243,7 +243,7 @@ I use the `clap` crate to parse the arguments and then I use the `inquire` crate
 The clap crate is pretty easy to use. You just define the arguments in a struct and then you use the clap macros to parse the arguments.
 It looks something like this:
 
-```rust
+```rust title="Parsing Arguments" frame="code"
 #[derive(Parser, Debug)]
 #[command(name="Handler", author="Ishan Joshi", version, about="A Simple CLI to handle my site", long_about = None)]
 
@@ -268,7 +268,7 @@ You can even have it open up a text editor for you to write your answer. It is a
 So, I used it to write a custom function that takes in a instance of a struct and then asks questions based on the struct.
 The quips struct looks something like this:
 
-```rust
+```rust title="Asking for input" frame="code"
 pub fn ask_page(page: &Page)->Page{
     println!("{}", format!("Editing {}", page.name).as_str());
     let name = inquire::Text::new("Name").with_default(page.name.as_str()).prompt().unwrap();

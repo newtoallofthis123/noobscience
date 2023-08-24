@@ -6,7 +6,6 @@ import vercel from "@astrojs/vercel/serverless";
 import markdownConfig from './markdown.config';
 import sitemap from "@astrojs/sitemap";
 
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://noobscience.rocks",
@@ -26,19 +25,7 @@ export default defineConfig({
     gfm: true,
     shikiConfig: {
       theme: 'material-theme-darker',
-      langs: [
-        'javascript',
-        'html',
-        'css',
-        'typescript',
-        'tsx', 'jsx',
-        'json', 'markdown',
-        'mdx', 'bash', 'shell',
-        'rust',
-        'c', 'cpp',
-        'go', 'java',
-        'python', 'ruby',
-      ],
+      langs: ['javascript', 'html', 'css', 'typescript', 'tsx', 'jsx', 'json', 'markdown', 'mdx', 'bash', 'shell', 'rust', 'c', 'cpp', 'go', 'java', 'python', 'ruby'],
       wrap: false
     },
     syntaxHighlight: 'shiki',

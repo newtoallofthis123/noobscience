@@ -1,7 +1,7 @@
 {
   "name": "noobscience",
   "type": "module",
-  "version": "3.0.2",
+  "version": "3.1.2",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -48,6 +48,7 @@
     "rehype-pretty-code": "^0.10.0",
     "rehype-slug": "^5.1.0",
     "rehype-stringify": "^9.0.3",
+    "remark-expressive-code": "^0.22.2",
     "remark-html": "^15.0.2",
     "remark-math": "^5.1.1",
     "remark-rehype": "^10.1.0",

@@ -2,13 +2,15 @@ import remarkHtml from 'remark-html';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import remarkMath from 'remark-math';
 import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings/lib';
 import rehypeMathJaxSvg from 'rehype-mathjax';
+import remarkExpressiveCode from 'remark-expressive-code'
 
 export default {
-    remarkPlugins: [remarkHtml, remarkReadingTime, remarkMath],
-    rehypePlugins: [
-        rehypeMathJaxSvg,
-        rehypeSlug,
+    remarkPlugins: [
+        remarkHtml,
+        remarkReadingTime,
+        remarkMath,
+        [remarkExpressiveCode, { highlightTheme: 'material' }]
     ],
+    rehypePlugins: [rehypeMathJaxSvg, rehypeSlug],
 };
