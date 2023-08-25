@@ -1,5 +1,10 @@
-/* Fancy BTN from https: //uiverse.io/adamgiebl/giant-donkey-36 */
-/* Slightly Modified for My Needs */
+@font-face {
+    font-family: 'Hubot Sans';
+    src: url('/fonts/Hubot-Sans.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 ::-webkit-scrollbar {
     width: 0.8em;

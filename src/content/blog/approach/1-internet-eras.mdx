@@ -1,0 +1,88 @@
+---
+title: 'Internet Eras and Changes'
+author: 'Ishan Joshi'
+layout: '../../../layouts/blog_post.astro'
+description: 'The first installment of the series of changing our approach to the web. This post talks about the HTTP era and the changes we have to live with.'
+date: 2023-08-23
+category: 'approach'
+tags: ['indie web', 'web', 'internet']
+emoji: 🗄️
+series: 'approach'
+selection_only: true
+img: "../../../assets/deprecated_web.jpg"
+type: long
+full_img: false
+color: '#f0f0f0'
+bg: '#1a1a1a'
+selection_color: '#000'
+selection_bg: '#d6b1ff'
+---
+
+The term www, proposed by British computer scientist Tim Berners-Lee turns 32 this month. It's been 32 years since the web was open for us all. So, the web is older than the guy writing this article and that is saying something. So, the world wide web was the original influencer. Staying relevant for 32 years and fueling some of the greatest and worst moments of human history. However, our approach to the web has not really changed that much. It is still surrounded by the same stigma's, the same dangers and in fact has given seed to new problems. So, in this post, and in a series of them in the coming days, we'll be critically judging our approach to the web and the internet in general, break a few stigma's, put in some new ones and just have a nostalgic blast. So, why wait.
+
+## Internet Eras
+
+People have many classifications for the web we know today, however, for this article series, I wanted to have a closer look at the changes that have taken place from the 32 years of the internet. I like to divide the internet into three main eras:
+
+1. The HTTP Era
+2. The Web App Era
+3. Network Era
+
+These are very loosely based on real world events and defining technological changes that have happened in these time periods.
+The exact time periods of these era's cannot be calculated, but it can be a good guess to say the the HTTP Era was before the `.com` boom, the Web App Era in the 2010's and finally the Network Era is after the rise of Facebook and Twitter.
+
+## HTTP Era
+
+I put in a lot of thought for cool names for the open indie web of the 1990's, before the `.com` boom, but this was the best I was able to come up with; "The HTTP Era", derived from the fact that most of the websites of that era were from the `http` standard. This factoid has nothing to do with the defining points of the era though.
+
+The HTTP era was what I like to think of as the golden wild west era of the internet. There was barely any moderation, like the governments currently are _trying_ to understand AI models, the governments then were trying to _grasp_ the idea of an interconnected web. The web was ruled by small little websites, the ones that we now like to call the "indie web".
+To better understand this era, we first have to understand how websites were hosted then in the first place.
+
+import Disclaimer from "../../../components/utils/md/disclaimer.astro"
+
+<Disclaimer>
+Small disclaimer, I was not even _born_ at this time, most of the factoids I mention are researched off of the internet. I will try and link the references wherever I reliably can.
+</Disclaimer>
+
+If I ask you to make me a website _right now_, you would probably open up a quick terminal, use a quick js framework like [astro](https://astro.build) or a html based framework like [htmx](https://htmx.org) and whip a quick site, most likely styled by tailwindcss. You would then proceed to host this **static** website to a content delivery network (CDN) like GitHub Pages or Netlify. You can do _all_ of this from the ease and comfort of you local terminal, in most cases without any additional charges. We made the web _so easy_ and I feel that is one of the primary reasons for it's growth and stability.
+
+This was not the case in the early 1990's. Servers were literally _hosted_ on your own computers. The concept of the cloud was not that popular and most websites were handled by individual computers, especially if it was your own website.
+To have a site, you probably downloaded the latest version of `jquery`, styled your html and used a server like apache or ngix on an old laptop, preferably running a linux operating system like ubuntu and wrote a ton of config to even get it up and running.
+So, everything, all the way from user management to authentication was managed by a _single_ server! Imagine that.
+
+Now you might be asking why all of this is relevant to an article on our approach and ethics towards the internet: Well, changes in the way we do something, invariably has consequences.
+
+## Change is good. Right?
+
+Well, yeah. Change is mostly good. I mean, if our web hosting and cloud technologies had not evolved to what they are right not, I don't think I would be able to write this article and upload it so easily on my site. It is so cool that I can do that. The amount of _choice_ I get is so cool. Oh you want to write markdown in the terminal and make a html page? Just use rust and pandocs. Just wanna have a site, use a framework like [hugo](https://gohugo.io/).
+Modern web development made it easy for _anyone_ to have their own site. However, it has indirectly led to the decline to the open web; but more on that later.
+
+However, it is difficult to put into perspective the paradigm shift that we underwent after the .com boom of the 2010's. Let's take the example of a very controversial problem we have currently: Advertisements. Imagine your site was hosted on a small server, maybe it had a good number of visitors, say 800 users a month. First you congratulate yourself on the userbase and decide to earn some money so that you can maybe upgrade the server you are currently hosting off of. So, how can you go about doing that? One simple idea would be to just reach out for adverts. Maybe some company reaches out and you accept. You _hard code_ some HTML into your site, maybe a little bit of jQuery that updates your database, as to the number of clicks your ad gets.
+Notice one thing: It didn't effect the user at **all**! Maybe the user experience, sure, but actual user data and privacy of the user? Not at all.
+
+Compare that to the situation with adverts now. I had recently decided to put ads on my [blog](https://noobscience.rock/blog). It was as easy as adding one single line on my site. That's it. Everything else can be controlled using an intuitive Google Console. I am sure any new developer just trying to build something would _100%_ choose this experience over personally contacting advertisers or using something like a paywalled site. Google Advertisements or AdSense is a simple to use advertisement framework for the modern web that uses a very complicated system that can be compared to a very fast auction. So essentially when you use Google AdSense on your site, Google AdSense auctions away your user's attention to the advertiser who is willing to pay the most, gets the payment and gives a little share to you: The Developer.
+These auctions are only effective if the advertiser _knows_ that the chance of the user clicking his ad is high, i.e. the user is profile shows that he might be interested in the product.
+It would not be clever to advertise pots to a user if he/she has no profile of being into plants.
+So, user has to be profiled and effectively advertised for the advertisers to be happy and I wonder how a company that owns the **Google.com** and **YouTube.com** will be able to track the user 🤔.
+
+## Starting the Series
+
+So, in the coming posts, you can expect us to one by one dive into each and every change that the web went through, do an in depth analysis of the change, how it effects us and how we should shift our current attitude towards the web to adapt to that change. Here are some of the changes we will be talking about
+
+1. Computational Power
+2. Moderation
+3. Ease of development
+4. Internet Bloat
+5. Social Media
+6. Communities
+7. Discoverability
+8. Permanency
+9. More!
+   We will be talking about all these and more. So, if you are interested in keeping up, be sure to follow.
+
+## Conclusion
+
+I am still in the process of coding the series feature of my site, so you will soon be able to use this as the home page to all of the articles in this series.
+The part one on Computational Power will be out soon.
+Till then, thanks for reading my articles. This will be my first time writing an actual series, so be sure to share it with your family and friends, and if you have any suggestions, you can always reach out to me on my [contact](/contact) page.
+With that being said, thanks for reading Ishan Writes, hope you have a wonderful day.

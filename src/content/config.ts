@@ -8,6 +8,7 @@ const blogContent = defineCollection({
         date: z.date(),
         emoji: z.string(),
         type: z.string(),
+        series: z.string().optional(),
         description: z.string(),
         tags: z.array(z.string()),
         color: z.string().optional(),

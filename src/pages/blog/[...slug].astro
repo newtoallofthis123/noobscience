@@ -163,6 +163,13 @@ const headings:headings= meta.headings;
                                 Math.round(meta.remarkPluginFrontmatter.wordsRead / 265)
                             } min read
                         </p>
+                        {
+                            frontmatter.series && (
+                                <p>
+                                    Part of the <a id="cat" href={`/series/${frontmatter.series}`}>{frontmatter.series}</a> series.
+                                </p>
+                            )
+                        }
                     </div>
                     {
                         frontmatter?.img && (
@@ -182,10 +189,10 @@ const headings:headings= meta.headings;
     <div class="flex flex-col justify-center md:pb-10">
         <div id="searchTrigger" class="md:pl-8 md:pr-20 px-2 flex flex-col md:flex-row">
             <div class=`md:w-1/6 w-full md:pt-16 px-2 overflow-x-auto md:sticky md:pr-6 md:pl-0 md:top-0 md:h-screen overflow-y-none flex flex-col ${frontmatter.type == "quick" && 'hidden'}`>
-                <h2 class="text-xl py-2">
+                <h2 class="text-lg py-1">
                         ➡️ Table of Contents
                     </h2>
-                    <ul class="py-2">
+                    <ul class="py-1">
                         {
                             headings.map((heading) => {
                                 return (
@@ -202,7 +209,7 @@ const headings:headings= meta.headings;
                         }
                     </ul>
                 <div class="hidden md:block">
-                    <h2 class="text-xl py-2">
+                    <h2 class="text-lg py-1">
                         Speard the ❤️
                     </h2>
                     <button class="block py-1">
