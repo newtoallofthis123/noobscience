@@ -33,10 +33,8 @@ export default function CodeEditor({}: Props) {
     return (
         <>
             <div>
-                <div className="page-div">
-                    <h1 className="text-5xl font-heading">
-                        NoobPaste Mini
-                    </h1>
+                <div className="md:px-10 md:py-5">
+                    <h1 className="text-5xl font-heading">NoobPaste Mini</h1>
                     <div className="py-4">
                         <form className="py-4" onSubmit={addCode} method="POST">
                             <p className="text-xl">
@@ -45,8 +43,10 @@ export default function CodeEditor({}: Props) {
                             </p>
                             <input
                                 type="text"
-                                className="w-2/4 border-current dark:bg-dark  border-2 p-2 text-lg font-mono rounded-md my-4"
+                                className="w-2/4 border-current dark:bg-dark border-2 border-b-4 border-r-4 p-2 text-lg font-mono rounded-2xl my-4"
                                 name="code_title"
+                                autoComplete="off"
+                                spellCheck="false"
                                 id="title"
                             />
                             <p className="text-xl">
@@ -54,7 +54,7 @@ export default function CodeEditor({}: Props) {
                                 snippet.
                             </p>
                             <select
-                                className="border-2 w-2/5 border-current p-2 text-lg bg-gray-100 dark:bg-dark font-mono rounded-xl my-4"
+                                className="border-2 w-2/5 border-current border-b-4 border-r-4 p-2 text-lg bg-gray-100 dark:bg-dark font-mono rounded-2xl my-4"
                                 name="code_lang"
                                 id="code_lang"
                             >
@@ -93,8 +93,10 @@ export default function CodeEditor({}: Props) {
                             </p>
                             <input
                                 type="text"
-                                className="w-2/4 border-current dark:bg-dark  border-2 p-2 text-lg font-mono rounded-xl my-4"
+                                className="w-2/4 border-current border-b-4 border-r-4 dark:bg-dark border-2 p-2 text-lg font-mono rounded-2xl my-4"
                                 name="author"
+                                autoComplete="off"
+                                spellCheck="false"
                                 id="lang"
                             />
                             <p className="text-xl">
@@ -104,8 +106,9 @@ export default function CodeEditor({}: Props) {
                             <textarea
                                 name="content"
                                 id="content"
-                                className="w-3/5 border-2 border-current dark:bg-dark rounded-xl p-2 text-md font-mono"
+                                className="w-3/5 border-2 border-current border-b-4 border-r-4 dark:bg-dark rounded-2xl p-2 text-md font-mono"
                                 rows={10}
+                                spellCheck="false"
                                 cols={10}
                             ></textarea>
                             <p></p>

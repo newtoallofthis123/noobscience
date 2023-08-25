@@ -29,7 +29,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick' && post.dat
 
 <Base title="NoobScience | Student and Open Source Enthusiast">
     <div>
-        <HomeNav title="NOOBSCIENCE" client:load />
+        <HomeNav title="NoobScience" client:load />
         <div class="-z-10 md:px-20  md:py-14 p-2">
             <div class="font-serif text-gray-900 dark:text-gray-200">
                 <div>
@@ -39,7 +39,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick' && post.dat
                     </h1>
                 </div>
                 <h1 class="md:py-10 md:text-6xl leading-snug text-4xl font-bold">
-                    and he's known as <span class="text-lime-400 p-1">NoobScience</span>.
+                    and he's known as <span class="text-yellow-400 p-1">NoobScience</span>.
                 </h1>
             </div>
             <div class="flex md:flex-row flex-col justify-center items-center">
@@ -62,7 +62,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick' && post.dat
             </div>
             <span class="block w-1/5 h-1 mt-8 bg-red-600"></span>
             <div>
-                <button class="btn p-4 text-2xl mx-0 bg-dark dark:bg-white">
+                <button class="btn p-4 text-2xl mx-0 bg-dark dark:text-black dark:bg-white">
                     <a href="/about">Know me better</a>
                 </button>
                 <p class="text-lg">
@@ -105,12 +105,12 @@ const latest = posts.filter((post: any) => post.data.type != 'quick' && post.dat
                         <li></li>
                     </ul>
                 </div>
-                <div id="update" class="md:w-3/5 w-full pr-2">
+                <div id="update" class="md:w-4/5 w-full pr-2">
                     <div>
                         <h1 class="text-3xl font-heading text-center py-2">
                             Latest Update
                         </h1>
-                        <UpdateLatest slice_length={275} client:load />
+                        <UpdateLatest slice_length={300} client:load />
                     </div>
                 </div>
             </div>

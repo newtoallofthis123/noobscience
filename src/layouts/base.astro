@@ -91,15 +91,15 @@ const BASE_URL = "http://" + Astro.url.host
             <slot />
             {
                 footer && (
-                    <footer id="content" class="md:py-5 border-t-2 border-current">
+                    <footer id="content" class="md:py-1 dark:text-dark border-t-2 bg-yellow-400 border-current">
                 <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="flex justify-between items-center py-2">
+                    <div class="flex justify-between items-center py-2 px-5">
                         <Image src={logo} class="w-8 mx-2" alt="Logo" />
-                        <a class="text-xl" href="/">&copy NoobScience 2023</a>
+                        <a class="text-xl font-bold" href="/">NoobScience 2023</a>
                     </div>
-                    <div class="hidden md:flex md:flex-row flex-col gap-x-8 px-5 justify-center items-center">
+                    <div class="hidden md:flex md:flex-row flex-col gap-x-6 px-5 justify-center items-center">
                         <a href="https://github.com/newtoallofthis123/noobscience">
-                            noobscience@v.2.0
+                            <i class="bi bi-github"></i> newtoallofthis123/noobscience
                         </a>
                         <a href="/credits">Credits</a>
                         <a href="/privacy">Privacy</a>
@@ -123,7 +123,7 @@ const BASE_URL = "http://" + Astro.url.host
     <style is:global define:vars={{
         bg: bg || "#a3e635",
         color: color || "#000",
-        selection_bg: selection_bg || "#b7b7b7",
+        selection_bg: selection_bg || "#facc15",
         selection_color: selection_color || "#000",
     }}>
         html{
@@ -150,7 +150,7 @@ const BASE_URL = "http://" + Astro.url.host
             color: #fff;
         }
         body{
-            font-family: "Inter Variable", sans-serif;
+            font-family: "Hubot Sans", sans-serif;
         }
         #p-heading{
             font-weight: 400;

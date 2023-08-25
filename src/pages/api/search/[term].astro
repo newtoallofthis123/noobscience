@@ -95,7 +95,7 @@ for (const post of posts) {
 // Fifth level check the body
 // Only do this if the term is longer than 10 characters
 //@ts-ignore
-if (term?.length > 8) {
+if (term?.length > 4) {
     for (const post of posts) {
         //@ts-ignore
         if (post.body?.toLowerCase()?.split(' ').join('').includes(term)) {

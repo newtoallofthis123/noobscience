@@ -5,7 +5,7 @@ import Update from "../../components/updates/update"
 const {id} = Astro.params;
 ---
 
-<Base title={id + "- Ishan's Quips"} footer={false} bg='#212121' color='#fff' selection_bg='#b7b7b7' selection_color='#000'>
+<Base title={id + "- Ishan's Quips"} footer={false}>
     <div id="update">
         <Update hash={id} client:load />
     </div>

@@ -12,6 +12,9 @@ module.exports = {
 				light: '#fbfcff',
 				sky: {
 					400: "#00cbec"
+				},
+				yellow: {
+					400: "#facc15"
 				}
 			},
 			fontFamily: {

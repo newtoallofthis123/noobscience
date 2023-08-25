@@ -36,7 +36,10 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' 
                                     onClick={play_shutter}
                                 />
                             </div>
-                            <a href='/' className="md:block hidden text-2xl py-2 font-bold ml-5">
+                            <a
+                                href="/"
+                                className="md:block hidden text-2xl py-2 font-bold ml-5"
+                            >
                                 {title && <span>{title}</span>}
                             </a>
                         </div>
@@ -140,28 +143,6 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' 
                                                 />
                                             </form>
                                             <div className="icon">
-                                                {/* <svg
-                                            viewBox="0 0 512 512"
-                                            className="ionicon"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <title>Search</title>
-                                            <path
-                                                strokeWidth="32"
-                                                strokeMiterlimit="10"
-                                                stroke="currentColor"
-                                                fill="none"
-                                                d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-                                            ></path>
-                                            <path
-                                                d="M338.29 338.29L448 448"
-                                                strokeWidth="32"
-                                                strokeMiterlimit="10"
-                                                strokeLinecap="round"
-                                                stroke="currentColor"
-                                                fill="none"
-                                            ></path>
-                                        </svg> */}
                                                 <img
                                                     src="/assets/icons/search_left.png"
                                                     className="w-10"
@@ -175,6 +156,39 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' 
                             </motion.div>
                         )}
                         <ul className="items-end hidden gap-x-6 list-none lg:flex flex-row-reverse p-2 justify-center">
+                            <li>
+                                <div>
+                                    <form
+                                        onSubmit={(e) => {
+                                            e.preventDefault();
+                                            typeof window !== 'undefined' &&
+                                                (window.location.href = `/search/${e.currentTarget.text.value}`);
+                                        }}
+                                    >
+                                        <div className="search_container focus:outline-none hover:outline-none flex flex-row justify-center items-center py-0.5 px-2 rounded-2xl border-2 border-b-4 border-r-4 border-current">
+                                            <input
+                                                placeholder="Enter To Search"
+                                                required={true}
+                                                id="search_input"
+                                                autoComplete="off"
+                                                spellCheck="false"
+                                                className="input focus:outline-none text-base rounded-2xl"
+                                                name="text"
+                                                type="text"
+                                            />
+                                            <button type='button'>
+                                                <img
+                                                    src="/assets/icons/search_left.png"
+                                                    className="w-6"
+                                                    width={32}
+                                                    height={32}
+                                                    alt="Search Icon"
+                                                />
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
                             <li>
                                 <a className="special_underline" href="/others">
                                     Others
@@ -210,35 +224,6 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' 
                                 <a className="special_underline" href="/blog">
                                     Blog
                                 </a>
-                            </li>
-                            <li>
-                                <div className="search_container">
-                                    <form
-                                        onSubmit={(e) => {
-                                            e.preventDefault();
-                                            typeof window !== 'undefined' &&
-                                                (window.location.href = `/search/${e.currentTarget.text.value}`);
-                                        }}
-                                    >
-                                        <input
-                                            placeholder="Enter To Search"
-                                            required={true}
-                                            className="input"
-                                            name="text"
-                                            id = "search_input"
-                                            type="text"
-                                        />
-                                    </form>
-                                    <div className="icon">
-                                        <img
-                                            src="/assets/icons/search_left.png"
-                                            className="w-8"
-                                            width={32}
-                                            height={32}
-                                            alt="Search Icon"
-                                        />
-                                    </div>
-                                </div>
                             </li>
                         </ul>
                     </div>

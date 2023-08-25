@@ -16,10 +16,11 @@
 
 ::-webkit-scrollbar-thumb {
     background-color: var(--selection_bg);
+    border-radius: 0.5em;
 }
 
 ::selection{
-    background: #000ea5;
+    background: #facc15;
     color: #e8e8e8;
 }
 

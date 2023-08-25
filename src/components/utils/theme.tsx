@@ -57,14 +57,6 @@ export default function Init() {
                 }}
             >
                 <i className={`bi ${icon}`}></i>
-            </button>{' '}
-            <button
-                className="md:text-xl text-lg my-1"
-                onClick={() => {
-                    toggleTheme('system');
-                }}
-            >
-                <i className="bi bi-repeat"></i>
             </button>
         </>
     );

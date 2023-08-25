@@ -69,19 +69,25 @@ export default function Search({ term = '' }: any) {
                         e.preventDefault();
                         if (typeof window !== 'undefined') {
                             // @ts-ignore
-                            window.location.href = "/blog/" + results[0].slug;
+                            window.location.href = '/blog/' + results[0].slug;
                         }
                     }}
                 >
-                    <input
-                        type="search"
-                        name="search"
-                        className="text-lg w-full border-2 border-current dark:text-white dark:bg-dark rounded-md focus:outline-none p-4 rounded-"
-                        value={search}
-                        placeholder="Search anything with a minimum of 3 characters, use 8 for better results"
-                        onChange={handleChange}
-                        autoFocus
-                    />
+                    <div className="flex flex-row w-full border-2 m-2 border-b-4 rounded-2xl border-r-4 border-current">
+                        <input
+                            type="search"
+                            name="search"
+                            className="text-lg w-5/6 dark:text-white dark:bg-dark rounded-2xl focus:outline-none md:p-3 p-2"
+                            value={search}
+                            placeholder="Search anything with a minimum of 3 characters, use 8 for better results"
+                            onChange={handleChange}
+                            autoFocus
+                        />
+                        <button className="rounded-r-xl text-xl dark:text-black w-2/12 bg-yellow-400">
+                            <span className='md:inline hidden'>Start Typing to</span>
+                            <i className="bi bi-search"></i>
+                        </button>
+                    </div>
                 </form>
             </div>
             <div className="md:w-5/6 w-full">
@@ -96,7 +102,7 @@ export default function Search({ term = '' }: any) {
                                     {post.data.emoji && (
                                         <span>{post.data.emoji} </span>
                                     )}
-                                    <a href={"/blog/" + post.slug}>
+                                    <a href={'/blog/' + post.slug}>
                                         {post.data.title}
                                     </a>
                                 </p>
@@ -105,15 +111,13 @@ export default function Search({ term = '' }: any) {
                                 </p>
                                 {post.data.tags.length > 0 && (
                                     <ul>
-                                        {post.data.tags.map(
-                                            (tag: string) => (
-                                                <a href={"/tags/" + tag}>
-                                                    <li className="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                                                        {tag}
-                                                    </li>
-                                                </a>
-                                            )
-                                        )}
+                                        {post.data.tags.map((tag: string) => (
+                                            <a href={'/tags/' + tag}>
+                                                <li className="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                                                    {tag}
+                                                </li>
+                                            </a>
+                                        ))}
                                     </ul>
                                 )}
                                 <p className="text-gray-500 text-sm">
