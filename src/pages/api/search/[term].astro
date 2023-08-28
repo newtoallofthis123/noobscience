@@ -5,32 +5,33 @@ let posts = await getCollection('blog', ({ data }) => {
     return data;
 });
 
-let updates_posts = await fetch(
-    "http://" + Astro.url.host + '/api/updates', 
-).then((res) => res.json());
+//? Remove the updates till I have a better way to do this
+// let updates_posts = await fetch(
+//     "http://" + Astro.url.host + '/api/updates', 
+// ).then((res) => res.json());
 
-let updates = [];
-for (const post of updates_posts) {
-    updates.push(
-        {
-            "data": {
-                "title": post.name,
-                "date": post.date,
-                "description": post.content.substring(0, 100) + "...",
-                "category": "quips",
-                "tags": ["quips", "updates", "personal"],
-                "emoji": ["📘", "📕", "📗", "📙"][Math.floor(Math.random() * 4)],
-            },
-            "url": "/quips/" + post.hash,
-            "slug": post.hash,
-        }
-    );
-}
+// let updates = [];
+// for (const post of updates_posts) {
+//     updates.push(
+//         {
+//             "data": {
+//                 "title": post.name,
+//                 "date": post.date,
+//                 "description": post.content.substring(0, 100) + "...",
+//                 "category": "quips",
+//                 "tags": ["quips", "updates", "personal"],
+//                 "emoji": ["📘", "📕", "📗", "📙"][Math.floor(Math.random() * 4)],
+//             },
+//             "url": "/quips/" + post.hash,
+//             "slug": post.hash,
+//         }
+//     );
+// }
 
-// Before the typescripters get mad at me, I know this is bad code. I'm just trying to get it to work.
-//TODO: Remove ts-ignore
-// @ts-ignore
-posts = posts.concat(updates);
+// // Before the typescripters get mad at me, I know this is bad code. I'm just trying to get it to work.
+// //TODO: Remove ts-ignore
+// // @ts-ignore
+// posts = posts.concat(updates);
 
 posts = posts.sort(
     (a: any, b: any) =>
