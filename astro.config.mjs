@@ -14,7 +14,11 @@ export default defineConfig({
     extendPlugins: false
   }), sitemap()],
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({
+    analytics: true,
+    imageService: true,
+    split: true,
+  }),
   vite: {
     ssr: {
       noExternal: ['react-tweet']

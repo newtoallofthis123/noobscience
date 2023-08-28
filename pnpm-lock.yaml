@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@astrojs/mdx':
     specifier: ^0.19.7
-    version: 0.19.7(astro@2.10.3)
+    version: 0.19.7(astro@2.10.14)
   '@astrojs/react':
     specifier: ^2.2.1
     version: 2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.19)(react-dom@18.2.0)(react@18.2.0)
@@ -19,10 +19,10 @@ dependencies:
     version: 1.4.0
   '@astrojs/tailwind':
     specifier: ^3.1.3
-    version: 3.1.3(astro@2.10.3)(tailwindcss@3.3.3)
+    version: 3.1.3(astro@2.10.14)(tailwindcss@3.3.3)
   '@astrojs/vercel':
-    specifier: ^3.8.0
-    version: 3.8.0(astro@2.10.3)(react@18.2.0)
+    specifier: ^3.8.2
+    version: 3.8.2(astro@2.10.14)(react@18.2.0)
   '@fontsource-variable/figtree':
     specifier: ^5.0.9
     version: 5.0.9
@@ -63,8 +63,8 @@ dependencies:
     specifier: ^4.19.1
     version: 4.19.1
   astro:
-    specifier: ^2.10.3
-    version: 2.10.3(@types/node@20.4.8)(sass@1.64.2)
+    specifier: ^2.10.14
+    version: 2.10.14(@types/node@20.4.8)(sass@1.64.2)
   bootstrap-icons:
     specifier: ^1.10.5
     version: 1.10.5
@@ -299,13 +299,13 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdown-remark@2.2.1(astro@2.10.3):
+  /@astrojs/markdown-remark@2.2.1(astro@2.10.14):
     resolution: {integrity: sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==}
     peerDependencies:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.10.3(@types/node@20.4.8)(sass@1.64.2)
+      astro: 2.10.14(@types/node@20.4.8)(sass@1.64.2)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -322,11 +322,11 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@0.19.7(astro@2.10.3):
+  /@astrojs/mdx@0.19.7(astro@2.10.14):
     resolution: {integrity: sha512-mfEbBD7oi8yBHhcJucEjnrquREkJ3os+jioURP8BR2B8tOV2rV2j8trvmLUgfS+P/+HevGObxCTjcRYxn6T7eg==}
     engines: {node: '>=16.12.0'}
     dependencies:
-      '@astrojs/markdown-remark': 2.2.1(astro@2.10.3)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.10.14)
       '@astrojs/prism': 2.1.2
       '@mdx-js/mdx': 2.3.0
       acorn: 8.10.0
@@ -389,14 +389,14 @@ packages:
       zod: 3.22.2
     dev: false
 
-  /@astrojs/tailwind@3.1.3(astro@2.10.3)(tailwindcss@3.3.3):
+  /@astrojs/tailwind@3.1.3(astro@2.10.14)(tailwindcss@3.3.3):
     resolution: {integrity: sha512-10S1omrv5K5HRVAZ0fBgN5vQykn2HRL332LAVFyBASMn1Ff6gDfSK+CPUeUu94eZUOEaPnECLK8EHAqZ8iY9CA==}
     peerDependencies:
       astro: ^2.5.0
       tailwindcss: ^3.0.24
     dependencies:
       '@proload/core': 0.3.3
-      astro: 2.10.3(@types/node@20.4.8)(sass@1.64.2)
+      astro: 2.10.14(@types/node@20.4.8)(sass@1.64.2)
       autoprefixer: 10.4.15(postcss@8.4.28)
       postcss: 8.4.28
       postcss-load-config: 4.0.1(postcss@8.4.28)
@@ -421,16 +421,16 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/vercel@3.8.0(astro@2.10.3)(react@18.2.0):
-    resolution: {integrity: sha512-o9oeY8VgsvrxUTQoxv2XusoFk2IJvJhC3X0FUHkilXEyIgZOTHlTLbydO6iJHjKVHxF+aQI7/qwZmxGSV9L3dg==}
+  /@astrojs/vercel@3.8.2(astro@2.10.14)(react@18.2.0):
+    resolution: {integrity: sha512-VtVR+HXoQqdSrt+LdBi3qrwQClcIItb/9AfVYoTuAaC3iu0lDT3WPpRr4kbS/Wxcvfq8AWQw5VFODK34PKs53g==}
     peerDependencies:
-      astro: ^2.10.0
+      astro: ^2.10.10
     dependencies:
       '@astrojs/internal-helpers': 0.1.2
       '@astrojs/webapi': 2.2.0
       '@vercel/analytics': 0.1.11(react@18.2.0)
       '@vercel/nft': 0.22.6
-      astro: 2.10.3(@types/node@20.4.8)(sass@1.64.2)
+      astro: 2.10.14(@types/node@20.4.8)(sass@1.64.2)
       esbuild: 0.17.19
       fast-glob: 3.3.1
       set-cookie-parser: 2.6.0
@@ -1692,8 +1692,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro@2.10.3(@types/node@20.4.8)(sass@1.64.2):
-    resolution: {integrity: sha512-Hp8HhamDsRw31QYftKNmPktbr9+YJ5CQMSAlg0ED667hhH0KkgfVV77bqRojsLlj6f/6qBYGMgooGQdtfdie1Q==}
+  /astro@2.10.14(@types/node@20.4.8)(sass@1.64.2):
+    resolution: {integrity: sha512-02k2DjnI8yGtLCvdCSggvfCTkTWPm9UDgc/XHKdd1K34TSTl3X0A8TTYbASEXvgynk1zInCyOEe3IUDt3Lke+A==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -1705,7 +1705,7 @@ packages:
       '@astrojs/compiler': 1.8.2
       '@astrojs/internal-helpers': 0.1.2
       '@astrojs/language-server': 1.0.8
-      '@astrojs/markdown-remark': 2.2.1(astro@2.10.3)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.10.14)
       '@astrojs/telemetry': 2.1.1
       '@astrojs/webapi': 2.2.0
       '@babel/core': 7.22.11
@@ -1724,7 +1724,6 @@ packages:
       common-ancestor-path: 1.0.1
       cookie: 0.5.0
       debug: 4.3.4
-      deepmerge-ts: 4.3.0
       devalue: 4.3.2
       diff: 5.1.0
       es-module-lexer: 1.3.0
@@ -1735,6 +1734,7 @@ packages:
       github-slugger: 2.0.0
       gray-matter: 4.0.3
       html-escaper: 3.0.3
+      http-cache-semantics: 4.1.1
       js-yaml: 4.1.0
       kleur: 4.1.5
       magic-string: 0.30.3
@@ -2165,11 +2165,6 @@ packages:
     resolution: {integrity: sha512-O8x12RzrUF8xyVcY0KJowWsmaJxQbmy0/EtnNtHRpsOcT7dFk5W598coHqBVpmWo1oQQfsCqfCmkZN5DJrZVdg==}
     dependencies:
       character-entities: 2.0.2
-    dev: false
-
-  /deepmerge-ts@4.3.0:
-    resolution: {integrity: sha512-if3ZYdkD2dClhnXR5reKtG98cwyaRT1NeugQoAPTTfsOpV9kqyeiBF9Qa5RHjemb3KzD5ulqygv6ED3t5j9eJw==}
-    engines: {node: '>=12.4.0'}
     dev: false
 
   /deepmerge@4.3.1:
@@ -2934,6 +2929,10 @@ packages:
 
   /html-void-elements@2.0.1:
     resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
+    dev: false
+
+  /http-cache-semantics@4.1.1:
+    resolution: {integrity: sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==}
     dev: false
 
   /http-proxy-agent@5.0.0:
