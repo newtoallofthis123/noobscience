@@ -1,15 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
-import { randomBytes } from 'crypto';
 
 let posts = await getCollection('blog', ({ data }) => {
     return data;
 });
 
-let updates_posts = await fetch("http://" + Astro.url.host + '/api/updates').then((res) => res.json());
+let updates_posts = await fetch(
+    "http://" + Astro.url.host + '/api/updates', 
+).then((res) => res.json());
 
 let updates = [];
-
 for (const post of updates_posts) {
     updates.push(
         {
@@ -143,6 +143,7 @@ for (const post of recommend_posts) {
 return new Response(JSON.stringify(final_posts), {
     headers: {
         'content-type': 'application/json;charset=UTF-8',
+        'cache-control': 'max-age=0, s-maxage=86400',
     },
 });
 ---
