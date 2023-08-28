@@ -4,14 +4,14 @@ import Search from "../../components/search/search"
 import HomeNav from "../../components/navigation/home_nav";
 ---
 
-<Base title="Search">
+<Base footer={false} title="Search">
     <HomeNav client:load />
     <div>
         <h1 class="text-4xl text-center font-heading py-4">
             Search Ishan Writes
         </h1>
         <p class="text-center px-2">
-            Simple search for my blog posts. Search Titles, Tags, Categories, Content, anything you want.
+            Search for anything using anything, from tags to titles to content.
         </p>
         <Search term="" client:load />
     </div>
