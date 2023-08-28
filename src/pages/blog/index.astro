@@ -6,7 +6,6 @@ import UpdateArchive from '../../components/updates/archive';
 import UpdateLatest from '../../components/updates/latest';
 import { Image } from 'astro:assets';
 import coffeeImage from '../../assets/coffee.webp';
-import saplingImage from '../../assets/seedling.webp';
 
 let posts = await getCollection('blog', ({ data }) => {
     return data.draft !== true;
@@ -64,12 +63,12 @@ let others = posts.filter(
                 </div>
                 <div class="md:w-2/6 w-full"></div>
             </div>
-            <div class="flex md:flex-row flex-col justify-center">
-                <div id="longs" class="md:w-3/6 w-full md:px-5 px-1">
+            <div>
+                <div id="longs" class="md:px-5 px-1">
                     <h1
                         class="md:text-5xl text-3xl leading-relaxed py-5 font-heading"
                     >
-                        My Evergreen Posts
+                        ☕ My Evergreen Posts
                     </h1>
                     <p>
                         You know how some stuff are just so good that they never
@@ -82,17 +81,10 @@ let others = posts.filter(
                         like them, please share them with your friends and
                         family.
                     </p>
-                    <div>
-                        <Image
-                            class="md:w-4/6 w-full dark:invert"
-                            src={coffeeImage}
-                            alt="Coffee"
-                        />
-                    </div>
                 </div>
-                <div class="md:w-3/6 w-full md:p-4 py-6">
+                <div class="grid md:grid-cols-2 md:gap-3 md:p-4 py-6">
                     {
-                        long.slice(0, 3).map((post) => {
+                        long.slice(0, 8).map((post) => {
                             return (
                                 <div
                                     onclick={
@@ -100,7 +92,7 @@ let others = posts.filter(
                                         post.slug +
                                         "'"
                                     }
-                                    class="md:p-4 md:my-2 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                                    class="md:p-4 md:my-0.5 p-0.5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out"
                                 >
                                     <h1 class="md:text-2xl text-xl leading-relaxed font-bold">
                                         {post.data.emoji} {post.data.title}
@@ -120,15 +112,13 @@ let others = posts.filter(
                             );
                         })
                     }
-                    <p class="md:pt-6 md:p-4 p-2">
+                    <button class="bg-dark dark:bg-white text-black dark:text-dark py-2 rounded-xl shadow-lg hover:shadow-xl transition duration-500 ease-in-out transform hover:scale-105">
                         <a href="/type/long">
                             <span class="md:text-3xl text-xl font-bold"
                                 >See all my evergreen posts</span
                             >
                         </a>
-                    </p>
-                    <span class="block w-full h-1 md:mt-5 md:my-5 bg-black"
-                    ></span>
+                    </button>
                 </div>
             </div>
             <div>
@@ -164,7 +154,7 @@ let others = posts.filter(
                     </p>
                     <p>
                         <a href="/archive">
-                            <span class="text-2xl text-red-600 font-regular"
+                            <span class="text-2xl text-red-600 dark:text-yellow-400 my-2 font-regular"
                                 >See all my latest posts</span
                             >
                         </a>
@@ -193,7 +183,7 @@ let others = posts.filter(
                                         post.slug +
                                         "'"
                                     }
-                                    class="md:p-4 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                                    class="md:p-4 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out"
                                 >
                                     <h1 class="text-2xl leading-relaxed font-bold">
                                         {post.data.emoji} {post.data.title}
@@ -249,7 +239,7 @@ let others = posts.filter(
                                         post.slug +
                                         "'"
                                     }
-                                    class="md:p-4 px-1 my-5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                                    class="md:p-4 px-1 my-5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out"
                                 >
                                     <span id="p-heading">
                                         @{post.data.category}
@@ -297,7 +287,7 @@ let others = posts.filter(
                                 onclick={
                                     "location.href = '/blog/" + post.slug + "'"
                                 }
-                                class="md:p-4 my-2 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out"
+                                class="md:p-4 my-2 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out"
                             >
                                 <span id="p-heading">
                                     @{post.data.category}

@@ -1,10 +1,12 @@
 ---
 import Base from "../layouts/base.astro";
 import HomeNav from "../components/navigation/home_nav";
+
+const url = Astro.url.pathname
 ---
 
 <Base bg="#fde884" color="#000" selection_bg="#000" selection_color="#fff" footer={false} selection_only={false} title="404 Resource Not Found">
-    <HomeNav bg="#fde884" color="#000" title="Not Found :(" client:load />
+    <HomeNav bg="#fde884" color="#000" title={"Not Found " + url} client:load />
     <div class="flex flex-col md:flex-row">
         <div class="w-full md:w-1/2">
             <div style="margin-top: 4vw;" class="text-center mx-10 md:mx-0">
@@ -12,7 +14,7 @@ import HomeNav from "../components/navigation/home_nav";
                     Resource Not Found
                 </h1>
                 <p class="pt-8 text-xl">
-                    Hey My Guy! The URL you were looking for doesn't exist.
+                    Hey My Guy! The URL ({url}) you were looking for doesn't exist.
                 </p>
                 <p class="p-4 text-xl">
                     This site has a lot of resources, but this one isn't one of them.

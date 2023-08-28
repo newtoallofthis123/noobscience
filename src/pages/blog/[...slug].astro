@@ -70,7 +70,7 @@ const headings:headings= meta.headings;
         client:load
     />
     <div>
-        <div id="searchBar" style="display:none" class="z-10 bg-white dark:bg-dark drop-shadow-md shadow-black dark:shadow-white p-0.5 fixed top-0 left-0 w-full">
+        <div id="searchBar" style="display:none" class="z-10 bg-white dark:bg-dark drop-shadow-md shadow-black p-0.5 fixed top-0 left-0 w-full">
             <div class="flex flex-row justify-between items-center p-2">
                 <div class="md:w-2/6 flex-shrink-0 flex flex-row mx-5">
                     <div>
@@ -92,7 +92,7 @@ const headings:headings= meta.headings;
                     <form onsubmit={
                         `window.location.href = '/search/' + document.getElementById('search').value; return false;`
                     }>
-                        <div class="flex flex-row items-center w-full border-2 border-b-4 border-r-4 border-black dark:border-white rounded-2xl">
+                        <div class="flex text-black flex-row items-center w-full border-2 border-b-4 border-r-4 border-black dark:border-white rounded-2xl">
                             <input autocomplete="off" spellcheck="false" class="w-full dark:bg-dark py-1 focus:outline-none rounded-2xl px-2" type="search" name="search" placeholder="Press Ctrl+K to Search" id="search">
                             <button class="w-1/6 rounded-2xl">
                                 <div class="md:block hidden py-1 rounded-r-xl bg-yellow-400">
@@ -193,62 +193,24 @@ const headings:headings= meta.headings;
         <div id="searchTrigger" class="md:pl-8 md:pr-20 px-2 flex flex-col md:flex-row">
             <div class=`md:w-1/6 w-full md:pt-16 px-2 overflow-x-auto md:sticky md:pr-6 md:pl-0 md:top-0 md:h-screen overflow-y-none flex flex-col ${frontmatter.type == "quick" && 'hidden'}`>
                 <h2 class="text-lg py-1">
-                        ➡️ Table of Contents
-                    </h2>
-                    <ul class="py-1">
-                        {
-                            headings.map((heading) => {
-                                return (
-                                    <li class="cursor-pointer transform hover:translate-x-1 transition duration-300 ease-in-out">
-                                        <a
-                                            href={`#${heading.slug}`}
-                                            class=`text-base ${heading.depth == 2 ? 'font-semibold' : ''} ${heading.depth == 3 ? 'pl-3 font-normal' : ''} truncate`
-                                        >
-                                            {heading.text}
-                                        </a>
-                                    </li>
-                                );
-                            })
-                        }
-                    </ul>
-                <div class="hidden md:block">
-                    <h2 class="text-lg py-1">
-                        Speard the ❤️
-                    </h2>
-                    <button class="block py-1">
-                        <a
-                            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                                'https://' + share_url
-                            )}&text=${
-                                encodeURIComponent(frontmatter.title) +
-                                '\n\n' +
-                                frontmatter.description
-                            }&via=noobscience1`}
-                            <i class="bi bi-twitter"></i>
-                            <span class="pl-2">Twitter</span>
-                        </a>
-                    </button>
-                    <button class="block py-1">
-                        <a
-                            href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
-                                `${frontmatter.title}\n${
-                                    frontmatter.description
-                                }\n\nCheck it out: ${'https://' + share_url}`
-                            )}`}
-                        >
-                            <i class="bi bi-whatsapp"></i> Whatsapp
-                        </a>
-                    </button>
-                    <button class="block py-1">
-                        <a
-                            href={`https://www.reddit.com/submit?url=${encodeURIComponent(
-                                'https://' + share_url
-                            )}&title=${encodeURIComponent(frontmatter.title)}`}
-                        >
-                            <i class="bi bi-reddit"></i> Reddit
-                        </a>
-                    </button>
-                </div>
+                    ➡️ Table of Contents
+                </h2>
+                <ul class="py-1">
+                    {
+                        headings.map((heading) => {
+                            return (
+                                <li class="cursor-pointer transform hover:translate-x-1 transition duration-300 ease-in-out">
+                                    <a
+                                        href={`#${heading.slug}`}
+                                        class=`text-base ${heading.depth == 2 ? 'font-semibold' : ''} ${heading.depth == 3 ? 'pl-3 font-normal' : ''} truncate`
+                                    >
+                                        {heading.text}
+                                    </a>
+                                </li>
+                            );
+                        })
+                    }
+                </ul>
             </div>
             <div class=`md:w-5/6 w-full py-4 overflow-x-hidden ${frontmatter.type == 'quick'?'md:pl-0':'md:pl-10'}`>
                 {
@@ -279,7 +241,7 @@ const headings:headings= meta.headings;
                     repo="newtoallofthis123/comments"
                     issue-term="pathname"
                     label="comment"
-                    theme="github-light"
+                    theme="preferred-color-scheme"
                     crossorigin="anonymous"
                     async
                 ></script>

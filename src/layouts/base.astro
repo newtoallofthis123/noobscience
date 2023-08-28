@@ -93,35 +93,32 @@ const BASE_URL = "http://" + Astro.url.host
         !selection_only ? "colored" : ""
      } id="content">
             <slot />
-            {
-                footer && (
-                    <footer id="content" class="md:py-1 dark:text-dark border-t-2 bg-yellow-400 border-current">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="flex justify-between items-center py-2 px-5">
-                        <Image src={logo} class="w-8 mx-2" alt="Logo" />
-                        <a class="text-xl font-bold" href="/">NoobScience 2023</a>
-                    </div>
-                    <div class="hidden md:flex md:flex-row flex-col gap-x-6 px-5 justify-center items-center">
-                        <a href="https://github.com/newtoallofthis123/noobscience">
-                            <i class="bi bi-github"></i> newtoallofthis123/noobscience
-                        </a>
+            
+        <footer id="content" class=`md:py-1 dark:text-dark border-t-2 bg-yellow-400 border-current ${!footer && "hidden"}`>
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex justify-between items-center py-2 px-5">
+                    <Image src={logo} class="w-8 mx-2" alt="Logo" />
+                    <a class="text-xl font-bold" href="/">NoobScience 2023</a>
+                </div>
+                <div class="hidden md:flex md:flex-row flex-col gap-x-6 px-5 justify-center items-center">
+                    <a href="https://github.com/newtoallofthis123/noobscience">
+                        <i class="bi bi-github"></i> newtoallofthis123/noobscience
+                    </a>
+                    <a href="/credits">Credits</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/tos">Terms</a>
+                    <Init client:idle />
+                </div>
+                <div class="flex md:hidden">
+                    <div class="flex flex-row gap-x-3 justify-center items-center">
                         <a href="/credits">Credits</a>
                         <a href="/privacy">Privacy</a>
                         <a href="/tos">Terms</a>
-                        <Init client:idle />
                     </div>
-                    <div class="flex md:hidden">
-                        <div class="flex flex-row gap-x-3 justify-center items-center">
-                            <a href="/credits">Credits</a>
-                            <a href="/privacy">Privacy</a>
-                            <a href="/tos">Terms</a>
-                        </div>
-                        <Init client:idle />
-                    </div>
+                    <Init client:idle />
                 </div>
-            </footer>
-                )
-            }
+            </div>
+        </footer>
         </div>
     </body>
     <style is:global define:vars={{

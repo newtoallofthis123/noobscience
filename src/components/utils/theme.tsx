@@ -2,11 +2,6 @@ import React from 'react';
 
 export default function Init() {
     const [icon, setIcon] = React.useState('bi-moon');
-    const setTheme = (theme: string) => {
-        if (typeof window !== 'undefined') {
-            document.documentElement.classList.add(theme);
-        }
-    };
     const toggleTheme = (theme: string) => {
         let set_theme = theme;
         if (theme === 'system') {
@@ -39,7 +34,7 @@ export default function Init() {
             if (theme) {
                 toggleTheme(theme);
             } else {
-                toggleTheme('light');
+                toggleTheme('system');
             }
         }
     }, []);

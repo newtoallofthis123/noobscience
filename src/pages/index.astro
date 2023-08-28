@@ -4,7 +4,6 @@ import Base from "../layouts/base.astro";
 import HomeNav from "../components/navigation/home_nav";
 import Notification from "../components/utils/notification/notification";
 import UpdateLatest from "../components/updates/latest";
-import circleSvg from "../assets/circle.svg"
 import { Image } from "astro:assets";
 import Current from "../components/utils/notification/current";
 
@@ -39,7 +38,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick' && post.dat
                     </h1>
                 </div>
                 <h1 class="md:py-10 md:text-6xl leading-snug text-4xl font-bold">
-                    and he's known as <span class="text-yellow-400 p-1">NoobScience</span>.
+                    and he's known as <span class="text-yellow-400 dark:text-yellow-300 p-1">NoobScience</span>.
                 </h1>
             </div>
             <div class="flex md:flex-row flex-col justify-center items-center">
@@ -57,7 +56,6 @@ const latest = posts.filter((post: any) => post.data.type != 'quick' && post.dat
                     </div>
                 </div>
                 <div class="md:block hidden md:w-1/4 w-full">
-                    <Image class="w-2/6" src={circleSvg} alt="Circle Svg">
                 </div>
             </div>
             <span class="block w-1/5 h-1 mt-8 bg-red-600"></span>
@@ -121,7 +119,7 @@ const latest = posts.filter((post: any) => post.data.type != 'quick' && post.dat
                 <div class="grid md:grid-cols-2 md:gap-3">
                     {latest.map((post) => {
                         return (
-                            <div onclick={"location.href = '/blog/" + post.slug + "'"} class="md:p-3 p-1 my-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                            <div onclick={"location.href = '/blog/" + post.slug + "'"} class="md:p-2 p-1 my-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out">
                                 <h1 class="text-2xl leading-relaxed font-bold">
                                     {post.data.emoji}{' '} {post.data.title}
                                 </h1>
