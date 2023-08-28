@@ -65,11 +65,19 @@ export default function Search({ term = '' }: any) {
         <div className="flex flex-col py-3 justify-center items-center">
             <div className="w-5/6 focus:outline-none">
                 <form
+                    spellCheck="false"
+                    autoComplete='off'
                     onSubmit={async (e) => {
                         e.preventDefault();
                         if (typeof window !== 'undefined') {
                             // @ts-ignore
-                            window.location.href = '/blog/' + results[0].slug;
+                            if (results[0].data.category === "quips") {
+                            // @ts-ignore
+                                window.location.href = '/quips/' + results[0].slug;
+                            } else {
+                            // @ts-ignore
+                                window.location.href = '/blog/' + results[0].slug;
+                            }
                         }
                     }}
                 >
@@ -102,9 +110,17 @@ export default function Search({ term = '' }: any) {
                                     {post.data.emoji && (
                                         <span>{post.data.emoji} </span>
                                     )}
-                                    <a href={'/blog/' + post.slug}>
-                                        {post.data.title}
-                                    </a>
+                                    {
+                                        post.data.category === "quips" ? (
+                                            <a href={'/quips/' + post.slug}>
+                                                {post.data.title}
+                                            </a>
+                                        ): (
+                                            <a href={'/blog/' + post.slug}>
+                                                {post.data.title}
+                                            </a>
+                                        )
+                                    }
                                 </p>
                                 <p className="text-gray-500 text-lg w-full md:w-3/5 py-2">
                                     {post.data.description}

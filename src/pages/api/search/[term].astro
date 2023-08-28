@@ -1,14 +1,42 @@
 ---
 import { getCollection } from 'astro:content';
+import { randomBytes } from 'crypto';
 
 let posts = await getCollection('blog', ({ data }) => {
     return data;
 });
 
+let updates_posts = await fetch("http://" + Astro.url.host + '/api/updates').then((res) => res.json());
+
+let updates = [];
+
+for (const post of updates_posts) {
+    updates.push(
+        {
+            "data": {
+                "title": post.name,
+                "date": post.date,
+                "description": post.content.substring(0, 100) + "...",
+                "category": "quips",
+                "tags": ["quips"],
+                "emoji": Math.random() > 0.5 ? "📝" : "📌",
+            },
+            "url": "/quips/" + post.hash,
+            "slug": post.hash,
+        }
+    );
+}
+
+// Before the typescripters get mad at me, I know this is bad code. I'm just trying to get it to work.
+//TODO: Remove ts-ignore
+// @ts-ignore
+posts = posts.concat(updates);
+
 posts = posts.sort(
     (a: any, b: any) =>
         new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
+
 let { term } = Astro.params;
 
 if (!term?.includes('!sudo')) {
