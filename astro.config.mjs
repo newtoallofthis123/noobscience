@@ -32,13 +32,6 @@ export default defineConfig({
       langs: ['javascript', 'html', 'css', 'typescript', 'tsx', 'jsx', 'json', 'markdown', 'mdx', 'bash', 'shell', 'rust', 'c', 'cpp', 'go', 'java', 'python', 'ruby'],
       wrap: false
     },
-    syntaxHighlight: 'shiki',
-    drafts: false
-  },
-  redirects: {
-    '/updates/[slug]': '/quips/[slug]',
-    '/w/[...slug]': '/blog/[...slug]',
-    '/green': '/type/long',
-    'editor': 'https://htmler.noobscience.rocks'
+    syntaxHighlight: 'shiki'
   }
 });
