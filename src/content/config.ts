@@ -1,5 +1,10 @@
 import { z, defineCollection } from 'astro:content';
 
+// So I know I have a option problem.
+// But I have no idea how this grew so much.
+// Now I am too scared to remove any of these.
+// Is this how you feel when you have a lot of options?
+// I guess I will never know.
 const blogContent = defineCollection({
     type: 'content',
     schema: ({image}) => z.object({

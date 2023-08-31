@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export interface Props {
     num: number;
@@ -38,12 +38,11 @@ export default function UpdateArchiveGrid({ num }: Props) {
                 <div className="grid grid-cols-2 gap-4">
                     {latest.slice(1, latest.length).map((update: any) => (
                         <div key={update.hash} className="pl-4 py-1">
-                            <h4 className="text-2xl font-regular">
+                            <h4 className="text-xl font-regular">
                                 <a
-                                    className="special_underline"
+                                    className="dark:hover:bg-white hover:p-2 dark:hover:text-black hover:bg-dark hover:text-white transform duration-300"
                                     href={`/quips/${update.hash}`}
                                 >
-                                    {'> '}
                                     {update.name}
                                 </a>
                             </h4>

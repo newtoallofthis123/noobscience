@@ -20,9 +20,7 @@ module.exports = {
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				heading: ['"Archivo Black"', 'sans-serif'],
-				serif: ['"Libre Baskerville"', 'serif'],
-				fig: ['Figtree Variable', 'sans-serif'],
-				man: ['Manrope Variable', 'sans-serif']
+				serif: ['"Libre Baskerville"', 'serif']
 			},
 		},
 	},

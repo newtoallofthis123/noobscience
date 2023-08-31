@@ -82,37 +82,41 @@ let others = posts.filter(
                         family.
                     </p>
                 </div>
-                <div class="grid md:grid-cols-2 md:gap-3 md:p-4 py-6">
+                <div transition:name="blog" class="grid md:grid-cols-2 md:gap-3 md:p-4 py-6">
                     {
                         long.slice(0, 8).map((post) => {
                             return (
-                                <div
-                                    onclick={
-                                        "location.href = '/blog/" +
-                                        post.slug +
-                                        "'"
-                                    }
-                                    class="md:p-4 md:my-0.5 p-0.5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out"
-                                >
-                                    <h1 class="md:text-2xl text-xl leading-relaxed font-bold">
-                                        {post.data.emoji} {post.data.title}
-                                    </h1>
-                                    <p class="text-lg py-3">
-                                        {post.data.description}
-                                    </p>
-                                    <p class="text-lg">
-                                        Posted on{' '}
-                                        <span id="p-heading">
-                                            {new Date(
-                                                post.data.date
-                                            ).toDateString()}
-                                        </span>
-                                    </p>
-                                </div>
+                                <article class="md:p-4 md:my-0.5 p-0.5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out">
+                                    <a href={'/blog/' + post.slug}>
+                                        <header>
+                                            <h2 class="md:text-2xl text-xl leading-relaxed font-bold">
+                                                {post.data.emoji}{' '}
+                                                {post.data.title}
+                                            </h2>
+                                        </header>
+                                        <section>
+                                            <p class="text-lg py-3">
+                                                {post.data.description}
+                                            </p>
+                                            <p class="text-lg">
+                                                Posted on{' '}
+                                                <time
+                                                    datetime={post.data.date.toDateString()}
+                                                >
+                                                    {new Date(
+                                                        post.data.date
+                                                    ).toDateString()}
+                                                </time>
+                                            </p>
+                                        </section>
+                                    </a>
+                                </article>
                             );
                         })
                     }
-                    <button class="bg-dark dark:bg-white text-black dark:text-dark py-2 rounded-xl shadow-lg hover:shadow-xl transition duration-500 ease-in-out transform hover:scale-105">
+                    <button
+                        class="bg-dark dark:bg-white text-white dark:text-dark py-2 rounded-xl shadow-lg hover:shadow-xl transition duration-500 ease-in-out transform hover:scale-105"
+                    >
                         <a href="/type/long">
                             <span class="md:text-3xl text-xl font-bold"
                                 >See all my evergreen posts</span
@@ -154,7 +158,8 @@ let others = posts.filter(
                     </p>
                     <p>
                         <a href="/archive">
-                            <span class="text-2xl text-red-600 dark:text-yellow-400 my-2 font-regular"
+                            <span
+                                class="text-2xl text-red-600 dark:text-yellow-400 my-2 font-regular"
                                 >See all my latest posts</span
                             >
                         </a>
@@ -177,26 +182,27 @@ let others = posts.filter(
                     {
                         notes.slice(0, 6).map((post) => {
                             return (
-                                <div
-                                    onclick={
-                                        "location.href = '/blog/" +
-                                        post.slug +
-                                        "'"
-                                    }
-                                    class="md:p-4 p-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out"
-                                >
-                                    <h1 class="text-2xl leading-relaxed font-bold">
-                                        {post.data.emoji} {post.data.title}
-                                    </h1>
-                                    <p class="text-lg py-2">
-                                        {post.data.description}
-                                    </p>
-                                    <p class="text-lg">
-                                        <span id="p-heading">
-                                            #{post.data.category}
-                                        </span>
-                                    </p>
-                                </div>
+                                <article class="md:p-4 md:my-0.5 p-0.5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out">
+                                    <a href={'/blog/' + post.slug}>
+                                        <header>
+                                            <h2 class="md:text-2xl text-xl leading-relaxed font-bold">
+                                                {post.data.emoji}{' '}
+                                                {post.data.title}
+                                            </h2>
+                                        </header>
+                                        <section>
+                                            <p class="text-lg py-3">
+                                                {post.data.description}
+                                            </p>
+                                            <p>
+                                                Notes on{' '}
+                                                <span class="bg-yellow-200 dark:text-dark">
+                                                    {post.data.category}{' '}
+                                                </span>
+                                            </p>
+                                        </section>
+                                    </a>
+                                </article>
                             );
                         })
                     }
@@ -233,32 +239,22 @@ let others = posts.filter(
                     {
                         others.slice(0, 4).map((post) => {
                             return (
-                                <div
-                                    onclick={
-                                        "location.href = '/blog/" +
-                                        post.slug +
-                                        "'"
-                                    }
-                                    class="md:p-4 px-1 my-5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out"
-                                >
-                                    <span id="p-heading">
-                                        @{post.data.category}
-                                    </span>
-                                    <h1 class="md:text-3xl text-2xl leading-relaxed font-bold">
-                                        {post.data.emoji} {post.data.title}
-                                    </h1>
-                                    <p class="md:text-lg text-base py-2">
-                                        {post.data.description}
-                                    </p>
-                                    <p class="md:text-lg text-base">
-                                        Posted on{' '}
-                                        <span id="p-heading">
-                                            {new Date(
-                                                post.data.date
-                                            ).toDateString()}
-                                        </span>
-                                    </p>
-                                </div>
+                                <article class="md:p-4 md:my-0.5 p-0.5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out">
+                                    <a href={'/blog/' + post.slug}>
+                                        <header>
+                                            <p>@ {post.data.category}</p>
+                                            <h2 class="md:text-2xl text-xl leading-relaxed font-bold">
+                                                {post.data.emoji}{' '}
+                                                {post.data.title}
+                                            </h2>
+                                        </header>
+                                        <section>
+                                            <p class="text-lg py-3">
+                                                {post.data.description}
+                                            </p>
+                                        </section>
+                                    </a>
+                                </article>
                             );
                         })
                     }
@@ -266,9 +262,7 @@ let others = posts.filter(
             </div>
         </div>
         <div id="dev" class="md:p-6 p-2">
-            <div
-                class=" p-4 rounded-lg"
-            >
+            <div class="p-4 rounded-lg">
                 <h1 class="md:text-5xl text-2xl pb-4 font-bold">
                     Some of my Devlogs
                 </h1>
@@ -283,30 +277,30 @@ let others = posts.filter(
                 {
                     dev.map((post) => {
                         return (
-                            <div
-                                onclick={
-                                    "location.href = '/blog/" + post.slug + "'"
-                                }
-                                class="md:p-4 my-2 p-2 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out"
-                            >
-                                <span id="p-heading">
-                                    @{post.data.category}
-                                </span>
-                                <h1 class="md:text-3xl text-xl leading-relaxed font-bold">
-                                    {post.data.emoji} {post.data.title}
-                                </h1>
-                                <p class="text-lg py-2">
-                                    {post.data.description}
-                                </p>
-                                <p class="text-lg">
-                                    Posted on{' '}
-                                    <span id="p-heading">
-                                        {new Date(
-                                            post.data.date
-                                        ).toDateString()}
-                                    </span>
-                                </p>
-                            </div>
+                            <article class="md:p-4 md:my-0.5 p-0.5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out">
+                                <a href={'/blog/' + post.slug}>
+                                    <header>
+                                        <h2 class="md:text-2xl text-xl leading-relaxed font-bold">
+                                            {post.data.emoji} {post.data.title}
+                                        </h2>
+                                    </header>
+                                    <section>
+                                        <p class="text-lg py-3">
+                                            {post.data.description}
+                                        </p>
+                                        <p class="text-lg">
+                                            Posted on{' '}
+                                            <time
+                                                datetime={post.data.date.toDateString()}
+                                            >
+                                                {new Date(
+                                                    post.data.date
+                                                ).toDateString()}
+                                            </time>
+                                        </p>
+                                    </section>
+                                </a>
+                            </article>
                         );
                     })
                 }

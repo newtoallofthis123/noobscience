@@ -1,6 +1,6 @@
-import { connectToDatabase, Database } from '../../../utils/db';
+import { connectToDatabase, type Database } from '../../../utils/db';
 
-export const get = async (req: any) => {
+export const GET = async (req: any) => {
     const { db }: { db: Database } = await connectToDatabase();
     const { id } = req.params;
 

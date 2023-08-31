@@ -3,7 +3,7 @@ import { dateTime } from '../../utils/utils';
 import nodemailer from 'nodemailer';
 import type { APIRoute } from 'astro';
 
-export const post: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request }) => {
     const data = await request.formData();
     const name = data.get('name');
     const email = data.get('email');

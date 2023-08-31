@@ -1,8 +1,8 @@
-import { connectToDatabase, Database } from '../../../utils/db';
+import { connectToDatabase, type Database } from '../../../utils/db';
 import type { APIRoute } from 'astro';
 import { hypens, dateUTC } from '../../../utils/utils';
 
-export const post: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request }) => {
     const data = await request.formData();
     const name = data.get('name');
     const content = data.get('content');

@@ -3,6 +3,13 @@ export const hypens = (str) => {
     return hyphenatedStr
 }
 
+export const unhypen = (str) => {
+    let unHypenStr = str.toLowerCase().replace(/-/g, " ");
+    //make first letter capital
+    unHypenStr = unHypenStr.charAt(0).toUpperCase() + unHypenStr.slice(1);
+    return unHypenStr
+}
+
 export const dateTime = () => {
     // get current date and time
     const now = new Date();

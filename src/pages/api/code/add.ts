@@ -1,8 +1,8 @@
-import { connectToDatabase, Database } from '../../../utils/db';
+import { connectToDatabase, type Database } from '../../../utils/db';
 import type { APIRoute } from 'astro';
 import { ranHash } from '../../../utils/utils';
 
-export const post: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request }) => {
     const body = await request.json();
     const { title, content, author, lang } = body;
     const hash = ranHash();

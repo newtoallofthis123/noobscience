@@ -1,12 +1,14 @@
 ---
 import Base from '../../layouts/base.astro';
 import Update from "../../components/updates/update"
+import { unhypen } from '../../utils/utils';
 
 const {id} = Astro.params;
+const title = unhypen(id)
 ---
 
-<Base title={id + "- Ishan's Quips"} footer={false}>
-    <div id="update">
+<Base title={title + "- Ishan's Quips"} footer={false}>
+    <div>
         <Update hash={id} client:load />
     </div>
 </Base>
@@ -38,6 +40,10 @@ const {id} = Astro.params;
         font-size: 1.2rem;
         font-weight: 400;
         line-height: 2.6rem;
+    }
+    ol{
+        padding: 0.5rem 1.2rem;
+        list-style: decimal;
     }
     #update a{
         text-decoration: underline;
