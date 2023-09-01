@@ -1,66 +1,77 @@
 ---
-import { getCollection } from "astro:content";
-import Base from "../layouts/base.astro";
-import HomeNav from "../components/navigation/home_nav";
-import Notification from "../components/utils/notification/notification";
-import UpdateLatest from "../components/updates/latest";
-import { Image } from "astro:assets";
-import Current from "../components/utils/notification/current";
+import { getCollection } from 'astro:content';
+import Base from '../layouts/base.astro';
+import HomeNav from '../components/navigation/home_nav';
+import Notification from '../components/utils/notification/notification';
+import UpdateLatest from '../components/updates/latest';
+import { Image } from 'astro:assets';
+import Current from '../components/utils/notification/current';
 
 const options = [
     'is a Developer',
     'is into ML now',
     'creates websites',
     'is a student',
-]
+];
 
-let posts = await getCollection('blog', ({data}) => {
-    return data.draft !== true
+let posts = await getCollection('blog', ({ data }) => {
+    return data.draft !== true;
 });
 
 posts = posts.sort(
     (a: any, b: any) =>
-        new Date(b.data.date).getTime() -
-        new Date(a.data.date).getTime()
+        new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
-const latest = posts.filter((post: any) => post.data.type != 'quick' && post.data.type != 'notes').slice(0, 10)
+const latest = posts
+    .filter(
+        (post: any) => post.data.type != 'quick' && post.data.type != 'notes'
+    )
+    .slice(0, 10);
 ---
 
 <Base title="NoobScience | Student and Open Source Enthusiast">
     <div>
         <HomeNav title="NoobScience" client:load />
-        <div class="-z-10 md:px-16  md:py-14 p-2">
+        <div class="-z-10 md:px-16 md:py-14 p-2">
             <div class="font-serif text-gray-900 dark:text-gray-200">
                 <div>
                     <h1 class="md:text-7xl leading-snug text-4xl">
-                        <a href="/about" class="font-bold dark:text-white text-black leading-snug md:text-8xl text-6xl cursor-help transform duration-500">Ishan</a> 
-                            {' '}{options[Math.floor(Math.random() * options.length)]}
+                        <a
+                            href="/about"
+                            class="font-bold dark:text-white text-black leading-snug md:text-8xl text-6xl cursor-help transform duration-500"
+                            >Ishan</a
+                        >
+                        {' '}{
+                            options[Math.floor(Math.random() * options.length)]
+                        }
                     </h1>
                 </div>
-                <h1 class="md:py-10 md:text-6xl leading-snug text-4xl font-bold">
-                    and he's known as <span class="text-yellow-400 dark:text-yellow-300 p-1">NoobScience</span>.
+                <h1
+                    class="md:py-10 md:text-6xl leading-snug text-4xl font-bold"
+                >
+                    and he's known as <span
+                        class="text-yellow-400 dark:text-yellow-300 p-1"
+                        >NoobScience</span
+                    >.
                 </h1>
             </div>
             <div class="flex md:flex-row flex-col justify-center items-center">
                 <div class="md:w-4/5 w-full">
                     <div class="md:p-0 py-5">
-                        <p>
-                            Mostly Codes and Drinks Coffee.
-                        </p>
-                        <p>
-                            1st Student At GRIET.
-                        </p>
+                        <p>Mostly Codes and Drinks Coffee.</p>
+                        <p>1st Student At GRIET.</p>
                     </div>
                     <div class="">
                         <Notification client:load />
                     </div>
                 </div>
-                <div class="md:block hidden md:w-1/4 w-full">
-                </div>
+                <div class="md:block hidden md:w-1/4 w-full"></div>
             </div>
             <span class="block w-1/5 h-1 mt-8 bg-red-600"></span>
             <div>
-                <button class="btn p-4 text-2xl mx-0 bg-dark dark:text-black dark:bg-white">
+                <button
+                    class="btn p-4 text-2xl mx-0 bg-dark dark:text-black dark:bg-white"
+                >
                     <a href="/about">Know me better</a>
                 </button>
                 <p class="text-lg">
@@ -72,34 +83,19 @@ const latest = posts.filter((post: any) => post.data.type != 'quick' && post.dat
                     <h1 class="md:text-5xl text-3xl py-5 pt-8 font-bold">
                         Cool Stuff, I do
                     </h1>
-                    <p>
-                        Hi! I am Ishan. Get to know me from these bullets.
-                    </p>
+                    <p>Hi! I am Ishan. Get to know me from these bullets.</p>
                     <ul id="points" class="list-none font-normal py-3">
+                        <li>🎒 1st year Student at GRIET</li>
+                        <li>🧑‍💻 Full Developer and Coder</li>
                         <li>
-                            🎒 1st year Student at GRIET
+                            <i class="bi bi-github pl-1"></i> Open Source
+                            Enthusiast
                         </li>
-                        <li>
-                            🧑‍💻 Full Developer and Coder
-                        </li>
-                        <li>
-                            <i class="bi bi-github pl-1"></i> Open Source Enthusiast
-                        </li>
-                        <li>
-                            🌱 Web Gardener
-                        </li>
-                        <li>
-                            🤖 Learning to teach Machines
-                        </li>
-                        <li>
-                            📱 Trying to distance from Social Media
-                        </li>
-                        <li>
-                            🌐 Loves building and maintaining sites
-                        </li>
-                        <li>
-                            🐶 Dog Lover
-                        </li>
+                        <li>🌱 Web Gardener</li>
+                        <li>🤖 Learning to teach Machines</li>
+                        <li>📱 Trying to distance from Social Media</li>
+                        <li>🌐 Loves building and maintaining sites</li>
+                        <li>🐶 Dog Lover</li>
                         <li></li>
                     </ul>
                 </div>
@@ -113,25 +109,39 @@ const latest = posts.filter((post: any) => post.data.type != 'quick' && post.dat
                 </div>
             </div>
             <div id="latest">
-                <h1 class="text-5xl py-5 pt-8 font-bold">
-                    Latest Posts
-                </h1>
-                <div class="grid md:grid-cols-2 md:gap-3">
-                    {latest.map((post) => {
-                        return (
-                            <div onclick={"location.href = '/blog/" + post.slug + "'"} class="md:p-2 p-1 my-1 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out">
-                                <h1 class="text-2xl leading-relaxed font-bold">
-                                    {post.data.emoji}{' '} {post.data.title}
-                                </h1>
-                                <p class="md:text-lg text-base leading-relaxed py-2">
-                                    {post.data.description}    
-                                </p>
-                                <p class="md:text-lg leading-relaxed">
-                                    Posted on <span>{new Date(post.data.date).toDateString()}</span>
-                                </p>
-                            </div>
-                        );
-                    })}
+                <h1 class="text-5xl py-5 pt-8 font-bold">Latest Posts</h1>
+                <div transition:name="blog" class="grid md:grid-cols-2 md:gap-3">
+                    {
+                        latest.map((post) => {
+                            return (
+                                <article class="md:p-4 md:my-0.5 p-0.5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out">
+                                    <a href={'/blog/' + post.slug}>
+                                        <header>
+                                            <h2 class="md:text-2xl text-xl leading-relaxed font-bold">
+                                                {post.data.emoji}{' '}
+                                                {post.data.title}
+                                            </h2>
+                                        </header>
+                                        <section>
+                                            <p class="text-lg py-3">
+                                                {post.data.description}
+                                            </p>
+                                            <p class="text-lg">
+                                                Posted on{' '}
+                                                <time
+                                                    datetime={post.data.date.toDateString()}
+                                                >
+                                                    {new Date(
+                                                        post.data.date
+                                                    ).toDateString()}
+                                                </time>
+                                            </p>
+                                        </section>
+                                    </a>
+                                </article>
+                            );
+                        })
+                    }
                 </div>
             </div>
             <Current client:idle />
@@ -139,12 +149,12 @@ const latest = posts.filter((post: any) => post.data.type != 'quick' && post.dat
     </div>
 </Base>
 <style is:inline>
-    #heading{
+    #heading {
         line-height: 4rem;
     }
-    @media screen and (max-width: 768px){
-        #heading{
+    @media screen and (max-width: 768px) {
+        #heading {
             line-height: 3rem;
-        }    
+        }
     }
 </style>

@@ -27,7 +27,7 @@ export default function Current() {
 
     return (
         <>
-            <h2 className="text-5xl font-heading py-4">What's Up!!</h2>
+            <h2 className="text-2xl font-heading pb-1 pt-4">What's Up!!</h2>
             <p
                 dangerouslySetInnerHTML={{
                     __html: marked(latest.current, {

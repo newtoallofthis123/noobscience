@@ -3,7 +3,7 @@ import Base from "../layouts/base.astro";
 import HomeNav from "../components/navigation/home_nav";
 ---
 
-<Base>
+<Base footer={false}>
     <HomeNav client:load />
     <div class="flex justify-center flex-col items-center">
         <div class="w-4/5">
@@ -16,7 +16,10 @@ import HomeNav from "../components/navigation/home_nav";
                 They are mostly just some small services, mostly for my own use.
                 You can find the links for the services listed below.
             </p>
-            <ul class="bg-black text-white p-4 rounded-xl my-4">
+            <p>
+                The site also has a public API which you can use to interact with the go url shortener.
+            </p>
+            <ul class="bg-dark text-white p-4 rounded-xl my-4">
                 <li><a class="underline" href="/quips">Quips</a>: Just some of my thoughts. Think of it like a journal.</li>
                 <li><a class="underline" href="/go">Go</a>: A simple url shortener. I have complete control. Don't put anything sensitive</li>
                 <li><a class="underline" href="/code">Code</a>: A simple paste bin service. Unencrypted, so use at own caution.</li>

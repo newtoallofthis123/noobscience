@@ -39,15 +39,12 @@ export default function Update({ hash }: UpdateProps) {
     }, []);
 
     return (
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col md:p-10 border-2 border-r-8 border-b-8 rounded-2xl md:m-10 border-black justify-center">
             {latest.name == '' && (
                 <h1 className="text-center p-4">Loading...</h1>
             )}
             {latest.name != '' && (
-                <div
-                    id="update"
-                    className="m-2 mt-0 p-2 md:w-4/5 w-full md:p-10 md:pb-1"
-                >
+                <div id="update" className="md:w-4/5 w-full">
                     <h1 className="md:text-5xl font-bold text-3xl md:py-4 py-1 pt-0">
                         {latest.name}
                     </h1>
@@ -73,10 +70,10 @@ export default function Update({ hash }: UpdateProps) {
                 </div>
             )}
             {recommended && (
-                <div className="m-2 mt-0 md:w-4/5 w-full md:px-10 md:pb-1">
+                <div className="md:w-4/5 w-full">
                     {recommended.length > 0 ? (
                         <div>
-                            <h4 className="md:text-2xl text-xl font-semibold py-3">
+                            <h4 className="md:text-2xl text-xl font-semibold md:pt-6 py-3">
                                 Some Quips I Wrote After This
                             </h4>
                             {recommended.map((update: any) => (
@@ -97,6 +94,9 @@ export default function Update({ hash }: UpdateProps) {
                     )}
                 </div>
             )}
+            <p className='text-xl font-bold md:pt-8 pt-5'>
+                ©️Ishan's Quips {new Date().getFullYear()} 
+            </p>
         </div>
     );
 }
