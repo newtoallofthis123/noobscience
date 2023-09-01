@@ -1,0 +1,37 @@
+---
+import Base from "../layouts/base.astro";
+import HomeNav from "../components/navigation/home_nav";
+
+const response = await fetch('https://api.github.com/repos/newtoallofthis123/noobscience/commits');
+const data = await response.json();
+---
+
+<Base title="NoobScience ChangeLog">
+    <HomeNav title="Changelog" client:load />
+    <div>
+        <h1 class="md:text-3xl text-2xl font-bold text-center">
+            The NoobScience ChangeLog
+        </h1>
+    </div>
+    <div>
+        {
+            data.slice(0, 10).map((item:any) => {
+                return (
+                    <a href={
+                        item.html_url
+                    }>
+                        <div class="p-4 border-2 border-r-4 border-b-4 border-black rounded-xl mx-5 my-2 transform hover:-translate-y-1 transition duration-500 ease-in-out">
+                            <h1 class="text-xl font-bold">
+                                {item.commit.message}
+                            </h1>
+                            <p class="text-base text-gray-500 py-1">
+                                {new Date(item.commit.author.date).toLocaleString()}
+                            </p>
+
+                        </div>
+                    </a>
+                )
+            })
+        }
+    </div>
+</Base>
