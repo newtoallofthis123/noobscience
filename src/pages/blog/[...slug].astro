@@ -46,7 +46,7 @@ type headings = {
     text: string;
 }[];
 //@ts-ignore
-const headings:headings= meta?.headings;
+const headings: headings = meta?.headings;
 ---
 
 <Base
@@ -55,8 +55,9 @@ const headings:headings= meta?.headings;
     selection_only={frontmatter?.selection_only}
     color={frontmatter?.color}
     bg={frontmatter?.bg}
-    selection_bg={frontmatter?.selection_bg  || frontmatter?.bg  || "#facc15"}
-    selection_color={frontmatter?.selection_color  || frontmatter?.color  || "#000"}
+    selection_bg={frontmatter?.selection_bg || '#facc15'}
+    selection_color={frontmatter?.selection_color ||
+        '#000'}
     title={frontmatter?.type == 'notes'
         ? frontmatter?.title + " | Ishan's Jots"
         : frontmatter?.title + ' | Ishan Writes'}
@@ -68,7 +69,11 @@ const headings:headings= meta?.headings;
         client:load
     />
     <div>
-        <div transition:name="blog" id="searchBar" style="display:none" class="z-10 bg-white dark:bg-dark drop-shadow-md shadow-black p-0.5 fixed top-0 left-0 w-full">
+        <div
+            id="searchBar"
+            style="display:none"
+            class="z-10 bg-white dark:bg-dark drop-shadow-md shadow-black p-0.5 fixed top-0 left-0 w-full"
+        >
             <div class="flex flex-row justify-between items-center p-2">
                 <div class="md:w-2/6 flex-shrink-0 flex flex-row mx-5">
                     <div>
@@ -82,22 +87,39 @@ const headings:headings= meta?.headings;
                             />
                         </a>
                     </div>
-                    <a href='/' class="md:block hidden text-lg pl-2 pt-0.5 font-bold">
+                    <a
+                        href="/"
+                        class="md:block hidden text-lg pl-2 pt-0.5 font-bold"
+                    >
                         {frontmatter?.title}
                     </a>
                 </div>
                 <div class="md:w-3/6 w-full">
-                    <form onsubmit={
-                        `window.location.href = '/search/' + document.getElementById('search').value; return false;`
-                    }>
-                        <div class="flex text-black flex-row items-center w-full border-2 border-b-4 border-r-4 border-black dark:border-white rounded-2xl">
-                            <input autocomplete="off" spellcheck="false" class="w-full dark:bg-dark py-1 focus:outline-none rounded-2xl px-2" type="search" name="search" placeholder="Press Ctrl+K to Search" id="search">
+                    <form
+                        onsubmit={`window.location.href = '/search/' + document.getElementById('search').value; return false;`}
+                    >
+                        <div
+                            class="flex text-black flex-row items-center w-full border-2 border-b-4 border-r-4 border-black dark:border-white rounded-2xl"
+                        >
+                            <input
+                                autocomplete="off"
+                                spellcheck="false"
+                                class="w-full dark:bg-dark py-1 focus:outline-none rounded-2xl px-2"
+                                type="search"
+                                name="search"
+                                placeholder="Press Ctrl+K to Search"
+                                id="search"
+                            />
                             <button class="w-1/6 rounded-2xl">
-                                <div class="md:block hidden py-1 rounded-r-xl bg-yellow-400">
+                                <div
+                                    class="md:block hidden py-1 rounded-r-xl bg-yellow-400"
+                                >
                                     Search
                                     <i class="bi bi-search"></i>
                                 </div>
-                                <span class="md:hidden block rounded-r-xl py-1 bg-yellow-400">
+                                <span
+                                    class="md:hidden block rounded-r-xl py-1 bg-yellow-400"
+                                >
                                     <i class="bi bi-search"></i>
                                 </span>
                             </button>
@@ -107,21 +129,22 @@ const headings:headings= meta?.headings;
             </div>
         </div>
     </div>
-    <div
-        class={`p-1 flex flex-col justify-center md:pt-10 ${
-            frontmatter?.full_img != false ? 'section_colored' : ''
-        }`}
-    >
-        <div class="md:pl-8 px-2 flex flex-col">
-            <div class="w-full">
+    <div class="flex flex-col justify-center items-center">
+        <div class="md:w-4/5">
+            <div
+                class={`p-1 md:pt-10 md:pl-8 px-2 ${
+                    frontmatter?.full_img != false ? 'section_colored' : ''
+                }`}
+            >
                 <h1 class="md:text-4xl text-2xl py-2">
-                    <span class="cursor-pointer"  onclick=`
+                    <span
+                        class="cursor-pointer"
+                        onclick=`
                 navigator.clipboard.writeText('${BASE_URL}/e/${frontmatter?.emoji}');
                 alert('Copied to clipboard!')
-                `>
-                        {
-                            frontmatter?.emoji
-                        }
+                `
+                    >
+                        {frontmatter?.emoji}
                     </span>
                 </h1>
                 <div class="py-2 md:pt-5 flex flex-row flex-wrap">
@@ -145,8 +168,9 @@ const headings:headings= meta?.headings;
                         frontmatter?.draft && (
                             <h1 class="md:my-8">
                                 <span class="text-white bg-red-500 font-bold p-2 md:text-3xl text-xl">
-                                    Hold your horses! This is a draft. It will be published soon.
-                                </span>    
+                                    Hold your horses! This is a draft. It will
+                                    be published soon.
+                                </span>
                             </h1>
                         )
                     }
@@ -155,26 +179,41 @@ const headings:headings= meta?.headings;
                     >
                         {frontmatter?.title}
                     </h1>
-                    <div class="md:w-3/5">
-                        <p class="font-sans md:text-lg md:pb-2 text-base leading-relaxed">
+                    <div class="">
+                        <p
+                            class="font-sans md:text-lg md:pb-2 text-base leading-relaxed"
+                        >
                             {frontmatter?.description}
                         </p>
                         <p class="font-sans text-base leading-loose py-1">
-                        {frontmatter?.date && new Date(frontmatter.date).toDateString()} | {
-                            Math.round(meta?.remarkPluginFrontmatter.wordsRead / 265)
-                        } min read
+                            {
+                                frontmatter?.date &&
+                                    new Date(frontmatter.date).toDateString()
+                            } | {
+                                Math.round(
+                                    meta?.remarkPluginFrontmatter.wordsRead /
+                                        265
+                                )
+                            } min read
                         </p>
                         {
                             frontmatter?.series && (
                                 <p>
-                                    Part of the <a id="cat" href={`/series/${frontmatter?.series}`}>{frontmatter?.series}</a> series.
+                                    Part of the{' '}
+                                    <a
+                                        id="cat"
+                                        href={`/series/${frontmatter?.series}`}
+                                    >
+                                        {frontmatter?.series}
+                                    </a>{' '}
+                                    series.
                                 </p>
                             )
                         }
                     </div>
                     {
                         frontmatter?.img && (
-                            <div class={`items-center w-full py-5`}>
+                            <div class={`py-5`}>
                                 <Image
                                     class="rounded-md"
                                     src={frontmatter.img}
@@ -185,11 +224,27 @@ const headings:headings= meta?.headings;
                     }
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="flex flex-col justify-center md:pb-10">
-        <div id="searchTrigger" class="md:pl-8 md:pr-20 px-2 flex flex-col md:flex-row">
-            <div class=`md:w-1/6 w-full md:pt-16 px-2 overflow-x-auto md:sticky md:pr-6 md:pl-0 md:top-0 md:h-screen overflow-y-none flex flex-col ${frontmatter?.type == "quick" && 'hidden'}`>
+            <div class="flex flex-col justify-center md:pb-10">
+                <div
+                    id="searchTrigger"
+                    class="md:pl-8 px-2 flex flex-col md:flex-row"
+                >
+                    <div
+                        class=`w-full py-4 overflow-x-hidden ${frontmatter?.type == 'quick'?'md:pl-0':'md:pr-10'}`
+                    >
+                        {
+                            frontmatter?.audio && (
+                                <div class={`items-center w-full py-5`}>
+                                    <Spotify url={frontmatter.audio} />
+                                </div>
+                            )
+                        }
+                        {frontmatter?.type != 'quick' && <div></div>}
+                        <div class={`md:p-0 p-2 font-${frontmatter?.font}`}>
+                            <Content />
+                        </div>
+                    </div>
+                    <!-- <div class=`md:w-1/6 w-full md:pt-16 px-2 overflow-x-auto md:sticky md:pr-6 md:pl-0 md:top-0 md:h-screen overflow-y-none flex flex-col ${frontmatter?.type == "quick" && 'hidden'}`>
                 <h2 class="text-lg py-1">
                     ➡️ Table of Contents
                 </h2>
@@ -209,73 +264,54 @@ const headings:headings= meta?.headings;
                         })
                     }
                 </ul>
-            </div>
-            <div class=`md:w-5/6 w-full py-4 overflow-x-hidden ${frontmatter?.type == 'quick'?'md:pl-0':'md:pl-10'}`>
-                {
-                        frontmatter?.audio && (
-                            <div class={`items-center w-full py-5`}>
-                                <Spotify url={frontmatter.audio} />
-                            </div>
-                        )
-                    }
-                {
-                    frontmatter?.type != "quick" && (
-                        <div>
-                </div>
-                    )
-                }
-                <div class={`md:p-0 p-2 font-${frontmatter?.font}`}>
-                    <Content />
+            </div> -->
                 </div>
             </div>
         </div>
-        <div class="flex flex-col md:flex-row justify-center md:pt-8">
-            <div class="md:w-3/5 w-full">
-                <h1 class="text-center text-2xl">
-                    Feel free to leave a comment below!
-                </h1>
-                <script
-                    src="https://utteranc.es/client.js"
-                    repo="newtoallofthis123/comments"
-                    issue-term="pathname"
-                    label="comment"
-                    theme="preferred-color-scheme"
-                    crossorigin="anonymous"
-                    async
-                ></script>
-                <div class="text-center my-2">
-                    <button class="special_btn rounded-3xl">
-                        <a href=`https://github.com/newtoallofthis123/noobscience/tree/master/src/content/blog/${slug}.mdx`>
-                            Edit the post on <i class="bi bi-github"></i> Github
-                        </a>
-                    </button>
-                </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-center md:pt-8">
+        <div class="md:w-3/5 w-full">
+            <h1 class="text-center text-2xl">
+                Feel free to leave a comment below!
+            </h1>
+            <script
+                src="https://utteranc.es/client.js"
+                repo="newtoallofthis123/comments"
+                issue-term="pathname"
+                label="comment"
+                theme="preferred-color-scheme"
+                crossorigin="anonymous"
+                async></script>
+            <div class="text-center my-2">
+                <button class="special_btn rounded-3xl">
+                    <a
+                        href=`https://github.com/newtoallofthis123/noobscience/tree/master/src/content/blog/${slug}.mdx`
+                    >
+                        Edit the post on <i class="bi bi-github"></i> Github
+                    </a>
+                </button>
             </div>
-            <div class="md:w-2/5 w-full p-2">
-                <h2 class="text-2xl">
-                    Recommended Reading
-                </h2>
-                <p class="leading-snug text-base py-2">
-                    Recommendations are based on the category and tags of this post.
-                </p>
-                <div>
-                    {
-                        recommended.map((post: any) => {
-                            return (
-                                <div class="py-2">
-                                    <a href={`/blog/${post.slug}`}>
-                                        <h3 class="text-xl">
-                                            {post.data.emoji}{' '}{post.data.title}
-                                        </h3>
-                                    </a>
-                                    <p class="text-base">
-                                        {post.data.description}
-                                    </p>
-                                </div>
-                            );
-                        })
-                    }        
-                </div>
+        </div>
+        <div class="md:w-2/5 w-full p-2">
+            <h2 class="text-2xl">Recommended Reading</h2>
+            <p class="leading-snug text-base py-2">
+                Recommendations are based on the category and tags of this post.
+            </p>
+            <div>
+                {
+                    recommended.map((post: any) => {
+                        return (
+                            <div class="py-2">
+                                <a href={`/blog/${post.slug}`}>
+                                    <h3 class="text-xl">
+                                        {post.data.emoji} {post.data.title}
+                                    </h3>
+                                </a>
+                                <p class="text-base">{post.data.description}</p>
+                            </div>
+                        );
+                    })
+                }
             </div>
         </div>
     </div>
@@ -293,7 +329,7 @@ const headings:headings= meta?.headings;
             background-color: var(--selection_bg);
             color: var(--selection_color);
         }
-        .special_btn{
+        .special_btn {
             background-color: var(--selection_bg);
         }
         .special_btn a {
@@ -302,31 +338,31 @@ const headings:headings= meta?.headings;
     </style>
     <script>
         // Get references to the necessary elements
-        const triggerDiv = document.getElementById("searchTrigger");
-        const fixedSearchBar = document.getElementById("searchBar");
+        const triggerDiv = document.getElementById('searchTrigger');
+        const fixedSearchBar = document.getElementById('searchBar');
 
         // @ts-ignore
         const triggerDivPosition = triggerDiv.offsetTop;
 
         // Function to toggle the visibility of the fixed search bar
         function toggleSearchBar() {
-        if (window.pageYOffset > triggerDivPosition) {
-            // @ts-ignore
-            fixedSearchBar.style.display = "block";
-        } else {
-            // @ts-ignore
-            fixedSearchBar.style.display = "none";
-        }
+            if (window.pageYOffset > triggerDivPosition) {
+                // @ts-ignore
+                fixedSearchBar.style.display = 'block';
+            } else {
+                // @ts-ignore
+                fixedSearchBar.style.display = 'none';
+            }
         }
         // Listen for scroll events and call the toggleSearchBar function
-        window.addEventListener("scroll", toggleSearchBar);
+        window.addEventListener('scroll', toggleSearchBar);
 
         //bind ctrl + f to trigger cursor on search bar
-        document.addEventListener("keydown", function (e) {
-            if (e.ctrlKey && e.key === "k") {
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.key === 'k') {
                 e.preventDefault();
                 // @ts-ignore
-                document.getElementById("search").focus();
+                document.getElementById('search').focus();
             }
         });
     </script>
