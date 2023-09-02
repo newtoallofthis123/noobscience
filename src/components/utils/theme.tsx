@@ -51,7 +51,7 @@ export default function Init() {
                     }
                 }}
             >
-                <i className={`bi ${icon}`}></i>
+                <i className={`bi ${icon}`}></i> <span className='text-base'>Theme</span>
             </button>
         </>
     );
