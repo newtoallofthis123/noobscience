@@ -56,8 +56,7 @@ const headings: headings = meta?.headings;
     color={frontmatter?.color}
     bg={frontmatter?.bg}
     selection_bg={frontmatter?.selection_bg || '#facc15'}
-    selection_color={frontmatter?.selection_color ||
-        '#000'}
+    selection_color={frontmatter?.selection_color || '#000'}
     title={frontmatter?.type == 'notes'
         ? frontmatter?.title + " | Ishan's Jots"
         : frontmatter?.title + ' | Ishan Writes'}
@@ -129,23 +128,23 @@ const headings: headings = meta?.headings;
             </div>
         </div>
     </div>
-    <div class="flex flex-col justify-center items-center">
-        <div class="md:w-4/5">
-            <div
-                class={`p-1 md:pt-10 md:pl-8 px-2 ${
-                    frontmatter?.full_img != false ? 'section_colored' : ''
-                }`}
-            >
+    <div class="">
+        <div
+            class={`flex flex-col justify-center items-center p-1 md:pt-10 md:pl-8 px-2 ${
+                frontmatter?.full_img != false ? 'section_colored' : ''
+            }`}
+        >
+            <div class="md:w-4/5 pb-2">
                 <h1 class="md:text-4xl text-2xl py-2">
-                    <span
-                        class="cursor-pointer"
-                        onclick=`
+                <span
+                    class="cursor-pointer"
+                    onclick=`
                 navigator.clipboard.writeText('${BASE_URL}/e/${frontmatter?.emoji}');
                 alert('Copied to clipboard!')
                 `
-                    >
-                        {frontmatter?.emoji}
-                    </span>
+                >
+                    {frontmatter?.emoji}
+                </span>
                 </h1>
                 <div class="py-2 md:pt-5 flex flex-row flex-wrap">
                     <a
@@ -163,7 +162,7 @@ const headings: headings = meta?.headings;
                         })
                     }
                 </div>
-                <div class="pb-2">
+                <div class="">
                     {
                         frontmatter?.draft && (
                             <h1 class="md:my-8">
@@ -179,58 +178,59 @@ const headings: headings = meta?.headings;
                     >
                         {frontmatter?.title}
                     </h1>
-                    <div class="">
-                        <p
-                            class="font-sans md:text-lg md:pb-2 text-base leading-relaxed"
-                        >
-                            {frontmatter?.description}
-                        </p>
-                        <p class="font-sans text-base leading-loose py-1">
-                            {
-                                frontmatter?.date &&
-                                    new Date(frontmatter.date).toDateString()
-                            } | {
-                                Math.round(
-                                    meta?.remarkPluginFrontmatter.wordsRead /
-                                        265
-                                )
-                            } min read
-                        </p>
+                    <p
+                        class="font-sans md:text-lg md:pb-2 text-base leading-relaxed"
+                    >
+                        {frontmatter?.description}
+                    </p>
+                    <p class="font-sans text-base leading-loose py-1">
                         {
-                            frontmatter?.series && (
-                                <p>
-                                    Part of the{' '}
-                                    <a
-                                        id="cat"
-                                        href={`/series/${frontmatter?.series}`}
-                                    >
-                                        {frontmatter?.series}
-                                    </a>{' '}
-                                    series.
-                                </p>
+                            frontmatter?.date &&
+                                new Date(frontmatter.date).toDateString()
+                        } | {
+                            Math.round(
+                                meta?.remarkPluginFrontmatter.wordsRead / 265
                             )
-                        }
-                    </div>
+                        } min read
+                    </p>
                     {
-                        frontmatter?.img && (
-                            <div class={`py-5`}>
-                                <Image
-                                    class="rounded-md"
-                                    src={frontmatter.img}
-                                    alt={frontmatter?.title}
-                                />
-                            </div>
+                        frontmatter?.series && (
+                            <p>
+                                Part of the{' '}
+                                <a
+                                    id="cat"
+                                    href={`/series/${frontmatter?.series}`}
+                                >
+                                    {frontmatter?.series}
+                                </a>{' '}
+                                series.
+                            </p>
                         )
                     }
                 </div>
             </div>
-            <div class="flex flex-col justify-center md:pb-10">
+        </div>
+        <div class="flex flex-col items-center">
+            {
+                    frontmatter?.img && (
+                        <div class={`md:p-10 p-2 py-5`}>
+                            <Image
+                                class=" rounded-md"
+                                src={frontmatter.img}
+                                alt={frontmatter?.title}
+                            />
+                        </div>
+                    )
+        }
+        </div>
+        <div class="flex flex-col items-center justify-center w-full md:pb-10">
+            <div class="md:w-4/5 w-full">
                 <div
                     id="searchTrigger"
-                    class="md:pl-8 px-2 flex flex-col md:flex-row"
+                    class="w-full md:pl-8 px-2 flex flex-col md:flex-row"
                 >
                     <div
-                        class=`w-full py-4 overflow-x-hidden ${frontmatter?.type == 'quick'?'md:pl-0':'md:pr-10'}`
+                        class=`py-4 ${frontmatter?.type == 'quick'?'md:pl-0':'md:pr-10'}`
                     >
                         {
                             frontmatter?.audio && (
@@ -239,7 +239,7 @@ const headings: headings = meta?.headings;
                                 </div>
                             )
                         }
-                        {frontmatter?.type != 'quick' && <div></div>}
+                        {frontmatter?.type != 'quick' && <div />}
                         <div class={`md:p-0 p-2 font-${frontmatter?.font}`}>
                             <Content />
                         </div>
