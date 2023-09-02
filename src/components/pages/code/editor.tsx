@@ -32,104 +32,98 @@ export default function CodeEditor({}: Props) {
     };
     return (
         <>
-            <div>
-                <div className="md:px-10 md:py-5">
-                    <h1 className="text-5xl font-heading">NoobPaste Mini</h1>
-                    <div className="py-4">
-                        <form className="py-4" onSubmit={addCode} method="POST">
-                            <p className="text-xl">
-                                <b>Title</b>: Enter the title of the code
-                                snippet.
-                            </p>
-                            <input
-                                type="text"
-                                className="w-2/4 border-current dark:bg-dark border-2 border-b-4 border-r-4 p-2 text-lg font-mono rounded-2xl my-4"
-                                name="code_title"
-                                autoComplete="off"
-                                spellCheck="false"
-                                id="title"
-                            />
-                            <p className="text-xl">
-                                <b>Language</b>: Enter the language of the code
-                                snippet.
-                            </p>
-                            <select
-                                className="border-2 w-2/5 border-current border-b-4 border-r-4 p-2 text-lg bg-gray-100 dark:bg-dark font-mono rounded-2xl my-4"
-                                name="code_lang"
-                                id="code_lang"
-                            >
-                                <option value="javascript">Javascript</option>
-                                <option value="python">Python</option>
-                                <option value="c">C</option>
-                                <option value="cpp">C++</option>
-                                <option value="java">Java</option>
-                                <option value="html">HTML</option>
-                                <option value="css">CSS</option>
-                                <option value="php">PHP</option>
-                                <option value="sql">SQL</option>
-                                <option value="ruby">Ruby</option>
-                                <option value="go">Go</option>
-                                <option value="rust">Rust</option>
-                                <option value="kotlin">Kotlin</option>
-                                <option value="swift">Swift</option>
-                                <option value="typescript">Typescript</option>
-                                <option value="dart">Dart</option>
-                                <option value="scala">Scala</option>
-                                <option value="r">R</option>
-                                <option value="perl">Perl</option>
-                                <option value="lua">Lua</option>
-                                <option value="matlab">Matlab</option>
-                                <option value="bash">Bash</option>
-                                <option value="powershell">Powershell</option>
-                                <option value="elixir">Elixir</option>
-                                <option value="clojure">Clojure</option>
-                                <option value="julia">Julia</option>
-                                <option value="lisp">Lisp</option>
-                                <option value="xml">XML</option>
-                                <option value="yaml">YAML</option>
-                            </select>
-                            <p className="text-xl">
-                                <b>Author</b>: Enter your name
-                            </p>
-                            <input
-                                type="text"
-                                className="w-2/4 border-current border-b-4 border-r-4 dark:bg-dark border-2 p-2 text-lg font-mono rounded-2xl my-4"
-                                name="author"
-                                autoComplete="off"
-                                spellCheck="false"
-                                id="lang"
-                            />
-                            <p className="text-xl">
-                                <b>Content</b>: Be sure to write the content of
-                                the code snippet only.
-                            </p>
-                            <textarea
-                                name="content"
-                                id="content"
-                                className="w-3/5 border-2 border-current border-b-4 border-r-4 dark:bg-dark rounded-2xl p-2 text-md font-mono"
-                                rows={10}
-                                spellCheck="false"
-                                cols={10}
-                            ></textarea>
-                            <p></p>
-                            <p></p>
-                            <button
-                                type="submit"
-                                className="text-xl my-4 w-2/5 rounded-2xl bg-black text-white dark:dark:bg-light dark:text-black  p-4 hover:scale-105 transition duration-200"
-                            >
-                                Sent Code to the Database
-                            </button>
-                            <p></p>
-                            {link ? (
-                                <div className="text-xl">
-                                    <a href={link}>{link}</a>
-                                </div>
-                            ) : (
-                                <></>
-                            )}
-                        </form>
+            <div className="md:p-10">
+                <h1 className="md:text-4xl text-2xl pb-3 px-2 font-heading">
+                    NoobPaste
+                </h1>
+                <p className="px-2">
+                    {link ? (
+                        <span>
+                            <a href={link} className="text-blue-500">
+                                {window.location.href + link.replace('/code', '')}
+                            </a>
+                        </span>
+                    ) : (
+                        <span>Simple and Efficient Code Sharing.</span>
+                    )}
+                </p>
+                <form onSubmit={addCode} className="border-2 border-r-8 border-b-8 rounded-2xl border-black">
+                    <div className="flex flex-row border-b-2 border-black">
+                        <select
+                            className="w-1/6 rounded-2xl focus:outline-none text-lg mx-5"
+                            name="code_lang"
+                            required={true}
+                            id="code_lang"
+                        >
+                            <option value="javascript">Javascript</option>
+                            <option value="python">Python</option>
+                            <option value="c">C</option>
+                            <option value="cpp">C++</option>
+                            <option value="java">Java</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="php">PHP</option>
+                            <option value="sql">SQL</option>
+                            <option value="ruby">Ruby</option>
+                            <option value="go">Go</option>
+                            <option value="rust">Rust</option>
+                            <option value="kotlin">Kotlin</option>
+                            <option value="swift">Swift</option>
+                            <option value="typescript">Typescript</option>
+                            <option value="dart">Dart</option>
+                            <option value="scala">Scala</option>
+                            <option value="r">R</option>
+                            <option value="perl">Perl</option>
+                            <option value="lua">Lua</option>
+                            <option value="matlab">Matlab</option>
+                            <option value="bash">Bash</option>
+                            <option value="powershell">Powershell</option>
+                            <option value="elixir">Elixir</option>
+                            <option value="clojure">Clojure</option>
+                            <option value="julia">Julia</option>
+                            <option value="lisp">Lisp</option>
+                            <option value="xml">XML</option>
+                            <option value="yaml">YAML</option>
+                        </select>
+                        <input
+                            type="text"
+                            placeholder="Enter the file name"
+                            required={true}
+                            className="w-2/6 text-center text-xl focus:outline-none"
+                            name="code_title"
+                            autoComplete="off"
+                            spellCheck="false"
+                            id="title"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Author Name"
+                            required={true}
+                            className="w-2/6 text-center text-xl focus:outline-none"
+                            name="author"
+                            autoComplete="off"
+                            spellCheck="false"
+                            id="title"
+                        />
+                        <button
+                            className="
+                            w-1/6 bg-dark text-white rounded-3xl text-xl font-bold p-2 m-2 transform duration-500 hover:scale-105 focus:outline-none
+                            "
+                            type="submit"
+                        >
+                            Create
+                        </button>
                     </div>
-                </div>
+                    <textarea
+                        name="content"
+                        required={true}
+                        id="content"
+                        className="w-full focus:outline-none p-1 text-xl"
+                        rows={20}
+                        spellCheck="false"
+                        cols={10}
+                    ></textarea>
+                </form>
             </div>
         </>
     );

@@ -33,5 +33,8 @@ export default defineConfig({
       wrap: false
     },
     syntaxHighlight: 'shiki'
+  },
+  redirects: {
+    'htmler': 'https://htmler.noobscience.rocks',
   }
 });

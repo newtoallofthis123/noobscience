@@ -28,6 +28,10 @@ const blogContent = defineCollection({
         img: image().refine((img) => img).optional(),
         full_img: z.boolean().optional().default(false),
         draft: z.boolean().optional().default(false),
+        medium: z.string().optional(),
+        substack: z.string().optional(),
+        devto: z.string().optional(),
+        hashnode: z.string().optional(),
     }),
 });
 

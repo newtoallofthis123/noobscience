@@ -3,6 +3,10 @@ import Base from '../../layouts/base.astro';
 import HomeNav from '../../components/navigation/home_nav';
 import { getEntry, getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
+import { siMedium } from 'simple-icons';
+import { siHashnode } from 'simple-icons';
+import { siSubstack } from 'simple-icons';
+import { siDevdotto } from 'simple-icons';
 import Spotify from '../../components/utils/md/audio/spotify.astro';
 
 const { slug } = Astro.params;
@@ -136,15 +140,15 @@ const headings: headings = meta?.headings;
         >
             <div class="md:w-4/5 pb-2">
                 <h1 class="md:text-4xl text-2xl py-2">
-                <span
-                    class="cursor-pointer"
-                    onclick=`
+                    <span
+                        class="cursor-pointer"
+                        onclick=`
                 navigator.clipboard.writeText('${BASE_URL}/e/${frontmatter?.emoji}');
                 alert('Copied to clipboard!')
                 `
-                >
-                    {frontmatter?.emoji}
-                </span>
+                    >
+                        {frontmatter?.emoji}
+                    </span>
                 </h1>
                 <div class="py-2 md:pt-5 flex flex-row flex-wrap">
                     <a
@@ -210,27 +214,27 @@ const headings: headings = meta?.headings;
                 </div>
             </div>
         </div>
-        <div class="flex flex-col items-center">
+        <div class=`flex flex-col justify-center items-center ${frontmatter?.full_img != false ? 'section_colored' : ''}`>
             {
-                    frontmatter?.img && (
-                        <div class={`md:p-10 p-2 py-5`}>
-                            <Image
-                                class=" rounded-md"
-                                src={frontmatter.img}
-                                alt={frontmatter?.title}
-                            />
-                        </div>
-                    )
-        }
+                frontmatter?.img && (
+                    <div class={`md:p-10 p-2 py-5`}>
+                        <Image
+                            class=" rounded-md"
+                            src={frontmatter.img}
+                            alt={frontmatter?.title}
+                        />
+                    </div>
+                )
+            }
         </div>
-        <div class="flex flex-col items-center justify-center w-full md:pb-10">
+        <div class="flex flex-col justify-center items-center md:pb-5">
             <div class="md:w-4/5 w-full">
                 <div
                     id="searchTrigger"
-                    class="w-full md:pl-8 px-2 flex flex-col md:flex-row"
+                    class="px-2 flex flex-col"
                 >
                     <div
-                        class=`py-4 ${frontmatter?.type == 'quick'?'md:pl-0':'md:pr-10'}`
+                        class=`py-4`
                     >
                         {
                             frontmatter?.audio && (
@@ -269,7 +273,62 @@ const headings: headings = meta?.headings;
             </div>
         </div>
     </div>
-    <div class="flex flex-col md:flex-row justify-center md:pt-8">
+    <div class="flex flex-col justify-center items-center md:pb-8">
+        <h1 class="md:text-2xl text-xl">
+            Catch this post on{' '}
+        </h1>
+        <div class="flex flex-row justify-center items-center">
+            {
+                frontmatter?.medium && (
+                    <div class="text-center my-2">
+                        <button class="special_btn rounded-3xl">
+                            <a class="flex flex-row " href={frontmatter.medium}>
+                                <span id="icon" set:html={siMedium.svg} />
+                                Medium
+                            </a>
+                        </button>
+                    </div>
+                )
+            }
+            {
+                frontmatter?.substack && (
+                    <div class="text-center my-2">
+                        <button class="special_btn rounded-3xl">
+                            <a class="flex flex-row " href={frontmatter.substack}>
+                                <span id="icon" set:html={siSubstack.svg} />
+                                SubStack
+                            </a>
+                        </button>
+                    </div>
+                )
+            }
+            {
+                frontmatter?.devto && (
+                    <div class="text-center my-2">
+                        <button class="special_btn rounded-3xl">
+                            <a class="flex flex-row " href={frontmatter.devto}>
+                                <span id="icon" set:html={siDevdotto.svg} />
+                                Dev.to
+                            </a>
+                        </button>
+                    </div>
+                )
+            }
+            {
+                frontmatter?.hashnode && (
+                    <div class="text-center my-2">
+                        <button class="special_btn rounded-3xl">
+                            <a class="flex flex-row " href={frontmatter.hashnode}>
+                                <span id="icon" set:html={siHashnode.svg} />
+                                Hashnode
+                            </a>
+                        </button>
+                    </div>
+                )
+            }
+        </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-center md:pt-4">
         <div class="md:w-3/5 w-full">
             <h1 class="text-center text-2xl">
                 Feel free to leave a comment below!
@@ -299,7 +358,7 @@ const headings: headings = meta?.headings;
             </p>
             <div>
                 {
-                    recommended.map((post: any) => {
+                    recommended.slice(0, 5).map((post: any) => {
                         return (
                             <div class="py-2">
                                 <a href={`/blog/${post.slug}`}>
