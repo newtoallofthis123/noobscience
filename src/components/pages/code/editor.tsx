@@ -118,7 +118,7 @@ export default function CodeEditor({}: Props) {
                         name="content"
                         required={true}
                         id="content"
-                        className="w-full focus:outline-none p-1 text-xl"
+                        className="w-full focus:outline-none p-1 text-base"
                         rows={20}
                         spellCheck="false"
                         cols={10}

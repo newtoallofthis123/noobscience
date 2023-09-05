@@ -93,7 +93,7 @@ const BASE_URL = "http://" + Astro.url.host
      } id="content">
             <slot />
             
-        <footer id="content" class=`md:py-1 dark:text-dark border-t-2 bg-yellow-400 border-current ${!footer && "hidden"}`>
+        <footer id="content" class=`md:py-1 text-dark border-t-2 bg-yellow-400 border-current ${!footer && "hidden"}`>
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="flex justify-between items-center py-2 px-5">
                     <Image src={logo} class="w-8 mx-2" alt="Logo" />

@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/base.astro';
+import HomeNav from '../components/navigation/home_nav';
+
+import DogImage from "../assets/500.jpg"
+import { Image } from 'astro:assets';
+
+const url = Astro.url.pathname;
+---
+
+<Base
+    bg="#000000"
+    color="#fff"
+    selection_bg="#000"
+    selection_color="#fff"
+    selection_only={false}
+    title="500 - Internal Server Error"
+>
+    <HomeNav bg="#000" color="#fff" title={'Not Found ' + url} client:load />
+    <div class="flex flex-col md:flex-row">
+        <div class="w-full md:w-1/2">
+            <div style="margin-top: 4vw;" class="text-center mx-10 md:mx-0">
+                <h1 class="md:text-6xl py-4 text-3xl font-bold">
+                    Internal Server Error
+                </h1>
+                <p class="pt-8 text-xl">
+                    Hey My Guy! The URL ({url}) you were looking for caused a weird
+                    error on our server.
+                </p>
+                <p class="p-4 text-xl">
+                    It is not your fault, it is ours. We are sorry for the
+                    inconvenience. Please take the time to report this error to us
+                </p>
+                <div>
+                    <button class="btn text-3xl py-4 text-black px-8 bg-white">
+                        <a href="https://github.com/newtoallofthis123/noobscience/issues"> Report Error </a>
+                    </button>
+                </div>
+            </div>
+            <div class="pt-8 text-center">
+                <h1 class="text-3xl font-bold">Atleast get inspired</h1>
+                <blockquote class="px-10 py-5">
+                    <p class="text-xl">
+                        <span id="quote"></span>
+                    </p>
+                    <p class="text-xl">
+                        <span class="text-gray-500">
+                            - <span id="author"></span>
+                        </span>
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="w-full md:w-1/2">
+            <>
+                <Image src={DogImage} class="w-full" alt="500 Dog Image" />
+            </>
+        </div>
+    </div>
+</Base>
+<script>
+    const quotes = await fetch(
+        'https://api.quotable.io/quotes/random?maxLength=300&minLength=100&limit=1'
+    );
+    const quote = await quotes.json();
+    //@ts-ignore
+    document.querySelector('#quote').innerHTML = quote[0].content;
+    //@ts-ignore
+    document.querySelector('#author').innerHTML = quote[0].author;
+</script>
