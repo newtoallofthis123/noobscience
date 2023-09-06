@@ -3,52 +3,180 @@ title: Refactoring UI Notes
 layout: "../../layouts/normal.astro"
 ---
 
-Also Read [Ethics](/ethics)
+Here are some brief notes that I wrote while I was reading the book
+"Refactoring UI" by Adam Wathan and Steve Schoger.
+It is a very great book and I highly recommend reading it. These notes
+cover most of the important points in the book, but not all of them.
+The book also has good design examples that I did not include here.
+So, if you are interested in design, I recommend reading the book.
+After you are done reading the book, you can use these notes as a
+reference.
 
-Effective Date: 2023-08-03
+---
 
-## Introduction
+## Initial Stage
 
-Welcome to NoobScience.rocks ("the Site"). By accessing and using the Site, you agree to be bound by these Terms of Service and any additional guidelines or rules posted on the Site. Please read these terms carefully before using the Site. If you do not agree with any part of these terms, please refrain from using the Site.
+Start with a feature, not a layout. Don’t start hierarchically. Start with designing the feature first.
 
-## Open Source and Attribution
+Initially, don’t get hung up on making *low level* decisions like the Typeface, icons etc.
 
-All content published on NoobScience.rocks, including but not limited to articles, blog posts, code snippets, and other resources, is open source and available for reuse under the MIT License, unless explicitly stated otherwise. You are free to use, modify, and redistribute the content from the Site, provided that you give appropriate attribution to NoobScience and the respective authors, and include a link back to the original content.
+Hold the colors initially
 
-## Site Source Code
+This is a low fidelity design. Don’t get too attached. That is, at least initially, don’t design *too* much.
 
-The entire source code for NoobScience.rocks is licensed under the MIT License and is available on [GitHub](https://github.com/newtoallofthis123/noobscience). You are welcome to fork, modify, and use the source code for your own projects, subject to the terms of the MIT License.
+Have a brief idea of what you want to build.
 
-## Controlled Tools and Services
+Design in cycles. So, when you are happy with a good design, then proceed.
 
-NoobScience.rocks may provide various tools and services for users to utilize. It is essential to note that these tools and services are heavily controlled and provided as-is. While we strive to maintain their functionality and reliability, we do not guarantee the accuracy, completeness, or suitability of any information or results obtained through these tools. You acknowledge that the use of these tools is solely at your own risk, and NoobScience shall not be held responsible for any consequences arising from their usage.
+When Designing, expect the feature to be hard
 
-## User Conduct and Responsibility
+If a part of the design is nice to have, build it later.
 
-When using NoobScience.rocks, you agree to:
+Don’t paint the building before the foundations are laid.
 
-1. Abide by all applicable laws and regulations.
-2. Respect the intellectual property rights of others and provide proper attribution when using content from the Site.
-3. Use the Site's tools and services responsibly and refrain from engaging in any activities that may harm the Site or its users.
+Choose a design personality and stick to it.
 
-## Modifications to the Site and Services
+Like for example, a bank website may have like a professional vibe with the cool serif fonts, whereas your personal site can have something funky.
 
-We reserve the right to modify, suspend, or discontinue any part of the Site, including its tools and services, at any time without prior notice or liability. We may also update these Terms of Service from time to time. Any changes will be effective immediately upon posting, and your continued use of the Site after such changes constitutes your acceptance of the modified terms.
+Small border radius is neutral, more is playful.
 
-## Limitation of Liability
+Make sure your actual text matches the website theme
 
-NoobScience, its owners, authors, and contributors shall not be liable for any direct, indirect, incidental, special, or consequential damages arising out of or in any way connected with the use of the Site, its content, or its services, even if advised of the possibility of such damages.
+Don’t borrow too much from other websites
 
-## Termination
+Try to limit your choices as much as possible.
 
-We may, at our sole discretion, suspend or terminate your access to the Site and its services if you violate these Terms of Service or engage in any activities that may harm the Site or its users.
+Define design systems in advance. This will help you limit your choices.
 
-## Governing Law
+If you are not sure about something, implement everything and choose by the process of elimination
 
-These Terms of Service shall be governed by and construed in accordance with the laws of India, without regard to its conflict of laws principles.
+Make a good system for everything at the very start. This will help you not second guess your work.
 
-## Contact Us
+## Working on Hierarchy
 
-If you have any questions or concerns regarding these Terms of Service or your use of the Site, please contact us at [noobscience@duck.com](mailto:noobscience@duck.com).
+Design is more than creativity and style. It is to a certain extent about it, but it is much more than making something just look good
 
-By using NoobScience.rocks, you signify your acceptance of these Terms of Service. If you do not agree with these terms, please refrain from using the Site.
+Visual Hierarchy is extremely important. Without it, the design feels weird and noisy.
+
+Classify text as primary, secondary and tertiary. This makes it easier for you to design them appropriately.  
+
+Don’t rely too much on just the font size to establish hierarchy.
+
+The font weight and color can do some heavy lifting too.
+
+For UI work, try sticking with two to three colors categorized as primary, secondary and tertiary. Two font weights as well.
+
+Stay away from lighter weights. To deemphasize text, try using a lighter color instead.
+
+Don’t use grey on colored backgrounds, instead choose a color of lighter hue.
+
+Deemphasize to Emphasize
+
+Labels are a last resort. Not everything has to labeled.
+
+Instead of presenting values mathematically, present them as a sentence.
+
+Labels, if necessary to put, are secondary.
+
+Emphasize the label if you know the user will be looking at the label.
+
+Don’t let HTML semantics influence your designs
+
+Use contrast to compensate for weight and vis versa
+
+Destructive buttons can be tertiary. They don’t have to be bold.
+
+## Spacing and White Space
+
+Always start with too much white space and reduce it subsequently.
+
+White space is always to be reduced, not added.
+
+Denseness should be deliberate, not automatic.
+
+Limit your spacing to certain values that are pre defined. 
+
+No two sizing parameters should be more than 25% in difference.
+
+You don’t need to fill the whole space. Let the design breath a bit.
+
+Not everything has to be full width
+
+If are finding it difficult to design for the mobile as well as the web, try limiting the space on the desktop to fit the mobile. There is nothing wrong with that.
+
+Split information in columns on the big screen
+
+Grids are overrated (Thank you!)
+
+Not all elements should be fluid. They can fixed. 
+
+Fluid elements sometimes don’t scale well
+
+Don’t use relative sizing to scale.
+
+Try and stick to `px`.
+
+Elements that are large on large screens need to shrink faster than elements that are already fairly small
+
+Don’t try to scale everything proportionally. Give yourself the ability to fine tune.
+
+Maintain correct spacing to maintain hierarchy
+
+## Text
+
+Choose a good text ratio. It can be like `4:5` or even the golden ration `1:1.618`.
+
+A simpler approach is to just go with what looks good. Establish your own text scaling system.
+
+Avoid `em` units. `px` scales much more functionally than `em`
+
+For typefaces:
+
+- Play it safe with the system font stack `-apple-system`
+- Choose typefaces with more than 10 styles
+- Optimize the font for legibility. Not style
+- If a font is popular, it is probably good and your users is mostly accustomed to seeing it anyways.
+- Be a type snob and develop your intuition
+
+Your line height is very important.
+
+Moreover, your line length is also very important. An average of 45 to 75 characters per line.
+
+Don’t spread the text too much. 
+
+Base line, not the center.
+
+Take the following into account when deciding the line height
+
+1. Font Size (Inverse)
+2. Line Length (Direct)
+
+Not every link needs a color. Just text emphasis will do the trick
+
+Align text naturally. The user should not need to move his eyes too much to read.
+
+Don’t center long form text. Just align it naturally.
+
+Always right align numbers
+
+Always enable word hyphenation with the `hypens: auto` option.
+
+All caps legibility is improved with low letter spacing
+
+## Colors
+
+Ditch Hex for HSL
+
+HSL Stands for Hue, Saturation, Lightness. It is based on the inherent properties of the colors that we perceive
+
+Example `hsl(220, 95%, 34%)`
+
+Hue is a color’s position in the wheel. So, the 220 stands for blue
+
+Saturation is how vivid a color looks. All the way from grey to bright
+
+Lightness measure how light a color is
+
+Think of more colors. Don’t just stick with the only colors in the color palette.
+
+Define your shades up front.

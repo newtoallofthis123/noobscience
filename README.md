@@ -1,7 +1,9 @@
-# NoobScience 
+# NoobScience
 
 But this time in a more minimal, neat and clean way.
 Based on the concept of Digital Garden, this is a place where I will be sharing my thoughts, ideas, notes, and resources on various topics.
+
+## This branch is blocked! All development is in the [dev](/tree/dev) branch
 
 ## What is a Digital Garden?
 
@@ -12,7 +14,6 @@ Some of the digital gardens that I like are:
 - [Joel Hooks](https://joelhooks.com/digital-garden)
 - [Maggie Appleton](https://maggieappleton.com/garden)
 - [Tom Critchlow](https://tomcritchlow.com/wiki/)
-
 
 ## Why am I doing this?
 
@@ -43,6 +44,7 @@ git clone https://github.com/newtoallofthis123/NoobScience.git
 ```bash
 npm install # or yarn install
 ```
+
 3. Run the development server
 
 ```bash
