@@ -8,7 +8,7 @@ module.exports = {
 				current: 'currentColor',
 				primary: 'rgb(var(--primary) / <alpha-value>)',
 				bg: 'rgb(var(--bg) / <alpha-value>)',
-				dark: '#0c0c0c',
+				dark: '#171616',
 				light: '#fbfcff',
 				sky: {
 					400: "#00cbec"

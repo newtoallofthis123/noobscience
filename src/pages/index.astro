@@ -33,10 +33,10 @@ const latest = posts
 
 <Base title="NoobScience | Student and Open Source Enthusiast">
     <div class="px-3">
-        <h1 class="text-xl">
-            Hey! I am <a href="/about" class="font-bold">Ishan</a>👋
-        </h1>
-        <div>
+        <div class="py-2">
+            <h1 class="text-xl">
+                Hey! I am <a href="/about" class="font-bold">Ishan</a>👋
+            </h1>
             <p class="pt-4">
                 A guy who found his passion for code when he was 18 and now just
                 can't stop coding. Likes to code in <span
@@ -72,20 +72,19 @@ const latest = posts
             </p>
         </div>
         <div class="md:pt-6 pt-2">
-            <h2 class="text-xl pt-2 font-bold">
-                <Heading level={2} /> My Latest Quip
+            <h2 class="text-2xl pt-2 font-heading font-bold">
+                My Latest Quip
             </h2>
             <p class="pt-2">
                 Well, think of quips as tweets but on my own site. I post my
-                thoughts and ideas here. More 
-                <a class="font-bold" href="/quips">here</a
-                >
+                thoughts and ideas here. More
+                <a class="font-bold" href="/quips">here</a>
             </p>
             <UpdateLatest client:idle />
         </div>
-        <div>
-            <h2 class="text-xl pt-2 font-bold">
-                <Heading level={2} /> Brief about me
+        <div class="py-2">
+            <h2 class="text-2xl pt-2 font-heading font-bold">
+                Brief about me
             </h2>
             <p class="pt-2">
                 Sounds professional 😎 and for our <a
@@ -107,11 +106,11 @@ const latest = posts
                 <li></li>
             </ul>
         </div>
-        <div class="pt-2">
-            <h2 class="text-xl pt-2 font-bold">
-                <Heading level={2} /> Fresh from the Blog
+        <div class="py-3">
+            <h2 class="text-2xl pt-2 font-heading font-bold">
+                Fresh from the Blog
             </h2>
-            <p class="pt-2">
+            <p class="py-2 pb-4">
                 Take a look at my blogs. They are pretty cool. I write about
                 tech, life and everything in between. More <a
                     class="font-bold"
@@ -122,18 +121,21 @@ const latest = posts
                     href="/social">socials</a
                 >
             </p>
-            <div class="pt-2 grid grid-cols-2 gap-x-4 gap-y-2">
+            <div class="pt-2 grid grid-cols-2 gap-4 gap-y-6">
                 {
                     latest.map((post: any) => {
                         return (
-                                <div class="py-1">
-                                    <h2 class="text-xl font-heading">
-                                        <a href={'/blog/' + post.slug}>
-                                            {post.data.emoji}{' '}{post.data.title}
-                                        </a>
-                                    </h2>
-                                    <p class="">{post.data.description.slice(0, 100) + "..."}</p>
-                                </div>
+                            <div class="py-1">
+                                <h2 class="text-xl font-heading">
+                                    <a href={'/blog/' + post.slug}>
+                                        {post.data.emoji} {post.data.title}
+                                    </a>
+                                </h2>
+                                <p class="">
+                                    {post.data.description.slice(0, 100) +
+                                        '...'}
+                                </p>
+                            </div>
                         );
                     })
                 }

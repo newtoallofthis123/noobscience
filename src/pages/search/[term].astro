@@ -7,7 +7,6 @@ const { term } = Astro.params || '';
 ---
 
 <Base footer={false} title="Search NoobScience">
-    <HomeNav client:load/>
     <h1 class="text-4xl text-center font-bold px-2 py-5">Search Ishan Writes</h1>
     <p class="text-center px-2">
         Showing results for <span class="font-bold">{term}</span>. Continue typing to refine your search.
