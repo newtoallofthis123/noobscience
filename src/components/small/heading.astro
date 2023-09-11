@@ -1,0 +1,13 @@
+---
+export interface Props {
+    level: number
+} 
+
+const {level} = Astro.props
+---
+
+<span class="text-neutral-300 dark:text-neutral-800">
+    {
+        '#'.repeat(level)
+    }
+</span>

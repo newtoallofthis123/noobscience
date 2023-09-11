@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 
 export interface Props {
     num: number;
+    view?: boolean;
 }
 
-export default function UpdateArchiveGrid({ num }: Props) {
+export default function UpdateArchiveGrid({ num, view=true }: Props) {
     const [latest, setLatest] = useState([
         {
             name: '',
@@ -31,14 +32,12 @@ export default function UpdateArchiveGrid({ num }: Props) {
 
     return (
         <>
-            {latest[0].name == '' && (
-                <h1 className="text-center p-4">Loading...</h1>
-            )}
+            {latest[0].name == '' && <h1 className="p-4">Loading...</h1>}
             {latest[0].name != '' && (
                 <div className="grid grid-cols-2 gap-4">
                     {latest.slice(1, latest.length).map((update: any) => (
-                        <div key={update.hash} className="pl-4 py-1">
-                            <h4 className="text-xl font-regular">
+                        <div key={update.hash} className="pt-0.5">
+                            <h4 className="font-regular">
                                 <a
                                     className="dark:hover:bg-white hover:p-2 dark:hover:text-black hover:bg-dark hover:text-white transform duration-300"
                                     href={`/quips/${update.hash}`}
@@ -48,13 +47,18 @@ export default function UpdateArchiveGrid({ num }: Props) {
                             </h4>
                         </div>
                     ))}
-                    <div className="pl-4 py-1">
-                        <h4 className="text-2xl font-base">
-                            <a className="underline" href={`/quips/archive`}>
-                                View All
-                            </a>
-                        </h4>
-                    </div>
+                    {view && (
+                        <div className="py-1">
+                            <h4 className="font-base">
+                                <a
+                                    className="bg-lime-300 p-2 rounded-lg"
+                                    href={`/quips/archive`}
+                                >
+                                    View All
+                                </a>
+                            </h4>
+                        </div>
+                    )}
                 </div>
             )}
         </>

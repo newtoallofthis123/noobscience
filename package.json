@@ -25,6 +25,7 @@
     "@fontsource/atkinson-hyperlegible": "^5.0.8",
     "@fontsource/libre-baskerville": "^5.0.8",
     "@fontsource/open-sans": "^5.0.8",
+    "@fontsource/roboto-condensed": "^5.0.8",
     "@types/marked": "^5.0.1",
     "@types/react": "^18.2.19",
     "@types/react-dom": "^18.2.7",

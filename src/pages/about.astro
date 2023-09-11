@@ -7,11 +7,10 @@ import * as icons from 'simple-icons';
 import profile from "../assets/profile.png"
 ---
 
-<Base title="About Me" bg="#ee72bc" color="#000">
-    <HomeNav title="About" client:load />
-    <div class="md:p-4 p-1">
-        <div class="flex flex-col md:flex-row justify-center items-center">
-            <div class="md:w-2/5">
+<Base nav_title="About Me" title="About Me" bg="#ee72bc" color="#000">
+    <div class="p-1">
+        <div class="flex flex-col justify-center items-center">
+            <div class="w-2/6">
                 <div>
                     <Image 
                     class="w-full h-auto" 
@@ -19,122 +18,90 @@ import profile from "../assets/profile.png"
                     alt="Ishan's Profile Image">
                 </div>
             </div>
-            <div class="md:w-3/5 p-4 md:mx-10">
-                <h1 class="text-5xl py-5 font-heading">
-                    Hello Hello!
+            <div class="w-full p-4 md:mx-10">
+                <h1 class="text-2xl py-2 font-bold font-heading">
+                    Hello Hello! Namaste!
                 </h1>
                 <div>
                     <p>
-                        Nice to meet you. I am Ishan, a 18 year old student and tech guy from India.
-                        I spend my day getting a degree at <a href="https://griet.ac.in">GRIET</a> and by night, I am BatMan, I mean, I am a developer.
-                        Just a sarcastic guy who loves to code and make things. That is the best you could know about me.
-                        Not quite active on social media, mostly tending to my digital garden.
+                        I am Ishan. I am a student and tech Enthusiast
+                        from India (So unique, I know). I am currently
+                        pursuing my Bachelors in Computer Science and
+                        Engineering. I am a Full Stack Developer and
+                        Machine Learning Enthusiast. I love to learn
                     </p>
-                    <p>
-                        I'm a Javascript and Python developer, and a Linux enthusiast.
-                        Love to code whenever and wherever possible.
-                        Big fan of the open software movement and the open web.
-                        Opinionated about things, but open to new ideas.
-                    </p>
-                    <button class="btn">
-                        <a href="/contact">
+                    <button class="bg-dark text-light rounded-lg p-2 my-4">
+                        <a class="text-lg" href="/contact">
                             Have a chat    
                         </a>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="flex md:flex-row flex-col justify-center md:pt-10">
-            <div class="md:w-3/5 w-full">
-                <h1 class="font-heading text-center md:text-5xl text-3xl">
-                    What I do
-                </h1>
-                <div class="md:p-6 p-4">
-                    <p>
-                        Except sleeping? I am a full stack developer, mostly working with Javascript and Python.
-                        I am pretty much a generalist, but I love to work on the backend.
-                        I am currently digging into the world of Machine Learning and AI.
-                        Stuck on Windows for now, but I am a Linux guy at heart.
-                        Started my journey with python, but now very into Rust. 
-                    </p>
-                    <p>
-                        My "web" stack includes pretty much everything, but I am a big fan of the MPA architecture.
-                        Hence, I am currently in love with frameworks like Astro and libraries like HTMX.
-                        I love working on new and cool stuff, so I am always open to new ideas.
-                    </p>
-                    <p>
-                        I'm a huge fan of the CLI and the terminal. Spend 10 hours automating a 5 minute task, I know I have a problem. 
-                        Currently looking into the cool world of Machine Learning and AI, and I am loving it.
-                        I currently looking to Rust to build cool new CLI tools and automations.
-                    </p>
-                    <p>
-                        This is like the "cool" version of this about page. If you wanna look into the #professional version, you can check out my <a class="underline" href="/resume">Resume</a>.
-                    </p>
-                </div>
-            </div>
-            <div class="md:w-2/5 w-full bg-light text-dark rounded-lg md:pl-10 pl-5">
-                <h1 class="text-2xl font-bold py-2">
-                    Languages
-                </h1>
-                <ul class="skills_ul flex flex-row">
-                    <li><a href="https://python.org" set:html={icons.siPython.svg}></a></li>
-                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" set:html={icons.siJavascript.svg}></a></li>
-                    <li><a href="https://www.typescriptlang.org/" set:html={icons.siTypescript.svg}></a></li>
-                    <li><a href="https://www.rust-lang.org/" set:html={icons.siRust.svg}></a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/C_(programming_language)" set:html={icons.siC.svg}></a></li>
-                </ul>
-                <h1 class="text-2xl font-bold py-2">
-                    Libraries
-                </h1>
-                <ul class="skills_ul flex flex-row">
-                    <li><a href="https://flask.palletsprojects.com/en/" set:html={icons.siFlask.svg}></a></li>
-                    <li><a href="https://numpy.org" set:html={icons.siNumpy.svg}></a></li>
-                    <li><a href="https://pandas.pydata.org" set:html={icons.siPandas.svg}></a></li>
-                    <li><a href="https://react.dev" set:html={icons.siReact.svg}></a></li>
-                    <li><a href="https://expressjs.com" set:html={icons.siExpress.svg}></a></li>
-                    <li><a href="https://expressjs.com" set:html={icons.siTailwindcss.svg}></a></li>
-                    <li><a href="https://jquery.com" set:html={icons.siJquery.svg}></a></li>
-                </ul>
-                <h1 class="text-2xl font-bold py-2">
-                    Frameworks
-                </h1>
-                <ul class="skills_ul flex flex-row">
-                    <li><a href="https://nextjs.org/" set:html={icons.siNextdotjs.svg}></a></li>
-                    <li><a href="https://astro.build" set:html={icons.siAstro.svg}></a></li>
-                    <li><a href="https://www.djangoproject.com" set:html={icons.siDjango.svg}></a></li>
-                    <li><a href="https://scikit-learn.org" set:html={icons.siScikitlearn.svg}></a></li>
-                    <li><a href="https://www.tensorflow.org" set:html={icons.siTensorflow.svg}></a></li>
-                    <li><a href="https://pytorch.org" set:html={icons.siPytorch.svg}></a></li>
-                </ul>
-                <h1 class="text-2xl font-bold py-2">
-                    Tools
-                </h1>
-                <ul class="skills_ul flex flex-row">
-                    <li><a href="https://github.com" set:html={icons.siGithub.svg}></a></li>
-                    <li><a href="https://vercel.com" set:html={icons.siVercel.svg}></a></li>
-                    <li><a href="https://colab.research.google.com/" set:html={icons.siGooglecolab.svg}></a></li>
-                    <li><a href="https://code.visualstudio.com" set:html={icons.siVisualstudiocode.svg}></a></li>
-                    <li><a href="https://figma.com" set:html={icons.siFigma.svg}></a></li>
-                </ul>
-                <h1 class="text-2xl font-bold py-2">
-                    Db's and Cloud
-                </h1>
-                <ul class="skills_ul flex flex-row">
-                    <li><a href="https://www.sqlite.org/index.html" set:html={icons.siSqlite.svg}></a></li>
-                    <li><a href="https://postgresql.org/" set:html={icons.siPostgresql.svg}></a></li>
-                    <li><a href="https://www.mongodb.com" set:html={icons.siMongodb.svg}></a></li>
-                    <li><a href="https://docker.com/" set:html={icons.siDocker.svg}></a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Linux" set:html={icons.siLinux.svg}></a></li>
-                </ul>
-            </div>
+        <h1>
+        </h1>
+        <div class="w-full bg-light text-dark rounded-lg px-4">
+            <h1 class="text-xl font-bold py-2">
+                My Skills and Languages
+            </h1>
+            <ul class="skills_ul flex flex-row">
+                <li><a href="https://python.org" set:html={icons.siPython.svg}></a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" set:html={icons.siJavascript.svg}></a></li>
+                <li><a href="https://www.typescriptlang.org/" set:html={icons.siTypescript.svg}></a></li>
+                <li><a href="https://www.rust-lang.org/" set:html={icons.siRust.svg}></a></li>
+                <li><a href="https://en.wikipedia.org/wiki/C_(programming_language)" set:html={icons.siC.svg}></a></li>
+            </ul>
+            <h1 class="text-xl font-bold py-2">
+                Libraries
+            </h1>
+            <ul class="skills_ul flex flex-row">
+                <li><a href="https://flask.palletsprojects.com/en/" set:html={icons.siFlask.svg}></a></li>
+                <li><a href="https://numpy.org" set:html={icons.siNumpy.svg}></a></li>
+                <li><a href="https://pandas.pydata.org" set:html={icons.siPandas.svg}></a></li>
+                <li><a href="https://react.dev" set:html={icons.siReact.svg}></a></li>
+                <li><a href="https://expressjs.com" set:html={icons.siExpress.svg}></a></li>
+                <li><a href="https://expressjs.com" set:html={icons.siTailwindcss.svg}></a></li>
+                <li><a href="https://jquery.com" set:html={icons.siJquery.svg}></a></li>
+            </ul>
+            <h1 class="text-xl font-bold py-2">
+                Frameworks
+            </h1>
+            <ul class="skills_ul flex flex-row">
+                <li><a href="https://nextjs.org/" set:html={icons.siNextdotjs.svg}></a></li>
+                <li><a href="https://astro.build" set:html={icons.siAstro.svg}></a></li>
+                <li><a href="https://www.djangoproject.com" set:html={icons.siDjango.svg}></a></li>
+                <li><a href="https://scikit-learn.org" set:html={icons.siScikitlearn.svg}></a></li>
+                <li><a href="https://www.tensorflow.org" set:html={icons.siTensorflow.svg}></a></li>
+                <li><a href="https://pytorch.org" set:html={icons.siPytorch.svg}></a></li>
+            </ul>
+            <h1 class="text-xl font-bold py-2">
+                Tools
+            </h1>
+            <ul class="skills_ul flex flex-row">
+                <li><a href="https://github.com" set:html={icons.siGithub.svg}></a></li>
+                <li><a href="https://vercel.com" set:html={icons.siVercel.svg}></a></li>
+                <li><a href="https://colab.research.google.com/" set:html={icons.siGooglecolab.svg}></a></li>
+                <li><a href="https://code.visualstudio.com" set:html={icons.siVisualstudiocode.svg}></a></li>
+                <li><a href="https://figma.com" set:html={icons.siFigma.svg}></a></li>
+            </ul>
+            <h1 class="text-xl font-bold py-2">
+                Db's and Cloud
+            </h1>
+            <ul class="skills_ul flex flex-row">
+                <li><a href="https://www.sqlite.org/index.html" set:html={icons.siSqlite.svg}></a></li>
+                <li><a href="https://postgresql.org/" set:html={icons.siPostgresql.svg}></a></li>
+                <li><a href="https://www.mongodb.com" set:html={icons.siMongodb.svg}></a></li>
+                <li><a href="https://docker.com/" set:html={icons.siDocker.svg}></a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Linux" set:html={icons.siLinux.svg}></a></li>
+            </ul>
         </div>
     </div>
 </Base>
 <style is:inline>
     .skills_ul li{
-        width: 2.4rem;
-        height: 2.4rem;
-        margin: 1rem 0.8rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        margin: 1rem 0.6rem;
     }
     .skills_ul svg{
         color: inherit;
