@@ -147,14 +147,16 @@ const headings: headings = meta?.headings;
                         {
                             headings.map((heading) => {
                                 return (
-                                    <li class="cursor-pointer py-1 transform hover:translate-x-1 transition duration-300 ease-in-out">
+                                    heading.depth == 2 && (
+                                        <li class="cursor-pointer py-1 transform hover:translate-x-1 transition duration-300 ease-in-out">
                                         <a
                                             href={`#${heading.slug}`}
-                                            class=`text-base ${heading.depth == 2 ? 'font-semibold' : ''} ${heading.depth == 3 ? 'pl-3 font-normal' : ''} truncate`
+                                            class="text-base font-semibold truncate"
                                         >
                                             {heading.text}
                                         </a>
                                     </li>
+                                    )
                                 );
                             })
                         }
@@ -170,6 +172,9 @@ const headings: headings = meta?.headings;
                     }
                     {frontmatter?.type != 'quick' && <div />}
                     <div class={`md:p-0 p-2 font-${frontmatter?.font}`}>
+                        <p class="text-3xl md:pt-5 pt-2">
+                        ⬇️
+                        </p>
                         <Content />
                     </div>
                 </div>

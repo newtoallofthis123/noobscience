@@ -10,7 +10,10 @@ export default {
         remarkHtml,
         remarkReadingTime,
         remarkMath,
-        [remarkExpressiveCode, { highlightTheme: 'github-dark' }]
+        [remarkExpressiveCode, { highlightTheme: 'github-dark' }],
     ],
-    rehypePlugins: [rehypeMathJaxSvg, rehypeSlug],
+    rehypePlugins: [
+        rehypeMathJaxSvg,
+        rehypeSlug,
+    ],
 };
