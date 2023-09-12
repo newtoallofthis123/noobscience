@@ -61,8 +61,8 @@ const headings: headings = meta?.headings;
     color={frontmatter?.color}
     bg={frontmatter?.bg}
     nav_title="Ishan Writes"
-    selection_bg={frontmatter?.selection_bg || '#facc15'}
-    selection_color={frontmatter?.selection_color || '#000'}
+    selection_bg={frontmatter?.selection_bg || frontmatter?.bg || '#fff'}
+    selection_color={frontmatter?.selection_color || frontmatter?.color || '#000'}
     title={frontmatter?.type == 'notes'
         ? frontmatter?.title + " | Ishan's Jots"
         : frontmatter?.title + ' | Ishan Writes'}
@@ -172,9 +172,6 @@ const headings: headings = meta?.headings;
                     }
                     {frontmatter?.type != 'quick' && <div />}
                     <div class={`md:p-0 p-2 font-${frontmatter?.font}`}>
-                        <p class="text-3xl md:pt-5 pt-2">
-                        ⬇️
-                        </p>
                         <Content />
                     </div>
                 </div>
