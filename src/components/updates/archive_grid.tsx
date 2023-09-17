@@ -51,7 +51,7 @@ export default function UpdateArchiveGrid({ num, view=true }: Props) {
                         <div className="py-1">
                             <h4 className="font-base">
                                 <a
-                                    className="bg-lime-300 p-2 rounded-lg"
+                                    className="bg-lime-300 text-dark p-2 rounded-lg"
                                     href={`/quips/archive`}
                                 >
                                     View All

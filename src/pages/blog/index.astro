@@ -13,18 +13,45 @@ posts = posts.sort(
     (a: any, b: any) =>
         new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
-
-let notes = posts.filter((post: any) => post.data.type == 'notes');
-let long = posts.filter((post: any) => post.data.type == 'long');
-let dev = posts.filter((post: any) => post.data.type == 'dev');
-let others = posts.filter(
-    (post: any) =>
-        !notes.includes(post) && !long.includes(post) && !dev.includes(post)
-);
 ---
 
-<Base title='Ishan Writes | Mussings about Tech, Life and More'>
+<Base title="Ishan Writes | Mussings about Tech, Life and More">
     <div>
-        <h1></h1>
+        <h1 class="text-3xl font-bold pb-3">Ishan Writes</h1>
+        <p></p>
+        <h2>All Posts</h2>
+        {
+            posts.map((post) => {
+                return (
+                    <div class="py-4">
+                        <p>
+                            <span class="bg-gray-200 text-gray-700 text-sm rounded-t-lg p-1.5 m-0">
+                            {new Date(post.data.date).toDateString()}
+                        </span></p>
+                        <h2 class="text-xl font-heading font-bold pb-1">
+                            <a href={'/blog/' + post.slug}>
+                                {post.data.emoji} {post.data.title}
+                            </a>
+                        </h2>
+                        <p class="w-5/6">
+                            {post.data.description}
+                        </p>
+                        <ul class="mt-1.5">
+                            {
+                                post.data.tags.map((tag) => {
+                                    return (
+                                        <li class="inline-block rounded-full px-0.5 py-0 text-sm text-gray-700 mr-2">
+                                            <a href={'/tags/' + tag}>
+                                            #{tag}
+                                            </a>
+                                        </li>
+                                    );
+                                })
+                            }    
+                        </ul>
+                    </div>
+                );
+            })
+        }
     </div>
 </Base>

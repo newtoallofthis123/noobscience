@@ -8,8 +8,8 @@ const res = await fetch(`http://${Astro.url.host}/api/code/${hash}`)
 const data = await res.json()
 ---
 
-<Base title={data.title + " | NoobPaste Mini"} color="#fff" bg="#1e1e2e" selection_only={false} selection_bg="#facc15" selection_color="#000" footer={false}>
-    <div class="font-mono md:p-8 p-4">
+<Base full={true} title={data.title + " | NoobPaste Mini"} nav_title={data.title + " | NoobPaste Mini"} emoji="🤖" color="#fff" bg="#1e1e2e" selection_only={false} selection_bg="#facc15" selection_color="#000" footer={false}>
+    <div class="font-mono md:px-4 md:py-2 p-2">
         <h1 class="md:text-2xl text-lg font-bold">
             <span class="text-green-400">{hypens(data.author)}@noobscience</span>:<span class="text-blue-300">~</span>$cat ./{data.title}
         </h1>

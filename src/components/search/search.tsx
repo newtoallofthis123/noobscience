@@ -63,7 +63,7 @@ export default function Search({ term = '' }: any) {
 
     return (
         <div className="flex flex-col py-3 justify-center items-center">
-            <div className="w-5/6 focus:outline-none">
+            <div className="w-full focus:outline-none">
                 <form
                     spellCheck="false"
                     autoComplete='off'
@@ -97,7 +97,7 @@ export default function Search({ term = '' }: any) {
                     </div>
                 </form>
             </div>
-            <div className="md:w-5/6 w-full">
+            <div className="w-full">
                 {results.length != 0 &&
                     results.map((post: any) => (
                         <div

@@ -39,18 +39,18 @@ export default function Update({ hash }: UpdateProps) {
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col justify-center">
             {latest.name == '' && (
                 <h1 className="text-center p-4">Loading...</h1>
             )}
             {latest.name != '' && (
-                <div id="update" className="md:w-4/5 w-full">
+                <div id="update" className="w-full">
                     <p>
                         <span className="bg-yellow-300 text-dark rounded-t-lg p-2 m-0">
                             {new Date(latest.date).toDateString()}
                         </span>
                     </p>
-                    <h1 className="text-2xl font-bold font-heading pb-2 pt-1">
+                    <h1 className="text-3xl font-bold font-heading pb-2 pt-1">
                         {latest.name}
                     </h1>
                     <div

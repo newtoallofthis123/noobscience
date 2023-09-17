@@ -34,7 +34,7 @@ export default function CodeEditor({}: Props) {
         <>
             <div className="">
                 <h1 className="md:text-4xl text-2xl pb-3 px-2 font-heading">
-                    NoobPaste
+                    🤖NoobPaste
                 </h1>
                 <p className="px-2">
                     {link ? (

@@ -9,6 +9,7 @@ export interface Props {
     selection_color?: string;
     selection_bg?: string;
     nav?: boolean;
+    full?: boolean;
     emoji?: string;
     nav_title?: string;
     footer?: boolean;
@@ -24,6 +25,7 @@ const {
     selection_bg = bg,
     nav_title = 'NoobScience',
     nav = true,
+    full = false,
     footer = true,
     emoji = '',
 } = Astro.props;
@@ -110,9 +112,9 @@ const BASE_URL = 'http://' + Astro.url.host;
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
         crossorigin="anonymous"></script>
     <body
-        class="dark:bg-dark dark:text-light bg-light text-dark flex flex-col items-center"
+        class={`${!selection_only ? 'colored' : 'dark:bg-dark dark:text-light bg-light text-dark'} flex flex-col items-center`}
     >
-        <div class={!selection_only ? 'colored' : '' + 'md:w-3/5'} id="content">
+        <div class={!full ? 'md:w-3/5': 'md:w-full'} id="content">
             {nav && <HomeNav title={nav_title} emoji={emoji} client:load />}
             <div class="py-4">
                 <slot />
