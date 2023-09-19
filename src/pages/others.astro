@@ -1,30 +1,36 @@
 ---
-import Base from "../layouts/base.astro";
-import HomeNav from "../components/navigation/home_nav";
+import Base from '../layouts/base.astro';
+import HomeNav from '../components/navigation/home_nav';
 ---
 
 <Base footer={false}>
-    <HomeNav client:load />
-    <div class="flex justify-center flex-col items-center">
-        <div class="w-4/5">
-            <h1 class="text-6xl font-heading my-4">
-                Some other corners of the site
-            </h1>
-            <p>
-                I have a lot of stuff on the site.
-                These are some corners that I don't want to expose too much, but I still want to share.
-                They are mostly just some small services, mostly for my own use.
-                You can find the links for the services listed below.
-            </p>
-            <p>
-                The site also has a public API which you can use to interact with the go url shortener.
-            </p>
-            <ul class="bg-dark text-white p-4 rounded-xl my-4">
-                <li><a class="underline" href="/quips">Quips</a>: Just some of my thoughts. Think of it like a journal.</li>
-                <li><a class="underline" href="/go">Go</a>: A simple url shortener. I have complete control. Don't put anything sensitive</li>
-                <li><a class="underline" href="/code">Code</a>: A simple paste bin service. Unencrypted, so use at own caution.</li>
-                <li><a class="underline" href="/now">NowNowNow</a>: A page that displays what's up with me, updated whenever I want to. Under Development</li>
-            </ul>
-        </div>
-    </div>
+    <h1 class="text-2xl font-heading font-bold pb-4">Some other corners of the site</h1>
+    <p>
+        I have a lot of stuff on the site. These are some corners that I don't
+        want to expose too much, but I still want to share. They are mostly just
+        some small services, mostly for my own use. You can find the links for
+        the services listed below.
+    </p>
+    <p>
+        The site also has a public API which you can use to interact with the go
+        url shortener.
+    </p>
+    <ul class="text-base my-2">
+        <li class="py-1">
+            <a class="font-bold" href="/quips">Quips</a>: Just some of my
+            thoughts. Think of it like a journal.
+        </li>
+        <li class="py-1">
+            <a class="font-bold" href="/go">Go</a>: A simple url shortener. I
+            have complete control. Don't put anything sensitive
+        </li>
+        <li class="py-1">
+            <a class="font-bold" href="/code">Code</a>: A simple paste bin
+            service. Unencrypted, so use at own caution.
+        </li>
+        <li class="py-1">
+            <a class="font-bold" href="/now">NowNowNow</a>: A page that displays
+            what's up with me, updated whenever I want to. Under Development
+        </li>
+    </ul>
 </Base>

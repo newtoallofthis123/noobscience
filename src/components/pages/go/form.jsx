@@ -20,7 +20,7 @@ export default function GoForm() {
     return (
         <>
             <form onSubmit={submit}>
-                <div className="md:mt-10 px-10">
+                <div className="">
                     <h1 className="text-5xl p-2">NoobShort</h1>
                     <p className="text-lg p-2">
                         Because simplicity is the ultimate sophistication.
@@ -31,12 +31,12 @@ export default function GoForm() {
                                 style={{
                                     boxShadow: '0.3em 0.4em',
                                 }}
-                                className="border-2 p-2 border-black md:w-3/5 mt-2 mb-4 rounded-xl"
+                                className="border-2 p-2 border-black dark:border-light mt-2 mb-4 rounded-xl"
                             >
                                 <input
-                                    autoComplete='off'
+                                    autoComplete="off"
                                     type="url"
-                                    className="w-5/6 p-2 border-r-2 border-black focus:outline-none text-lg"
+                                    className="w-5/6 p-2 border-r-2 border-black  dark:border-light bg-light dark:bg-dark focus:outline-none text-lg"
                                     name="url"
                                     placeholder="Paste the Long Thing Here"
                                 />
@@ -78,7 +78,7 @@ export default function GoForm() {
                             <h2 className="text-xl font-bold py-2">
                                 Mandatory Dev Stuff
                             </h2>
-                            <p className="md:w-3/5 leading-8 text-base">
+                            <p className="md:w-4/5 leading-8 text-base">
                                 Hey! I am Ishan, the creator of NoobShort.
                                 NoobShort was initially a huge flask app with
                                 postgres. But, now, it is a simple React
@@ -92,7 +92,7 @@ export default function GoForm() {
                             <h2 className="text-xl font-bold py-2">
                                 NoobShort CLI!
                             </h2>
-                            <p className="md:w-3/5 leading-8 text-base">
+                            <p className="leading-8 text-base">
                                 Same shortener, but from the comfort of your
                                 terminal. Check it out at
                                 <a
