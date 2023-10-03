@@ -63,7 +63,7 @@ export default function Search({ term = '' }: any) {
 
     return (
         <div className="flex flex-col py-3 justify-center items-center">
-            <div className="w-full focus:outline-none">
+            <div className="w-5/6 focus:outline-none">
                 <form
                     spellCheck="false"
                     autoComplete='off'
@@ -92,12 +92,13 @@ export default function Search({ term = '' }: any) {
                             autoFocus
                         />
                         <button className="rounded-r-xl text-xl dark:text-black w-2/12 bg-yellow-400">
+                            <span className='md:inline hidden'>Start Typing to</span>
                             <i className="bi bi-search"></i>
                         </button>
                     </div>
                 </form>
             </div>
-            <div className="w-full">
+            <div className="md:w-5/6 w-full">
                 {results.length != 0 &&
                     results.map((post: any) => (
                         <div
@@ -105,7 +106,7 @@ export default function Search({ term = '' }: any) {
                             className="flex flex-col justify-center items-center md:justify-normal md:items-start md:flex-row md:p-4 p-1 border-gray-400 border-b-2"
                         >
                             <div className="p-4">
-                                <p className="text-xl text-center md:text-justify font-bold">
+                                <p className="text-2xl text-center md:text-justify font-bold">
                                     {post.data.emoji && (
                                         <span>{post.data.emoji} </span>
                                     )}
@@ -121,7 +122,7 @@ export default function Search({ term = '' }: any) {
                                         )
                                     }
                                 </p>
-                                <p className="text-neutral-600 text-lg w-full py-2">
+                                <p className="text-gray-500 text-lg w-full md:w-3/5 py-2">
                                     {post.data.description}
                                 </p>
                                 {post.data.tags.length > 0 && (

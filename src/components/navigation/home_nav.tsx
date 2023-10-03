@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/nav.scss';
 import { motion } from 'framer-motion';
 
-export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit', emoji = '' }) {
+export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' }) {
     const [nav, setNav] = React.useState(false);
     const play_shutter = () => {
         const path = '/assets/audio/shutter.wav';
@@ -20,39 +20,25 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit',
                     color: color,
                 }}
                 id="home_nav"
-                className="p-0 dark:bg-dark dark:text-white"
+                className="p-2 dark:bg-dark dark:text-white"
             >
                 <div id="nav">
                     <div className="flex flex-row justify-between items-center p-2">
-                        <div className="flex flex-row justify-around">
+                        <div className="flex-shrink-0 flex flex-row mx-5 justify-around">
                             <div>
-                                {
-                                    emoji == '' ? (<img
+                                {/* <Logo /> */}
+                                <img
                                     width={48}
                                     height={48}
-                                    className="mt-1 w-8 h-8 ease-in-out cursor-pointer duration-500 transform hover:-translate-y-1 hover:scale-110"
+                                    className="w-10 h-10 md:w-12 md:h-12 ease-in-out cursor-pointer duration-500 transform hover:-translate-y-1 hover:scale-110"
                                     src="/logo192.webp"
                                     alt="NoobScience Logo"
                                     onClick={play_shutter}
-                                    />) : (
-                                            <span
-                                                onClick={() => {
-                                                    typeof window !== 'undefined' &&
-                                                        navigator.clipboard.writeText(
-                                                            window.location.host + "/e/" + emoji
-                                                        );
-                                                    typeof window !== 'undefined' &&
-                                                        window.alert(
-                                                            'Copied Short Share URL to clipboard!'
-                                                        );    
-                                                }}
-                                                className="text-4xl font-bold cursor-point">{emoji}</span>
-                                )
-                                }
+                                />
                             </div>
                             <a
                                 href="/"
-                                className="md:block hidden text-xl py-2 font-bold ml-2"
+                                className="md:block hidden text-2xl py-2 font-bold ml-5"
                             >
                                 {title && <span>{title}</span>}
                             </a>
@@ -104,6 +90,22 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit',
                                             href="/social"
                                         >
                                             Social
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className="special_underline"
+                                            href="/contact"
+                                        >
+                                            Contact
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className="special_underline"
+                                            href="/about"
+                                        >
+                                            About
                                         </a>
                                     </li>
                                     <li>
@@ -174,7 +176,7 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit',
                                                 name="text"
                                                 type="text"
                                             />
-                                            <button type="button">
+                                            <button type='button'>
                                                 <img
                                                     src="/assets/icons/search_left.png"
                                                     className="w-6"
@@ -188,34 +190,38 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit',
                                 </div>
                             </li>
                             <li>
-                                <a
-                                    className="special_underline text-lg"
-                                    href="/others"
-                                >
+                                <a className="special_underline" href="/others">
                                     Others
                                 </a>
                             </li>
                             <li>
-                                <a
-                                    className="special_underline text-lg"
-                                    href="/social"
-                                >
+                                <a className="special_underline" href="/social">
                                     Social
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    className="special_underline text-lg"
+                                    className="special_underline"
+                                    href="/contact"
+                                >
+                                    Contact
+                                </a>
+                            </li>
+                            <li>
+                                <a className="special_underline" href="/about">
+                                    About
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    className="special_underline"
                                     href="/creations"
                                 >
                                     Creations
                                 </a>
                             </li>
                             <li>
-                                <a
-                                    className="special_underline text-lg"
-                                    href="/blog"
-                                >
+                                <a className="special_underline" href="/blog">
                                     Blog
                                 </a>
                             </li>

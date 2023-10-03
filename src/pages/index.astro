@@ -1,3 +1,4 @@
+
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
@@ -6,8 +7,6 @@ import Notification from '../components/utils/notification/notification';
 import UpdateLatest from '../components/updates/latest';
 import { Image } from 'astro:assets';
 import Current from '../components/utils/notification/current';
-import Heading from '../components/small/heading.astro';
-import { siJavascript, siPython, siRust } from 'simple-icons';
 
 const options = [
     'is a Developer',
@@ -32,123 +31,127 @@ const latest = posts
 ---
 
 <Base title="NoobScience | Student and Open Source Enthusiast">
-    <div class="px-3">
-        <div class="py-2">
-            <h1 class="text-xl">
-                Hey! I am <a href="/about" class="font-bold">Ishan</a>👋
-            </h1>
-            <p class="pt-4">
-                A guy who found his passion for code when he was 18 and now just
-                can't stop coding. Likes to code in <span
-                    id="inline-icon"
-                    set:html={siRust.svg}
-                /> Rust for elegance and class however, gets sucked into the
-                <span
-                    id="inline-icon"
-                    class="text-yellow-400"
-                    set:html={siJavascript.svg}
-                /> JS and <span
-                    class="text-blue-400"
-                    id="inline-icon"
-                    set:html={siPython.svg}
-                /> Py void. Studies Computer Science at <a
-                    class="font-bold"
-                    href="https://griet.ac.in">GRIET</a
-                > while living in Hyderabad, India. Currently <Notification
-                    client:load
-                />
-                <a class="ml-1" href="/now"
-                    ><i class="text-blue-500 bi bi-arrow-right"></i></a
+    <div>
+        <HomeNav title="NoobScience" client:load />
+        <div class="-z-10 md:px-16 md:py-14 p-2">
+            <div class="font-serif text-gray-900 dark:text-gray-200">
+                <div>
+                    <h1 class="md:text-7xl leading-snug text-4xl">
+                        <a
+                            href="/about"
+                            class="font-bold dark:text-white text-black leading-snug md:text-8xl text-6xl cursor-help transform duration-500"
+                            >Ishan</a
+                        >
+                        {' '}{
+                            options[Math.floor(Math.random() * options.length)]
+                        }
+                    </h1>
+                </div>
+                <h1
+                    class="md:py-10 md:text-6xl leading-snug text-4xl font-bold"
                 >
-            </p>
-            <p class="pt-2">
-                Welcome to my site. Grab a coffee and have a look around. You'll
-                find a very cool <a class="font-bold" href="/blog">blog</a>,
-                some <a class="font-bold" href="/projects">projects</a> and some
-
-
-                <a class="font-bold" href="/tools">tools</a> if you are
-                interested.
-            </p>
-        </div>
-        <div class="md:pt-6 pt-2">
-            <h2 class="text-2xl pt-2 font-heading font-bold">
-                My Latest Quip
-            </h2>
-            <p class="pt-2">
-                Well, think of quips as tweets but on my own site. I post my
-                thoughts and ideas here. More
-                <a class="font-bold" href="/quips">here</a>
-            </p>
-            <UpdateLatest client:idle />
-        </div>
-        <div class="py-2">
-            <h2 class="text-2xl pt-2 font-heading font-bold">
-                Brief about me
-            </h2>
-            <p class="pt-2">
-                Sounds professional 😎 and for our <a
-                    class="font-bold"
-                    href="/blog/social-media/gold-fish">gold fish</a
-                > attention spans
-            </p>
-            <ul id="points" class="list-none pt-2 grid grid-cols-2 gap-x-4">
-                <li>🎒 1st year Student at GRIET</li>
-                <li>🧑‍💻 Full Stack Developer</li>
-                <li>
-                    <i class="bi bi-github pl-1"></i> Open Source Enthusiast
-                </li>
-                <li>🌱 Web Gardener</li>
-                <li>🤖 Learning to teach Machines</li>
-                <li>📱 Trying to distance from Social Media</li>
-                <li>🌐 Loves building and maintaining sites</li>
-                <li>🐶 Dog Lover</li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="py-3">
-            <h2 class="text-2xl pt-2 font-heading font-bold">
-                Fresh from the Blog
-            </h2>
-            <p class="py-2 pb-4">
-                Take a look at my blogs. They are pretty cool. I write about
-                tech, life and everything in between. More <a
-                    class="font-bold"
-                    href="/blog">here</a
-                >. I also cross post these to every platform I am on. So, you
-                can read them there too. Follow me on my <a
-                    class="font-bold"
-                    href="/social">socials</a
-                >
-            </p>
-            <div class="pt-2 grid grid-cols-2 gap-4 gap-y-6">
-                {
-                    latest.map((post: any) => {
-                        return (
-                            <div class="py-1">
-                                <h2 class="text-xl font-heading">
-                                    <a href={'/blog/' + post.slug}>
-                                        {post.data.emoji} {post.data.title}
-                                    </a>
-                                </h2>
-                                <p class="">
-                                    {post.data.description.slice(0, 100) +
-                                        '...'}
-                                </p>
-                            </div>
-                        );
-                    })
-                }
+                    and he's known as <span
+                        class="text-yellow-400 dark:text-yellow-300 p-1"
+                        >NoobScience</span
+                    >.
+                </h1>
             </div>
+            <div class="flex md:flex-row flex-col justify-center items-center">
+                <div class="md:w-4/5 w-full">
+                    <div class="md:p-0 py-5">
+                        <p>Mostly Codes and Drinks Coffee.</p>
+                        <p>1st Student At GRIET.</p>
+                    </div>
+                    <div class="">
+                        <Notification client:load />
+                    </div>
+                </div>
+                <div class="md:block hidden md:w-1/4 w-full"></div>
+            </div>
+            <span class="block w-1/5 h-1 mt-8 bg-red-600"></span>
+            <div>
+                <button
+                    class="btn p-4 text-2xl mx-0 bg-dark dark:text-black dark:bg-white"
+                >
+                    <a href="/about">Know me better</a>
+                </button>
+                <p class="text-lg">
+                    By the way, you should scroll down or check out my writings
+                </p>
+            </div>
+            <div class="flex pt-4 md:flex-row flex-col justify-center">
+                <div class="md:w-3/5 w-full">
+                    <h1 class="md:text-5xl text-3xl py-5 pt-8 font-bold">
+                        Cool Stuff, I do
+                    </h1>
+                    <p>Hi! I am Ishan. Get to know me from these bullets.</p>
+                    <ul id="points" class="list-none font-normal py-3">
+                        <li>🎒 1st year Student at GRIET</li>
+                        <li>🧑‍💻 Full Developer and Coder</li>
+                        <li>
+                            <i class="bi bi-github pl-1"></i> Open Source
+                            Enthusiast
+                        </li>
+                        <li>🌱 Web Gardener</li>
+                        <li>🤖 Learning to teach Machines</li>
+                        <li>📱 Trying to distance from Social Media</li>
+                        <li>🌐 Loves building and maintaining sites</li>
+                        <li>🐶 Dog Lover</li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div id="update" class="md:w-4/5 w-full pr-2">
+                    <div>
+                        <h1 class="text-3xl font-heading text-center py-2">
+                            Latest Update
+                        </h1>
+                        <UpdateLatest slice_length={300} client:load />
+                    </div>
+                </div>
+            </div>
+            <div id="latest">
+                <h1 class="text-5xl py-5 pt-8 font-bold">Latest Posts</h1>
+                <div transition:name="blog" class="grid md:grid-cols-2 md:gap-3">
+                    {
+                        latest.map((post) => {
+                            return (
+                                <article class="md:p-4 md:my-0.5 p-0.5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out">
+                                    <a href={'/blog/' + post.slug}>
+                                        <header>
+                                            <h2 class="md:text-2xl text-xl leading-relaxed font-bold">
+                                                {post.data.emoji}{' '}
+                                                {post.data.title}
+                                            </h2>
+                                        </header>
+                                        <section>
+                                            <p class="text-lg py-3">
+                                                {post.data.description}
+                                            </p>
+                                            <p class="text-lg">
+                                                Posted on{' '}
+                                                <time
+                                                    datetime={post.data.date.toDateString()}
+                                                >
+                                                    {new Date(
+                                                        post.data.date
+                                                    ).toDateString()}
+                                                </time>
+                                            </p>
+                                        </section>
+                                    </a>
+                                </article>
+                            );
+                        })
+                    }
+                </div>
+            </div>
+            <Current client:idle />
         </div>
     </div>
 </Base>
 <style is:inline>
     #heading {
         line-height: 4rem;
-    }
-    #points li {
-        padding: 0.25rem;
     }
     @media screen and (max-width: 768px) {
         #heading {

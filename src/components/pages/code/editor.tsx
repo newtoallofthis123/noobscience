@@ -32,29 +32,25 @@ export default function CodeEditor({}: Props) {
     };
     return (
         <>
-            <div className="">
+            <div className="md:p-10">
                 <h1 className="md:text-4xl text-2xl pb-3 px-2 font-heading">
-                    🤖NoobPaste
+                    NoobPaste
                 </h1>
                 <p className="px-2">
                     {link ? (
                         <span>
                             <a href={link} className="text-blue-500">
-                                {window.location.href +
-                                    link.replace('/code', '')}
+                                {window.location.href + link.replace('/code', '')}
                             </a>
                         </span>
                     ) : (
                         <span>Simple and Efficient Code Sharing.</span>
                     )}
                 </p>
-                <form
-                    onSubmit={addCode}
-                    className="border-2 border-r-8 border-b-8 rounded-2xl border-black dark:border-light"
-                >
-                    <div className="flex flex-row border-b-2 border-black dark:border-light">
+                <form onSubmit={addCode} className="border-2 border-r-8 border-b-8 rounded-2xl border-black">
+                    <div className="flex flex-row border-b-2 border-black">
                         <select
-                            className="w-1/6 rounded-2xl dark:bg-dark focus:outline-none text-lg mx-5"
+                            className="w-1/6 rounded-2xl focus:outline-none text-lg mx-5"
                             name="code_lang"
                             required={true}
                             id="code_lang"
@@ -93,7 +89,7 @@ export default function CodeEditor({}: Props) {
                             type="text"
                             placeholder="Enter the file name"
                             required={true}
-                            className="w-2/6 dark:bg-dark text-center text-xl focus:outline-none"
+                            className="w-2/6 text-center text-xl focus:outline-none"
                             name="code_title"
                             autoComplete="off"
                             spellCheck="false"
@@ -103,7 +99,7 @@ export default function CodeEditor({}: Props) {
                             type="text"
                             placeholder="Author Name"
                             required={true}
-                            className="w-2/6 dark:bg-dark text-center text-xl focus:outline-none"
+                            className="w-2/6 text-center text-xl focus:outline-none"
                             name="author"
                             autoComplete="off"
                             spellCheck="false"
@@ -111,7 +107,7 @@ export default function CodeEditor({}: Props) {
                         />
                         <button
                             className="
-                            w-1/6 bg-dark text-white dark:bg-light dark:text-dark rounded-3xl text-xl font-bold p-2 m-2 transform duration-500 hover:scale-105 focus:outline-none
+                            w-1/6 bg-dark text-white rounded-3xl text-xl font-bold p-2 m-2 transform duration-500 hover:scale-105 focus:outline-none
                             "
                             type="submit"
                         >
@@ -122,7 +118,7 @@ export default function CodeEditor({}: Props) {
                         name="content"
                         required={true}
                         id="content"
-                        className="w-full dark:bg-dark focus:outline-none p-1 text-base"
+                        className="w-full focus:outline-none p-1 text-base"
                         rows={20}
                         spellCheck="false"
                         cols={10}

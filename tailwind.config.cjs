@@ -8,7 +8,7 @@ module.exports = {
 				current: 'currentColor',
 				primary: 'rgb(var(--primary) / <alpha-value>)',
 				bg: 'rgb(var(--bg) / <alpha-value>)',
-				dark: '#171616',
+				dark: '#171417',
 				light: '#fbfcff',
 				sky: {
 					400: "#00cbec"
@@ -19,7 +19,7 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				heading: ['"Roboto Condensed"', 'sans-serif'],
+				heading: ['"Archivo Black"', 'sans-serif'],
 				serif: ['"Libre Baskerville"', 'serif']
 			},
 		},

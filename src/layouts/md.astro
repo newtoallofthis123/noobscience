@@ -1,11 +1,18 @@
 ---
 import Base from "./base.astro";
+import HomeNav from "../components/navigation/home_nav";
 const {frontmatter} = Astro.props;
 ---
 
-<Base title={frontmatter.title} nav_title={frontmatter.title}>
-    <div class="md:px-2" id="md">
-        <slot />
+<Base title={frontmatter.title}>
+    <HomeNav client:load title={frontmatter.title} />
+    <div class="flex flex-col justify-center md:px-20" id="md">
+        <div class="md:w-4/5 w-full p-2">
+            <h1 class="py-5">
+                {frontmatter.title}
+            </h1>
+            <slot />
+        </div>
     </div>
 </Base>
 <style is:inline>
@@ -19,22 +26,22 @@ const {frontmatter} = Astro.props;
         font-weight: 400;
     }
     p {
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 400;
         padding-bottom: 1rem;
-        line-height: 1.9;
+        line-height: 2.4rem;
     }
     #md a {
-        font-weight: 700;
+        font-weight: 400;
+        text-decoration: 1.2px underline currentColor;
     }
-
-    #md a:hover {
-        color: #2418fc;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-weight: 700;
-        line-height: 1.5;
     }
 
     h1 {
@@ -43,15 +50,19 @@ const {frontmatter} = Astro.props;
     }
 
     h2 {
-        font-size: 1.4rem;
-        line-height: 2rem;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
         padding: 0.5rem 0;
     }
     h3 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         line-height: 2.4rem;
-        padding: 0.2rem 0;
-        padding-top: 0.8rem;
+        padding: 0.5rem 0;
+    }
+    h4 {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        padding: 0.5rem 0;
     }
     p code {
         font-family: 'Fira Code Variable', monospace;
@@ -141,9 +152,9 @@ const {frontmatter} = Astro.props;
 
     li {
         padding: 0;
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 400;
-        line-height: 2;
+        line-height: 2.4rem;
     }
 
     @media screen and (max-width: 768px) {

@@ -2,18 +2,20 @@
 import Base from '../../layouts/base.astro';
 import UpdateArchiveGrid from '../../components/updates/archive_grid';
 import UpdateLatest from '../../components/updates/latest';
+import HomeNav from '../../components/navigation/home_nav';
 ---
 
 <Base title="Ishan's Quips">
-    <div class="px-4">
-        <h1 class="text-2xl font-bold font-heading pb-2">Ishan's Quips</h1>
+    <HomeNav client:load />
+    <div class="p-4">
+        <h1 class="text-6xl font-heading py-5">Ishan's Quips</h1>
         <p>
             Small updates about my life, projects, and more.
             Updated every few days and are not a part of my garden.
         </p>
-        <div class="mt-1">
+        <div class="mt-8">
             <UpdateLatest client:idle />
-            <h2 class="text-xl font-heading pb-2">
+            <h2 class="text-4xl font-heading pb-5">
                 Few of my latest updates
             </h2>
             <UpdateArchiveGrid num={20} client:load />

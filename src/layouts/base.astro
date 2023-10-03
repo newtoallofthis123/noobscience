@@ -8,68 +8,46 @@ export interface Props {
     description?: string;
     selection_color?: string;
     selection_bg?: string;
-    nav?: boolean;
-    full?: boolean;
-    emoji?: string;
-    nav_title?: string;
     footer?: boolean;
 }
-const {
-    title,
-    img = '/assets/banner.png',
-    description,
-    color,
-    bg,
-    selection_only = true,
-    selection_color = color,
-    selection_bg = bg,
-    nav_title = 'NoobScience',
-    nav = true,
-    full = false,
-    footer = true,
-    emoji = '',
-} = Astro.props;
-import '../base.css';
-import Init from '../components/utils/theme';
-import { Image } from 'astro:assets';
-import { ViewTransitions } from 'astro:transitions';
+const {title, img="/assets/banner.png", description, color, bg, selection_only=true, selection_color=color, selection_bg=bg, footer=true} = Astro.props
+import "../base.css"
+import Init from "../components/utils/theme";
+import { Image } from "astro:assets";
+import { ViewTransitions } from "astro:transitions";
 import '../components/styles/nav.scss';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
+import '@fontsource/atkinson-hyperlegible';
 import '@fontsource-variable/inter';
-import '@fontsource/roboto-condensed/700.css';
-import '@fontsource/roboto-condensed/400.css';
 import '@fontsource/libre-baskerville';
 import '@fontsource/archivo-black';
 import '@fontsource-variable/fira-code';
-import logo from '../assets/logo192.png';
-import HomeNav from '../components/navigation/home_nav';
+import logo from "../assets/logo192.png"
 
-const BASE_URL = 'http://' + Astro.url.host;
+const BASE_URL = "http://" + Astro.url.host
 ---
 
 <html lang="en">
     <title>
-        {title || 'NoobScience | Student and Open Source Enthusiast.'}
+        {
+            title || "NoobScience | Student and Open Source Enthusiast."
+        }
     </title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="robots" content="index, follow, archive" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml">
     <link rel="icon" href="/favicon.ico" />
-    <link
-        rel="stylesheet"
-        href="//unpkg.com/@catppuccin/highlightjs/css/catppuccin-mocha.css"
-    />
+    <link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs/css/catppuccin-mocha.css">
     <meta name="theme-color" content="#ffd845" />
     <meta name="title" content="NoobScience" />
     <meta
         name="description"
-        content={description ||
-            'Hi! I am Ishan. I am a Student and Open Source Enthusiast. This is my personal portfolio website. I Like to Code Stuff. Check out my work!'}
+        content={description || "Hi! I am Ishan. I am a Student and Open Source Enthusiast. This is my personal portfolio website. I Like to Code Stuff. Check out my work!"}
     />
-    <meta name="title" content={title || 'NoobScience'} />
+    <meta name="title" content={title || "NoobScience"} />
     <meta
         name="keywords"
         content="noobscience, noob science, NoobScience, newtoallofthis123, technology, website"
@@ -80,94 +58,78 @@ const BASE_URL = 'http://' + Astro.url.host;
     <meta property="twitter:title" content="NoobScience" />
     <meta
         property="twitter:description"
-        content={description ||
-            'Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!'}
+        content={description || "Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!"}
     />
-    <meta property="twitter:image" content={BASE_URL + img} />
+    <meta
+        property="twitter:image"
+        content={ BASE_URL+ img}
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={BASE_URL} />
-    <meta property="og:title" content={title || 'NoobScience'} />
+    <meta property="og:title" content={title || "NoobScience"} />
     <meta
         property="og:description"
-        content={description ||
-            'Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!'}
+        content={description || "Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!"}
     />
-    <meta property="og:image" content={BASE_URL + img} />
+    <meta
+        property="og:image"
+        content={BASE_URL + img}
+    />
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="mask-icon" href="/favicon.ico" color="#0f0f28" />
-
-    <!-- <ViewTransitions fallback="none" /> -->
-
+    
+    <ViewTransitions fallback="none" />
+    
     <script>
-        window.va =
-            window.va ||
-            function () {
-                (window.vaq = window.vaq || []).push(arguments);
-            };
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-    <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
-        crossorigin="anonymous"></script>
-    <body
-        class={`${!selection_only ? 'colored' : 'dark:bg-dark dark:text-light bg-light text-dark'} flex flex-col items-center`}
-    >
-        <div class={!full ? 'md:w-3/5': 'md:w-full'} id="content">
-            {nav && <HomeNav title={nav_title} emoji={emoji} client:load />}
-            <div class="py-4">
-                <slot />
-            </div>
-            <footer
-                id="content"
-                class=`md:py-1 border-t-2 border-current ${!footer && "hidden"}`
-            >
-                <div
-                    class="flex flex-col md:flex-row justify-between items-center"
-                >
-                    <a class="text-xl font-bold" href="/"
-                        >Ishan Joshi</a
-                    >
-                    <div
-                        class="hidden md:flex md:flex-row flex-col gap-x-6 px-5 justify-center items-center"
-                    >
-                        <a
-                            href="https://github.com/newtoallofthis123/noobscience"
-                        >
-                            <i class="bi bi-github"></i>
-                             Source
-                        </a>
-                        <a href="/credits">Credits</a>
-                        <a href="/tos">Terms</a>
-                        <Init client:idle />
-                    </div>
-                    <div class="flex md:hidden">
-                        <div
-                            class="flex flex-row gap-x-3 justify-center items-center"
-                        >
-                            <a href="/credits">Credits</a>
-                            <a href="/tos">Terms</a>
-                        </div>
-                        <Init client:idle />
-                    </div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
+     crossorigin="anonymous"></script>
+     <body class="dark:bg-dark dark:text-white bg-light text-black">
+        <div class={
+        !selection_only ? "colored" : ""
+     } id="content">
+            <slot />
+            
+        <footer id="content" class=`md:py-1 text-dark border-t-2 bg-yellow-400 border-current ${!footer && "hidden"}`>
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex justify-between items-center py-2 px-5">
+                    <Image src={logo} class="w-8 mx-2" alt="Logo" />
+                    <a class="text-xl font-bold" href="/">NoobScience 2023</a>
                 </div>
-            </footer>
+                <div class="hidden md:flex md:flex-row flex-col gap-x-6 px-5 justify-center items-center">
+                    <a href="https://github.com/newtoallofthis123/noobscience">
+                        <i class="bi bi-github"></i> newtoallofthis123/noobscience
+                    </a>
+                    <a href="/credits">Credits</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/tos">Terms</a>
+                    <Init client:idle />
+                </div>
+                <div class="flex md:hidden">
+                    <div class="flex flex-row gap-x-3 justify-center items-center">
+                        <a href="/credits">Credits</a>
+                        <a href="/privacy">Privacy</a>
+                        <a href="/tos">Terms</a>
+                    </div>
+                    <Init client:idle />
+                </div>
+            </div>
+        </footer>
         </div>
     </body>
-    <style
-        is:global
-        define:vars={{
-            bg: bg || '#a3e635',
-            color: color || '#000',
-            selection_bg: selection_bg || '#61f5ff',
-            selection_color: selection_color || '#000',
-        }}
-    >
-        html {
+    <style is:global define:vars={{
+        bg: bg || "#a3e635",
+        color: color || "#000",
+        selection_bg: selection_bg || "#facc15",
+        selection_color: selection_color || "#000",
+    }}>
+        html{
             scroll-behavior: smooth;
         }
-        .colored {
+        .colored{
             color: var(--color);
             background: var(--bg);
         }
@@ -187,40 +149,45 @@ const BASE_URL = 'http://' + Astro.url.host;
             background: #2500ff;
             color: #fff;
         }
-        #icon svg {
+        #icon svg{
             fill: currentColor;
             width: 1.5rem;
             margin: 0 0.5rem;
         }
-        #inline-icon svg {
-            display: inline;
-            fill: currentColor;
-            width: 1rem;
-            margin: 0.5rem 0;
+        body{
+            font-family: "Hubot Sans", sans-serif;
         }
-        p {
-            line-height: 1.7;
+        #p-heading{
+            font-weight: 400;
         }
-        body {
-            font-family: 'Hubot Sans', sans-serif;
+        p, li{
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 2.4rem;
+        }
+        @media (max-width: 768px){
+            p, li{
+                font-size: 1rem;
+                line-height: 2.4rem;
+            }
         }
     </style>
     <script>
         // Navigate to /search on pressing Ctrl + g
-        document.addEventListener('keydown', function (event) {
-            if (event.ctrlKey && event.key === 'y') {
-                window.location.href = '/search';
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && event.key === "y") {
+                window.location.href = "/search";
             }
         });
-        document.addEventListener('keydown', function (event) {
-            if (event.altKey && event.key === 'y') {
-                window.location.href = '/';
+        document.addEventListener("keydown", function(event) {
+            if (event.altKey && event.key === "y") {
+                window.location.href = "/";
             }
         });
         //add search_input focus on pressing Ctrl + /
-        document.addEventListener('keydown', function (event) {
-            if (event.ctrlKey && event.key === '/') {
-                document.getElementById('search_input').focus();
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && event.key === "/") {
+                document.getElementById("search_input").focus();
             }
         });
     </script>

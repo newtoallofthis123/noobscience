@@ -18,7 +18,8 @@ posts = posts.filter((post: any) => post.data.category === category);
 ---
 
 <Base title="Archives">
-    <div class="px-2">
+    <HomeNav client:load />
+    <div class="md:p-10 p-2">
         <div>
             <h1 class="md:text-6xl text-4xl font-heading p-4">
                 @{category} ({posts.length})

@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { marked } from 'marked';
+import {marked} from "marked"
 
-export default function UpdateLatest({
-    slice_length = 600,
-}: {
-    slice_length?: number;
-}) {
+export default function UpdateLatest(
+    {
+        slice_length = 600,
+    }: {
+        slice_length?: number;
+    }
+) {
     const [latest, setLatest] = useState({
         name: '',
         content: '',
@@ -16,13 +18,16 @@ export default function UpdateLatest({
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/updates', {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
+                const response = await fetch(
+                    '/api/updates',
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                );
                 const data = await response.json();
-                const latest_update = data.slice(0).reverse()[0];
+                const latest_update = data.slice(0).reverse()[0]
                 setLatest(latest_update);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -35,32 +40,29 @@ export default function UpdateLatest({
     return (
         <>
             {latest.name == '' && (
-                <h1 className="">Loading...</h1>
+                <h1 className="text-center p-4">Loading...</h1>
             )}
             {latest.name != '' && (
-                <div className="py-4">
-                    <h1 className="pb-2">
-                        <span className="bg-green-200 text-neutral-900 p-1 px-1.5 rounded-lg border-black">{
-                        new Date(latest.date).toDateString().split(' ').slice(1).join(' ')
-                        }</span>{' '}
-                        <a
-                            className="text-lg font-bold"
-                            href={'/quips/' + latest.hash}
-                        >
+                <div className="page-div bg-white dark:bg-dark m-1 md:m-10 mt-0 p-4 md:py-8 transform hover:scale-105 rounded-lg cursor-pointer transition duration-300 ease-in-out">
+                    <a href={`/quips/${latest.hash}`}>
+                        <h1 className="text-2xl md:text-4xl text-center pb-4 font-bold">
                             {latest.name}
-                        </a>
-                    </h1>
-                    <div
-                        dangerouslySetInnerHTML={{
-                            __html: marked(
-                                latest.content.slice(0, slice_length) + '...',
-                                {
-                                    headerIds: false,
-                                    mangle: false,
-                                }
-                            ),
-                        }}
-                    />
+                        </h1>
+                        <h2 className="text-xl py-4">{latest.date}</h2>
+                        <div
+                            className="text-xl leading-10"
+                            dangerouslySetInnerHTML={{
+                                __html: marked(
+                                    latest.content.slice(0, slice_length) +
+                                        '...',
+                                    {
+                                        headerIds: false,
+                                        mangle: false,
+                                    }
+                                ),
+                            }}
+                        />
+                    </a>
                 </div>
             )}
         </>
