@@ -1,28 +1,27 @@
 ---
 import { getCollection } from 'astro:content';
-const {emoji} = Astro.params
+const { emoji } = Astro.params;
 
-let posts = await getCollection('blog', ({data}) => {
-    return data
+let posts = await getCollection('blog', ({ data }) => {
+    return data;
 });
 
 posts = posts.sort(
     (a: any, b: any) =>
-        new Date(b.data.date).getTime() -
-        new Date(a.data.date).getTime()
+        new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
-let post = posts.find((post) => post.data.emoji === emoji)
+let post = posts.find((post) => post.data.emoji === emoji);
 const urls = {
-    "📚": "/writes",
-    "⚡": "/about",
-    "📞": "/contact"
-}
-if(post){
-    return Astro.redirect("/blog/" + post.slug)
+    '📚': '/writes',
+    '⚡': '/about',
+    '📞': '/contact',
+};
+if (post) {
+    return Astro.redirect('/blog/' + post.slug);
 }
 //@ts-ignore
-if(urls[emoji]){
-    return Astro.redirect(urls[emoji])
+if (urls[emoji]) {
+    return Astro.redirect(urls[emoji]);
 }
-return Astro.redirect('/404')
+return Astro.redirect('/404');
 ---

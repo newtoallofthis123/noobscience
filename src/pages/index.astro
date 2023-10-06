@@ -1,16 +1,13 @@
-
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
-import HomeNav from '../components/navigation/home_nav';
+import Nav from '../components/navigation/nav';
 import Notification from '../components/utils/notification/notification';
 import UpdateLatest from '../components/updates/latest';
-import { Image } from 'astro:assets';
-import Current from '../components/utils/notification/current';
 
 const options = [
     'is a Developer',
-    'is into ML now',
+    'sends hypertext',
     'creates websites',
     'is a student',
 ];
@@ -32,7 +29,7 @@ const latest = posts
 
 <Base title="NoobScience | Student and Open Source Enthusiast">
     <div>
-        <HomeNav title="NoobScience" client:load />
+        <Nav title="NoobScience" client:load />
         <div class="-z-10 md:px-16 md:py-14 p-2">
             <div class="font-serif text-gray-900 dark:text-gray-200">
                 <div>
@@ -86,18 +83,16 @@ const latest = posts
                     </h1>
                     <p>Hi! I am Ishan. Get to know me from these bullets.</p>
                     <ul id="points" class="list-none font-normal py-3">
-                        <li>🎒 1st year Student at GRIET</li>
-                        <li>🧑‍💻 Full Developer and Coder</li>
+                        <li>🎒 2nd year Student at GRIET</li>
+                        <li>{'<>'} Hyperscript (HTMX) Enthusiast</li>
                         <li>
-                            <i class="bi bi-github pl-1"></i> Open Source
-                            Enthusiast
+                            🤖 Machine Learning is awesome! The math though...
                         </li>
-                        <li>🌱 Web Gardener</li>
-                        <li>🤖 Learning to teach Machines</li>
-                        <li>📱 Trying to distance from Social Media</li>
-                        <li>🌐 Loves building and maintaining sites</li>
-                        <li>🐶 Dog Lover</li>
-                        <li></li>
+                        <li>✒️ Writing blogs on my website</li>
+                        <li>😎 Rust and Go Baby!</li>
+                        <li>😅 Ends up with Python and JS anyway</li>
+                        <li>📚 Likes long reads</li>
+                        <li>❤️ Open Source Enthusiast and Contributor</li>
                     </ul>
                 </div>
                 <div id="update" class="md:w-4/5 w-full pr-2">
@@ -105,17 +100,20 @@ const latest = posts
                         <h1 class="text-3xl font-heading text-center py-2">
                             Latest Update
                         </h1>
-                        <UpdateLatest slice_length={300} client:load />
+                        <UpdateLatest slice_length={350} client:load />
                     </div>
                 </div>
             </div>
             <div id="latest">
                 <h1 class="text-5xl py-5 pt-8 font-bold">Latest Posts</h1>
-                <div transition:name="blog" class="grid md:grid-cols-2 md:gap-3">
+                <div
+                    transition:name="blog"
+                    class="grid md:grid-cols-2 md:gap-3"
+                >
                     {
                         latest.map((post) => {
                             return (
-                                <article class="md:p-4 md:my-0.5 p-0.5 transform hover:scale-105 hover:border-2 hover:border-gray-300 rounded-lg cursor-pointer transition duration-500 ease-in-out">
+                                <article class="md:p-4 md:my-0.5 p-0.5 border-2 border-neutral-100 hover:border-neutral-400 dark:border-neutral-800 rounded-lg">
                                     <a href={'/blog/' + post.slug}>
                                         <header>
                                             <h2 class="md:text-2xl text-xl leading-relaxed font-bold">
@@ -145,7 +143,6 @@ const latest = posts
                     }
                 </div>
             </div>
-            <Current client:idle />
         </div>
     </div>
 </Base>

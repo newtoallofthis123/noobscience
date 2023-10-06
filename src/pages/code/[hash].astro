@@ -1,26 +1,41 @@
 ---
-import Base from "../../layouts/base.astro";
-import { hypens } from "../../utils/utils";
+import Base from '../../layouts/base.astro';
+import { hypens } from '../../utils/utils';
 
 const { hash } = Astro.params;
 
-const res = await fetch(`http://${Astro.url.host}/api/code/${hash}`)
-const data = await res.json()
+const res = await fetch(`http://${Astro.url.host}/api/code/${hash}`);
+const data = await res.json();
 ---
 
-<Base title={data.title + " | NoobPaste Mini"} color="#fff" bg="#1e1e2e" selection_only={false} selection_bg="#facc15" selection_color="#000" footer={false}>
+<Base
+    title={data.title + ' | NoobPaste Mini'}
+    color="#fff"
+    bg="#1e1e2e"
+    selection_only={false}
+    selection_bg="#facc15"
+    selection_color="#000"
+    footer={false}
+>
     <div class="font-mono md:p-8 p-4">
         <h1 class="md:text-2xl text-lg font-bold">
-            <span class="text-green-400">{hypens(data.author)}@noobscience</span>:<span class="text-blue-300">~</span>$cat ./{data.title}
+            <span class="text-green-400">{hypens(data.author)}@noobscience</span
+            >:<span class="text-blue-300">~</span>$cat ./{data.title}
         </h1>
         <div class="my-4">
             <p class="text-lg">
                 <span class="underline">{data.lang}</span>{' '}
-                <button class="cursor-pointer" onclick="navigator.clipboard.writeText(`${document.getElementById('code_content').innerText}`); alert('Copied to Clipboard')">
+                <button
+                    class="cursor-pointer"
+                    onclick="
+                    navigator.clipboard.writeText(`${document.getElementById('code_content').innerText}`); alert('Copied to Clipboard')
+"
+                >
                     Copy <i class="bi bi-clipboard"></i>
                 </button>
             </p>
-            <pre class=`hls ${data.lang}`>
+            <pre
+                class=`hls ${data.lang}`>
                 <code id="code_content" class=`language-${data.lang}`>
 {data.content}
                 </code>
@@ -29,12 +44,12 @@ const data = await res.json()
     </div>
 </Base>
 <style is:inline>
-    pre{
-        background-color: "#1e1e2e";
+    pre {
+        background-color: '#1e1e2e';
     }
-    code{
-        background-color: "#1e1e2e";
-        font-family: "Fira Code Variable", 'Courier New', Courier, monospace;
+    code {
+        background-color: '#1e1e2e';
+        font-family: 'Fira Code Variable', 'Courier New', Courier, monospace;
         font-size: 1.1rem;
         /* padding: 0.5rem; */
         border-radius: 0.5rem;

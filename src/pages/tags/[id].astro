@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../../layouts/base.astro"
-import HomeNav from "../../components/navigation/home_nav";
+import Nav from "../../components/navigation/nav";
 
 const {id} = Astro.params;
 let posts = await getCollection('blog', ({data}) => {
@@ -19,7 +19,7 @@ posts = posts.filter((post: any) => {
 ---
 
 <Base title={"Tag: " + id + " | Ishan Writes"}>
-    <HomeNav client:load/>
+    <Nav client:load/>
     <div class="md:p-10 p-1">
         <div>
             <h1 class="md:text-6xl text-2xl font-heading p-4">

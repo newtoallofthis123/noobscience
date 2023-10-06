@@ -1,12 +1,12 @@
 ---
 import Base from "../layouts/base.astro";
-import HomeNav from "../components/navigation/home_nav";
+import Nav from "../components/navigation/nav";
 import Detailed from "../components/utils/notification/detailed";
 import UpdateLatest from "../components/updates/latest";
 ---
 
 <Base title="Now | What's Up Right Now">
-    <HomeNav client:load />
+    <Nav client:load />
     <div class="md:p-6 p-3">
         <div class="">
             <h1 class="md:text-6xl text-4xl font-heading py-8">

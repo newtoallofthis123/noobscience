@@ -12,8 +12,16 @@ const { frontmatter } = Astro.props;
     footer={false}
 >
     <main class="flex flex-col items-center justify-center md:p-5" id="main">
-        <div class="md:w-3/5 w-full border-gray-600 rounded-lg md:border-2 p-5 md:px-14 md:pt-10 md:pb-5">
-            {frontmatter.title && <h1 class="md:text-4xl text-3xl font-bold py-3 pb-4">{frontmatter.title}</h1>}
+        <div
+            class="md:w-3/5 w-full border-gray-600 rounded-lg md:border-2 p-5 md:px-14 md:pt-10 md:pb-5"
+        >
+            {
+                frontmatter.title && (
+                    <h1 class="md:text-4xl text-3xl font-bold py-3 pb-4">
+                        {frontmatter.title}
+                    </h1>
+                )
+            }
             <slot />
             <footer class="text-center pt-5">
                 &copy NoobScience {new Date().getFullYear()}
@@ -22,13 +30,14 @@ const { frontmatter } = Astro.props;
     </main>
 </Base>
 <style is:inline>
-    p,li{
+    p,
+    li {
         font-weight: 400;
         font-size: 1rem;
         line-height: 2;
         color: #1e1e1e;
     }
-    h2{
+    h2 {
         font-size: 1.6rem;
         font-weight: 700;
         line-height: 1.5;
@@ -36,33 +45,33 @@ const { frontmatter } = Astro.props;
         padding-top: 1.4rem;
         padding-bottom: 0.4rem;
     }
-    h3{
+    h3 {
         font-size: 1.2rem;
         font-weight: 600;
         line-height: 1.5;
         color: #0e0d0d;
         padding-top: 0.5rem;
     }
-    ul{
+    ul {
         padding-left: 1.5rem;
         list-style: disc;
     }
-    ol{
+    ol {
         padding-left: 1.2rem;
         list-style: decimal;
         padding-top: 0.1rem;
         padding-bottom: 0.1rem;
     }
-    hr{
+    hr {
         color: hsl(0, 0%, 44%);
     }
-    a{
+    a {
         padding: 2px;
         text-decoration: 2px underline #808080;
         transition-duration: 0.7s;
         transition-delay: 0.1s;
     }
-    a:hover{
+    a:hover {
         text-decoration: none;
         background-color: #000000;
         color: #fefefe;

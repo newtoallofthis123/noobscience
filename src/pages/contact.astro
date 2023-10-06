@@ -1,11 +1,11 @@
 ---
 import Base from '../layouts/base.astro';
-import HomeNav from '../components/navigation/home_nav';
+import Nav from '../components/navigation/nav';
 import Form from '../components/pages/contact/contact';
 ---
 
 <Base title="Contact the Noob" selection_color='#fff' selection_bg='#212121'>
-    <HomeNav title="Contact Me" client:load/>
+    <Nav title="Contact Me" client:load/>
     <div class="md:p-4">
     <Form client:load />
     </div>

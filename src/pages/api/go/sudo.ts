@@ -1,9 +1,12 @@
 import { connectToDatabase, type Database } from '../../../utils/db';
 
 export const GET = async () => {
-    return new Response("I'm not going to expose all the go links for the sake of privacy", {
-        headers: { 'content-type': 'application/json' },
-    });
+    return new Response(
+        "I'm not going to expose all the go links for the sake of privacy",
+        {
+            headers: { 'content-type': 'application/json' },
+        }
+    );
 };
 
 import type { APIRoute } from 'astro';
@@ -19,9 +22,9 @@ export const POST: APIRoute = async ({ request }) => {
     });
     const result = {
         go_data,
-        slug
+        slug,
     };
     return new Response(JSON.stringify(result), {
         headers: { 'content-type': 'application/json' },
     });
-}
+};

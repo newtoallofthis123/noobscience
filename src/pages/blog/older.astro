@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/base.astro';
-import HomeNav from '../../components/navigation/home_nav';
+import Nav from '../../components/navigation/nav';
 import UpdateArchive from '../../components/updates/archive';
 import UpdateLatest from '../../components/updates/latest';
 import { Image } from 'astro:assets';
@@ -27,11 +27,12 @@ let others = posts.filter(
 
 <Base title="Ishan Writes">
     <div>
+        <Nav title="Mussing" client:load />
         <div class="p-4">
             <div class="flex md:flex-row flex-col justify-center">
-                <div class="w-full">
+                <div class="md:w-4/6 w-full">
                     <h1
-                        class="text-2xl font-bold pb-5 font-serif leading-relaxed"
+                        class="md:text-6xl text-4xl font-bold pb-5 font-serif leading-relaxed"
                     >
                         Welcome, to my place on the <span class="text-lime-400"
                             >Internet</span
@@ -81,7 +82,10 @@ let others = posts.filter(
                         family.
                     </p>
                 </div>
-                <div transition:name="blog" class="grid md:grid-cols-2 md:gap-3 md:p-4 py-6">
+                <div
+                    transition:name="blog"
+                    class="grid md:grid-cols-2 md:gap-3 md:p-4 py-6"
+                >
                     {
                         long.slice(0, 8).map((post) => {
                             return (

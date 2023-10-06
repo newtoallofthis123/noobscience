@@ -19,7 +19,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
     const result = {
         update_data,
-        hash
+        hash,
     };
     return new Response(JSON.stringify(result), {
         headers: { 'content-type': 'application/json' },

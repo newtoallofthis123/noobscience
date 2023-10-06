@@ -1,14 +1,14 @@
 ---
 import Base from "./base.astro";
-import HomeNav from "../components/navigation/home_nav";
+import Nav from "../components/navigation/nav";
 const {frontmatter} = Astro.props;
 ---
 
 <Base title={frontmatter.title}>
-    <HomeNav client:load title={frontmatter.title} />
-    <div class="flex flex-col justify-center md:px-20" id="md">
-        <div class="md:w-4/5 w-full p-2">
-            <h1 class="py-5">
+    <Nav client:load title={frontmatter.title} />
+    <div class="flex flex-col justify-center items-center" id="md">
+        <div class="md:w-3/5 w-full p-2">
+            <h1 class="py-5 font-heading">
                 {frontmatter.title}
             </h1>
             <slot />
@@ -35,34 +35,30 @@ const {frontmatter} = Astro.props;
         font-weight: 400;
         text-decoration: 1.2px underline currentColor;
     }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-weight: 700;
-    }
 
     h1 {
         font-size: 2.4rem;
         padding: 1rem 0;
+        font-weight: 700;
     }
 
     h2 {
         font-size: 1.8rem;
         line-height: 2.2rem;
         padding: 0.5rem 0;
+        font-weight: 700;
     }
     h3 {
         font-size: 1.4rem;
         line-height: 2.4rem;
         padding: 0.5rem 0;
+        font-weight: 700;
     }
     h4 {
         font-size: 1.2rem;
         line-height: 2rem;
         padding: 0.5rem 0;
+        font-weight: 700;
     }
     p code {
         font-family: 'Fira Code Variable', monospace;

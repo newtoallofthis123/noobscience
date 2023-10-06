@@ -17,7 +17,6 @@ export async function GET() {
       description:
           'Ishan Writes about cool stuff like Tech, Movies, Opinions and basically anything he wants to.',
       site: 'https://noobscience.rocks',
-      stylesheet: '/rss/styles.xsl',
       items: posts.map(
           ({ body, slug, data: { title, description, date: pubDate } }) => ({
               title,

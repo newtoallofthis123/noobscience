@@ -2,16 +2,8 @@ import React from 'react';
 import '../styles/nav.scss';
 import { motion } from 'framer-motion';
 
-export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' }) {
+export default function Nav({ title = '', bg = 'inherit', color = 'inherit' }) {
     const [nav, setNav] = React.useState(false);
-    const play_shutter = () => {
-        const path = '/assets/audio/shutter.wav';
-        const audio = new Audio(path);
-        audio.play();
-        setTimeout(() => {
-            window.location.href = '/';
-        }, 500);
-    };
     return (
         <>
             <nav
@@ -26,14 +18,12 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' 
                     <div className="flex flex-row justify-between items-center p-2">
                         <div className="flex-shrink-0 flex flex-row mx-5 justify-around">
                             <div>
-                                {/* <Logo /> */}
                                 <img
                                     width={48}
                                     height={48}
                                     className="w-10 h-10 md:w-12 md:h-12 ease-in-out cursor-pointer duration-500 transform hover:-translate-y-1 hover:scale-110"
                                     src="/logo192.webp"
                                     alt="NoobScience Logo"
-                                    onClick={play_shutter}
                                 />
                             </div>
                             <a
@@ -111,9 +101,9 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' 
                                     <li>
                                         <a
                                             className="special_underline"
-                                            href="/creations"
+                                            href="/projects"
                                         >
-                                            Creations
+                                            Projects
                                         </a>
                                     </li>
                                     <li>
@@ -215,9 +205,9 @@ export default function HomeNav({ title = '', bg = 'inherit', color = 'inherit' 
                             <li>
                                 <a
                                     className="special_underline"
-                                    href="/creations"
+                                    href="/projects"
                                 >
-                                    Creations
+                                    Projects
                                 </a>
                             </li>
                             <li>

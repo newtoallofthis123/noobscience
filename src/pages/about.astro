@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/base.astro";
-import HomeNav from "../components/navigation/home_nav";
+import Nav from "../components/navigation/nav";
 import { Image } from "astro:assets";
 import * as icons from 'simple-icons';
 
@@ -8,7 +8,7 @@ import profile from "../assets/profile.png"
 ---
 
 <Base title="About Me" bg="#ee72bc" color="#000">
-    <HomeNav title="About" client:load />
+    <Nav title="About" client:load />
     <div class="md:p-4 p-1">
         <div class="flex flex-col md:flex-row justify-center items-center">
             <div class="md:w-2/5">
@@ -81,6 +81,7 @@ import profile from "../assets/profile.png"
                     <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" set:html={icons.siJavascript.svg}></a></li>
                     <li><a href="https://www.typescriptlang.org/" set:html={icons.siTypescript.svg}></a></li>
                     <li><a href="https://www.rust-lang.org/" set:html={icons.siRust.svg}></a></li>
+                    <li><a href="https://go.dev" set:html={icons.siGo.svg}></a></li>
                     <li><a href="https://en.wikipedia.org/wiki/C_(programming_language)" set:html={icons.siC.svg}></a></li>
                 </ul>
                 <h1 class="text-2xl font-bold py-2">

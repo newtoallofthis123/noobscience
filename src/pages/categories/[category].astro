@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/base.astro';
-import HomeNav from '../../components/navigation/home_nav';
+import Nav from '../../components/navigation/nav';
 
 const {category} = Astro.params;
 
@@ -18,7 +18,7 @@ posts = posts.filter((post: any) => post.data.category === category);
 ---
 
 <Base title="Archives">
-    <HomeNav client:load />
+    <Nav client:load />
     <div class="md:p-10 p-2">
         <div>
             <h1 class="md:text-6xl text-4xl font-heading p-4">

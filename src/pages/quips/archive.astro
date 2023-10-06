@@ -2,11 +2,11 @@
 import Base from '../../layouts/base.astro';
 import UpdateArchiveGrid from '../../components/updates/archive_grid';
 import UpdateLatest from '../../components/updates/latest';
-import HomeNav from '../../components/navigation/home_nav';
+import Nav from '../../components/navigation/nav';
 ---
 
 <Base title="Ishan's Quips Archive">
-    <HomeNav client:load />
+    <Nav client:load />
     <div class="p-4">
         <h1 class="text-6xl font-heading py-5">Ishan's Quips Archive</h1>
         <p class="text-gray-500">

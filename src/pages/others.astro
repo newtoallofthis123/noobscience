@@ -1,10 +1,10 @@
 ---
 import Base from "../layouts/base.astro";
-import HomeNav from "../components/navigation/home_nav";
+import Nav from "../components/navigation/nav";
 ---
 
 <Base footer={false}>
-    <HomeNav client:load />
+    <Nav client:load />
     <div class="flex justify-center flex-col items-center">
         <div class="w-4/5">
             <h1 class="text-6xl font-heading my-4">

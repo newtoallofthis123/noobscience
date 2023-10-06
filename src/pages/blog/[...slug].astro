@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/base.astro';
-import HomeNav from '../../components/navigation/home_nav';
+import Nav from '../../components/navigation/nav';
 import { getEntry, getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import { siMedium } from 'simple-icons';
@@ -61,11 +61,8 @@ const headings: headings = meta?.headings;
     bg={frontmatter?.bg}
     selection_bg={frontmatter?.selection_bg || '#facc15'}
     selection_color={frontmatter?.selection_color || '#000'}
-    title={frontmatter?.type == 'notes'
-        ? frontmatter?.title + " | Ishan's Jots"
-        : frontmatter?.title + ' | Ishan Writes'}
 >
-    <HomeNav
+    <Nav
         title={frontmatter?.title}
         color={frontmatter?.color}
         bg={frontmatter?.bg}
@@ -214,7 +211,9 @@ const headings: headings = meta?.headings;
                 </div>
             </div>
         </div>
-        <div class=`flex flex-col justify-center items-center ${frontmatter?.full_img != false ? 'section_colored' : ''}`>
+        <div
+            class=`flex flex-col justify-center items-center ${frontmatter?.full_img != false ? 'section_colored' : ''}`
+        >
             {
                 frontmatter?.img && (
                     <div class={`md:p-10 p-2 py-5`}>
@@ -229,13 +228,8 @@ const headings: headings = meta?.headings;
         </div>
         <div class="flex flex-col justify-center items-center md:pb-5">
             <div class="md:w-4/5 w-full">
-                <div
-                    id="searchTrigger"
-                    class="px-2 flex flex-col"
-                >
-                    <div
-                        class=`py-4`
-                    >
+                <div id="searchTrigger" class="px-2 flex flex-col">
+                    <div class=`py-4`>
                         {
                             frontmatter?.audio && (
                                 <div class={`items-center w-full py-5`}>
@@ -243,32 +237,10 @@ const headings: headings = meta?.headings;
                                 </div>
                             )
                         }
-                        {frontmatter?.type != 'quick' && <div />}
                         <div class={`md:p-0 p-2 font-${frontmatter?.font}`}>
                             <Content />
                         </div>
                     </div>
-                    <!-- <div class=`md:w-1/6 w-full md:pt-16 px-2 overflow-x-auto md:sticky md:pr-6 md:pl-0 md:top-0 md:h-screen overflow-y-none flex flex-col ${frontmatter?.type == "quick" && 'hidden'}`>
-                <h2 class="text-lg py-1">
-                    ➡️ Table of Contents
-                </h2>
-                <ul class="py-1">
-                    {
-                        headings.map((heading) => {
-                            return (
-                                <li class="cursor-pointer transform hover:translate-x-1 transition duration-300 ease-in-out">
-                                    <a
-                                        href={`#${heading.slug}`}
-                                        class=`text-base ${heading.depth == 2 ? 'font-semibold' : ''} ${heading.depth == 3 ? 'pl-3 font-normal' : ''} truncate`
-                                    >
-                                        {heading.text}
-                                    </a>
-                                </li>
-                            );
-                        })
-                    }
-                </ul>
-            </div> -->
                 </div>
             </div>
         </div>
@@ -294,7 +266,10 @@ const headings: headings = meta?.headings;
                 frontmatter?.substack && (
                     <div class="text-center my-2">
                         <button class="special_btn rounded-3xl">
-                            <a class="flex flex-row " href={frontmatter.substack}>
+                            <a
+                                class="flex flex-row "
+                                href={frontmatter.substack}
+                            >
                                 <span id="icon" set:html={siSubstack.svg} />
                                 SubStack
                             </a>
@@ -318,7 +293,10 @@ const headings: headings = meta?.headings;
                 frontmatter?.hashnode && (
                     <div class="text-center my-2">
                         <button class="special_btn rounded-3xl">
-                            <a class="flex flex-row " href={frontmatter.hashnode}>
+                            <a
+                                class="flex flex-row "
+                                href={frontmatter.hashnode}
+                            >
                                 <span id="icon" set:html={siHashnode.svg} />
                                 Hashnode
                             </a>
@@ -330,9 +308,9 @@ const headings: headings = meta?.headings;
     </div>
     <div class="flex flex-col md:flex-row justify-center md:pt-4">
         <div class="md:w-3/5 w-full">
-            <h1 class="text-center text-2xl">
+            <h2 class="text-center text-2xl font-heading">
                 Feel free to leave a comment below!
-            </h1>
+            </h2>
             <script
                 src="https://utteranc.es/client.js"
                 repo="newtoallofthis123/comments"
@@ -352,7 +330,7 @@ const headings: headings = meta?.headings;
             </div>
         </div>
         <div class="md:w-2/5 w-full p-2">
-            <h2 class="text-2xl">Recommended Reading</h2>
+            <h2 class="text-2xl font-heading">Recommended Reading</h2>
             <p class="leading-snug text-base py-2">
                 Recommendations are based on the category and tags of this post.
             </p>

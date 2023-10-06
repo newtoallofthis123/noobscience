@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/base.astro';
+import Nav from '../components/navigation/nav';
+
+const projects = [
+    {
+        name: 'DocCache',
+        description:
+            'DocCache is something I am very proud of. It is a hospital management system, made blazingly fast with a beautiful and fully accessible UI. It is also quite well commented. Uses Astro, TailwindCSS, and Go.',
+        langs: ['golang', 'astrojs', 'tailwindcss', 'shadcn/ui'],
+        github: 'https://github.com/newtoallofthis123/DocCache',
+    },
+    {
+        name: 'My Website',
+        description:
+            'My personal website, made with Astro. Is it way overengineered? Yes. Do I love it? Oh I do. Not just a simple site btw, it has a blog, a dynamic quips section, a url shortener, and a lot more.',
+        langs: ['javascript', 'astrojs', 'tailwindcss'],
+        github: 'https://github.com/newtoallofthis123/noobscience',
+    },
+    {
+        name: 'NoobText',
+        description:
+            'A super fast and hypermedia driven text sharing service. Uses HTMX, TailwindCSS, and Go. Super fast, with a lot of features, including Auth, Profiles, and more. Learnt a lot while making this one.',
+        langs: ['golang', 'htmx', 'tailwindcss', 'postgresql'],
+        github: 'https://github.com/newtoallofthis123/noob_text',
+    },
+    {
+        name: 'Short CLI',
+        langs: ['rust', 'cargo', 'mongodb'],
+        description:
+            'A stable and fast url shortener cli for my site made with Rust. Uses MongoDB as the database. Also my first major Rust project.',
+        github: 'https://github.com/newtoallofthis123/short_cli',
+    },
+    {
+        name: 'YTPS',
+        description:
+            'Standing for YouTube Terminal Search and Play, this is a simple script that allows you to search and play YouTube videos from the terminal.',
+        langs: ['python', 'rich cli'],
+        github: 'https://github.com/newtoallofthis123/ytps',
+    },
+    {
+        name: 'NoobShort',
+        description:
+            'A Simple and easy to use URL shortener made with Astro and MongoDB. Uses TailwindCSS for styling. Also has a CLI version, made with Rust. Simple, Fast and Beautiful.',
+        langs: ['astrojs', 'mongodb'],
+        github: 'https://www.noobscience.rocks/go',
+    },
+];
+---
+
+<Base title="Ishan's Creations">
+    <Nav title="My Fav Projects" client:load />
+    <div class="p-4">
+        <div class="flex justify-center items-center">
+            <div class="md:w-4/5 w-full">
+                <p>
+                    For now, just exploring and playing with everything tech:
+                    From Rust to Javascript. Here are some of my favourite/major
+                    projects. These are not updated that often, so you can check
+                    out my <a
+                        class="underline"
+                        href="https://github.com/newtoallofthis123/">GitHub</a
+                    > for my latest projects and contributions.
+                </p>
+                <h1 class="text-2xl md:text-4xl font-heading py-3 pt-6">
+                    My Major Creations
+                </h1>
+                {
+                    projects.map((project) => {
+                        return (
+                            <div class="py-4">
+                                <div class="flex flex-row justify-between">
+                                    <div>
+                                        <h1 class="text-xl md:text-2xl py-2 font-bold">
+                                            {project.name}
+                                        </h1>
+                                        <p class="text-gray-700 dark:text-gray-200 text-lg leading-8">
+                                            {project.description}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <a
+                                            href={project.github}
+                                            class="inline-block text-blue-600 ml-2 transition-all duration-300 transform hover:translate-x-1"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <i class="bi bi-arrow-right text-4xl" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row">
+                                    {project.langs.map((lang) => (
+                                        <div class="bg-gray-200 dark:bg-gray-800 rounded-full px-2 py-1 text-sm text-gray-700 dark:text-gray-200 mr-2">
+                                            {lang}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </div>
+    </div>
+</Base>

@@ -1,10 +1,10 @@
 ---
 import Base from "../layouts/base.astro";
-import HomeNav from "../components/navigation/home_nav";
+import Nav from "../components/navigation/nav";
 ---
 
 <Base bg="#323639" color="#fff" selection_only={false}>
-    <HomeNav bg="#323639" color="#fff" client:load />
+    <Nav bg="#323639" color="#fff" client:load />
     <div>
         <iframe src="/resume.pdf" class="w-full h-screen" frameborder="0"></iframe>
     </div>

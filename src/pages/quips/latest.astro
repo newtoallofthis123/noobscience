@@ -1,13 +1,13 @@
 ---
 import Base from '../../layouts/base.astro';
 import UpdateLatest from '../../components/updates/latest';
-import HomeNav from '../../components/navigation/home_nav';
+import Nav from '../../components/navigation/nav';
 
 const { id } = Astro.params;
 ---
 
 <Base title={id + "- Ishan's Quips"} bg="#212121" color="#fff">
-    <HomeNav title="Quips" client:load bg="#212121" color="#fff" />
+    <Nav title="Quips" client:load bg="#212121" color="#fff" />
     <div id="update">
         <UpdateLatest client:load />
     </div>
