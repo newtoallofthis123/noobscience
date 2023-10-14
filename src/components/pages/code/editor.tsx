@@ -4,6 +4,7 @@ type Props = {};
 
 export default function CodeEditor({}: Props) {
     const [link, setLink] = React.useState('');
+
     const addCode = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const title = e.currentTarget.code_title.value;

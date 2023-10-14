@@ -54,6 +54,7 @@ const headings: headings = meta?.headings;
 ---
 
 <Base
+    title={frontmatter?.title}
     description={frontmatter?.description}
     img={frontmatter?.img?.src || '/assets/banner.png'}
     selection_only={frontmatter?.selection_only}

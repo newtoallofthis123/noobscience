@@ -12,6 +12,18 @@ export const GET = async (req: any) => {
         return new Response(null, { status: 404 });
     }
 
+    // update the count of views
+    await db.collection('go').updateOne(
+        {
+            slug: id,
+        },
+        {
+            $inc: {
+                count: 1,
+            },
+        }
+    );
+
     return new Response(JSON.stringify(data), {
         headers: { 'content-type': 'application/json' },
     });

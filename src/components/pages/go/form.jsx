@@ -31,17 +31,17 @@ export default function GoForm() {
                                 style={{
                                     boxShadow: '0.3em 0.4em',
                                 }}
-                                className="border-2 p-2 border-black md:w-3/5 mt-2 mb-4 rounded-xl"
+                                className="border-2 px-2 border-black dark:border-neutral-50 w-full md:w-3/5 mt-2 mb-4 rounded-xl"
                             >
                                 <input
                                     autoComplete='off'
                                     type="url"
-                                    className="w-5/6 p-2 border-r-2 border-black focus:outline-none text-lg"
+                                    className="w-5/6 p-2 border-r-2 dark:bg-neutral-900 border-black dark:border-neutral-50 focus:outline-none text-lg"
                                     name="url"
                                     placeholder="Paste the Long Thing Here"
                                 />
                                 <button
-                                    className="w-1/6 p-2 text-xl"
+                                    className="w-1/6 p-2 text-lg"
                                     type="submit"
                                 >
                                     Shorten It!
