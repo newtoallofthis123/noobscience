@@ -4,8 +4,9 @@ const { frontmatter } = Astro.props;
 ---
 
 <Base
+    title={frontmatter.title}
     color="#000"
-    bg="hsl(0, 100.00%, 99.80%)"
+    bg={frontmatter.bg || "hsl(0, 100.00%, 99.80%)"}
     selection_color="#fff"
     selection_bg="#000"
     selection_only={false}
@@ -13,18 +14,18 @@ const { frontmatter } = Astro.props;
 >
     <main class="flex flex-col items-center justify-center md:p-5" id="main">
         <div
-            class="md:w-3/5 w-full border-gray-600 rounded-lg md:border-2 p-5 md:px-14 md:pt-10 md:pb-5"
+            class="md:w-2/3 w-full border-gray-600 rounded-lg md:border-2 p-5 md:px-14 md:pt-10 md:pb-5"
         >
             {
                 frontmatter.title && (
-                    <h1 class="md:text-4xl text-3xl font-bold py-3 pb-4">
+                    <h1 class="md:text-3xl text-2xl font-bold py-3 pb-4">
                         {frontmatter.title}
                     </h1>
                 )
             }
             <slot />
             <footer class="text-center pt-5">
-                &copy NoobScience {new Date().getFullYear()}
+                &copy Ishan Joshi {new Date().getFullYear()}
             </footer>
         </div>
     </main>
