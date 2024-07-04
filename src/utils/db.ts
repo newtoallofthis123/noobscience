@@ -5,7 +5,7 @@
 // TODO: Add Ability to connect to multiple databases
 //! HONESTLY: I HAVE NO IDEA HOW I WAS ABLE TO WRITE THIS FILE
 
-import { MongoClient, MongoClientOptions, Db, Collection } from 'mongodb';
+import { MongoClient, type MongoClientOptions, Db, Collection } from 'mongodb';
 
 // Ensure that MONGODB_URL is defined
 //@ts-ignore
